@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://t1e6kib2odfk"]
+
+[ext_resource type="Shader" uid="uid://bxmhehkwnbexg" path="res://4_Shaders/0_Scripts/ppf.gdshader" id="1_p070j"]
+
+[resource]
+shader = ExtResource("1_p070j")
+shader_parameter/enableVignette = true
+shader_parameter/enableBloom = true
+shader_parameter/enableChromAb = false
+shader_parameter/enableColorGrade = true
+shader_parameter/vignetteRadius = 0.650000030875
+shader_parameter/vignetteSoftness = 0.6000000285
+shader_parameter/vignetteStrength = 0.550000026125
+shader_parameter/bloomStrength = 0.2
+shader_parameter/bloomMipLevel = 3.5
+shader_parameter/abAmount = 0.65
