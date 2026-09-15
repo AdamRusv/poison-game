@@ -23,6 +23,7 @@ config/icon="res://0_Art/icon.svg"
 
 Settings="*uid://b7h40e7hj32af"
 Keybinds="*uid://c8fo37kjonfjo"
+TweenManager="*uid://c6ojkbins2v4b"
 SoundManager="*uid://d3n8iwlhwslg6"
 Overlay="*uid://sp4m3qieichu"
 
