@@ -82,7 +82,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
 script = ExtResource("2_lv7np")
-paperHolder = NodePath("Paper Holder")
+paperHolder = NodePath("Parent/Paper Holder")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/HBoxContainer/Playmat" unique_id=331557050]
 layout_mode = 2
@@ -94,6 +94,13 @@ patch_margin_top = 4
 patch_margin_right = 4
 patch_margin_bottom = 4
 
-[node name="Paper Holder" type="Control" parent="MarginContainer/HBoxContainer/Playmat" unique_id=72630569]
+[node name="Parent" type="MarginContainer" parent="MarginContainer/HBoxContainer/Playmat" unique_id=895104866]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="Paper Holder" type="Control" parent="MarginContainer/HBoxContainer/Playmat/Parent" unique_id=1898689258]
 clip_contents = true
 layout_mode = 2
