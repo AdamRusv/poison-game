@@ -13,11 +13,11 @@ func _process(delta: float) -> void:
 func _on_down():
 	super._on_down()
 	playmat.paperHolder.move_child(self, playmat.paperHolder.get_children().size() - 1)
-	_squish_paper()
+	#_squish_paper()
 
 func _on_up():
 	super._on_up()
-	_reset_paper()
+	#_reset_paper()
 
 #-------------------
 func _clamp_paper():

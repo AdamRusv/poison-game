@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://bhvewryp1cmbt"]
+
+[ext_resource type="FontFile" uid="uid://dct02xhe1381w" path="res://0_Art/3_Fonts/Description Font.ttf" id="1_klwoh"]
+
+[resource]
+default_font = ExtResource("1_klwoh")
+default_font_size = 8

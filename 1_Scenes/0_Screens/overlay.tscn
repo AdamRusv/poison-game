@@ -53,6 +53,7 @@ position = Vector2(14, 14)
 sprite_frames = SubResource("SpriteFrames_appy1")
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1263083811]
+visible = false
 
 [node name="PPF" type="ColorRect" parent="CanvasLayer2" unique_id=1822229832]
 material = ExtResource("2_uy6oh")
