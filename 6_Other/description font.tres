@@ -5,3 +5,4 @@
 [resource]
 default_font = ExtResource("1_klwoh")
 default_font_size = 8
+RichTextLabel/colors/default_color = Color(0.9019608, 0.80784315, 0.6745098, 1)

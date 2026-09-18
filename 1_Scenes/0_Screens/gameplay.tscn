@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cgkjx4wb04kro" path="res://0_Art/2_PNGs/test layout background.png" id="1_lv7np"]
 [ext_resource type="Script" uid="uid://4xhbwaoygr14" path="res://2_Scripts/2_Independent/playmat manager.gd" id="2_lv7np"]
+[ext_resource type="Texture2D" uid="uid://cvg0nvvipe48r" path="res://0_Art/2_PNGs/placeholder mockup.png" id="3_82xv0"]
 
 [node name="Gameplay" type="Control" unique_id=1427164321]
 layout_mode = 3
@@ -33,9 +34,8 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
 [node name="Accessibility" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1348033393]
+custom_minimum_size = Vector2(0, 35)
 layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.2
 
 [node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/HBoxContainer/VBoxContainer/Accessibility" unique_id=1655563843]
 layout_mode = 2
@@ -50,7 +50,6 @@ patch_margin_bottom = 4
 [node name="Character" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1308443707]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 0.8
 
 [node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/HBoxContainer/VBoxContainer/Character" unique_id=556527173]
 layout_mode = 2
@@ -63,8 +62,8 @@ patch_margin_right = 4
 patch_margin_bottom = 4
 
 [node name="Cups" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=522748834]
+custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
-size_flags_vertical = 3
 
 [node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/HBoxContainer/VBoxContainer/Cups" unique_id=1201418195]
 layout_mode = 2
@@ -97,10 +96,22 @@ patch_margin_bottom = 4
 [node name="Parent" type="MarginContainer" parent="MarginContainer/HBoxContainer/Playmat" unique_id=895104866]
 layout_mode = 2
 theme_override_constants/margin_left = 3
-theme_override_constants/margin_top = 3
-theme_override_constants/margin_right = 3
-theme_override_constants/margin_bottom = 3
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
 
 [node name="Paper Holder" type="Control" parent="MarginContainer/HBoxContainer/Playmat/Parent" unique_id=1898689258]
 clip_contents = true
 layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=904773487]
+visible = false
+z_index = 114
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_82xv0")

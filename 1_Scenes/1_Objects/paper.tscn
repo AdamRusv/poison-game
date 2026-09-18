@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b1hcjlnogkytj" path="res://2_Scripts/2_Independent/paper.gd" id="1_v0ol5"]
 [ext_resource type="Theme" uid="uid://bhvewryp1cmbt" path="res://6_Other/description font.tres" id="2_fmnio"]
+[ext_resource type="Texture2D" uid="uid://cwydpac31fwmh" path="res://0_Art/2_PNGs/placeholder paper 9slice.png" id="2_qp4ic"]
 
 [node name="Paper" type="ColorRect" unique_id=1025101708 node_paths=PackedStringArray("parentNode", "detectionArea")]
 z_index = 1
@@ -10,6 +11,19 @@ offset_bottom = 197.0
 script = ExtResource("1_v0ol5")
 parentNode = NodePath(".")
 detectionArea = NodePath("Button")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1961360989]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_qp4ic")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1006494222]
 layout_mode = 1
@@ -26,12 +40,11 @@ theme_override_constants/margin_bottom = 10
 [node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer" unique_id=1411813506]
 layout_mode = 2
 theme = ExtResource("2_fmnio")
-theme_override_colors/default_color = Color(0, 0, 0, 1)
 text = "TRAIT SHEET
 
 
 Liar/Lying/Lie (x):
-	Character Sheet entry “x” is false 
+	Character Sheet entry \"x\" is false 
 
 Tricky:
 	Odd entries in Character Sheet are false

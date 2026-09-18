@@ -4,22 +4,22 @@
 [ext_resource type="Texture2D" uid="uid://pid10cr8mcuy" path="res://0_Art/2_PNGs/cursor-Sheet.png" id="2_i53fj"]
 [ext_resource type="Material" uid="uid://t1e6kib2odfk" path="res://4_Shaders/1_Materials/ppf.tres" id="2_uy6oh"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tbbhu"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_i53fj"]
 atlas = ExtResource("2_i53fj")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3unbd"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbbhu"]
 atlas = ExtResource("2_i53fj")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_appy1"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_i53fj"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tbbhu")
+"texture": SubResource("AtlasTexture_i53fj")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3unbd")
+"texture": SubResource("AtlasTexture_tbbhu")
 }],
 "loop": 1,
 "name": &"default",
@@ -38,6 +38,7 @@ grow_vertical = 2
 position = Vector2(320, 180)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1022946578]
+visible = false
 
 [node name="Cursor" type="Control" parent="CanvasLayer" unique_id=932440608 node_paths=PackedStringArray("imageNode")]
 layout_mode = 3
@@ -50,7 +51,7 @@ imageNode = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Cursor" unique_id=1329314917]
 position = Vector2(14, 14)
-sprite_frames = SubResource("SpriteFrames_appy1")
+sprite_frames = SubResource("SpriteFrames_i53fj")
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1263083811]
 visible = false
