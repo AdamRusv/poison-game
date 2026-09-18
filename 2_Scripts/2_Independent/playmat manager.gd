@@ -11,10 +11,9 @@ var papers : Array[Paper]
 
 func _ready() -> void:
 	await get_tree().process_frame
-	_create_paper(testPaperRef, Color("e3d3c6"))
-	#_create_paper(testPaperRef, Color.WHITE)
-	_create_paper(testPaperRef, Color.YELLOW_GREEN)
-	_create_paper(testPaperRef, Color.DARK_GOLDENROD)
+	_create_paper(testPaperRef, Color("4b3d44"))
+	_create_paper(testPaperRef, Color("4b3d44"))
+	_create_paper(testPaperRef, Color("4b3d44"))
 
 
 #-----------------------
