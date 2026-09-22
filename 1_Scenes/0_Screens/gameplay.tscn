@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cgkjx4wb04kro" path="res://0_Art/2_PNGs/test layout background.png" id="1_lv7np"]
 [ext_resource type="Script" uid="uid://4xhbwaoygr14" path="res://2_Scripts/2_Independent/playmat manager.gd" id="2_lv7np"]
 [ext_resource type="Texture2D" uid="uid://cvg0nvvipe48r" path="res://0_Art/2_PNGs/placeholder mockup.png" id="3_82xv0"]
+[ext_resource type="Resource" uid="uid://cg41pmm52w6kn" path="res://5_Resources/0_Papers/0_Trait Sheet/main trait sheet.tres" id="4_1t528"]
 [ext_resource type="Texture2D" uid="uid://dy254ypb8l7vp" path="res://0_Art/2_PNGs/poison button-Sheet.png" id="4_gngdi"]
 [ext_resource type="Script" uid="uid://dsk6k5x0e30hn" path="res://2_Scripts/2_Independent/poison manager.gd" id="6_pq3d1"]
 [ext_resource type="Script" uid="uid://v10r8rve43tc" path="res://2_Scripts/2_Independent/cups manager.gd" id="7_3udmd"]
@@ -91,6 +92,7 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
 script = ExtResource("2_lv7np")
 paperHolder = NodePath("Parent/Paper Holder")
+mainTraitSheet = ExtResource("4_1t528")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/HBoxContainer/Playmat" unique_id=331557050]
 layout_mode = 2
