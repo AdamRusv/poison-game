@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="PaperInfo" format=3 uid="uid://cg41pmm52w6kn"]
+
+[ext_resource type="Script" uid="uid://csy0x4mgdxs00" path="res://2_Scripts/3_Dependent/paperinfo.gd" id="1_6klo7"]
+
+[resource]
+script = ExtResource("1_6klo7")
+title = "TRAIT SHEET"
+info = Array[String](["Fool: 
+	Drinks from the cup that is in front of themselves
+
+Sage:
+	Drinks from the cup that is NOT in front of themselves
+
+Confused:
+	Believes all Fools are Sages and all Sages are Fools	
+
+Liar/Lying/Lie (x):
+	Character Sheet entry \"x\" is false 
+
+Tricky:
+	Odd entries in Character Sheet are false
+
+Deceptive:
+	Even entries in Character Sheet are false
+", "Holy:
+	All entries are true
+Split:
+	If Deceptive or Holy, is Angel
+Angel:
+	Will not be one of the following; Tricky, Deceptive, or a Liar
+
+Honorable (x):
+	If entry “x” is false, it is true
+Leader:
+	First 3 entries are Honorable AND Last entry is false
+Exiled:
+	Is not Honorable
+"])
+metadata/_custom_type_script = "uid://csy0x4mgdxs00"

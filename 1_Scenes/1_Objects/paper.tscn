@@ -4,62 +4,97 @@
 [ext_resource type="Theme" uid="uid://bhvewryp1cmbt" path="res://6_Other/description font.tres" id="2_fmnio"]
 [ext_resource type="Texture2D" uid="uid://cwydpac31fwmh" path="res://0_Art/2_PNGs/placeholder paper 9slice.png" id="2_qp4ic"]
 
-[node name="Paper" type="ColorRect" unique_id=1025101708 node_paths=PackedStringArray("parentNode", "detectionArea")]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2y7yb"]
+
+[node name="Paper" type="MarginContainer" unique_id=1389312574 node_paths=PackedStringArray("paperTitleLabel", "paperInfoLabel", "pageFlipButton", "parentNode", "detectionArea")]
 z_index = 1
-offset_right = 164.0
-offset_bottom = 197.0
+custom_minimum_size = Vector2(164, 125)
+custom_maximum_size = Vector2(164, 228)
+offset_right = 17.0
+offset_bottom = 44.0
 script = ExtResource("1_v0ol5")
+paperTitleLabel = NodePath("VBoxContainer/Title Container/Title Label")
+paperInfoLabel = NodePath("VBoxContainer/Info Container/Info Label")
+pageFlipButton = NodePath("Page Flip Container/Page Flip Button")
 parentNode = NodePath(".")
-detectionArea = NodePath("Button")
+detectionArea = NodePath("Drag Button")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1961360989]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 texture = ExtResource("2_qp4ic")
 patch_margin_left = 4
 patch_margin_top = 4
 patch_margin_right = 4
 patch_margin_bottom = 4
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1006494222]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 10
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2074008777]
+layout_mode = 2
+theme_override_constants/separation = 0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer" unique_id=1411813506]
+[node name="Top Separator" type="HSeparator" parent="VBoxContainer" unique_id=503676989]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxEmpty_2y7yb")
+
+[node name="Title Container" type="MarginContainer" parent="VBoxContainer" unique_id=1006494222]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="Title Label" type="RichTextLabel" parent="VBoxContainer/Title Container" unique_id=1411813506]
 layout_mode = 2
 theme = ExtResource("2_fmnio")
-text = "TRAIT SHEET
-
-
-Liar/Lying/Lie (x):
-	Character Sheet entry \"x\" is false 
-
-Tricky:
-	Odd entries in Character Sheet are false
-
-Deceptive:
-	Even entries in Character Sheet are false"
+text = "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
 fit_content = true
 scroll_active = false
 
-[node name="Button" type="Button" parent="." unique_id=1229789884]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Title Seperation Container" type="MarginContainer" parent="VBoxContainer" unique_id=246599068]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="Title Seperation Label" type="RichTextLabel" parent="VBoxContainer/Title Seperation Container" unique_id=2027789018]
+layout_mode = 2
+theme = ExtResource("2_fmnio")
+text = "-------------------------------------"
+fit_content = true
+scroll_active = false
+
+[node name="Mid Separator" type="HSeparator" parent="VBoxContainer" unique_id=2059847499]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxEmpty_2y7yb")
+
+[node name="Info Container" type="MarginContainer" parent="VBoxContainer" unique_id=643291806]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="Info Label" type="RichTextLabel" parent="VBoxContainer/Info Container" unique_id=1717520262]
+layout_mode = 2
+theme = ExtResource("2_fmnio")
+text = "????????????????????????????????????
+
+???????????????????????????????????"
+fit_content = true
+scroll_active = false
+
+[node name="Bottom Separator" type="HSeparator" parent="VBoxContainer" unique_id=488004290]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxEmpty_2y7yb")
+
+[node name="Drag Button" type="Button" parent="." unique_id=1229789884]
+layout_mode = 2
 focus_mode = 0
+flat = true
+
+[node name="Page Flip Container" type="MarginContainer" parent="." unique_id=1337673711]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="Page Flip Button" type="Button" parent="Page Flip Container" unique_id=940300415]
+layout_mode = 2
 flat = true
