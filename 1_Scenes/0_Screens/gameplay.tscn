@@ -1,8 +1,16 @@
 [gd_scene format=3 uid="uid://b30uvlt6um85f"]
 
+[ext_resource type="Script" uid="uid://c3o8kvypxk7ko" path="res://2_Scripts/2_Independent/gameplay manager.gd" id="1_0sltt"]
 [ext_resource type="Texture2D" uid="uid://cgkjx4wb04kro" path="res://0_Art/2_PNGs/test layout background.png" id="1_lv7np"]
 [ext_resource type="Script" uid="uid://4xhbwaoygr14" path="res://2_Scripts/2_Independent/playmat manager.gd" id="2_lv7np"]
 [ext_resource type="Texture2D" uid="uid://cvg0nvvipe48r" path="res://0_Art/2_PNGs/placeholder mockup.png" id="3_82xv0"]
+[ext_resource type="Texture2D" uid="uid://dy254ypb8l7vp" path="res://0_Art/2_PNGs/poison button-Sheet.png" id="4_gngdi"]
+[ext_resource type="Script" uid="uid://dsk6k5x0e30hn" path="res://2_Scripts/2_Independent/poison manager.gd" id="6_pq3d1"]
+[ext_resource type="Script" uid="uid://v10r8rve43tc" path="res://2_Scripts/2_Independent/cups manager.gd" id="7_3udmd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_504ay"]
+atlas = ExtResource("4_gngdi")
+region = Rect2(0, 0, 209, 64)
 
 [node name="Gameplay" type="Control" unique_id=1427164321]
 layout_mode = 3
@@ -11,6 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_0sltt")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1928083459]
 layout_mode = 1
@@ -104,9 +113,7 @@ theme_override_constants/margin_bottom = 4
 clip_contents = true
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=904773487]
-visible = false
-z_index = 114
+[node name="Flat Mockup" type="TextureRect" parent="." unique_id=904773487]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -115,3 +122,48 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("3_82xv0")
+
+[node name="Poison Texture" type="TextureRect" parent="." unique_id=1840736645 node_paths=PackedStringArray("gameplayManager", "poisonTexture", "poisonButton")]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 292.0
+offset_right = 213.0
+offset_bottom = 356.0
+texture = SubResource("AtlasTexture_504ay")
+stretch_mode = 3
+script = ExtResource("6_pq3d1")
+gameplayManager = NodePath("..")
+poisonTexture = NodePath(".")
+poisonButton = NodePath("poison button")
+
+[node name="poison button" type="Button" parent="Poison Texture" unique_id=2059727328]
+layout_mode = 0
+offset_left = 83.0
+offset_top = 10.0
+offset_right = 126.0
+offset_bottom = 55.0
+focus_mode = 0
+flat = true
+
+[node name="Cups" type="Control" parent="." unique_id=1225528218 node_paths=PackedStringArray("gameplayManager", "opponentDetectionZone", "playerDetectionZone")]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("7_3udmd")
+gameplayManager = NodePath("..")
+opponentDetectionZone = NodePath("opponent cup detection zone")
+playerDetectionZone = NodePath("player cup detection zone")
+
+[node name="opponent cup detection zone" type="Control" parent="Cups" unique_id=1727036711]
+anchors_preset = 0
+offset_left = 83.0
+offset_top = 209.0
+offset_right = 102.0
+offset_bottom = 237.0
+
+[node name="player cup detection zone" type="Control" parent="Cups" unique_id=376065848]
+anchors_preset = 0
+offset_left = 115.0
+offset_top = 209.0
+offset_right = 134.0
+offset_bottom = 237.0

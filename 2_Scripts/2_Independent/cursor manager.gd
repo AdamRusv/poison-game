@@ -1,13 +1,22 @@
 extends Control
 class_name CustomCursor
 
-@export var imageNode : AnimatedSprite2D
+@export_group("Cursors")
+@export var defaultCursor : AnimatedSprite2D
+##frame 0 is pouring, frame 1 is still (since swaps while being held down)
+@export var poisonVileCursor : AnimatedSprite2D
+
+var imageNode : AnimatedSprite2D
 var hotspot : Vector2 = Vector2.ZERO
 var followWhenHidden : bool = true		# if false, will auto-hide this when OS cursor is shown (e.g., alt-tab)
 
 var wasHiddenByUs : bool = false
 
 func _ready() -> void:
+	GlobalReferences.cursor = self
+	_hide_all_cursors()
+	_swap_cursor_to(defaultCursor)
+	
 	z_index = 4096
 	top_level = true
 	set_anchors_preset(Control.PRESET_TOP_LEFT)
@@ -60,3 +69,16 @@ func _show_os_cursor() -> void:
 
 func _is_os_cursor_hidden() -> bool:
 	return Input.get_mouse_mode() == Input.MOUSE_MODE_HIDDEN
+
+#-------------------------
+func _hide_all_cursors():
+	defaultCursor.visible = false
+	poisonVileCursor.visible = false
+
+##grab reference from this script
+func _swap_cursor_to(newCursor : AnimatedSprite2D):
+	if imageNode != null:
+		imageNode.visible = false
+	
+	imageNode = newCursor
+	imageNode.visible = true
