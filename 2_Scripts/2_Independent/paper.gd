@@ -5,11 +5,15 @@ class_name Paper #TODO: SET Z INDEX TO 0
 @export_category("References")
 @export var paperTitleLabel : RichTextLabel
 @export var paperInfoLabel : RichTextLabel
+@export_group("Packet")
+@export var packetParent : Control
 @export var pageFlipButton : Button
+@export var pageFlipTexture : TextureRect
 
 var playmat : PlaymatManager = null
 
 var paperInfo : PaperInfo = null
+var isPacket : bool = false
 
 var paperPadding : float = 40
 
@@ -45,6 +49,18 @@ func _setup_paper(newPaperInfo : PaperInfo):
 	
 	paperTitleLabel.text = paperInfo.title
 	paperInfoLabel.text = paperInfo.info[0]
+	
+	packetParent.visible = false
+	
+	if paperInfo.info.size() > 1:
+		_setup_packet()
+
+func _setup_packet():
+	isPacket = true
+	
+	
+	
+	packetParent.visible = true
 
 #- - -
 func _reset_paper() -> Tween:
