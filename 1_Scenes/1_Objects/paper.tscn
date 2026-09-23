@@ -11,7 +11,7 @@
 atlas = ExtResource("4_05sgy")
 region = Rect2(0, 0, 20, 20)
 
-[node name="Paper" type="MarginContainer" unique_id=1389312574 node_paths=PackedStringArray("paperTitleLabel", "paperInfoLabel", "packetParent", "pageFlipButton", "pageFlipTexture", "parentNode", "detectionArea")]
+[node name="Paper" type="MarginContainer" unique_id=1389312574 node_paths=PackedStringArray("paperTitleLabel", "paperInfoLabel", "packetParent", "packetBehindPaperParent", "pageFlipButton", "pageFlipTexture", "parentNode", "detectionArea")]
 z_index = 1
 custom_minimum_size = Vector2(164, 125)
 custom_maximum_size = Vector2(164, 228)
@@ -21,10 +21,24 @@ script = ExtResource("1_v0ol5")
 paperTitleLabel = NodePath("VBoxContainer/Title Container/Title Label")
 paperInfoLabel = NodePath("VBoxContainer/Info Container/Info Label")
 packetParent = NodePath("Page Flip Container")
+packetBehindPaperParent = NodePath("Packet Behind Paper")
 pageFlipButton = NodePath("Page Flip Container/Page Flip Button")
 pageFlipTexture = NodePath("Page Flip Container/Page Flip Corner Texture")
 parentNode = NodePath(".")
 detectionArea = NodePath("Drag Button")
+
+[node name="Packet Behind Paper" type="MarginContainer" parent="." unique_id=916936904]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(5, 5)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Packet Behind Paper" unique_id=1228647760]
+layout_mode = 2
+texture = ExtResource("2_qp4ic")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
 [node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1961360989]
 layout_mode = 2
