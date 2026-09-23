@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="PaperInfo" format=3 uid="uid://duq3b3vrdma8c"]
+
+[ext_resource type="Script" uid="uid://csy0x4mgdxs00" path="res://2_Scripts/3_Dependent/paperinfo.gd" id="1_lob22"]
+
+[resource]
+script = ExtResource("1_lob22")
+title = "Character Sheet"
+info = Array[String](["Holly Happyfield, Towerville
+
+
+1. Status: Middle Class
+
+2. Race: Goblin
+
+3. Age: 4
+"])
+metadata/_custom_type_script = "uid://csy0x4mgdxs00"

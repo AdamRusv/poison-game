@@ -5,11 +5,16 @@ class_name Paper #TODO: SET Z INDEX TO 0
 @export_category("References")
 @export var paperTitleLabel : RichTextLabel
 @export var paperInfoLabel : RichTextLabel
+@export_group("Packet")
+@export var packetParent : Control
+@export var packetBehindPaperParent : Control
 @export var pageFlipButton : Button
+@export var pageFlipTexture : TextureRect
 
 var playmat : PlaymatManager = null
 
 var paperInfo : PaperInfo = null
+var isPacket : bool = false
 
 var paperPadding : float = 40
 
@@ -43,8 +48,22 @@ func _clamp_paper():
 func _setup_paper(newPaperInfo : PaperInfo):
 	paperInfo = newPaperInfo
 	
+	pageFlipTexture.texture = pageFlipTexture.texture.duplicate(true)
+	
 	paperTitleLabel.text = paperInfo.title
 	paperInfoLabel.text = paperInfo.info[0]
+	
+	packetParent.visible = false
+	packetBehindPaperParent.visible = false
+	
+	if paperInfo.info.size() > 1:
+		_setup_packet()
+
+func _setup_packet():
+	isPacket = true
+	
+	packetParent.visible = true
+	packetBehindPaperParent.visible = true
 
 #- - -
 func _reset_paper() -> Tween:
@@ -59,14 +78,17 @@ func _expand_paper() -> Tween:
 	var newTween : Tween = TweenManager._scale_tween(parentNode, Vector2(1.02, 1.02), 0.1)
 	return newTween
 
-#--------------------
+#--------------------PACKET--------------------
 var currentPage : int = 0
 
+const NEUTRAL_CORNER : Rect2 = Rect2(0, 0, 20, 20)
+const HOVERED_CORNER : Rect2 = Rect2(20, 0, 20, 20)
+
 func _on_pageflip_enter():
-	pass
+	_set_pageflip_texture_to(HOVERED_CORNER)
 
 func _on_pageflip_exit():
-	pass
+	_set_pageflip_texture_to(NEUTRAL_CORNER)
 
 func _on_pageflip_clicked():
 	if currentPage < paperInfo.info.size() - 1:
@@ -74,4 +96,12 @@ func _on_pageflip_clicked():
 	elif currentPage >= paperInfo.info.size() -1:
 		currentPage = 0
 	
+	await _squish_paper().finished
+	_reset_paper()
+
 	paperInfoLabel.text = paperInfo.info[currentPage]
+
+#-
+func _set_pageflip_texture_to(newRect : Rect2):
+	var atlasTexture : AtlasTexture = pageFlipTexture.texture
+	atlasTexture.region = newRect

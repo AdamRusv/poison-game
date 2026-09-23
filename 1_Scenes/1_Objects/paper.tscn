@@ -3,10 +3,15 @@
 [ext_resource type="Script" uid="uid://b1hcjlnogkytj" path="res://2_Scripts/2_Independent/paper.gd" id="1_v0ol5"]
 [ext_resource type="Theme" uid="uid://bhvewryp1cmbt" path="res://6_Other/description font.tres" id="2_fmnio"]
 [ext_resource type="Texture2D" uid="uid://cwydpac31fwmh" path="res://0_Art/2_PNGs/placeholder paper 9slice.png" id="2_qp4ic"]
+[ext_resource type="Texture2D" uid="uid://54vhol3eq83l" path="res://0_Art/2_PNGs/packet corner-Sheet.png" id="4_05sgy"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2y7yb"]
 
-[node name="Paper" type="MarginContainer" unique_id=1389312574 node_paths=PackedStringArray("paperTitleLabel", "paperInfoLabel", "pageFlipButton", "parentNode", "detectionArea")]
+[sub_resource type="AtlasTexture" id="AtlasTexture_504ay"]
+atlas = ExtResource("4_05sgy")
+region = Rect2(0, 0, 20, 20)
+
+[node name="Paper" type="MarginContainer" unique_id=1389312574 node_paths=PackedStringArray("paperTitleLabel", "paperInfoLabel", "packetParent", "packetBehindPaperParent", "pageFlipButton", "pageFlipTexture", "parentNode", "detectionArea")]
 z_index = 1
 custom_minimum_size = Vector2(164, 125)
 custom_maximum_size = Vector2(164, 228)
@@ -15,9 +20,25 @@ offset_bottom = 44.0
 script = ExtResource("1_v0ol5")
 paperTitleLabel = NodePath("VBoxContainer/Title Container/Title Label")
 paperInfoLabel = NodePath("VBoxContainer/Info Container/Info Label")
+packetParent = NodePath("Page Flip Container")
+packetBehindPaperParent = NodePath("Packet Behind Paper")
 pageFlipButton = NodePath("Page Flip Container/Page Flip Button")
+pageFlipTexture = NodePath("Page Flip Container/Page Flip Corner Texture")
 parentNode = NodePath(".")
 detectionArea = NodePath("Drag Button")
+
+[node name="Packet Behind Paper" type="MarginContainer" parent="." unique_id=916936904]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(5, 5)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Packet Behind Paper" unique_id=1228647760]
+layout_mode = 2
+texture = ExtResource("2_qp4ic")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
 [node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1961360989]
 layout_mode = 2
@@ -90,10 +111,14 @@ focus_mode = 0
 flat = true
 
 [node name="Page Flip Container" type="MarginContainer" parent="." unique_id=1337673711]
-custom_minimum_size = Vector2(15, 15)
+custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
+
+[node name="Page Flip Corner Texture" type="TextureRect" parent="Page Flip Container" unique_id=1735048998]
+layout_mode = 2
+texture = SubResource("AtlasTexture_504ay")
 
 [node name="Page Flip Button" type="Button" parent="Page Flip Container" unique_id=940300415]
 layout_mode = 2

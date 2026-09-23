@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="PaperInfo" format=3 uid="uid://cj55yjaxgcvqn"]
+
+[ext_resource type="Script" uid="uid://csy0x4mgdxs00" path="res://2_Scripts/3_Dependent/paperinfo.gd" id="1_k0klj"]
+
+[resource]
+script = ExtResource("1_k0klj")
+title = "Atlas -> Towerville"
+info = Array[String](["Age:
+- Even number ages are lying about their Race
+
+- Odd number ages are lying about their Status
+
+- Citizens over the age of 50 do not follow any Age related rules and are instead Holy
+
+Status:
+- Poor citizens have good eyesight
+
+- Middle class citizens have no right arm
+
+- Rich citizens have clean teeth
+
+Race:
+- Humans are Leaders and Fools
+
+- Goblins are Confused
+
+
+", "Additional Notes:
+
+- Citizens with clean teeth are Honorable about their Race
+
+- Citizens with no right arm are Sages
+
+- Citizens with good eyesight are Fools
+
+- If Race is undefined, is a Sage"])
+metadata/_custom_type_script = "uid://csy0x4mgdxs00"

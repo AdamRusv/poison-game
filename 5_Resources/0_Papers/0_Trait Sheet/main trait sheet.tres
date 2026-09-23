@@ -14,6 +14,7 @@ Sage:
 Confused:
 	Believes all Fools are Sages and all Sages are Fools	
 
+
 Liar/Lying/Lie (x):
 	Character Sheet entry \"x\" is false 
 
@@ -24,15 +25,20 @@ Deceptive:
 	Even entries in Character Sheet are false
 ", "Holy:
 	All entries are true
+
 Split:
 	If Deceptive or Holy, is Angel
+
 Angel:
 	Will not be one of the following; Tricky, Deceptive, or a Liar
 
+
 Honorable (x):
-	If entry “x” is false, it is true
+	If entry \"x\" is false, it is true
+
 Leader:
 	First 3 entries are Honorable AND Last entry is false
+
 Exiled:
 	Is not Honorable
 "])
