@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="PaperInfo" format=3 uid="uid://jfxlcsgkgt0e"]
+
+[ext_resource type="Script" uid="uid://csy0x4mgdxs00" path="res://2_Scripts/3_Dependent/paperinfo.gd" id="1_1gfaq"]
+
+[resource]
+script = ExtResource("1_1gfaq")
+title = "Character Sheet"
+info = Array[String](["Loom Veerie, Towerville
+
+
+1. Religious: No
+
+2. Status: Rich
+
+3. Race: Human
+
+4. Tricky
+
+5. Age: 77
+
+6. Exiled
+"])
+metadata/_custom_type_script = "uid://csy0x4mgdxs00"

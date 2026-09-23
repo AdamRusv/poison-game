@@ -8,10 +8,10 @@ title = "Character Sheet"
 info = Array[String](["Holly Happyfield, Towerville
 
 
-Status: Middle Class
+1. Status: Middle Class
 
-Race: Goblin
+2. Race: Goblin
 
-Age: 4
+3. Age: 4
 "])
 metadata/_custom_type_script = "uid://csy0x4mgdxs00"

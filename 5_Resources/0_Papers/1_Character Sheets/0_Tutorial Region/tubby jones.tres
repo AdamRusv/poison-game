@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="PaperInfo" format=3 uid="uid://cb72cj3rwdid6"]
+
+[ext_resource type="Script" uid="uid://csy0x4mgdxs00" path="res://2_Scripts/3_Dependent/paperinfo.gd" id="1_8uvam"]
+
+[resource]
+script = ExtResource("1_8uvam")
+title = "Character Sheet"
+info = Array[String](["Tubby Jones, Towerville
+
+
+1. Age: 44
+
+2. Race: Goblin
+
+3. Occupation: Carpenter
+
+4. Status: Poor
+
+5. Has clean teeth
+"])
+metadata/_custom_type_script = "uid://csy0x4mgdxs00"

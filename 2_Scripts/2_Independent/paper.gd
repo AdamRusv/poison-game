@@ -48,6 +48,8 @@ func _clamp_paper():
 func _setup_paper(newPaperInfo : PaperInfo):
 	paperInfo = newPaperInfo
 	
+	pageFlipTexture.texture = pageFlipTexture.texture.duplicate(true)
+	
 	paperTitleLabel.text = paperInfo.title
 	paperInfoLabel.text = paperInfo.info[0]
 	
