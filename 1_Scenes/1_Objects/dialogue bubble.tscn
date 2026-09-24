@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://cxlckmjewuy2h"]
+
+[ext_resource type="Texture2D" uid="uid://ewtkf8nl0qkn" path="res://0_Art/2_PNGs/dialogue bubble.png" id="1_iha75"]
+[ext_resource type="Theme" uid="uid://bhvewryp1cmbt" path="res://6_Other/description font.tres" id="2_q4stg"]
+
+[node name="dialogue bubble" type="MarginContainer" unique_id=1138734156]
+offset_right = 78.0
+offset_bottom = 15.0
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=497293241]
+layout_mode = 2
+texture = ExtResource("1_iha75")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 7
+patch_margin_bottom = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=142811477]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 4
+
+[node name="Title Label" type="RichTextLabel" parent="MarginContainer" unique_id=30857362]
+custom_maximum_size = Vector2(111, -1)
+layout_mode = 2
+theme = ExtResource("2_q4stg")
+text = "?????????????????"
+fit_content = true
+scroll_active = false
