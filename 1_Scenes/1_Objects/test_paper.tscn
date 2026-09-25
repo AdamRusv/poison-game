@@ -1,14 +1,15 @@
-[gd_scene format=3 uid="uid://bfv3tle6cmsug"]
+[gd_scene format=3 uid="uid://bqta6i0umiebq"]
 
-[ext_resource type="Script" uid="uid://b1hcjlnogkytj" path="res://2_Scripts/2_Independent/paper.gd" id="1_v0ol5"]
-[ext_resource type="Theme" uid="uid://bhvewryp1cmbt" path="res://6_Other/description font.tres" id="2_fmnio"]
-[ext_resource type="Texture2D" uid="uid://cwydpac31fwmh" path="res://0_Art/2_PNGs/placeholder paper 9slice.png" id="2_qp4ic"]
-[ext_resource type="Texture2D" uid="uid://54vhol3eq83l" path="res://0_Art/2_PNGs/packet corner-Sheet.png" id="4_05sgy"]
+[ext_resource type="Script" uid="uid://b1hcjlnogkytj" path="res://2_Scripts/2_Independent/paper.gd" id="1_jbttf"]
+[ext_resource type="Texture2D" uid="uid://cwydpac31fwmh" path="res://0_Art/2_PNGs/placeholder paper 9slice.png" id="2_7bue3"]
+[ext_resource type="Texture2D" uid="uid://g7m2dbh558sb" path="res://0_Art/2_PNGs/PaperNineSlice.png" id="3_7bue3"]
+[ext_resource type="Theme" uid="uid://bhvewryp1cmbt" path="res://6_Other/description font.tres" id="3_20iqj"]
+[ext_resource type="Texture2D" uid="uid://54vhol3eq83l" path="res://0_Art/2_PNGs/packet corner-Sheet.png" id="4_7342r"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2y7yb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_504ay"]
-atlas = ExtResource("4_05sgy")
+atlas = ExtResource("4_7342r")
 region = Rect2(0, 0, 20, 20)
 
 [node name="Paper" type="MarginContainer" unique_id=1389312574 node_paths=PackedStringArray("paperTitleLabel", "paperInfoLabel", "packetParent", "packetBehindPaperParent", "pageFlipButton", "pageFlipTexture", "parentNode", "detectionArea")]
@@ -16,8 +17,8 @@ z_index = 1
 custom_minimum_size = Vector2(164, 125)
 custom_maximum_size = Vector2(164, 228)
 offset_right = 164.0
-offset_bottom = 125.0
-script = ExtResource("1_v0ol5")
+offset_bottom = 137.0
+script = ExtResource("1_jbttf")
 paperTitleLabel = NodePath("VBoxContainer/Title Container/Title Label")
 paperInfoLabel = NodePath("VBoxContainer/Info Container/Info Label")
 packetParent = NodePath("Page Flip Container")
@@ -28,13 +29,14 @@ parentNode = NodePath(".")
 detectionArea = NodePath("Drag Button")
 
 [node name="Packet Behind Paper" type="MarginContainer" parent="." unique_id=916936904]
+visible = false
 layout_mode = 2
 offset_transform_enabled = true
 offset_transform_position = Vector2(5, 5)
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Packet Behind Paper" unique_id=1228647760]
 layout_mode = 2
-texture = ExtResource("2_qp4ic")
+texture = ExtResource("2_7bue3")
 patch_margin_left = 4
 patch_margin_top = 4
 patch_margin_right = 4
@@ -42,13 +44,16 @@ patch_margin_bottom = 4
 
 [node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1961360989]
 layout_mode = 2
-texture = ExtResource("2_qp4ic")
-patch_margin_left = 4
-patch_margin_top = 4
-patch_margin_right = 4
-patch_margin_bottom = 4
+texture = ExtResource("3_7bue3")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 6
+patch_margin_bottom = 5
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2074008777]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 0
 
@@ -64,7 +69,7 @@ theme_override_constants/margin_right = 8
 
 [node name="Title Label" type="RichTextLabel" parent="VBoxContainer/Title Container" unique_id=1411813506]
 layout_mode = 2
-theme = ExtResource("2_fmnio")
+theme = ExtResource("3_20iqj")
 text = "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
 fit_content = true
 scroll_active = false
@@ -76,7 +81,7 @@ theme_override_constants/margin_right = 8
 
 [node name="Title Seperation Label" type="RichTextLabel" parent="VBoxContainer/Title Seperation Container" unique_id=2027789018]
 layout_mode = 2
-theme = ExtResource("2_fmnio")
+theme = ExtResource("3_20iqj")
 text = "-------------------------------------"
 fit_content = true
 scroll_active = false
@@ -93,7 +98,7 @@ theme_override_constants/margin_right = 8
 
 [node name="Info Label" type="RichTextLabel" parent="VBoxContainer/Info Container" unique_id=1717520262]
 layout_mode = 2
-theme = ExtResource("2_fmnio")
+theme = ExtResource("3_20iqj")
 text = "????????????????????????????????????
 
 ???????????????????????????????????"
@@ -111,6 +116,7 @@ focus_mode = 0
 flat = true
 
 [node name="Page Flip Container" type="MarginContainer" parent="." unique_id=1337673711]
+visible = false
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 size_flags_horizontal = 8

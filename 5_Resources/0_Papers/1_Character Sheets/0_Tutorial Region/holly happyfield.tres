@@ -1,10 +1,40 @@
 [gd_resource type="Resource" script_class="EncounterInfo" format=3 uid="uid://d1v80i44rkstt"]
 
+[ext_resource type="Script" uid="uid://e0ujmn3oiqx0" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue branch.gd" id="1_xwftv"]
+[ext_resource type="Script" uid="uid://fn2tb2dtu6fj" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue.gd" id="2_kfeph"]
 [ext_resource type="Script" uid="uid://cg4ujw8mauohh" path="res://2_Scripts/3_Dependent/encounter info.gd" id="3_kfeph"]
+[ext_resource type="Script" uid="uid://qr661epbiujn" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue tree.gd" id="3_tsckr"]
+
+[sub_resource type="Resource" id="Resource_jsr4o"]
+script = ExtResource("2_kfeph")
+dialogue = "Hello"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_6vvqd"]
+script = ExtResource("2_kfeph")
+dialogue = "Fuck you"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_bm7y3"]
+script = ExtResource("2_kfeph")
+speaker = 1
+dialogue = "But I have no money :3"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_ri4yk"]
+script = ExtResource("1_xwftv")
+dialogue = Array[ExtResource("2_kfeph")]([SubResource("Resource_jsr4o"), SubResource("Resource_6vvqd"), SubResource("Resource_bm7y3")])
+metadata/_custom_type_script = "uid://e0ujmn3oiqx0"
+
+[sub_resource type="Resource" id="Resource_ueh3e"]
+script = ExtResource("3_tsckr")
+branches = Array[ExtResource("1_xwftv")]([SubResource("Resource_ri4yk")])
+metadata/_custom_type_script = "uid://qr661epbiujn"
 
 [resource]
 script = ExtResource("3_kfeph")
 characterName = "Holly Happyfield"
+dialogueTree = SubResource("Resource_ueh3e")
 title = "Character Sheet"
 info = Array[String]([", Towerville
 
