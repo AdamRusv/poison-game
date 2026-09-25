@@ -51,7 +51,11 @@ func _setup_paper(newPaperInfo : PaperInfo):
 	pageFlipTexture.texture = pageFlipTexture.texture.duplicate(true)
 	
 	paperTitleLabel.text = paperInfo.title
-	paperInfoLabel.text = paperInfo.info[0]
+	if newPaperInfo is EncounterInfo:
+		var newEncounterInfo : EncounterInfo = newPaperInfo
+		paperInfoLabel.text = newEncounterInfo.characterName + paperInfo.info[0]
+	else:
+		paperInfoLabel.text = paperInfo.info[0]
 	
 	packetParent.visible = false
 	packetBehindPaperParent.visible = false
@@ -99,7 +103,7 @@ func _on_pageflip_clicked():
 	await _squish_paper().finished
 	_reset_paper()
 
-	paperInfoLabel.text = paperInfo.info[currentPage]
+	paperInfoLabel.text = paperInfo.info[currentPage] #NOTE: does not work with EncounterInfo
 
 #-
 func _set_pageflip_texture_to(newRect : Rect2):

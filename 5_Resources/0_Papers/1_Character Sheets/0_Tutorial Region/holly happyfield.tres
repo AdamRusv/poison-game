@@ -1,11 +1,12 @@
-[gd_resource type="Resource" script_class="PaperInfo" format=3 uid="uid://duq3b3vrdma8c"]
+[gd_resource type="Resource" script_class="EncounterInfo" format=3 uid="uid://d1v80i44rkstt"]
 
-[ext_resource type="Script" uid="uid://csy0x4mgdxs00" path="res://2_Scripts/3_Dependent/paperinfo.gd" id="1_lob22"]
+[ext_resource type="Script" uid="uid://cg4ujw8mauohh" path="res://2_Scripts/3_Dependent/encounter info.gd" id="3_kfeph"]
 
 [resource]
-script = ExtResource("1_lob22")
+script = ExtResource("3_kfeph")
+characterName = "Holly Happyfield"
 title = "Character Sheet"
-info = Array[String](["Holly Happyfield, Towerville
+info = Array[String]([", Towerville
 
 
 1. Status: Middle Class
@@ -14,4 +15,4 @@ info = Array[String](["Holly Happyfield, Towerville
 
 3. Age: 4
 "])
-metadata/_custom_type_script = "uid://csy0x4mgdxs00"
+metadata/_custom_type_script = "uid://cg4ujw8mauohh"

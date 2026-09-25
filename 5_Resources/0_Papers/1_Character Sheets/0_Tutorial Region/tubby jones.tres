@@ -1,11 +1,76 @@
-[gd_resource type="Resource" script_class="PaperInfo" format=3 uid="uid://cb72cj3rwdid6"]
+[gd_resource type="Resource" script_class="EncounterInfo" format=3 uid="uid://4sdebs2jy8hr"]
 
-[ext_resource type="Script" uid="uid://csy0x4mgdxs00" path="res://2_Scripts/3_Dependent/paperinfo.gd" id="1_8uvam"]
+[ext_resource type="Script" uid="uid://cg4ujw8mauohh" path="res://2_Scripts/3_Dependent/encounter info.gd" id="1_8uvam"]
+[ext_resource type="Script" uid="uid://e0ujmn3oiqx0" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue branch.gd" id="1_ve4hf"]
+[ext_resource type="Script" uid="uid://fn2tb2dtu6fj" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue.gd" id="2_ri4yk"]
+[ext_resource type="Script" uid="uid://cwxljhi0yey0n" path="res://2_Scripts/3_Dependent/0_Dialogue/branch cups.gd" id="2_ueh3e"]
+[ext_resource type="Script" uid="uid://qr661epbiujn" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue tree.gd" id="3_ri4yk"]
+
+[sub_resource type="Resource" id="Resource_ywih6"]
+script = ExtResource("2_ri4yk")
+speaker = 1
+dialogue = "jit"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_c4l6l"]
+script = ExtResource("2_ri4yk")
+dialogue = "whats good blud"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_fn5ot"]
+script = ExtResource("2_ri4yk")
+speaker = 1
+dialogue = "nothing gng, just chillin"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_1cjw6"]
+script = ExtResource("2_ri4yk")
+speaker = 1
+dialogue = "ight bet"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_g7yw3"]
+script = ExtResource("2_ri4yk")
+dialogue = "*holds arm up for dap*"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_0hcow"]
+script = ExtResource("2_ri4yk")
+speaker = 1
+dialogue = "*daps*"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_fb3j3"]
+script = ExtResource("2_ri4yk")
+speaker = 1
+dialogue = "bet"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_jsr4o"]
+script = ExtResource("1_ve4hf")
+dialogue = Array[ExtResource("2_ri4yk")]([SubResource("Resource_ywih6"), SubResource("Resource_c4l6l"), SubResource("Resource_fn5ot"), SubResource("Resource_1cjw6"), SubResource("Resource_g7yw3"), SubResource("Resource_0hcow"), SubResource("Resource_fb3j3")])
+metadata/_custom_type_script = "uid://e0ujmn3oiqx0"
+
+[sub_resource type="Resource" id="Resource_fqpyk"]
+script = ExtResource("2_ueh3e")
+metadata/_custom_type_script = "uid://cwxljhi0yey0n"
+
+[sub_resource type="Resource" id="Resource_6vvqd"]
+script = ExtResource("2_ueh3e")
+cupPlacement = 2
+metadata/_custom_type_script = "uid://cwxljhi0yey0n"
+
+[sub_resource type="Resource" id="Resource_ahkic"]
+script = ExtResource("3_ri4yk")
+branches = Array[ExtResource("1_ve4hf")]([SubResource("Resource_jsr4o"), SubResource("Resource_fqpyk"), SubResource("Resource_6vvqd")])
+metadata/_custom_type_script = "uid://qr661epbiujn"
 
 [resource]
 script = ExtResource("1_8uvam")
+characterName = "Tubby Jones"
+dialogueTree = SubResource("Resource_ahkic")
 title = "Character Sheet"
-info = Array[String](["Tubby Jones, Towerville
+info = Array[String]([", Towerville
 
 
 1. Age: 44
@@ -18,4 +83,4 @@ info = Array[String](["Tubby Jones, Towerville
 
 5. Has clean teeth
 "])
-metadata/_custom_type_script = "uid://csy0x4mgdxs00"
+metadata/_custom_type_script = "uid://cg4ujw8mauohh"

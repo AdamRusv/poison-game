@@ -3,11 +3,12 @@ extends Control
 class_name PlaymatManager
 
 @export_category("References")
+@export var gameplayManager : GameplayManager
 @export var paperHolder : Control
 
 @export_category("Delete Later (For testing)")
 @export var mainTraitSheet : PaperInfo
-@export var characterSheet : PaperInfo
+@export var characterSheet : EncounterInfo
 @export var atlasRegionSheet : PaperInfo
 
 var testPaperRef : PackedScene = load("res://1_Scenes/1_Objects/paper.tscn") #TODO: Make actual papers, replace variable
@@ -15,6 +16,8 @@ var testPaperRef : PackedScene = load("res://1_Scenes/1_Objects/paper.tscn") #TO
 var papers : Array[Paper]
 
 func _ready() -> void:
+	gameplayManager.playmatManager = self
+	
 	await get_tree().process_frame
 	_create_paper(testPaperRef, Color("4b3d44"), mainTraitSheet)
 	_create_paper(testPaperRef, Color("4b3d44"), characterSheet)
@@ -27,9 +30,6 @@ func _ready() -> void:
 
 func _create_paper(paperRef : PackedScene, paperColor : Color, paperInfo : PaperInfo):
 	var paperInstance : Paper = paperRef.instantiate()
-
-	if paperInfo.info.size() > 1:
-		pass #TODO: Packet Visual
 
 	paperInstance._setup_paper(paperInfo)
 	
