@@ -1,11 +1,12 @@
-[gd_resource type="Resource" script_class="PaperInfo" format=3 uid="uid://jfxlcsgkgt0e"]
+[gd_resource type="Resource" script_class="EncounterInfo" format=3 uid="uid://cjdty22y2vajn"]
 
-[ext_resource type="Script" uid="uid://csy0x4mgdxs00" path="res://2_Scripts/3_Dependent/paperinfo.gd" id="1_1gfaq"]
+[ext_resource type="Script" uid="uid://cg4ujw8mauohh" path="res://2_Scripts/3_Dependent/encounter info.gd" id="1_1gfaq"]
 
 [resource]
 script = ExtResource("1_1gfaq")
+characterName = "Loom Veerie"
 title = "Character Sheet"
-info = Array[String](["Loom Veerie, Towerville
+info = Array[String]([", Towerville
 
 
 1. Religious: No
@@ -20,4 +21,4 @@ info = Array[String](["Loom Veerie, Towerville
 
 6. Exiled
 "])
-metadata/_custom_type_script = "uid://csy0x4mgdxs00"
+metadata/_custom_type_script = "uid://cg4ujw8mauohh"

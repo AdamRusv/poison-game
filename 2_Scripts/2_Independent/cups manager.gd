@@ -8,6 +8,7 @@ class_name CupsManager
 @export var playerDetectionZone : Control
 
 func _ready() -> void:
+	gameplayManager.cupsManager = self
 	_set_connections()
 func _set_connections():
 	opponentDetectionZone.mouse_entered.connect(_on_enter_opponent_cup)

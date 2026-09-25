@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://d2xodfcuhwpdk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wqrj8"]
+
+[node name="Different Speaker Separator" type="HSeparator" unique_id=2122115904]
+offset_right = 40.0
+offset_bottom = 4.0
+theme_override_constants/separation = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_wqrj8")
