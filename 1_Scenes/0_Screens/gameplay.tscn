@@ -186,9 +186,12 @@ script = ExtResource("11_ahkic")
 scrollContainer = NodePath("ScrollContainer")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Dialogue" unique_id=330507245]
-layout_mode = 0
-offset_right = 189.0
-offset_bottom = 80.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3

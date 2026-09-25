@@ -5,6 +5,7 @@ extends Control
 
 var isScrolling : bool = false
 var startMousePos : Vector2 = Vector2.ZERO
+var startScrollPos : float
 
 func _process(delta: float) -> void:
 	_manage_scroll()
@@ -15,13 +16,18 @@ func _manage_scroll():
 	if Input.is_action_just_pressed("left click"):
 		if _is_cursor_within_scroll_zone() == true:
 			startMousePos = get_global_mouse_position()
+			startScrollPos = scrollContainer.scroll_vertical
 			isScrolling = true
 	if Input.is_action_just_released("left click"):
 		isScrolling = false
 	
 	if isScrolling == true:
-		var mouseRatio : float = (get_global_mouse_position().y - scrollContainer.global_position.y) / scrollContainer.size.y
-		scrollContainer.get_v_scroll_bar().value = (1.0 - mouseRatio) * scrollContainer.get_v_scroll_bar().max_value
+		var newScrollPos : float = startMousePos.y - get_global_mouse_position().y + startScrollPos
+		
+		var maxScrollValue : float = scrollContainer.get_v_scroll_bar().max_value - scrollContainer.get_v_scroll_bar().page
+		var finalValue : float = clamp(newScrollPos, 0, maxScrollValue)
+		
+		scrollContainer.scroll_vertical = finalValue
 
 #- - -
 func _is_cursor_within_scroll_zone() -> bool:
