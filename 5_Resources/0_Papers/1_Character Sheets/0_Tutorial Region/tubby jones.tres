@@ -6,49 +6,47 @@
 [ext_resource type="Script" uid="uid://cwxljhi0yey0n" path="res://2_Scripts/3_Dependent/0_Dialogue/branch cups.gd" id="2_ueh3e"]
 [ext_resource type="Script" uid="uid://qr661epbiujn" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue tree.gd" id="3_ri4yk"]
 
-[sub_resource type="Resource" id="Resource_ywih6"]
+[sub_resource type="Resource" id="Resource_4v8ah"]
 script = ExtResource("2_ri4yk")
 speaker = 1
-dialogue = "jit"
+dialogue = "Hello"
 metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
 
-[sub_resource type="Resource" id="Resource_c4l6l"]
+[sub_resource type="Resource" id="Resource_283bn"]
 script = ExtResource("2_ri4yk")
-dialogue = "whats good blud"
+dialogue = "Greetings"
 metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
 
-[sub_resource type="Resource" id="Resource_fn5ot"]
+[sub_resource type="Resource" id="Resource_8lw3o"]
 script = ExtResource("2_ri4yk")
-speaker = 1
-dialogue = "nothing gng, just chillin"
+dialogue = "I traveled for a long time to get here"
 metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
 
-[sub_resource type="Resource" id="Resource_1cjw6"]
-script = ExtResource("2_ri4yk")
-speaker = 1
-dialogue = "ight bet"
-metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
-
-[sub_resource type="Resource" id="Resource_g7yw3"]
-script = ExtResource("2_ri4yk")
-dialogue = "*holds arm up for dap*"
-metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
-
-[sub_resource type="Resource" id="Resource_0hcow"]
+[sub_resource type="Resource" id="Resource_1sady"]
 script = ExtResource("2_ri4yk")
 speaker = 1
-dialogue = "*daps*"
+dialogue = "I appreciate that you could make it"
 metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
 
-[sub_resource type="Resource" id="Resource_fb3j3"]
+[sub_resource type="Resource" id="Resource_nlerp"]
+script = ExtResource("2_ri4yk")
+dialogue = "Of course"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_pwbv1"]
+script = ExtResource("2_ri4yk")
+dialogue = "I'd hate to miss The Game"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_wwwk8"]
 script = ExtResource("2_ri4yk")
 speaker = 1
-dialogue = "bet"
+dialogue = "Always"
 metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
 
 [sub_resource type="Resource" id="Resource_jsr4o"]
 script = ExtResource("1_ve4hf")
-dialogue = Array[ExtResource("2_ri4yk")]([SubResource("Resource_ywih6"), SubResource("Resource_c4l6l"), SubResource("Resource_fn5ot"), SubResource("Resource_1cjw6"), SubResource("Resource_g7yw3"), SubResource("Resource_0hcow"), SubResource("Resource_fb3j3")])
+dialogue = Array[ExtResource("2_ri4yk")]([SubResource("Resource_4v8ah"), SubResource("Resource_283bn"), SubResource("Resource_8lw3o"), SubResource("Resource_1sady"), SubResource("Resource_nlerp"), SubResource("Resource_pwbv1"), SubResource("Resource_wwwk8")])
 metadata/_custom_type_script = "uid://e0ujmn3oiqx0"
 
 [sub_resource type="Resource" id="Resource_fqpyk"]

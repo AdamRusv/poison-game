@@ -4,16 +4,21 @@
 [ext_resource type="Texture2D" uid="uid://ewtkf8nl0qkn" path="res://0_Art/2_PNGs/dialogue bubble.png" id="2_vbpcl"]
 [ext_resource type="Theme" uid="uid://bhvewryp1cmbt" path="res://6_Other/description font.tres" id="3_ywpx2"]
 
-[node name="player dialogue bubble" type="MarginContainer" unique_id=1138734156 node_paths=PackedStringArray("dialogueLabel")]
+[node name="player dialogue bubble" type="MarginContainer" unique_id=1512478022 node_paths=PackedStringArray("visualHolder", "texture", "dialogueLabel")]
 offset_right = 78.0
-offset_bottom = 15.0
-size_flags_horizontal = 8
-size_flags_vertical = 4
-theme_override_constants/margin_bottom = 4
+offset_bottom = 16.0
 script = ExtResource("1_gkarx")
-dialogueLabel = NodePath("MarginContainer/Title Label")
+visualHolder = NodePath("Visual Holder")
+texture = NodePath("Visual Holder/NinePatchRect")
+dialogueLabel = NodePath("Visual Holder/MarginContainer/dialogue Label")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=497293241]
+[node name="Visual Holder" type="MarginContainer" parent="." unique_id=1138734156]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Visual Holder" unique_id=497293241]
 layout_mode = 2
 texture = ExtResource("2_vbpcl")
 patch_margin_left = 2
@@ -21,17 +26,18 @@ patch_margin_top = 2
 patch_margin_right = 7
 patch_margin_bottom = 5
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=142811477]
+[node name="MarginContainer" type="MarginContainer" parent="Visual Holder" unique_id=142811477]
 layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 4
 
-[node name="Title Label" type="RichTextLabel" parent="MarginContainer" unique_id=30857362]
+[node name="dialogue Label" type="RichTextLabel" parent="Visual Holder/MarginContainer" unique_id=30857362]
 custom_maximum_size = Vector2(111, -1)
 layout_mode = 2
 theme = ExtResource("3_ywpx2")
 text = "?????????????????"
 fit_content = true
 scroll_active = false
+visible_characters_behavior = 1
