@@ -22,21 +22,31 @@ func _set_connections():
 
 #- - -
 func _on_enter():
-	if gameplayManager.holdingPoison == true:
+	if gameplayManager.holdingPoison == true || gameplayManager.cupIsPoisoned == true:
 		return
 	_set_poison_texture_to(HOVERED_POISON)
 
 func _on_exit():
-	if gameplayManager.holdingPoison == true:
+	if gameplayManager.holdingPoison == true || gameplayManager.cupIsPoisoned == true:
 		return
 	_set_poison_texture_to(NEUTRAL_POISON)
 
 func _on_down():
+	if gameplayManager.cupIsPoisoned == true:
+		return
+	
 	gameplayManager.holdingPoison = true
+	gameplayManager.poisonGrabbed.emit()
 	_set_poison_texture_to(GRABBED_POISON)
 	GlobalReferences.cursor._swap_cursor_to(GlobalReferences.cursor.poisonVileCursor)
 	
 func _on_up():
+	if gameplayManager.cupIsPoisoned == true:
+		return
+	if gameplayManager.currentPoisonCup != GameplayManager.CurrentPoisonCup.none:
+		_trigger_place_poison()
+		return
+	
 	if _is_mouse_over_poison_button() == true:
 		_set_poison_texture_to(HOVERED_POISON)
 	
@@ -45,6 +55,15 @@ func _on_up():
 	
 	GlobalReferences.cursor._swap_cursor_to(GlobalReferences.cursor.defaultCursor)
 	gameplayManager.holdingPoison = false
+	gameplayManager.poisonReleased.emit()
+
+func _trigger_place_poison():
+	gameplayManager.cupIsPoisoned = true
+	gameplayManager.cupHasBeenPoisoned.emit()
+	
+	GlobalReferences.cursor._swap_cursor_to(GlobalReferences.cursor.defaultCursor)
+	gameplayManager.holdingPoison = false
+	gameplayManager.poisonReleased.emit()
 
 #--------------------------
 func _set_poison_texture_to(newRect : Rect2):

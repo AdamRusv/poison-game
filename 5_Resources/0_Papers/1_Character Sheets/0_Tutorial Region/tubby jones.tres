@@ -67,6 +67,7 @@ metadata/_custom_type_script = "uid://qr661epbiujn"
 script = ExtResource("1_8uvam")
 characterName = "Tubby Jones"
 dialogueTree = SubResource("Resource_ahkic")
+cupAnswer = 2
 title = "Character Sheet"
 info = Array[String]([", Towerville
 

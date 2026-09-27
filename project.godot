@@ -32,6 +32,7 @@ Overlay="*uid://sp4m3qieichu"
 
 gdscript/warnings/unused_variable=0
 gdscript/warnings/unused_parameter=0
+gdscript/warnings/unused_signal=0
 gdscript/warnings/narrowing_conversion=0
 
 [display]

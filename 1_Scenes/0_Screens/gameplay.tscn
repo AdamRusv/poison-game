@@ -11,10 +11,47 @@
 [ext_resource type="Script" uid="uid://dsk6k5x0e30hn" path="res://2_Scripts/2_Independent/poison manager.gd" id="6_pq3d1"]
 [ext_resource type="Script" uid="uid://v10r8rve43tc" path="res://2_Scripts/2_Independent/cups manager.gd" id="7_3udmd"]
 [ext_resource type="Script" uid="uid://dwp2cvaysi6vj" path="res://2_Scripts/2_Independent/dialogue manager.gd" id="11_ahkic"]
+[ext_resource type="Texture2D" uid="uid://cc7m60xat02gv" path="res://0_Art/2_PNGs/cups indicator-Sheet.png" id="11_rkkk6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_504ay"]
 atlas = ExtResource("4_gngdi")
 region = Rect2(0, 0, 209, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywih6"]
+atlas = ExtResource("11_rkkk6")
+region = Rect2(0, 0, 23, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4l6l"]
+atlas = ExtResource("11_rkkk6")
+region = Rect2(23, 0, 23, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fn5ot"]
+atlas = ExtResource("11_rkkk6")
+region = Rect2(46, 0, 23, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1cjw6"]
+atlas = ExtResource("11_rkkk6")
+region = Rect2(69, 0, 23, 34)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_504ay"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywih6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c4l6l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fn5ot")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1cjw6")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Gameplay" type="Control" unique_id=1427164321]
 layout_mode = 3
@@ -153,28 +190,45 @@ offset_bottom = 55.0
 focus_mode = 0
 flat = true
 
-[node name="Cups" type="Control" parent="." unique_id=1225528218 node_paths=PackedStringArray("gameplayManager", "opponentDetectionZone", "playerDetectionZone")]
+[node name="Cups" type="Control" parent="." unique_id=1225528218 node_paths=PackedStringArray("gameplayManager", "detectionZones", "visualIndicators")]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("7_3udmd")
 gameplayManager = NodePath("..")
-opponentDetectionZone = NodePath("opponent cup detection zone")
-playerDetectionZone = NodePath("player cup detection zone")
+detectionZones = [NodePath("opponent cup detection zone"), NodePath("player cup detection zone")]
+visualIndicators = [NodePath("opponent cup detection zone/opponent indicator"), NodePath("player cup detection zone/players indicator")]
 
 [node name="opponent cup detection zone" type="Control" parent="Cups" unique_id=1727036711]
 anchors_preset = 0
 offset_left = 83.0
-offset_top = 209.0
+offset_top = 201.0
 offset_right = 102.0
-offset_bottom = 237.0
+offset_bottom = 227.0
+
+[node name="opponent indicator" type="AnimatedSprite2D" parent="Cups/opponent cup detection zone" unique_id=906605216]
+self_modulate = Color(0.7411765, 0.64705884, 0.5137255, 1)
+position = Vector2(9.5, 26)
+sprite_frames = SubResource("SpriteFrames_504ay")
+frame = 1
+frame_progress = 0.6189514
+offset = Vector2(0, -1)
 
 [node name="player cup detection zone" type="Control" parent="Cups" unique_id=376065848]
 anchors_preset = 0
 offset_left = 115.0
-offset_top = 209.0
+offset_top = 201.0
 offset_right = 134.0
-offset_bottom = 237.0
+offset_bottom = 227.0
+
+[node name="players indicator" type="AnimatedSprite2D" parent="Cups/player cup detection zone" unique_id=347739370]
+self_modulate = Color(0.7411765, 0.64705884, 0.5137255, 1)
+position = Vector2(9.5, 26)
+sprite_frames = SubResource("SpriteFrames_504ay")
+frame = 1
+frame_progress = 0.6189514
+offset = Vector2(0, -1)
+flip_h = true
 
 [node name="Dialogue" type="Control" parent="." unique_id=1304429550 node_paths=PackedStringArray("gameplayManager", "scrollContainer", "content")]
 anchors_preset = 0

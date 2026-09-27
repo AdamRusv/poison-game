@@ -5,14 +5,13 @@
 [resource]
 script = ExtResource("3_kfeph")
 characterName = "Holly Happyfield"
+cupAnswer = 2
 title = "Character Sheet"
 info = Array[String]([", Towerville
 
 
-1. Status: Middle Class
-
 2. Race: Goblin
 
-3. Age: 4
+
 "])
 metadata/_custom_type_script = "uid://cg4ujw8mauohh"

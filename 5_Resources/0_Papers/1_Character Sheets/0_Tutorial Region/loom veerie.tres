@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_1gfaq")
 characterName = "Loom Veerie"
+cupAnswer = 2
 title = "Character Sheet"
 info = Array[String]([", Towerville
 
