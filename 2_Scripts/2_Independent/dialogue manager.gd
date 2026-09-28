@@ -19,6 +19,8 @@ func _ready() -> void:
 	_create_dialogue_bubble()
 	_create_dialogue_bubble()
 	_create_dialogue_bubble()
+	_create_dialogue_bubble()
+	_create_dialogue_bubble()
 
 func _process(delta: float) -> void:
 	_manage_scroll()
