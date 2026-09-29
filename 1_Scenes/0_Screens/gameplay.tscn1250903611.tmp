@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cvg0nvvipe48r" path="res://0_Art/2_PNGs/placeholder mockup.png" id="3_82xv0"]
 [ext_resource type="Resource" uid="uid://cg41pmm52w6kn" path="res://5_Resources/0_Papers/0_Trait Sheet/main trait sheet.tres" id="4_1t528"]
 [ext_resource type="Texture2D" uid="uid://dy254ypb8l7vp" path="res://0_Art/2_PNGs/poison button-Sheet.png" id="4_gngdi"]
-[ext_resource type="Resource" uid="uid://d1v80i44rkstt" path="res://5_Resources/0_Papers/1_Character Sheets/0_Tutorial Region/holly happyfield.tres" id="5_pb2ch"]
+[ext_resource type="Resource" uid="uid://4sdebs2jy8hr" path="res://5_Resources/0_Papers/1_Character Sheets/0_Tutorial Region/tubby jones.tres" id="5_pb2ch"]
 [ext_resource type="Resource" uid="uid://cj55yjaxgcvqn" path="res://5_Resources/0_Papers/1_Character Sheets/0_Tutorial Region/atlas regions/towerville.tres" id="6_baij6"]
 [ext_resource type="Script" uid="uid://dsk6k5x0e30hn" path="res://2_Scripts/2_Independent/poison manager.gd" id="6_pq3d1"]
 [ext_resource type="Script" uid="uid://v10r8rve43tc" path="res://2_Scripts/2_Independent/cups manager.gd" id="7_3udmd"]
@@ -14,7 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://cc7m60xat02gv" path="res://0_Art/2_PNGs/cups indicator-Sheet.png" id="11_rkkk6"]
 [ext_resource type="Texture2D" uid="uid://bmf0h3auqyyc8" path="res://0_Art/2_PNGs/players cup event-Sheet.png" id="12_rkkk6"]
 [ext_resource type="Script" uid="uid://coy0g8tjc8t7i" path="res://2_Scripts/2_Independent/players manager.gd" id="12_ywih6"]
-[ext_resource type="Texture2D" uid="uid://brkvp2w453xgk" path="res://0_Art/2_PNGs/payer username-Sheet.png" id="14_c4l6l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_504ay"]
 atlas = ExtResource("4_gngdi")
@@ -453,7 +452,7 @@ animations = [{
 }],
 "loop": 1,
 "name": &"default",
-"speed": 4.0
+"speed": 5.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g7yw3"]
@@ -853,28 +852,6 @@ animations = [{
 }],
 "loop": 1,
 "name": &"default",
-"speed": 4.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dbngl"]
-atlas = ExtResource("14_c4l6l")
-region = Rect2(0, 0, 18, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_v4r4c"]
-atlas = ExtResource("14_c4l6l")
-region = Rect2(18, 0, 18, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ywih6"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dbngl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_v4r4c")
-}],
-"loop": 1,
-"name": &"default",
 "speed": 5.0
 }]
 
@@ -1055,13 +1032,12 @@ frame_progress = 0.6189514
 offset = Vector2(0, -1)
 flip_h = true
 
-[node name="Players" type="Control" parent="." unique_id=683024875 node_paths=PackedStringArray("gameplayManager", "playersParent", "players")]
+[node name="Players" type="Control" parent="." unique_id=683024875 node_paths=PackedStringArray("gameplayManager", "players")]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("12_ywih6")
 gameplayManager = NodePath("..")
-playersParent = NodePath(".")
 players = [NodePath("opponent"), NodePath("player")]
 
 [node name="opponent" type="AnimatedSprite2D" parent="Players" unique_id=1695828453]
@@ -1072,10 +1048,6 @@ sprite_frames = SubResource("SpriteFrames_rkkk6")
 position = Vector2(135.5, 226.5)
 sprite_frames = SubResource("SpriteFrames_gnbqg")
 flip_h = true
-
-[node name="username player" type="AnimatedSprite2D" parent="Players" unique_id=1574559409]
-position = Vector2(169, 198)
-sprite_frames = SubResource("SpriteFrames_ywih6")
 
 [node name="Dialogue" type="Control" parent="." unique_id=1304429550 node_paths=PackedStringArray("gameplayManager", "scrollContainer", "content")]
 anchors_preset = 0
