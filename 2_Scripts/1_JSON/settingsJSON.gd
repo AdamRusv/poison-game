@@ -4,7 +4,7 @@ class_name SettingsJSON
 
 const SETTINGS_PATH : String = "user://settings.json"
 
-var fullscreen : bool = false
+var fullscreen : bool = true
 var masterVolume : int = 5
 var musicVolume : int = 2
 var sfxVolume : int = 3
