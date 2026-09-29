@@ -10,12 +10,6 @@ class_name DialogueManager
 
 func _ready() -> void:
 	gameplayManager.dialogueManager = self
-	
-	await get_tree().process_frame
-	_create_dialogue_bubble()
-	_create_dialogue_bubble()
-	_create_dialogue_bubble()
-
 func _process(delta: float) -> void:
 	_manage_scroll()
 	
