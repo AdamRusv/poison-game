@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://bqta6i0umiebq"]
 
 [ext_resource type="Script" uid="uid://b1hcjlnogkytj" path="res://2_Scripts/2_Independent/paper.gd" id="1_jbttf"]
-[ext_resource type="Texture2D" uid="uid://cwydpac31fwmh" path="res://0_Art/2_PNGs/placeholder paper 9slice.png" id="2_7bue3"]
 [ext_resource type="Texture2D" uid="uid://g7m2dbh558sb" path="res://0_Art/2_PNGs/PaperNineSlice.png" id="3_7bue3"]
 [ext_resource type="Theme" uid="uid://bhvewryp1cmbt" path="res://6_Other/description font.tres" id="3_20iqj"]
 [ext_resource type="Texture2D" uid="uid://54vhol3eq83l" path="res://0_Art/2_PNGs/packet corner-Sheet.png" id="4_7342r"]
@@ -29,18 +28,20 @@ parentNode = NodePath(".")
 detectionArea = NodePath("Drag Button")
 
 [node name="Packet Behind Paper" type="MarginContainer" parent="." unique_id=916936904]
-visible = false
 layout_mode = 2
 offset_transform_enabled = true
-offset_transform_position = Vector2(5, 5)
+offset_transform_position = Vector2(4, 4)
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Packet Behind Paper" unique_id=1228647760]
+[node name="NinePatchRect" type="NinePatchRect" parent="Packet Behind Paper" unique_id=949537064]
 layout_mode = 2
-texture = ExtResource("2_7bue3")
-patch_margin_left = 4
-patch_margin_top = 4
-patch_margin_right = 4
-patch_margin_bottom = 4
+offset_transform_position = Vector2(4, 4)
+texture = ExtResource("3_7bue3")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 6
+patch_margin_bottom = 5
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 2
 
 [node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1961360989]
 layout_mode = 2
@@ -53,7 +54,6 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2074008777]
-visible = false
 layout_mode = 2
 theme_override_constants/separation = 0
 

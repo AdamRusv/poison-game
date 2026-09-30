@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5jccv4a06my1"
-path="res://.godot/imported/PaperNineSlice_Big.png-c84b264577854fa6d26d9e3064094d73.ctex"
+uid="uid://clow3s7e2s771"
+path="res://.godot/imported/settings icon.png-2c09961513bbc0b4bcfe7a030924e7e2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://0_Art/2_PNGs/PaperNineSlice_Big.png"
-dest_files=["res://.godot/imported/PaperNineSlice_Big.png-c84b264577854fa6d26d9e3064094d73.ctex"]
+source_file="res://0_Art/Daniel_Art/settings icon.png"
+dest_files=["res://.godot/imported/settings icon.png-2c09961513bbc0b4bcfe7a030924e7e2.ctex"]
 
 [params]
 
