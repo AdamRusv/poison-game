@@ -37,10 +37,16 @@ func _process(delta: float) -> void:
 		return
 	
 	if players[0].frame == opponentRange.y:
-		players[0].pause()
+		_stop_player_drink_animation(0)
 	
 	if players[1].frame == playerRange.y:
-		players[1].pause()
+		_stop_player_drink_animation(1)
+func _stop_player_drink_animation(playerIndex : int):
+	isAnimating = false
+	players[playerIndex].pause()
+	
+	await get_tree().create_timer(1).timeout
+	gameplayManager.newEncounter.emit()
 
 #-
 ##makes sure that the sprite with poison is behind

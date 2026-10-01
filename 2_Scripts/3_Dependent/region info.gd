@@ -2,6 +2,8 @@ extends Resource
 
 class_name RegionInfo
 
+@export var totalNormalEncounters : int = 4
+
 @export var traitSheet : PaperInfo
 @export var characterSheets : Array[EncounterInfo]
 @export var atlas : PaperInfo

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c3o8kvypxk7ko" path="res://2_Scripts/2_Independent/gameplay manager.gd" id="1_0sltt"]
 [ext_resource type="Shader" uid="uid://c35ta6n741a81" path="res://4_Shaders/0_Scripts/diagonal texture movement.gdshader" id="2_1cjw6"]
+[ext_resource type="Resource" uid="uid://dr6ngv56pmqal" path="res://5_Resources/game timeline.tres" id="2_g7yw3"]
 [ext_resource type="Script" uid="uid://4xhbwaoygr14" path="res://2_Scripts/2_Independent/playmat manager.gd" id="2_lv7np"]
 [ext_resource type="Texture2D" uid="uid://b0kklffb4n85e" path="res://0_Art/2_PNGs/pattern playmat background.png" id="3_1cjw6"]
 [ext_resource type="Texture2D" uid="uid://cvg0nvvipe48r" path="res://0_Art/2_PNGs/placeholder mockup.png" id="3_82xv0"]
@@ -892,6 +893,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0sltt")
+gameTimeline = ExtResource("2_g7yw3")
 
 [node name="background" type="ColorRect" parent="." unique_id=1846741751]
 layout_mode = 1

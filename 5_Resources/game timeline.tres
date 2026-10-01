@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="GameTimeline" format=3 uid="uid://dr6ngv56pmqal"]
+
+[ext_resource type="Script" uid="uid://d3k6dglnela0h" path="res://2_Scripts/3_Dependent/game timeline.gd" id="1_0qr0x"]
+[ext_resource type="Script" uid="uid://851asxmj8i78" path="res://2_Scripts/3_Dependent/region info.gd" id="2_fvdvp"]
+[ext_resource type="Resource" uid="uid://bukn8mli4a340" path="res://5_Resources/0_Papers/1_Character Sheets/0_Tutorial Region/regions/zero.tres" id="3_ppq3a"]
+[ext_resource type="Resource" uid="uid://la5b8xlesisq" path="res://5_Resources/0_Papers/1_Character Sheets/0_Tutorial Region/regions/one.tres" id="4_33ctb"]
+
+[resource]
+script = ExtResource("1_0qr0x")
+timeline = Array[ExtResource("2_fvdvp")]([ExtResource("3_ppq3a"), ExtResource("4_33ctb")])
+metadata/_custom_type_script = "uid://d3k6dglnela0h"

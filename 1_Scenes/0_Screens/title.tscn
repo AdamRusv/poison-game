@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://boojx08xmlghs" path="res://0_Art/2_PNGs/background pattern.png" id="1_ajpio"]
 [ext_resource type="Script" uid="uid://dw6lb3x3oohlv" path="res://2_Scripts/2_Independent/title manager.gd" id="1_occgk"]
 [ext_resource type="Shader" uid="uid://c35ta6n741a81" path="res://4_Shaders/0_Scripts/diagonal texture movement.gdshader" id="1_sqkm3"]
-[ext_resource type="Resource" uid="uid://la5b8xlesisq" path="res://5_Resources/0_Papers/1_Character Sheets/0_Tutorial Region/regions/one.tres" id="2_0maxh"]
 [ext_resource type="Texture2D" uid="uid://0kb1u8s0qjx5" path="res://0_Art/2_PNGs/trim.png" id="2_ajpio"]
 [ext_resource type="Texture2D" uid="uid://vufsakm0u443" path="res://0_Art/2_PNGs/title.png" id="2_fee3u"]
 [ext_resource type="Texture2D" uid="uid://dnvjgmgoixkn1" path="res://0_Art/2_PNGs/default button-Sheet.png" id="3_gglkp"]
@@ -31,7 +30,6 @@ script = ExtResource("1_occgk")
 playButton = NodePath("VBoxContainer/play")
 settingsButton = NodePath("VBoxContainer/settings")
 quitButton = NodePath("VBoxContainer/quit")
-tutorialRegion = ExtResource("2_0maxh")
 
 [node name="background" type="ColorRect" parent="." unique_id=204868835]
 layout_mode = 1
