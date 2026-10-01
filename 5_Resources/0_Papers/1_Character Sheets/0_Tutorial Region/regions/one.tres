@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="RegionInfo" format=3 uid="uid://la5b8xlesisq"]
+
+[ext_resource type="Script" uid="uid://cg4ujw8mauohh" path="res://2_Scripts/3_Dependent/encounter info.gd" id="1_afslp"]
+[ext_resource type="Script" uid="uid://851asxmj8i78" path="res://2_Scripts/3_Dependent/region info.gd" id="2_k8wvg"]
+[ext_resource type="Resource" uid="uid://c331fdtleotss" path="res://5_Resources/0_Papers/1_Character Sheets/0_Tutorial Region/encounters/one.tres" id="2_kgvl5"]
+[ext_resource type="Script" uid="uid://csy0x4mgdxs00" path="res://2_Scripts/3_Dependent/paperinfo.gd" id="4_ukael"]
+
+[sub_resource type="Resource" id="Resource_kgvl5"]
+script = ExtResource("4_ukael")
+title = "TRAIT SHEET"
+info = Array[String](["Fool: 
+	Drinks from the cup that is in front of themselves
+
+
+Sage:
+	Drinks from the cup that is NOT in front of themselves"])
+metadata/_custom_type_script = "uid://csy0x4mgdxs00"
+
+[resource]
+script = ExtResource("2_k8wvg")
+traitSheet = SubResource("Resource_kgvl5")
+characterSheets = Array[ExtResource("1_afslp")]([ExtResource("2_kgvl5")])
+noteSheet = false
+metadata/_custom_type_script = "uid://851asxmj8i78"

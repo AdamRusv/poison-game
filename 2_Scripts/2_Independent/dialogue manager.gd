@@ -13,8 +13,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	_manage_scroll()
 	
-	if Input.is_action_just_pressed("spacebar"):
-		_trigger_dialogue_branch()
+	#if Input.is_action_just_pressed("spacebar"):
+		#_trigger_dialogue_branch()
 
 #---------------
 func _trigger_dialogue_branch():

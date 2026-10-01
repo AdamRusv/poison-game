@@ -18,22 +18,22 @@ metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
 
 [sub_resource type="Resource" id="Resource_11j1y"]
 script = ExtResource("2_g2q5l")
-dialogue = "Simply put, the goal of this Game is to avoid drinking the Poison"
+dialogue = "The goal of this Game is to avoid drinking the Poison"
 metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
 
 [sub_resource type="Resource" id="Resource_lypjb"]
 script = ExtResource("2_g2q5l")
-dialogue = "To achieve this goal, you must figure out which cup I will choose. Then, you'll know where to put the Poison"
+dialogue = "To achieve this goal, you must figure out which cup I will choose"
 metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
 
 [sub_resource type="Resource" id="Resource_3dw20"]
 script = ExtResource("2_g2q5l")
-dialogue = "Go ahead and grab the Poison. Since you are still learning, just place it into my cup"
+dialogue = " From there, you'll know where to put the Poison"
 metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
 
 [sub_resource type="Resource" id="Resource_g2q5l"]
 script = ExtResource("2_g2q5l")
-dialogue = "Everyone promises to never change their answers "
+dialogue = "Go ahead and grab the Poison. Since you are still learning, just place it into my cup"
 metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
 
 [sub_resource type="Resource" id="Resource_qclil"]

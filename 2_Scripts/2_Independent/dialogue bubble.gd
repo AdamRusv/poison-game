@@ -14,7 +14,6 @@ var dialogueSize : Vector2 = Vector2.ZERO
 func _set_length_size():
 	dialogueSize = visualHolder.size
 	visualHolder.custom_minimum_size.y = dialogueSize.y
-	print(dialogueSize)
 
 func _hide_label():
 	dialogueLabel.visible_ratio = 0

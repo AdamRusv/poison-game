@@ -1,0 +1,50 @@
+[gd_resource type="Resource" script_class="EncounterInfo" format=3 uid="uid://c331fdtleotss"]
+
+[ext_resource type="Script" uid="uid://e0ujmn3oiqx0" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue branch.gd" id="1_433kl"]
+[ext_resource type="Script" uid="uid://cg4ujw8mauohh" path="res://2_Scripts/3_Dependent/encounter info.gd" id="1_ti5pf"]
+[ext_resource type="Script" uid="uid://fn2tb2dtu6fj" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue.gd" id="2_xvvbx"]
+[ext_resource type="Script" uid="uid://qr661epbiujn" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue tree.gd" id="3_312to"]
+
+[sub_resource type="Resource" id="Resource_xvvbx"]
+script = ExtResource("2_xvvbx")
+speaker = 1
+dialogue = "blah"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_433kl"]
+script = ExtResource("2_xvvbx")
+dialogue = "blah blah"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_312to"]
+script = ExtResource("2_xvvbx")
+dialogue = "blah blah blah blah blah blah blah"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_l4ijl"]
+script = ExtResource("2_xvvbx")
+speaker = 1
+dialogue = "blah blah blah"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_atuju"]
+script = ExtResource("1_433kl")
+dialogue = Array[ExtResource("2_xvvbx")]([SubResource("Resource_xvvbx"), SubResource("Resource_433kl"), SubResource("Resource_312to"), SubResource("Resource_l4ijl")])
+metadata/_custom_type_script = "uid://e0ujmn3oiqx0"
+
+[sub_resource type="Resource" id="Resource_ebxdl"]
+script = ExtResource("3_312to")
+branches = Array[ExtResource("1_433kl")]([SubResource("Resource_atuju")])
+metadata/_custom_type_script = "uid://qr661epbiujn"
+
+[resource]
+script = ExtResource("1_ti5pf")
+characterName = "Poppy Power"
+dialogueTree = SubResource("Resource_ebxdl")
+cupAnswer = 2
+title = "Character Sheet"
+info = Array[String](["
+
+
+1. Sage"])
+metadata/_custom_type_script = "uid://cg4ujw8mauohh"
