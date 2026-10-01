@@ -1,0 +1,182 @@
+[gd_scene format=3 uid="uid://ct7jlogagfbah"]
+
+[ext_resource type="Texture2D" uid="uid://boojx08xmlghs" path="res://0_Art/2_PNGs/background pattern.png" id="1_ajpio"]
+[ext_resource type="Shader" uid="uid://c35ta6n741a81" path="res://4_Shaders/0_Scripts/diagonal texture movement.gdshader" id="1_sqkm3"]
+[ext_resource type="Texture2D" uid="uid://0kb1u8s0qjx5" path="res://0_Art/2_PNGs/trim.png" id="2_ajpio"]
+[ext_resource type="Texture2D" uid="uid://vufsakm0u443" path="res://0_Art/2_PNGs/title.png" id="2_fee3u"]
+[ext_resource type="Texture2D" uid="uid://dnvjgmgoixkn1" path="res://0_Art/2_PNGs/default button-Sheet.png" id="3_gglkp"]
+[ext_resource type="Theme" uid="uid://bhvewryp1cmbt" path="res://6_Other/description font.tres" id="4_q3nym"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ajpio"]
+shader = ExtResource("1_sqkm3")
+shader_parameter/speed = Vector2(-0.4, 0.4)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_504ay"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_504ay"]
+atlas = ExtResource("3_gglkp")
+region = Rect2(0, 0, 18, 18)
+
+[node name="Title" type="Control" unique_id=2145977770]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="background" type="ColorRect" parent="." unique_id=204868835]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.16078432, 0.14117648, 0.09411765, 1)
+
+[node name="pattern" type="TextureRect" parent="background" unique_id=801931861]
+material = SubResource("ShaderMaterial_ajpio")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ajpio")
+stretch_mode = 1
+
+[node name="border parent" type="MarginContainer" parent="background" unique_id=1389271790]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="border trim" type="NinePatchRect" parent="background/border parent" unique_id=1821748732]
+layout_mode = 2
+texture = ExtResource("2_ajpio")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1315766280]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer" unique_id=1881146330]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_504ay")
+
+[node name="title" type="TextureRect" parent="VBoxContainer" unique_id=287052789]
+layout_mode = 2
+texture = ExtResource("2_fee3u")
+stretch_mode = 3
+
+[node name="HSeparator3" type="HSeparator" parent="VBoxContainer" unique_id=1264287117]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_504ay")
+
+[node name="play" type="MarginContainer" parent="VBoxContainer" unique_id=1547426862]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer/play" unique_id=1315538263]
+layout_mode = 2
+texture = SubResource("AtlasTexture_504ay")
+patch_margin_left = 6
+patch_margin_top = 5
+patch_margin_right = 6
+patch_margin_bottom = 5
+
+[node name="text parent" type="MarginContainer" parent="VBoxContainer/play" unique_id=478960811]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="label" type="RichTextLabel" parent="VBoxContainer/play/text parent" unique_id=1902025494]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+theme = ExtResource("4_q3nym")
+text = "Play!"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="settings" type="MarginContainer" parent="VBoxContainer" unique_id=1252685115]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer/settings" unique_id=621209845]
+layout_mode = 2
+texture = SubResource("AtlasTexture_504ay")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="text parent" type="MarginContainer" parent="VBoxContainer/settings" unique_id=461398838]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="label" type="RichTextLabel" parent="VBoxContainer/settings/text parent" unique_id=1603323802]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+theme = ExtResource("4_q3nym")
+text = "Settings"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="quit" type="MarginContainer" parent="VBoxContainer" unique_id=1669184021]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer/quit" unique_id=1058649304]
+layout_mode = 2
+texture = SubResource("AtlasTexture_504ay")
+patch_margin_left = 6
+patch_margin_top = 5
+patch_margin_right = 6
+patch_margin_bottom = 5
+
+[node name="text parent" type="MarginContainer" parent="VBoxContainer/quit" unique_id=1358555272]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="label" type="RichTextLabel" parent="VBoxContainer/quit/text parent" unique_id=1827184737]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+theme = ExtResource("4_q3nym")
+text = "Quit :("
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer" unique_id=359220050]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_504ay")
