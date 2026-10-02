@@ -10,7 +10,7 @@ offset_bottom = 16.0
 script = ExtResource("1_61cyn")
 visualHolder = NodePath("visual holder")
 texture = NodePath("visual holder/NinePatchRect")
-dialogueLabel = NodePath("visual holder/MarginContainer/dialogue label")
+dialogueLabel = NodePath("visual holder/MarginContainer/dialogue Label")
 
 [node name="visual holder" type="MarginContainer" parent="." unique_id=1138734156]
 custom_minimum_size = Vector2(0, 20)
@@ -36,10 +36,11 @@ theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 3
 theme_override_constants/margin_bottom = 4
 
-[node name="dialogue label" type="RichTextLabel" parent="visual holder/MarginContainer" unique_id=30857362]
+[node name="dialogue Label" type="RichTextLabel" parent="visual holder/MarginContainer" unique_id=1528100966]
 custom_maximum_size = Vector2(111, -1)
 layout_mode = 2
 theme = ExtResource("3_b18gr")
+theme_override_colors/default_color = Color(0.9490891, 0.89567226, 0.8264895, 1)
 text = "?????????????????"
 fit_content = true
 scroll_active = false

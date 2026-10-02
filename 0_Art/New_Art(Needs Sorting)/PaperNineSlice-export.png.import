@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://g7m2dbh558sb"
-path="res://.godot/imported/PaperNineSlice.png-e158ee2a9512274171e48ef2d1ca89fa.ctex"
+uid="uid://c5s0l0gpjquxe"
+path="res://.godot/imported/PaperNineSlice-export.png-c51ab5efa92ea0c90e75c5f07f49c5c2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://0_Art/2_PNGs/PaperNineSlice.png"
-dest_files=["res://.godot/imported/PaperNineSlice.png-e158ee2a9512274171e48ef2d1ca89fa.ctex"]
+source_file="res://0_Art/New_Art(Needs Sorting)/PaperNineSlice-export.png"
+dest_files=["res://.godot/imported/PaperNineSlice-export.png-c51ab5efa92ea0c90e75c5f07f49c5c2.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btnen37gap7x0"
-path="res://.godot/imported/poisonGame-Screenshot.png-16e43a2c63e021db55a3a7a39974046a.ctex"
+uid="uid://clow3s7e2s771"
+path="res://.godot/imported/settings icon.png-6b74926df3115834c7033e90068c50ff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://0_Art/Daniel_Art/poisonGame-Screenshot.png"
-dest_files=["res://.godot/imported/poisonGame-Screenshot.png-16e43a2c63e021db55a3a7a39974046a.ctex"]
+source_file="res://0_Art/New_Art(Needs Sorting)/settings icon.png"
+dest_files=["res://.godot/imported/settings icon.png-6b74926df3115834c7033e90068c50ff.ctex"]
 
 [params]
 
