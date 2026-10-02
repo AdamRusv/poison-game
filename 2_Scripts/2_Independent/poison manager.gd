@@ -13,6 +13,7 @@ const GRABBED_POISON : Rect2 = Rect2(418, 0, 209, 64)
 
 func _ready() -> void:
 	gameplayManager.poisonManager = self
+	poisonTexture.texture = poisonTexture.texture.duplicate(true)
 	_set_connections()
 func _set_connections():
 	poisonButton.mouse_entered.connect(_on_enter)

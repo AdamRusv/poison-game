@@ -42,11 +42,13 @@ func _process(delta: float) -> void:
 	if players[1].frame == playerRange.y:
 		_stop_player_drink_animation(1)
 func _stop_player_drink_animation(playerIndex : int):
-	isAnimating = false
 	players[playerIndex].pause()
 	
-	await get_tree().create_timer(1).timeout
-	gameplayManager.newEncounter.emit()
+	await get_tree().create_timer(1).timeout #NOTE: change to sync with travel transition (become button)
+	if gameplayManager.playerIsDead == true:
+		gameplayManager.restartEncounter.emit()
+	else:
+		gameplayManager.newEncounter.emit()
 
 #-
 ##makes sure that the sprite with poison is behind
@@ -68,30 +70,38 @@ func _get_player_animation_range(player : int) -> Vector2i:
 	if player == 0:
 		if answerCup == EncounterInfo.CupAnswer.opponentCup\
 		&& currentPoisonCup == GameplayManager.CurrentPoisonCup.opponent:
+			gameplayManager.playerIsDead = false
 			return DEATH_CLOSE_CUP
 		elif answerCup == EncounterInfo.CupAnswer.opponentCup\
 		&& currentPoisonCup == GameplayManager.CurrentPoisonCup.player:
+			gameplayManager.playerIsDead = true
 			return SAFE_CLOSE_CUP
 		
 		if answerCup == EncounterInfo.CupAnswer.playerCup\
 		&& currentPoisonCup == GameplayManager.CurrentPoisonCup.player:
+			gameplayManager.playerIsDead = false
 			return DEATH_FAR_CUP
 		elif answerCup == EncounterInfo.CupAnswer.playerCup\
 		&& currentPoisonCup == GameplayManager.CurrentPoisonCup.opponent:
+			gameplayManager.playerIsDead = true
 			return SAFE_FAR_CUP
 	#based off player's perspective
 	elif player == 1:
 		if answerCup == EncounterInfo.CupAnswer.opponentCup\
 		&& currentPoisonCup == GameplayManager.CurrentPoisonCup.opponent:
+			gameplayManager.playerIsDead = false
 			return SAFE_CLOSE_CUP
 		elif answerCup == EncounterInfo.CupAnswer.opponentCup\
 		&& currentPoisonCup == GameplayManager.CurrentPoisonCup.player:
+			gameplayManager.playerIsDead = true
 			return DEATH_CLOSE_CUP
 		
 		if answerCup == EncounterInfo.CupAnswer.playerCup\
 		&& currentPoisonCup == GameplayManager.CurrentPoisonCup.player:
+			gameplayManager.playerIsDead = false
 			return SAFE_FAR_CUP
 		elif answerCup == EncounterInfo.CupAnswer.playerCup\
 		&& currentPoisonCup == GameplayManager.CurrentPoisonCup.opponent:
+			gameplayManager.playerIsDead = true
 			return DEATH_FAR_CUP
 	return Vector2i.ZERO

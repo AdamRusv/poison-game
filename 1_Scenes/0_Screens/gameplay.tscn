@@ -7,10 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b0kklffb4n85e" path="res://0_Art/2_PNGs/pattern playmat background.png" id="3_1cjw6"]
 [ext_resource type="Texture2D" uid="uid://cvg0nvvipe48r" path="res://0_Art/2_PNGs/placeholder mockup.png" id="3_82xv0"]
 [ext_resource type="Texture2D" uid="uid://0kb1u8s0qjx5" path="res://0_Art/2_PNGs/trim.png" id="4_0hcow"]
-[ext_resource type="Resource" uid="uid://cg41pmm52w6kn" path="res://5_Resources/0_Papers/0_Trait Sheet/main trait sheet.tres" id="4_1t528"]
 [ext_resource type="Texture2D" uid="uid://dy254ypb8l7vp" path="res://0_Art/2_PNGs/poison button-Sheet.png" id="4_gngdi"]
-[ext_resource type="Resource" uid="uid://4sdebs2jy8hr" path="res://5_Resources/0_Papers/1_Character Sheets/1_First Region/tubby jones.tres" id="5_c4l6l"]
-[ext_resource type="Resource" uid="uid://cj55yjaxgcvqn" path="res://5_Resources/0_Papers/1_Character Sheets/0_Tutorial Region/atlas regions/towerville.tres" id="6_baij6"]
 [ext_resource type="Script" uid="uid://dsk6k5x0e30hn" path="res://2_Scripts/2_Independent/poison manager.gd" id="6_pq3d1"]
 [ext_resource type="Script" uid="uid://v10r8rve43tc" path="res://2_Scripts/2_Independent/cups manager.gd" id="7_3udmd"]
 [ext_resource type="Script" uid="uid://dwp2cvaysi6vj" path="res://2_Scripts/2_Independent/dialogue manager.gd" id="11_ahkic"]
@@ -1021,9 +1018,6 @@ theme_override_constants/margin_left = 2
 script = ExtResource("2_lv7np")
 gameplayManager = NodePath("../../..")
 paperHolder = NodePath("Parent/Paper Holder")
-mainTraitSheet = ExtResource("4_1t528")
-characterSheet = ExtResource("5_c4l6l")
-atlasRegionSheet = ExtResource("6_baij6")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Layout/HBoxContainer/Playmat" unique_id=331557050]
 layout_mode = 2

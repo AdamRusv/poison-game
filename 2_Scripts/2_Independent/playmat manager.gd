@@ -6,10 +6,9 @@ class_name PlaymatManager
 @export var gameplayManager : GameplayManager
 @export var paperHolder : Control
 
-@export_category("Delete Later (For testing)")
-@export var mainTraitSheet : PaperInfo
-@export var characterSheet : EncounterInfo
-@export var atlasRegionSheet : PaperInfo
+var mainTraitSheet : PaperInfo
+var characterSheet : EncounterInfo
+var atlasRegionSheet : PaperInfo
 
 var testPaperRef : PackedScene = load("res://1_Scenes/1_Objects/paper.tscn") #TODO: Make actual papers, replace variable
 

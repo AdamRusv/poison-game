@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="EncounterInfo" format=3 uid="uid://bsh6js0264vx8"]
+
+[ext_resource type="Script" uid="uid://cg4ujw8mauohh" path="res://2_Scripts/3_Dependent/encounter info.gd" id="1_2435v"]
+[ext_resource type="Script" uid="uid://e0ujmn3oiqx0" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue branch.gd" id="1_griqq"]
+[ext_resource type="Script" uid="uid://fn2tb2dtu6fj" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue.gd" id="2_kd850"]
+[ext_resource type="Script" uid="uid://qr661epbiujn" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue tree.gd" id="3_dv0cg"]
+
+[sub_resource type="Resource" id="Resource_griqq"]
+script = ExtResource("2_kd850")
+dialogue = "Blah"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_qvfsd"]
+script = ExtResource("2_kd850")
+dialogue = "khgc"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_f25dy"]
+script = ExtResource("1_griqq")
+dialogue = Array[ExtResource("2_kd850")]([SubResource("Resource_griqq"), SubResource("Resource_qvfsd")])
+metadata/_custom_type_script = "uid://e0ujmn3oiqx0"
+
+[sub_resource type="Resource" id="Resource_uflgm"]
+script = ExtResource("3_dv0cg")
+branches = Array[ExtResource("1_griqq")]([SubResource("Resource_f25dy")])
+metadata/_custom_type_script = "uid://qr661epbiujn"
+
+[resource]
+script = ExtResource("1_2435v")
+characterName = "Scrumpy Giggles"
+dialogueTree = SubResource("Resource_uflgm")
+cupAnswer = 1
+title = "Character Sheet"
+info = Array[String]([", Scrumpytown
+
+
+1. Race: Satyr"])
+metadata/_custom_type_script = "uid://cg4ujw8mauohh"

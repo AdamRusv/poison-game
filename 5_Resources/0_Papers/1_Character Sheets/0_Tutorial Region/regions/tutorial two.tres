@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="RegionInfo" format=3 uid="uid://hyjafvb7n1hg"]
+
+[ext_resource type="Script" uid="uid://cg4ujw8mauohh" path="res://2_Scripts/3_Dependent/encounter info.gd" id="1_erlc8"]
+[ext_resource type="Script" uid="uid://851asxmj8i78" path="res://2_Scripts/3_Dependent/region info.gd" id="2_8ls0n"]
+[ext_resource type="Script" uid="uid://csy0x4mgdxs00" path="res://2_Scripts/3_Dependent/paperinfo.gd" id="3_8ls0n"]
+[ext_resource type="Resource" uid="uid://bsh6js0264vx8" path="res://5_Resources/0_Papers/1_Character Sheets/0_Tutorial Region/encounters/two.tres" id="3_vhogm"]
+
+[sub_resource type="Resource" id="Resource_jigre"]
+script = ExtResource("3_8ls0n")
+title = "Atlas -> Scrumpytown"
+info = Array[String](["Race:
+- Satyrs are Fools"])
+metadata/_custom_type_script = "uid://csy0x4mgdxs00"
+
+[sub_resource type="Resource" id="Resource_vhogm"]
+script = ExtResource("3_8ls0n")
+title = "TRAIT SHEET"
+info = Array[String](["Fool: 
+	Drinks from the cup that is in front of themselves
+
+
+Sage:
+	Drinks from the cup that is NOT in front of themselves"])
+metadata/_custom_type_script = "uid://csy0x4mgdxs00"
+
+[resource]
+script = ExtResource("2_8ls0n")
+totalEncounters = 1
+traitSheet = SubResource("Resource_vhogm")
+characterSheets = Array[ExtResource("1_erlc8")]([ExtResource("3_vhogm")])
+atlas = SubResource("Resource_jigre")
+noteSheet = false
+metadata/_custom_type_script = "uid://851asxmj8i78"
