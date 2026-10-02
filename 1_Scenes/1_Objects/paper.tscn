@@ -12,7 +12,6 @@ atlas = ExtResource("4_05sgy")
 region = Rect2(0, 0, 20, 20)
 
 [node name="Paper" type="MarginContainer" unique_id=1389312574 node_paths=PackedStringArray("paperTitleLabel", "paperInfoLabel", "packetParent", "packetBehindPaperParent", "pageFlipButton", "pageFlipTexture", "parentNode", "detectionArea")]
-z_index = 1
 custom_minimum_size = Vector2(164, 125)
 custom_maximum_size = Vector2(164, 228)
 offset_right = 164.0

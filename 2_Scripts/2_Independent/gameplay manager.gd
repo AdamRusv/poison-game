@@ -14,9 +14,13 @@ var cupCount : int = 2 #NOTE: change for other gamemodes
 var holdingPoison : bool = false
 signal poisonGrabbed
 signal poisonReleased
+
 var cupIsPoisoned : bool = false
 signal cupHasBeenPoisoned
+
 var playerIsDead : bool = false
+signal playerDied
+
 signal newEncounter
 signal restartEncounter
 
@@ -41,6 +45,9 @@ func _set_connections():
 	restartEncounter.connect(_restart_current_encounter)
 
 func _start_new_encounter():
+	TransitionManager._create_transition()
+	TransitionManager.transitionEncounter._end_transition()
+	
 	_setup_encounter_papers()
 	playmatManager._add_main_papers()
 	
@@ -55,9 +62,16 @@ func _setup_encounter_papers():
 
 #
 func _restart_current_encounter():
+	TransitionManager._create_transition()
+	await TransitionManager.transitionEncounter._start_transition().finished
+	
+	await get_tree().create_timer(0.6).timeout
 	get_tree().reload_current_scene()
 
 func _set_next_encounter():
+	TransitionManager._create_transition()
+	await TransitionManager.transitionEncounter._start_transition().finished
+	
 	if gamestateJSON.timelineIndex >= gameTimeline.timeline.size() - 1:
 		return
 	if gamestateJSON.currentRegionEncounterCount >= currentRegion.totalEncounters:
@@ -67,6 +81,8 @@ func _set_next_encounter():
 		gamestateJSON.currentRegionEncounterCount += 1
 	
 	gamestateJSON._save_gamestate()
+	
+	await get_tree().create_timer(0.6).timeout
 	get_tree().reload_current_scene()
 
 #- - -

@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Poison Game"
+config/description="Using logic, determine whether your opponent is a Fool or a Sage based on their provided Papers"
 config/version="0.00.1"
 run/main_scene="uid://ct7jlogagfbah"
 config/use_custom_user_dir=true
@@ -25,6 +26,7 @@ Settings="*uid://b7h40e7hj32af"
 Keybinds="*uid://c8fo37kjonfjo"
 TweenManager="*uid://c6ojkbins2v4b"
 SoundManager="*uid://d3n8iwlhwslg6"
+TransitionManager="*uid://ctyunloqghaql"
 GlobalReferences="*uid://be1788pmjydet"
 Overlay="*uid://sp4m3qieichu"
 

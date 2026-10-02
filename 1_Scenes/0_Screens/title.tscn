@@ -95,13 +95,13 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/separator = SubResource("StyleBoxEmpty_504ay")
 
-[node name="play" type="MarginContainer" parent="VBoxContainer" unique_id=1547426862 node_paths=PackedStringArray("buttonSelf", "baseNineSlice")]
+[node name="play" type="MarginContainer" parent="VBoxContainer" unique_id=1547426862 node_paths=PackedStringArray("buttonSelf", "visual")]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("5_1ux1m")
 buttonSelf = NodePath("button holder/play button")
-baseNineSlice = NodePath("NinePatchRect")
+visual = NodePath("NinePatchRect")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer/play" unique_id=1315538263]
 layout_mode = 2
@@ -135,13 +135,13 @@ layout_mode = 2
 focus_mode = 0
 flat = true
 
-[node name="settings" type="MarginContainer" parent="VBoxContainer" unique_id=1252685115 node_paths=PackedStringArray("buttonSelf", "baseNineSlice")]
+[node name="settings" type="MarginContainer" parent="VBoxContainer" unique_id=1252685115 node_paths=PackedStringArray("buttonSelf", "visual")]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("5_1ux1m")
 buttonSelf = NodePath("button holder/settings button")
-baseNineSlice = NodePath("NinePatchRect")
+visual = NodePath("NinePatchRect")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer/settings" unique_id=621209845]
 layout_mode = 2
@@ -175,13 +175,13 @@ layout_mode = 2
 focus_mode = 0
 flat = true
 
-[node name="quit" type="MarginContainer" parent="VBoxContainer" unique_id=1669184021 node_paths=PackedStringArray("buttonSelf", "baseNineSlice")]
+[node name="quit" type="MarginContainer" parent="VBoxContainer" unique_id=1669184021 node_paths=PackedStringArray("buttonSelf", "visual")]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("5_1ux1m")
 buttonSelf = NodePath("button holder/quit button")
-baseNineSlice = NodePath("NinePatchRect")
+visual = NodePath("NinePatchRect")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer/quit" unique_id=1058649304]
 layout_mode = 2

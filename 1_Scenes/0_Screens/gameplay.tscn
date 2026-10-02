@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://dy254ypb8l7vp" path="res://0_Art/2_PNGs/poison button-Sheet.png" id="4_gngdi"]
 [ext_resource type="Script" uid="uid://dsk6k5x0e30hn" path="res://2_Scripts/2_Independent/poison manager.gd" id="6_pq3d1"]
 [ext_resource type="Script" uid="uid://v10r8rve43tc" path="res://2_Scripts/2_Independent/cups manager.gd" id="7_3udmd"]
+[ext_resource type="Texture2D" uid="uid://flm20d8isxx2" path="res://0_Art/2_PNGs/travel button-Sheet.png" id="10_fn5ot"]
+[ext_resource type="Script" uid="uid://biwcv78fcimw7" path="res://2_Scripts/2_Independent/travel manager.gd" id="11_1cjw6"]
 [ext_resource type="Script" uid="uid://dwp2cvaysi6vj" path="res://2_Scripts/2_Independent/dialogue manager.gd" id="11_ahkic"]
 [ext_resource type="Texture2D" uid="uid://cc7m60xat02gv" path="res://0_Art/2_PNGs/cups indicator-Sheet.png" id="11_rkkk6"]
 [ext_resource type="Texture2D" uid="uid://bmf0h3auqyyc8" path="res://0_Art/2_PNGs/players cup event-Sheet.png" id="12_rkkk6"]
@@ -22,6 +24,10 @@ shader_parameter/speed = Vector2(-0.4, 0.4)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_504ay"]
 atlas = ExtResource("4_gngdi")
+region = Rect2(0, 0, 209, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l1x0d"]
+atlas = ExtResource("10_fn5ot")
 region = Rect2(0, 0, 209, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ywih6"]
@@ -1069,6 +1075,32 @@ offset_left = 83.0
 offset_top = 10.0
 offset_right = 126.0
 offset_bottom = 55.0
+focus_mode = 0
+flat = true
+
+[node name="Travel Texture" type="TextureRect" parent="." unique_id=2140607965 node_paths=PackedStringArray("gameplayManager", "travelTexture", "buttonSelf", "visual")]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 292.0
+offset_right = 213.0
+offset_bottom = 356.0
+texture = SubResource("AtlasTexture_l1x0d")
+stretch_mode = 3
+script = ExtResource("11_1cjw6")
+gameplayManager = NodePath("..")
+travelTexture = NodePath(".")
+buttonSelf = NodePath("travel button")
+visual = NodePath(".")
+NEUTRAL_STATE = Rect2i(0, 0, 209, 64)
+HOVERED_STATE = Rect2i(209, 0, 209, 64)
+PRESSED_STATE = Rect2i(418, 0, 209, 64)
+
+[node name="travel button" type="Button" parent="Travel Texture" unique_id=1700823552]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 8.0
+offset_right = 200.0
+offset_bottom = 57.0
 focus_mode = 0
 flat = true
 

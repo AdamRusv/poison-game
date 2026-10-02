@@ -37,18 +37,11 @@ func _process(delta: float) -> void:
 		return
 	
 	if players[0].frame == opponentRange.y:
-		_stop_player_drink_animation(0)
+		players[0].pause()
 	
 	if players[1].frame == playerRange.y:
-		_stop_player_drink_animation(1)
-func _stop_player_drink_animation(playerIndex : int):
-	players[playerIndex].pause()
-	
-	await get_tree().create_timer(1).timeout #NOTE: change to sync with travel transition (become button)
-	if gameplayManager.playerIsDead == true:
-		gameplayManager.restartEncounter.emit()
-	else:
-		gameplayManager.newEncounter.emit()
+		players[1].pause()
+		gameplayManager.playerDied.emit()
 
 #-
 ##makes sure that the sprite with poison is behind
