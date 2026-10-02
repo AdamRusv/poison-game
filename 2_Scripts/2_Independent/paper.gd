@@ -88,8 +88,8 @@ var currentPage : int = 0
 #const NEUTRAL_CORNER : Rect2 = Rect2(0, 0, 20, 20)
 #const HOVERED_CORNER : Rect2 = Rect2(20, 0, 20, 20)
 
-const NEUTRAL_CORNER : Rect2 = Rect2(0, 0, 29, 29)
-const HOVERED_CORNER : Rect2 = Rect2(29, 0, 29, 29)
+const NEUTRAL_CORNER : Rect2 = Rect2(0, 0, 30, 30)
+const HOVERED_CORNER : Rect2 = Rect2(30, 0, 30, 30)
 
 func _on_pageflip_enter():
 	_set_pageflip_texture_to(HOVERED_CORNER)

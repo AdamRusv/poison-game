@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcdqtnukewrre"
-path="res://.godot/imported/BackPaperNineSlice.png-a98a790c71a3637eb62cdc3634f8f58f.ctex"
+uid="uid://dl03qg5okk7oj"
+path="res://.godot/imported/cursor - Copy-Sheet.png-00f604781623c4f140a75c1cd6c93ac0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://0_Art/2_PNGs/BackPaperNineSlice.png"
-dest_files=["res://.godot/imported/BackPaperNineSlice.png-a98a790c71a3637eb62cdc3634f8f58f.ctex"]
+source_file="res://0_Art/New_Art(Needs Sorting)/cursor - Copy-Sheet.png"
+dest_files=["res://.godot/imported/cursor - Copy-Sheet.png-00f604781623c4f140a75c1cd6c93ac0.ctex"]
 
 [params]
 

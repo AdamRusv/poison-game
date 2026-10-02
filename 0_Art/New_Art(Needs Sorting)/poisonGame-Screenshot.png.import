@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cemkxjrc7ks0p"
-path="res://.godot/imported/poison button-Sheet.png-feb2a3976341f40a055b9a73c6ac56ed.ctex"
+uid="uid://btnen37gap7x0"
+path="res://.godot/imported/poisonGame-Screenshot.png-605c24f36ab38fed0fd35c5a20a1b14d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://0_Art/Daniel_Art/poison button-Sheet.png"
-dest_files=["res://.godot/imported/poison button-Sheet.png-feb2a3976341f40a055b9a73c6ac56ed.ctex"]
+source_file="res://0_Art/New_Art(Needs Sorting)/poisonGame-Screenshot.png"
+dest_files=["res://.godot/imported/poisonGame-Screenshot.png-605c24f36ab38fed0fd35c5a20a1b14d.ctex"]
 
 [params]
 
