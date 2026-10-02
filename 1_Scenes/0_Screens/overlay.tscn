@@ -1,26 +1,26 @@
 [gd_scene format=3 uid="uid://sp4m3qieichu"]
 
 [ext_resource type="Script" uid="uid://cukm107wdraq2" path="res://2_Scripts/2_Independent/cursor manager.gd" id="1_ncivp"]
-[ext_resource type="Texture2D" uid="uid://pid10cr8mcuy" path="res://0_Art/2_PNGs/cursor-Sheet.png" id="2_i53fj"]
+[ext_resource type="Texture2D" uid="uid://dl03qg5okk7oj" path="res://0_Art/Daniel_Art/cursor - Copy-Sheet.png" id="2_tbbhu"]
 [ext_resource type="Material" uid="uid://t1e6kib2odfk" path="res://4_Shaders/1_Materials/ppf.tres" id="2_uy6oh"]
 [ext_resource type="Texture2D" uid="uid://bqv6rpoaa8o78" path="res://0_Art/2_PNGs/poison vile cursor-Sheet.png" id="3_tbbhu"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_i53fj"]
-atlas = ExtResource("2_i53fj")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ii050"]
+atlas = ExtResource("2_tbbhu")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tbbhu"]
-atlas = ExtResource("2_i53fj")
+[sub_resource type="AtlasTexture" id="AtlasTexture_xg0xq"]
+atlas = ExtResource("2_tbbhu")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_i53fj"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_i53fj")
+"texture": SubResource("AtlasTexture_ii050")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tbbhu")
+"texture": SubResource("AtlasTexture_xg0xq")
 }],
 "loop": 1,
 "name": &"default",
