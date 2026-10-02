@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://45euc58cfisf" path="res://0_Art/New_Art(Needs Sorting)/Footer Sprite.png" id="4_7yujx"]
 [ext_resource type="Texture2D" uid="uid://d2186g0fqpjl" path="res://0_Art/New_Art(Needs Sorting)/Header Sprite.png" id="4_40vfy"]
 [ext_resource type="Resource" uid="uid://4sdebs2jy8hr" path="res://5_Resources/0_Papers/1_Character Sheets/0_Tutorial Region/tubby jones.tres" id="5_7yujx"]
+[ext_resource type="Texture2D" uid="uid://e8g7oerk8row" path="res://0_Art/New_Art(Needs Sorting)/poisonGame-PortraitAngled.png" id="5_40vfy"]
 [ext_resource type="Resource" uid="uid://cj55yjaxgcvqn" path="res://5_Resources/0_Papers/1_Character Sheets/0_Tutorial Region/atlas regions/towerville.tres" id="6_40vfy"]
 [ext_resource type="Texture2D" uid="uid://btnen37gap7x0" path="res://0_Art/New_Art(Needs Sorting)/poisonGame-Screenshot.png" id="7_03xhq"]
 [ext_resource type="Texture2D" uid="uid://caj874nt8y12k" path="res://0_Art/New_Art(Needs Sorting)/Right Table Sprite.png" id="8_2cof7"]
@@ -891,7 +892,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_03xhq")
 
-[node name="Flat Mockup2" type="TextureRect" parent="." unique_id=2017103402]
+[node name="Background" type="TextureRect" parent="." unique_id=2017103402]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -901,7 +902,7 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("2_miwci")
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1928083459]
+[node name="Main Game" type="MarginContainer" parent="." unique_id=1928083459]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -913,20 +914,20 @@ theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=372372147]
+[node name="HBoxContainer" type="HBoxContainer" parent="Main Game" unique_id=372372147]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1137307275]
+[node name="VBoxContainer" type="VBoxContainer" parent="Main Game/HBoxContainer" unique_id=1137307275]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Header" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1348033393]
+[node name="Header" type="MarginContainer" parent="Main Game/HBoxContainer/VBoxContainer" unique_id=1348033393]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 
-[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/HBoxContainer/VBoxContainer/Header" unique_id=1655563843]
+[node name="NinePatchRect" type="NinePatchRect" parent="Main Game/HBoxContainer/VBoxContainer/Header" unique_id=1655563843]
 visible = false
 layout_mode = 2
 size_flags_vertical = 3
@@ -937,30 +938,16 @@ patch_margin_top = 4
 patch_margin_right = 4
 patch_margin_bottom = 4
 
-[node name="Header Background" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/Header" unique_id=1291754543]
+[node name="Header Background" type="TextureRect" parent="Main Game/HBoxContainer/VBoxContainer/Header" unique_id=1291754543]
 layout_mode = 2
 texture = ExtResource("4_40vfy")
 
-[node name="Portrait" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1308443707]
+[node name="Portrait" type="MarginContainer" parent="Main Game/HBoxContainer/VBoxContainer" unique_id=1308443707]
 custom_minimum_size = Vector2(0, 270)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/HBoxContainer/VBoxContainer/Portrait" unique_id=556527173]
-layout_mode = 2
-size_flags_vertical = 3
-texture = ExtResource("2_gaqin")
-region_rect = Rect2(0, 0, 16, 16)
-patch_margin_left = 4
-patch_margin_top = 4
-patch_margin_right = 4
-patch_margin_bottom = 4
-
-[node name="Footer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=522748834]
-custom_minimum_size = Vector2(0, 42)
-layout_mode = 2
-
-[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/HBoxContainer/VBoxContainer/Footer" unique_id=1201418195]
+[node name="NinePatchRect" type="NinePatchRect" parent="Main Game/HBoxContainer/VBoxContainer/Portrait" unique_id=556527173]
 visible = false
 layout_mode = 2
 size_flags_vertical = 3
@@ -971,11 +958,30 @@ patch_margin_top = 4
 patch_margin_right = 4
 patch_margin_bottom = 4
 
-[node name="Footer Background" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/Footer" unique_id=398850699]
+[node name="PortraitTexture" type="TextureRect" parent="Main Game/HBoxContainer/VBoxContainer/Portrait" unique_id=975184245]
+layout_mode = 2
+texture = ExtResource("5_40vfy")
+
+[node name="Footer" type="MarginContainer" parent="Main Game/HBoxContainer/VBoxContainer" unique_id=522748834]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Main Game/HBoxContainer/VBoxContainer/Footer" unique_id=1201418195]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_gaqin")
+region_rect = Rect2(0, 0, 16, 16)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="Footer Background" type="TextureRect" parent="Main Game/HBoxContainer/VBoxContainer/Footer" unique_id=398850699]
 layout_mode = 2
 texture = ExtResource("4_7yujx")
 
-[node name="Poison Texture" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/Footer/Footer Background" unique_id=1840736645 node_paths=PackedStringArray("gameplayManager", "poisonTexture", "poisonButton")]
+[node name="Poison Texture" type="TextureRect" parent="Main Game/HBoxContainer/VBoxContainer/Footer/Footer Background" unique_id=1840736645 node_paths=PackedStringArray("gameplayManager", "poisonTexture", "poisonButton")]
 layout_mode = 0
 offset_right = 210.0
 offset_bottom = 46.0
@@ -986,7 +992,7 @@ gameplayManager = NodePath("../../../../../..")
 poisonTexture = NodePath(".")
 poisonButton = NodePath("poison button")
 
-[node name="poison button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/Footer/Footer Background/Poison Texture" unique_id=2059727328]
+[node name="poison button" type="Button" parent="Main Game/HBoxContainer/VBoxContainer/Footer/Footer Background/Poison Texture" unique_id=2059727328]
 layout_mode = 0
 offset_left = 86.0
 offset_top = 4.0
@@ -995,7 +1001,7 @@ offset_bottom = 38.0
 focus_mode = 0
 flat = true
 
-[node name="Playmat" type="MarginContainer" parent="MarginContainer/HBoxContainer" unique_id=1398525186 node_paths=PackedStringArray("gameplayManager", "paperHolder")]
+[node name="Playmat" type="MarginContainer" parent="Main Game/HBoxContainer" unique_id=1398525186 node_paths=PackedStringArray("gameplayManager", "paperHolder")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -1007,7 +1013,7 @@ mainTraitSheet = ExtResource("4_2cof7")
 characterSheet = ExtResource("5_7yujx")
 atlasRegionSheet = ExtResource("6_40vfy")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/HBoxContainer/Playmat" unique_id=331557050]
+[node name="NinePatchRect" type="NinePatchRect" parent="Main Game/HBoxContainer/Playmat" unique_id=331557050]
 visible = false
 layout_mode = 2
 size_flags_vertical = 3
@@ -1018,18 +1024,18 @@ patch_margin_top = 4
 patch_margin_right = 4
 patch_margin_bottom = 4
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Playmat" unique_id=655792027]
+[node name="TextureRect" type="TextureRect" parent="Main Game/HBoxContainer/Playmat" unique_id=655792027]
 layout_mode = 2
 texture = ExtResource("8_2cof7")
 
-[node name="Parent" type="MarginContainer" parent="MarginContainer/HBoxContainer/Playmat" unique_id=895104866]
+[node name="Parent" type="MarginContainer" parent="Main Game/HBoxContainer/Playmat" unique_id=895104866]
 layout_mode = 2
 theme_override_constants/margin_left = 2
 theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 
-[node name="Paper Holder" type="Control" parent="MarginContainer/HBoxContainer/Playmat/Parent" unique_id=1898689258]
+[node name="Paper Holder" type="Control" parent="Main Game/HBoxContainer/Playmat/Parent" unique_id=1898689258]
 clip_contents = true
 layout_mode = 2
 
