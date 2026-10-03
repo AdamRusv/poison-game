@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://bmf0h3auqyyc8" path="res://0_Art/2_PNGs/players cup event-Sheet.png" id="12_rkkk6"]
 [ext_resource type="Script" uid="uid://coy0g8tjc8t7i" path="res://2_Scripts/2_Independent/players manager.gd" id="12_ywih6"]
 [ext_resource type="Texture2D" uid="uid://brkvp2w453xgk" path="res://0_Art/2_PNGs/payer username-Sheet.png" id="14_c4l6l"]
+[ext_resource type="Texture2D" uid="uid://cbh3nokegijqt" path="res://0_Art/2_PNGs/temporary tutorial region numbers-Sheet.png" id="18_g7yw3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fb3j3"]
 shader = ExtResource("2_1cjw6")
@@ -888,7 +889,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Gameplay" type="Control" unique_id=1427164321]
+[sub_resource type="AtlasTexture" id="AtlasTexture_yprsh"]
+atlas = ExtResource("18_g7yw3")
+region = Rect2(0, 0, 55, 30)
+
+[node name="Gameplay" type="Control" unique_id=1427164321 node_paths=PackedStringArray("temporaryRegionNumber")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -897,6 +902,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0sltt")
 gameTimeline = ExtResource("2_g7yw3")
+temporaryRegionNumber = NodePath("temporary tutorial region number")
 
 [node name="background" type="ColorRect" parent="." unique_id=1846741751]
 layout_mode = 1
@@ -1193,3 +1199,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 0
+
+[node name="temporary tutorial region number" type="TextureRect" parent="." unique_id=419289354]
+layout_mode = 0
+offset_left = 157.0
+offset_top = 5.0
+offset_right = 212.0
+offset_bottom = 35.0
+texture = SubResource("AtlasTexture_yprsh")
+stretch_mode = 2

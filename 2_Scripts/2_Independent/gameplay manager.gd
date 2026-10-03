@@ -3,6 +3,7 @@ extends Control
 class_name GameplayManager
 
 @export var gameTimeline : GameTimeline
+@export var temporaryRegionNumber : TextureRect
 
 var playmatManager : PlaymatManager
 var poisonManager : PoisonManager
@@ -37,12 +38,22 @@ var gamestateJSON : GamestateJSON = GamestateJSON.new()
 func _ready() -> void:
 	gamestateJSON._load_gamestate()
 	currentRegion = gameTimeline.timeline[gamestateJSON.timelineIndex]
-	
+	_temportary_set_region_number()
 	_set_connections()
 	_start_new_encounter()
 func _set_connections():
 	newEncounter.connect(_set_next_encounter)
 	restartEncounter.connect(_restart_current_encounter)
+func _temportary_set_region_number():
+	match gamestateJSON.timelineIndex:
+		0:
+			temporaryRegionNumber.texture.region = Rect2i(0, 0, 55, 30)
+		1:
+			temporaryRegionNumber.texture.region = Rect2i(55, 0, 55, 30)
+		2:
+			temporaryRegionNumber.texture.region = Rect2i(55 * 2, 0, 55, 30)
+		3:
+			temporaryRegionNumber.texture.region = Rect2i(55 * 3, 0, 55, 30)
 
 func _start_new_encounter():
 	TransitionManager._create_transition()
