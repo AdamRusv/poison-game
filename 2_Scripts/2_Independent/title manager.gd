@@ -15,7 +15,11 @@ func _set_connections():
 #- - - - - -
 var gameplayScenePath : String = "res://1_Scenes/0_Screens/gameplay.tscn"
 
+var playTriggered : bool = false
 func _play():
+	if playTriggered == true:
+		return
+	playTriggered = true
 	await get_tree().create_timer(0.3).timeout
 	
 	var gameplaySceneInstance : PackedScene = load(gameplayScenePath)

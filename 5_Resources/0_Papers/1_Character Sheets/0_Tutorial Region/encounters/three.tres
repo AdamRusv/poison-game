@@ -7,13 +7,32 @@
 
 [sub_resource type="Resource" id="Resource_lpmyb"]
 script = ExtResource("2_vfyv6")
-speaker = 1
-dialogue = "boop"
+dialogue = "Now that you know the basics"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_0wp8x"]
+script = ExtResource("2_vfyv6")
+dialogue = "It's time for you to have your first challenge!"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_vfyv6"]
+script = ExtResource("2_vfyv6")
+dialogue = "Same Papers as before, but now there are two Character Entries instead of just one"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_yqjtl"]
+script = ExtResource("2_vfyv6")
+dialogue = "The Trait Sheet also grew and now has four Traits listed"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_dgkr3"]
+script = ExtResource("2_vfyv6")
+dialogue = "You got this! I believe in you!"
 metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
 
 [sub_resource type="Resource" id="Resource_hi1fs"]
 script = ExtResource("1_lpmyb")
-dialogue = Array[ExtResource("2_vfyv6")]([SubResource("Resource_lpmyb")])
+dialogue = Array[ExtResource("2_vfyv6")]([SubResource("Resource_lpmyb"), SubResource("Resource_0wp8x"), SubResource("Resource_vfyv6"), SubResource("Resource_yqjtl"), SubResource("Resource_dgkr3")])
 metadata/_custom_type_script = "uid://e0ujmn3oiqx0"
 
 [sub_resource type="Resource" id="Resource_n6jon"]

@@ -4,12 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://ewtkf8nl0qkn" path="res://0_Art/2_PNGs/dialogue bubble.png" id="2_dovws"]
 [ext_resource type="Theme" uid="uid://bhvewryp1cmbt" path="res://6_Other/description font.tres" id="3_b18gr"]
 
-[node name="opponent dialogue bubble" type="MarginContainer" unique_id=1645530191 node_paths=PackedStringArray("visualHolder", "texture", "dialogueLabel")]
+[node name="opponent dialogue bubble" type="MarginContainer" unique_id=1645530191 node_paths=PackedStringArray("visualHolder", "texture", "labelHolder", "dialogueLabel")]
 offset_right = 78.0
 offset_bottom = 16.0
 script = ExtResource("1_61cyn")
 visualHolder = NodePath("visual holder")
 texture = NodePath("visual holder/NinePatchRect")
+labelHolder = NodePath("visual holder/MarginContainer")
 dialogueLabel = NodePath("visual holder/MarginContainer/dialogue label")
 
 [node name="visual holder" type="MarginContainer" parent="." unique_id=1138734156]
@@ -40,7 +41,7 @@ theme_override_constants/margin_bottom = 4
 custom_maximum_size = Vector2(111, -1)
 layout_mode = 2
 theme = ExtResource("3_b18gr")
-text = "?????????????????"
+text = "????????????????????????"
 fit_content = true
 scroll_active = false
 visible_characters_behavior = 1

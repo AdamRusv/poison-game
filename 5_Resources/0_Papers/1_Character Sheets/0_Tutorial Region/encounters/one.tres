@@ -5,31 +5,39 @@
 [ext_resource type="Script" uid="uid://fn2tb2dtu6fj" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue.gd" id="2_xvvbx"]
 [ext_resource type="Script" uid="uid://qr661epbiujn" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue tree.gd" id="3_312to"]
 
-[sub_resource type="Resource" id="Resource_xvvbx"]
+[sub_resource type="Resource" id="Resource_61cyn"]
 script = ExtResource("2_xvvbx")
-speaker = 1
-dialogue = "blah"
+dialogue = "Good job at winning against Lillia"
 metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
 
-[sub_resource type="Resource" id="Resource_433kl"]
+[sub_resource type="Resource" id="Resource_griqq"]
 script = ExtResource("2_xvvbx")
-dialogue = "blah blah"
+dialogue = "Now that you know how to use the Poison, I will teach you how to use the Trait Sheet"
 metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
 
-[sub_resource type="Resource" id="Resource_312to"]
+[sub_resource type="Resource" id="Resource_kd850"]
 script = ExtResource("2_xvvbx")
-dialogue = "blah blah blah blah blah blah blah"
+dialogue = "Take a look at the Papers in front of you"
 metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
 
-[sub_resource type="Resource" id="Resource_l4ijl"]
+[sub_resource type="Resource" id="Resource_dv0cg"]
 script = ExtResource("2_xvvbx")
-speaker = 1
-dialogue = "blah blah blah"
+dialogue = "By connecting the dots from my Character Sheet to the Trait Sheet..."
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_8lyae"]
+script = ExtResource("2_xvvbx")
+dialogue = "You should be able to figure out which cup to place the Poison in"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_c32j1"]
+script = ExtResource("2_xvvbx")
+dialogue = "Good luck!"
 metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
 
 [sub_resource type="Resource" id="Resource_atuju"]
 script = ExtResource("1_433kl")
-dialogue = Array[ExtResource("2_xvvbx")]([SubResource("Resource_xvvbx"), SubResource("Resource_433kl"), SubResource("Resource_312to"), SubResource("Resource_l4ijl")])
+dialogue = Array[ExtResource("2_xvvbx")]([SubResource("Resource_61cyn"), SubResource("Resource_griqq"), SubResource("Resource_kd850"), SubResource("Resource_dv0cg"), SubResource("Resource_8lyae"), SubResource("Resource_c32j1")])
 metadata/_custom_type_script = "uid://e0ujmn3oiqx0"
 
 [sub_resource type="Resource" id="Resource_ebxdl"]
