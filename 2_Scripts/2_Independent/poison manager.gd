@@ -7,9 +7,16 @@ class_name PoisonManager
 @export var poisonTexture : TextureRect
 @export var poisonButton : Button
 
-const NEUTRAL_POISON : Rect2 = Rect2(0, 0, 209, 64)
-const HOVERED_POISON : Rect2 = Rect2(209, 0, 209, 64)
-const GRABBED_POISON : Rect2 = Rect2(418, 0, 209, 64)
+#NOTE: OLD POSISTIONS
+#const NEUTRAL_POISON : Rect2 = Rect2(0, 0, 209, 64)
+#const HOVERED_POISON : Rect2 = Rect2(209, 0, 209, 64)
+#const GRABBED_POISON : Rect2 = Rect2(418, 0, 209, 64)
+
+const NEUTRAL_POISON : Rect2 = Rect2(0, 0, 206, 42)
+const HOVERED_POISON : Rect2 = Rect2(206, 0, 206, 42)
+const GRABBED_POISON : Rect2 = Rect2(412, 0, 206, 42)
+
+
 
 func _ready() -> void:
 	gameplayManager.poisonManager = self

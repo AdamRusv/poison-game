@@ -37,6 +37,7 @@ theme_override_constants/margin_bottom = 4
 custom_maximum_size = Vector2(111, -1)
 layout_mode = 2
 theme = ExtResource("3_ywpx2")
+theme_override_colors/default_color = Color(0.9490891, 0.89567226, 0.8264895, 1)
 text = "?????????????????"
 fit_content = true
 scroll_active = false
