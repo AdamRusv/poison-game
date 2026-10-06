@@ -20,12 +20,14 @@ const GRABBED_POISON : Rect2 = Rect2(412, 0, 206, 42)
 
 func _ready() -> void:
 	gameplayManager.poisonManager = self
+	poisonTexture.texture = poisonTexture.texture.duplicate(true)
 	_set_connections()
 func _set_connections():
 	poisonButton.mouse_entered.connect(_on_enter)
 	poisonButton.mouse_exited.connect(_on_exit)
 	poisonButton.button_down.connect(_on_down)
 	poisonButton.button_up.connect(_on_up)
+	gameplayManager.playerDied.connect(_hide)
 
 #- - -
 func _on_enter():
@@ -76,6 +78,11 @@ func _trigger_place_poison():
 func _set_poison_texture_to(newRect : Rect2):
 	var atlasTexture : AtlasTexture = poisonTexture.texture
 	atlasTexture.region = newRect
+
+func _show():
+	poisonTexture.visible = true
+func _hide():
+	poisonTexture.visible = false
 
 #-
 func _is_mouse_over_poison_button() -> bool:

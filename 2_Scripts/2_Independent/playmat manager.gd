@@ -6,10 +6,9 @@ class_name PlaymatManager
 @export var gameplayManager : GameplayManager
 @export var paperHolder : Control
 
-@export_category("Delete Later (For testing)")
-@export var mainTraitSheet : PaperInfo
-@export var characterSheet : EncounterInfo
-@export var atlasRegionSheet : PaperInfo
+var mainTraitSheet : PaperInfo
+var characterSheet : EncounterInfo
+var atlasRegionSheet : PaperInfo
 
 #var testPaperRef : PackedScene = load("res://1_Scenes/1_Objects/paper.tscn") #TODO: Make actual papers, replace variable
 var testPaperRef : PackedScene = load("res://1_Scenes/1_Objects/test_paper.tscn")
@@ -18,13 +17,16 @@ var papers : Array[Paper]
 
 func _ready() -> void:
 	gameplayManager.playmatManager = self
+
+func _add_main_papers():
+	if mainTraitSheet != null:
+		_create_paper(testPaperRef, Color("4b3d44"), mainTraitSheet)
 	
-	await get_tree().process_frame
-	_create_paper(testPaperRef, Color("4b3d44"), mainTraitSheet)
-	_create_paper(testPaperRef, Color("4b3d44"), characterSheet)
-	_create_paper(testPaperRef, Color("4b3d44"), atlasRegionSheet)
-	#_create_paper(testPaperRef, Color("4b3d44"))
-	#_create_paper(testPaperRef, Color("4b3d44"))
+	if characterSheet != null:
+		_create_paper(testPaperRef, Color("4b3d44"), characterSheet)
+	
+	if atlasRegionSheet != null:
+		_create_paper(testPaperRef, Color("4b3d44"), atlasRegionSheet)
 
 
 #-----------------------

@@ -1,0 +1,74 @@
+[gd_resource type="Resource" script_class="EncounterInfo" format=3 uid="uid://bsh6js0264vx8"]
+
+[ext_resource type="Script" uid="uid://cg4ujw8mauohh" path="res://2_Scripts/3_Dependent/encounter info.gd" id="1_2435v"]
+[ext_resource type="Script" uid="uid://e0ujmn3oiqx0" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue branch.gd" id="1_griqq"]
+[ext_resource type="Script" uid="uid://fn2tb2dtu6fj" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue.gd" id="2_kd850"]
+[ext_resource type="Script" uid="uid://qr661epbiujn" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue tree.gd" id="3_dv0cg"]
+
+[sub_resource type="Resource" id="Resource_dovws"]
+script = ExtResource("2_kd850")
+speaker = 1
+dialogue = "Greetings!"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_b18gr"]
+script = ExtResource("2_kd850")
+dialogue = "Hello there!"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_rcssk"]
+script = ExtResource("2_kd850")
+dialogue = "We are now going to get into the \"meat\" of The Game"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_qby0y"]
+script = ExtResource("2_kd850")
+dialogue = "Against Poppy, you only had two Papers"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_3grnw"]
+script = ExtResource("2_kd850")
+dialogue = "Now, you have a third Paper called the Atlas"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_vs7tn"]
+script = ExtResource("2_kd850")
+dialogue = "Instead of connecting the Character Entries from the Character Sheet straight to the Trait Sheet..."
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_ngc2l"]
+script = ExtResource("2_kd850")
+dialogue = "You now connect the Entry from the Character Sheet to the Atlas"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_nvvxi"]
+script = ExtResource("2_kd850")
+dialogue = "Think of the Atlas being the middleman between them"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_s4fd8"]
+script = ExtResource("2_kd850")
+dialogue = "Good luck!"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_61cyn"]
+script = ExtResource("1_griqq")
+dialogue = Array[ExtResource("2_kd850")]([SubResource("Resource_dovws"), SubResource("Resource_b18gr"), SubResource("Resource_rcssk"), SubResource("Resource_qby0y"), SubResource("Resource_3grnw"), SubResource("Resource_vs7tn"), SubResource("Resource_ngc2l"), SubResource("Resource_nvvxi"), SubResource("Resource_s4fd8")])
+metadata/_custom_type_script = "uid://e0ujmn3oiqx0"
+
+[sub_resource type="Resource" id="Resource_uflgm"]
+script = ExtResource("3_dv0cg")
+branches = Array[ExtResource("1_griqq")]([SubResource("Resource_61cyn")])
+metadata/_custom_type_script = "uid://qr661epbiujn"
+
+[resource]
+script = ExtResource("1_2435v")
+characterName = "Scrumpy Giggles"
+dialogueTree = SubResource("Resource_uflgm")
+cupAnswer = 1
+title = "Character Sheet"
+info = Array[String]([", Scrumpytown
+
+
+1. Race: Satyr"])
+metadata/_custom_type_script = "uid://cg4ujw8mauohh"

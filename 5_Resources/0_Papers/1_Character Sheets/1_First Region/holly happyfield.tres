@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EncounterInfo" format=3 uid="uid://d1v80i44rkstt"]
+
+[ext_resource type="Script" uid="uid://cg4ujw8mauohh" path="res://2_Scripts/3_Dependent/encounter info.gd" id="3_kfeph"]
+
+[resource]
+script = ExtResource("3_kfeph")
+characterName = "Holly Happyfield"
+cupAnswer = 2
+title = "Character Sheet"
+info = Array[String]([", Towerville
+
+
+2. Race: Goblin
+
+
+"])
+metadata/_custom_type_script = "uid://cg4ujw8mauohh"
