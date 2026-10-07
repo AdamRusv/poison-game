@@ -5,34 +5,24 @@
 [ext_resource type="Script" uid="uid://fn2tb2dtu6fj" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue.gd" id="2_vfyv6"]
 [ext_resource type="Script" uid="uid://qr661epbiujn" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue tree.gd" id="3_yqjtl"]
 
-[sub_resource type="Resource" id="Resource_lpmyb"]
+[sub_resource type="Resource" id="Resource_dv0cg"]
 script = ExtResource("2_vfyv6")
 dialogue = "Now that you know the basics"
 metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
 
-[sub_resource type="Resource" id="Resource_0wp8x"]
+[sub_resource type="Resource" id="Resource_kd850"]
 script = ExtResource("2_vfyv6")
 dialogue = "It's time for you to have your first challenge!"
 metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
 
-[sub_resource type="Resource" id="Resource_vfyv6"]
-script = ExtResource("2_vfyv6")
-dialogue = "Same Papers as before, but now there are two Character Entries instead of just one"
-metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
-
-[sub_resource type="Resource" id="Resource_yqjtl"]
-script = ExtResource("2_vfyv6")
-dialogue = "The Trait Sheet also grew and now has four Traits listed"
-metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
-
-[sub_resource type="Resource" id="Resource_dgkr3"]
+[sub_resource type="Resource" id="Resource_griqq"]
 script = ExtResource("2_vfyv6")
 dialogue = "You got this! I believe in you!"
 metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
 
 [sub_resource type="Resource" id="Resource_hi1fs"]
 script = ExtResource("1_lpmyb")
-dialogue = Array[ExtResource("2_vfyv6")]([SubResource("Resource_lpmyb"), SubResource("Resource_0wp8x"), SubResource("Resource_vfyv6"), SubResource("Resource_yqjtl"), SubResource("Resource_dgkr3")])
+dialogue = Array[ExtResource("2_vfyv6")]([SubResource("Resource_dv0cg"), SubResource("Resource_kd850"), SubResource("Resource_griqq")])
 metadata/_custom_type_script = "uid://e0ujmn3oiqx0"
 
 [sub_resource type="Resource" id="Resource_n6jon"]

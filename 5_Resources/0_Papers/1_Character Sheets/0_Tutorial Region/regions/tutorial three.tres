@@ -9,10 +9,11 @@
 script = ExtResource("3_qesvq")
 title = "Atlas -> Scrumpytown 2"
 info = Array[String](["Race:
-- Satyrs Lie about their Occupation and are Sages
+- Satyrs [color=#b65c5f]Lie[/color] about their Occupation
+
 
 Additional Notes:
-- Citizens who Lie about their Occupation are Confused"])
+- Citizens who [color=#b65c5f]Lie[/color] about their Occupation are Fools"])
 metadata/_custom_type_script = "uid://csy0x4mgdxs00"
 
 [sub_resource type="Resource" id="Resource_vhogm"]
@@ -21,16 +22,9 @@ title = "TRAIT SHEET"
 info = Array[String](["Fool: 
 	Drinks from the cup that is in front of themselves
 
+
 Sage:
-	Drinks from the cup that is NOT in front of themselves
-
-Confused:
-	Believes all Fools are Sages and all Sages are Fools	
-
-
-Liar/Lying/Lie (x):
-	Character Sheet entry \"x\" is false
-"])
+	Drinks from the cup that is NOT in front of themselves"])
 metadata/_custom_type_script = "uid://csy0x4mgdxs00"
 
 [resource]

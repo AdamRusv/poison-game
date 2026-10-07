@@ -5,40 +5,40 @@
 [ext_resource type="Script" uid="uid://fn2tb2dtu6fj" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue.gd" id="2_g2q5l"]
 [ext_resource type="Script" uid="uid://qr661epbiujn" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue tree.gd" id="3_3dw20"]
 
-[sub_resource type="Resource" id="Resource_485qr"]
+[sub_resource type="Resource" id="Resource_neqfg"]
 script = ExtResource("2_g2q5l")
 speaker = 1
 dialogue = "Woah, thanks for arriving so soon!"
 metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
 
-[sub_resource type="Resource" id="Resource_ma8h4"]
+[sub_resource type="Resource" id="Resource_6eb78"]
 script = ExtResource("2_g2q5l")
-dialogue = "Of course! As an elder, it is our duty to teach new players The Game"
+dialogue = "Of course! As an elder, it is our duty to teach new players The Poison Game"
 metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
 
-[sub_resource type="Resource" id="Resource_11j1y"]
+[sub_resource type="Resource" id="Resource_fb3j3"]
 script = ExtResource("2_g2q5l")
 dialogue = "The goal of this Game is to avoid drinking the Poison"
 metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
 
-[sub_resource type="Resource" id="Resource_lypjb"]
+[sub_resource type="Resource" id="Resource_0hcow"]
 script = ExtResource("2_g2q5l")
 dialogue = "To achieve this goal, you must figure out which cup I will choose"
 metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
 
-[sub_resource type="Resource" id="Resource_3dw20"]
+[sub_resource type="Resource" id="Resource_g7yw3"]
 script = ExtResource("2_g2q5l")
-dialogue = " From there, you'll know where to put the Poison"
+dialogue = "From there, you'll know where to put the Poison"
 metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
 
-[sub_resource type="Resource" id="Resource_g2q5l"]
+[sub_resource type="Resource" id="Resource_xsf05"]
 script = ExtResource("2_g2q5l")
 dialogue = "Go ahead and grab the Poison. Since you are still learning, just place it into my cup"
 metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
 
 [sub_resource type="Resource" id="Resource_qclil"]
 script = ExtResource("1_485qr")
-dialogue = Array[ExtResource("2_g2q5l")]([SubResource("Resource_485qr"), SubResource("Resource_ma8h4"), SubResource("Resource_11j1y"), SubResource("Resource_lypjb"), SubResource("Resource_3dw20"), SubResource("Resource_g2q5l")])
+dialogue = Array[ExtResource("2_g2q5l")]([SubResource("Resource_neqfg"), SubResource("Resource_6eb78"), SubResource("Resource_fb3j3"), SubResource("Resource_0hcow"), SubResource("Resource_g7yw3"), SubResource("Resource_xsf05")])
 metadata/_custom_type_script = "uid://e0ujmn3oiqx0"
 
 [sub_resource type="Resource" id="Resource_se4xb"]

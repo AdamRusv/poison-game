@@ -1,6 +1,6 @@
 extends ClickDrag
 
-class_name Paper #TODO: SET Z INDEX TO 0
+class_name Paper
 
 @export_category("References")
 @export var paperTitleLabel : RichTextLabel
