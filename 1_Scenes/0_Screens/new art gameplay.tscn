@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://bmf0h3auqyyc8" path="res://0_Art/2_PNGs/players cup event-Sheet.png" id="13_27tka"]
 [ext_resource type="Texture2D" uid="uid://brkvp2w453xgk" path="res://0_Art/2_PNGs/payer username-Sheet.png" id="14_sv52f"]
 [ext_resource type="Script" uid="uid://dwp2cvaysi6vj" path="res://2_Scripts/2_Independent/dialogue manager.gd" id="15_vpgj7"]
+[ext_resource type="Texture2D" uid="uid://clow3s7e2s771" path="res://0_Art/New_Art(Needs Sorting)/settings icon.png" id="24_g2at3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_03xhq"]
 atlas = ExtResource("8_03xhq")
@@ -1161,3 +1162,11 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=777511926]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 5.0
+offset_right = 43.0
+offset_bottom = 35.0
+texture = ExtResource("24_g2at3")
