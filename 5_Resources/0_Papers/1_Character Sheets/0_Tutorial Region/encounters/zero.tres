@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cg4ujw8mauohh" path="res://2_Scripts/3_Dependent/encounter info.gd" id="1_hfrbg"]
 [ext_resource type="Script" uid="uid://fn2tb2dtu6fj" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue.gd" id="2_g2q5l"]
 [ext_resource type="Script" uid="uid://qr661epbiujn" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue tree.gd" id="3_3dw20"]
+[ext_resource type="Script" uid="uid://chre6fsqbhfrk" path="res://2_Scripts/3_Dependent/0_Dialogue/branch intro.gd" id="3_na71q"]
 
 [sub_resource type="Resource" id="Resource_neqfg"]
 script = ExtResource("2_g2q5l")
@@ -36,14 +37,14 @@ script = ExtResource("2_g2q5l")
 dialogue = "Go ahead and grab the Poison. Since you are still learning, just place it into my cup"
 metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
 
-[sub_resource type="Resource" id="Resource_qclil"]
-script = ExtResource("1_485qr")
+[sub_resource type="Resource" id="Resource_dv0cg"]
+script = ExtResource("3_na71q")
 dialogue = Array[ExtResource("2_g2q5l")]([SubResource("Resource_neqfg"), SubResource("Resource_6eb78"), SubResource("Resource_fb3j3"), SubResource("Resource_0hcow"), SubResource("Resource_g7yw3"), SubResource("Resource_xsf05")])
-metadata/_custom_type_script = "uid://e0ujmn3oiqx0"
+metadata/_custom_type_script = "uid://chre6fsqbhfrk"
 
 [sub_resource type="Resource" id="Resource_se4xb"]
 script = ExtResource("3_3dw20")
-branches = Array[ExtResource("1_485qr")]([SubResource("Resource_qclil")])
+branches = Array[ExtResource("1_485qr")]([SubResource("Resource_dv0cg")])
 metadata/_custom_type_script = "uid://qr661epbiujn"
 
 [resource]

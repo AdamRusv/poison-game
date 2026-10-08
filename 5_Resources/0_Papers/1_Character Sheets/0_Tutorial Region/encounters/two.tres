@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://e0ujmn3oiqx0" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue branch.gd" id="1_griqq"]
 [ext_resource type="Script" uid="uid://fn2tb2dtu6fj" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue.gd" id="2_kd850"]
 [ext_resource type="Script" uid="uid://qr661epbiujn" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue tree.gd" id="3_dv0cg"]
+[ext_resource type="Script" uid="uid://chre6fsqbhfrk" path="res://2_Scripts/3_Dependent/0_Dialogue/branch intro.gd" id="3_kd850"]
 
 [sub_resource type="Resource" id="Resource_pc0g8"]
 script = ExtResource("2_kd850")
@@ -31,14 +32,14 @@ script = ExtResource("2_kd850")
 dialogue = "Best of luck!"
 metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
 
-[sub_resource type="Resource" id="Resource_61cyn"]
-script = ExtResource("1_griqq")
+[sub_resource type="Resource" id="Resource_yqjtl"]
+script = ExtResource("3_kd850")
 dialogue = Array[ExtResource("2_kd850")]([SubResource("Resource_pc0g8"), SubResource("Resource_l4ijl"), SubResource("Resource_312to"), SubResource("Resource_xvvbx"), SubResource("Resource_433kl")])
-metadata/_custom_type_script = "uid://e0ujmn3oiqx0"
+metadata/_custom_type_script = "uid://chre6fsqbhfrk"
 
 [sub_resource type="Resource" id="Resource_uflgm"]
 script = ExtResource("3_dv0cg")
-branches = Array[ExtResource("1_griqq")]([SubResource("Resource_61cyn")])
+branches = Array[ExtResource("1_griqq")]([SubResource("Resource_yqjtl")])
 metadata/_custom_type_script = "uid://qr661epbiujn"
 
 [resource]

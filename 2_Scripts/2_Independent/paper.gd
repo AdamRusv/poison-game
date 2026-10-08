@@ -18,6 +18,12 @@ var isPacket : bool = false
 
 var paperPadding : float = 40
 
+var paperIsMoving : bool = false
+
+func _ready() -> void:
+	super._ready()
+	_animate_into_frame()
+
 func _set_connections():
 	super._set_connections()
 	pageFlipButton.mouse_entered.connect(_on_pageflip_enter)
@@ -29,16 +35,22 @@ func _process(delta: float) -> void:
 	_clamp_paper()
 
 func _on_down():
+	if paperIsMoving == true:
+		return
 	super._on_down()
 	playmat.paperHolder.move_child(self, playmat.paperHolder.get_children().size() - 1)
 	_squish_paper()
 
 func _on_up():
+	if paperIsMoving == true:
+		return
 	super._on_up()
 	_reset_paper()
 
 #-------------------
 func _clamp_paper():
+	if paperIsMoving == true:
+		return
 	var playmatRect : Rect2 = playmat.get_rect()
 	var paperRect : Rect2 = parentNode.get_rect()
 	
@@ -109,3 +121,22 @@ func _on_pageflip_clicked():
 func _set_pageflip_texture_to(newRect : Rect2):
 	var atlasTexture : AtlasTexture = pageFlipTexture.texture
 	atlasTexture.region = newRect
+
+#----------------
+var startPos : Vector2 = Vector2(520, 640)
+func _animate_into_frame():
+	paperIsMoving = true
+	parentNode.position = startPos
+	
+	await get_tree().create_timer(randf_range(0, 1)).timeout
+	
+	var endPos : Vector2 = playmat._get_random_paper_spawn_location()
+	var moveSpeed : float = randi_range(650, 700)
+	var duration : float = endPos.distance_to(startPos) / moveSpeed
+	
+	var newTween : Tween = create_tween()
+	newTween.tween_property(parentNode, "position", endPos, duration)\
+	.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	
+	await newTween.finished
+	paperIsMoving = false

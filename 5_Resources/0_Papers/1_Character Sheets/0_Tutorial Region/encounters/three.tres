@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://e0ujmn3oiqx0" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue branch.gd" id="1_lpmyb"]
 [ext_resource type="Script" uid="uid://cg4ujw8mauohh" path="res://2_Scripts/3_Dependent/encounter info.gd" id="1_x58e1"]
 [ext_resource type="Script" uid="uid://fn2tb2dtu6fj" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue.gd" id="2_vfyv6"]
+[ext_resource type="Script" uid="uid://chre6fsqbhfrk" path="res://2_Scripts/3_Dependent/0_Dialogue/branch intro.gd" id="3_vfyv6"]
 [ext_resource type="Script" uid="uid://qr661epbiujn" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue tree.gd" id="3_yqjtl"]
 
 [sub_resource type="Resource" id="Resource_dv0cg"]
@@ -20,14 +21,20 @@ script = ExtResource("2_vfyv6")
 dialogue = "You got this! I believe in you!"
 metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
 
-[sub_resource type="Resource" id="Resource_hi1fs"]
-script = ExtResource("1_lpmyb")
-dialogue = Array[ExtResource("2_vfyv6")]([SubResource("Resource_dv0cg"), SubResource("Resource_kd850"), SubResource("Resource_griqq")])
-metadata/_custom_type_script = "uid://e0ujmn3oiqx0"
+[sub_resource type="Resource" id="Resource_5ccs8"]
+script = ExtResource("2_vfyv6")
+speaker = 1
+dialogue = "Wow, thanks!"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_312to"]
+script = ExtResource("3_vfyv6")
+dialogue = Array[ExtResource("2_vfyv6")]([SubResource("Resource_dv0cg"), SubResource("Resource_kd850"), SubResource("Resource_griqq"), SubResource("Resource_5ccs8")])
+metadata/_custom_type_script = "uid://chre6fsqbhfrk"
 
 [sub_resource type="Resource" id="Resource_n6jon"]
 script = ExtResource("3_yqjtl")
-branches = Array[ExtResource("1_lpmyb")]([SubResource("Resource_hi1fs")])
+branches = Array[ExtResource("1_lpmyb")]([SubResource("Resource_312to")])
 metadata/_custom_type_script = "uid://qr661epbiujn"
 
 [resource]

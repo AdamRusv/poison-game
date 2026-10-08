@@ -7,7 +7,6 @@ class_name DialogueManager
 @export var scrollContainer : ScrollContainer
 @export var content : VBoxContainer
 
-
 func _ready() -> void:
 	gameplayManager.dialogueManager = self
 func _process(delta: float) -> void:
@@ -24,18 +23,14 @@ func _start_dialogue():
 	_trigger_dialogue_branch()
 
 func _trigger_dialogue_branch():
-	canScroll = false
-	
 	var encounterDialogue : DialogueTree = gameplayManager.playmatManager.characterSheet.dialogueTree
 	
 	var newDialogue : Dialogue = encounterDialogue._get_newest_dialogue()
 	if newDialogue == null:
-		canScroll = true
 		return
 	
 	if encounterDialogue._get_current_branch().newestDialogueIndex >= encounterDialogue._get_current_branch().dialogue.size() - 1:
 		encounterDialogue._get_current_branch().hasBeenShown = true
-		canScroll = true
 		return
 	
 	await _create_dialogue_bubble()
@@ -43,6 +38,8 @@ func _trigger_dialogue_branch():
 	_trigger_dialogue_branch()
 
 func _set_dialogue_view_to_bottom():
+	if isScrolling == true:
+		return
 	await get_tree().process_frame
 	var maxScrollValue : float = scrollContainer.get_v_scroll_bar().max_value - scrollContainer.get_v_scroll_bar().page
 	scrollContainer.scroll_vertical = maxScrollValue 
@@ -104,15 +101,11 @@ func _animate_new_dialogue_bubble(dialogueBubble : DialogueBubble) -> Tween:
 
 #---------------SCROLL---------------
 var isScrolling : bool = false
+var isSkipping : bool = false
 var startMousePos : Vector2 = Vector2.ZERO
 var startScrollPos : float
-var canScroll : bool = false
 
 func _manage_scroll():
-	if canScroll == false:
-		isScrolling = false
-		return
-	
 	if Input.is_action_just_pressed("left click"):
 		if _is_cursor_within_scroll_zone() == true:
 			startMousePos = get_global_mouse_position()
@@ -128,12 +121,6 @@ func _manage_scroll():
 		var finalValue : float = clamp(newScrollPos, 0, maxScrollValue)
 		
 		scrollContainer.scroll_vertical = finalValue
-
-func _enable_scroll():
-	canScroll = true
-
-func _disable_scroll():
-	canScroll = true
 
 #- - -
 func _is_cursor_within_scroll_zone() -> bool:

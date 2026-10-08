@@ -5,6 +5,7 @@ class_name PlaymatManager
 @export_category("References")
 @export var gameplayManager : GameplayManager
 @export var paperHolder : Control
+@export var spawnLocations : Control
 
 var mainTraitSheet : PaperInfo
 var characterSheet : EncounterInfo
@@ -39,3 +40,9 @@ func _create_paper(paperRef : PackedScene, paperColor : Color, paperInfo : Paper
 	paperInstance.playmat = self
 	
 	paperHolder.add_child(paperInstance)
+
+#----------------------
+func _get_random_paper_spawn_location() -> Vector2:
+	var xPoint : int = randi_range(spawnLocations.position.x, spawnLocations.size.x)
+	var yPoint : int = randi_range(spawnLocations.position.y, spawnLocations.size.y)
+	return Vector2(xPoint, yPoint)

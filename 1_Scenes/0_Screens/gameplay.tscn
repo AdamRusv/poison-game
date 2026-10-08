@@ -1021,7 +1021,7 @@ theme_override_constants/margin_bottom = 4
 layout_mode = 2
 color = Color(0.16078432, 0.14117648, 0.09411765, 1)
 
-[node name="Playmat" type="MarginContainer" parent="Layout/HBoxContainer" unique_id=1398525186 node_paths=PackedStringArray("gameplayManager", "paperHolder")]
+[node name="Playmat" type="MarginContainer" parent="Layout/HBoxContainer" unique_id=1398525186 node_paths=PackedStringArray("gameplayManager", "paperHolder", "spawnLocations")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -1030,6 +1030,7 @@ theme_override_constants/margin_left = 2
 script = ExtResource("2_lv7np")
 gameplayManager = NodePath("../../..")
 paperHolder = NodePath("Parent/Paper Holder")
+spawnLocations = NodePath("Parent/Paper Holder/Spawn Locations")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Layout/HBoxContainer/Playmat" unique_id=331557050]
 layout_mode = 2
@@ -1051,6 +1052,14 @@ theme_override_constants/margin_bottom = 6
 [node name="Paper Holder" type="Control" parent="Layout/HBoxContainer/Playmat/Parent" unique_id=1898689258]
 clip_contents = true
 layout_mode = 2
+
+[node name="Spawn Locations" type="Control" parent="Layout/HBoxContainer/Playmat/Parent/Paper Holder" unique_id=2004756531]
+anchors_preset = 0
+offset_left = 29.0
+offset_top = 35.0
+offset_right = 224.0
+offset_bottom = 151.0
+mouse_filter = 2
 
 [node name="Flat Mockup" type="TextureRect" parent="." unique_id=904773487]
 layout_mode = 1
