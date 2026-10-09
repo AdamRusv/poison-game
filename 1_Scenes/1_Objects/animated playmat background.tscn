@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://rsw3hc3888f5"]
+
+[ext_resource type="Material" uid="uid://c03bveoardhkt" path="res://4_Shaders/1_Materials/animatedplaymatbackground.tres" id="1_ih2j1"]
+
+[node name="animated playmat background" type="Control" unique_id=1554904307]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=221806945]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=731978780]
+disable_3d = true
+transparent_bg = true
+canvas_item_default_texture_filter = 0
+gui_snap_controls_to_pixels = false
+size = Vector2i(640, 360)
+
+[node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport" unique_id=675643042]
+material = ExtResource("1_ih2j1")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

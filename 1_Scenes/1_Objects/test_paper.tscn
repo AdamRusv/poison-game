@@ -29,19 +29,18 @@ parentNode = NodePath(".")
 detectionArea = NodePath("Drag Button")
 
 [node name="Packet Behind Paper" type="MarginContainer" parent="." unique_id=916936904]
-visible = false
 layout_mode = 2
 offset_transform_enabled = true
-offset_transform_position = Vector2(6, 6)
+offset_transform_position = Vector2(5, 5)
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Packet Behind Paper" unique_id=814032050]
 layout_mode = 2
 texture = ExtResource("2_7bue3")
-region_rect = Rect2(0, 0, 168, 129)
+region_rect = Rect2(0, 0, 174, 135)
 patch_margin_left = 11
 patch_margin_top = 20
-patch_margin_right = 17
-patch_margin_bottom = 13
+patch_margin_right = 23
+patch_margin_bottom = 16
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 2
 
@@ -98,13 +97,14 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_2y7yb")
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 20
 
 [node name="Info Label" type="RichTextLabel" parent="VBoxContainer/Info Container" unique_id=1717520262]
 layout_mode = 2
 theme = ExtResource("3_20iqj")
 text = "????????????????????????????????????
 
-???????????????????????????????????"
+????????????????????????????????????"
 fit_content = true
 scroll_active = false
 
@@ -119,13 +119,12 @@ focus_mode = 0
 flat = true
 
 [node name="Page Flip Container" type="MarginContainer" parent="." unique_id=1337673711]
-visible = false
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 offset_transform_enabled = true
-offset_transform_position = Vector2(2, 2)
+offset_transform_position = Vector2(-2, -2)
 
 [node name="Page Flip Corner Texture" type="TextureRect" parent="Page Flip Container" unique_id=1735048998]
 layout_mode = 2
