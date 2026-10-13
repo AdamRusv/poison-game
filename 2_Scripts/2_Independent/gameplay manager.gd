@@ -3,7 +3,7 @@ extends Control
 class_name GameplayManager
 
 @export var gameTimeline : GameTimeline
-@export var temporaryRegionNumber : TextureRect
+@export var timelineCounterLabel : RichTextLabel
 
 var playmatManager : PlaymatManager
 var poisonManager : PoisonManager
@@ -38,22 +38,12 @@ var gamestateJSON : GamestateJSON = GamestateJSON.new()
 func _ready() -> void:
 	gamestateJSON._load_gamestate()
 	currentRegion = gameTimeline.timeline[gamestateJSON.timelineIndex]
-	_temportary_set_region_number()
+	_update_timeline_counter()
 	_set_connections()
 	_start_new_encounter()
 func _set_connections():
 	newEncounter.connect(_set_next_encounter)
 	restartEncounter.connect(_restart_current_encounter)
-func _temportary_set_region_number():
-	match gamestateJSON.timelineIndex:
-		0:
-			temporaryRegionNumber.texture.region = Rect2i(0, 0, 55, 30)
-		1:
-			temporaryRegionNumber.texture.region = Rect2i(55, 0, 55, 30)
-		2:
-			temporaryRegionNumber.texture.region = Rect2i(55 * 2, 0, 55, 30)
-		3:
-			temporaryRegionNumber.texture.region = Rect2i(55 * 3, 0, 55, 30)
 
 func _start_new_encounter():
 	TransitionManager._create_transition()
@@ -64,6 +54,27 @@ func _start_new_encounter():
 	
 	await get_tree().create_timer(1).timeout
 	dialogueManager._start_dialogue()
+
+func _update_timeline_counter():
+	var counterText : String = ""
+	
+	var regionNumber : int = 0
+	var initalEncounterNumber : int = 0
+	for i in range(0, gameTimeline.timeline.size()):
+		var region : RegionInfo = gameTimeline.timeline[i]
+		if i > gamestateJSON.timelineIndex:
+			break
+		
+		if region.countAsEncounter == true:
+			initalEncounterNumber += 1
+		
+		if region.increaseRegion == true:
+			regionNumber += 1
+			initalEncounterNumber = 0
+		
+	var encounterNumber : int = initalEncounterNumber + gamestateJSON.currentRegionEncounterCount - 1
+	counterText = str(regionNumber) + " - " + str(encounterNumber)
+	timelineCounterLabel.text = counterText
 
 #- - -
 func _setup_encounter_papers():

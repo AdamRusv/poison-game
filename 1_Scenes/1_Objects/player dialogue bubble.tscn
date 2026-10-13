@@ -34,10 +34,10 @@ theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 4
 
 [node name="dialogue Label" type="RichTextLabel" parent="Visual Holder/MarginContainer" unique_id=30857362]
-custom_maximum_size = Vector2(111, -1)
 layout_mode = 2
 theme = ExtResource("3_ywpx2")
 text = "?????????????????"
 fit_content = true
 scroll_active = false
+autowrap_mode = 0
 visible_characters_behavior = 1

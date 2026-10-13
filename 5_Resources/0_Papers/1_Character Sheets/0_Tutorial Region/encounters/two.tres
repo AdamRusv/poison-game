@@ -24,7 +24,7 @@ metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
 
 [sub_resource type="Resource" id="Resource_xvvbx"]
 script = ExtResource("2_kd850")
-dialogue = "The Atlas is a middleman between Character Sheet and the Trait Sheet"
+dialogue = "The Atlas is the middleman between Character Sheet and the Trait Sheet"
 metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
 
 [sub_resource type="Resource" id="Resource_433kl"]

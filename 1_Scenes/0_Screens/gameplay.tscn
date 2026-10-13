@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cvg0nvvipe48r" path="res://0_Art/2_PNGs/placeholder mockup.png" id="3_82xv0"]
 [ext_resource type="Texture2D" uid="uid://0kb1u8s0qjx5" path="res://0_Art/2_PNGs/trim.png" id="4_0hcow"]
 [ext_resource type="Texture2D" uid="uid://dy254ypb8l7vp" path="res://0_Art/2_PNGs/poison button-Sheet.png" id="4_gngdi"]
+[ext_resource type="Theme" uid="uid://3jsfntrv31jg" path="res://6_Other/large font.tres" id="6_0hcow"]
 [ext_resource type="Script" uid="uid://dsk6k5x0e30hn" path="res://2_Scripts/2_Independent/poison manager.gd" id="6_pq3d1"]
 [ext_resource type="Script" uid="uid://v10r8rve43tc" path="res://2_Scripts/2_Independent/cups manager.gd" id="7_3udmd"]
 [ext_resource type="Texture2D" uid="uid://flm20d8isxx2" path="res://0_Art/2_PNGs/travel button-Sheet.png" id="10_fn5ot"]
@@ -17,7 +18,6 @@
 [ext_resource type="Texture2D" uid="uid://bmf0h3auqyyc8" path="res://0_Art/2_PNGs/players cup event-Sheet.png" id="12_rkkk6"]
 [ext_resource type="Script" uid="uid://coy0g8tjc8t7i" path="res://2_Scripts/2_Independent/players manager.gd" id="12_ywih6"]
 [ext_resource type="Texture2D" uid="uid://brkvp2w453xgk" path="res://0_Art/2_PNGs/payer username-Sheet.png" id="14_c4l6l"]
-[ext_resource type="Texture2D" uid="uid://cbh3nokegijqt" path="res://0_Art/2_PNGs/temporary tutorial region numbers-Sheet.png" id="18_g7yw3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fb3j3"]
 shader = ExtResource("2_1cjw6")
@@ -889,11 +889,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yprsh"]
-atlas = ExtResource("18_g7yw3")
-region = Rect2(0, 0, 55, 30)
-
-[node name="Gameplay" type="Control" unique_id=1427164321 node_paths=PackedStringArray("temporaryRegionNumber")]
+[node name="Gameplay" type="Control" unique_id=1427164321 node_paths=PackedStringArray("timelineCounterLabel")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -902,7 +898,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0sltt")
 gameTimeline = ExtResource("2_g7yw3")
-temporaryRegionNumber = NodePath("temporary tutorial region number")
+timelineCounterLabel = NodePath("Layout/HBoxContainer/MarginContainer/VBoxContainer/Accessibility/solid background/Region Holder/Region Label")
 
 [node name="background" type="ColorRect" parent="." unique_id=1846741751]
 layout_mode = 1
@@ -970,6 +966,19 @@ theme_override_constants/margin_bottom = 4
 [node name="ColorRect" type="ColorRect" parent="Layout/HBoxContainer/MarginContainer/VBoxContainer/Accessibility/solid background" unique_id=1698973065]
 layout_mode = 2
 color = Color(0.16078432, 0.14117648, 0.09411765, 1)
+
+[node name="Region Holder" type="MarginContainer" parent="Layout/HBoxContainer/MarginContainer/VBoxContainer/Accessibility/solid background" unique_id=922834627]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/margin_right = 9
+
+[node name="Region Label" type="RichTextLabel" parent="Layout/HBoxContainer/MarginContainer/VBoxContainer/Accessibility/solid background/Region Holder" unique_id=2028892843]
+layout_mode = 2
+theme = ExtResource("6_0hcow")
+text = "0 - 1"
+fit_content = true
+autowrap_mode = 0
 
 [node name="Character" type="MarginContainer" parent="Layout/HBoxContainer/MarginContainer/VBoxContainer" unique_id=1308443707]
 layout_mode = 2
@@ -1110,6 +1119,25 @@ NEUTRAL_STATE = Rect2i(0, 0, 209, 64)
 HOVERED_STATE = Rect2i(209, 0, 209, 64)
 PRESSED_STATE = Rect2i(418, 0, 209, 64)
 
+[node name="Region Holder" type="MarginContainer" parent="Travel Texture" unique_id=1937392430]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="Region Label" type="RichTextLabel" parent="Travel Texture/Region Holder" unique_id=695078124]
+layout_mode = 2
+theme = ExtResource("6_0hcow")
+text = "Next Member"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="travel button" type="Button" parent="Travel Texture" unique_id=1700823552]
 layout_mode = 0
 offset_left = 9.0
@@ -1208,12 +1236,3 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 0
-
-[node name="temporary tutorial region number" type="TextureRect" parent="." unique_id=419289354]
-layout_mode = 0
-offset_left = 157.0
-offset_top = 5.0
-offset_right = 212.0
-offset_bottom = 35.0
-texture = SubResource("AtlasTexture_yprsh")
-stretch_mode = 2

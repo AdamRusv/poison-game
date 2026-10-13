@@ -10,5 +10,9 @@ class_name RegionInfo
 
 @export var noteSheet : bool = true
 
+@export_group("Timeline Counter")
+@export var increaseRegion : bool = false
+@export var countAsEncounter : bool = false
+
 ##orders the encounters as they are listed in the Array. 0 is first
 #@export var linearEncounters : bool = false

@@ -9,4 +9,5 @@ script = ExtResource("3_o16es")
 totalEncounters = 1
 characterSheets = Array[ExtResource("1_hvbcb")]([ExtResource("2_dc7e1")])
 noteSheet = false
+countAsEncounter = true
 metadata/_custom_type_script = "uid://851asxmj8i78"

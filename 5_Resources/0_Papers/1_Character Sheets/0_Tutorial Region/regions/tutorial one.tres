@@ -22,4 +22,5 @@ totalEncounters = 1
 traitSheet = SubResource("Resource_kgvl5")
 characterSheets = Array[ExtResource("1_bps0n")]([ExtResource("2_765pw")])
 noteSheet = false
+countAsEncounter = true
 metadata/_custom_type_script = "uid://851asxmj8i78"

@@ -30,4 +30,5 @@ traitSheet = SubResource("Resource_vhogm")
 characterSheets = Array[ExtResource("1_erlc8")]([ExtResource("3_vhogm")])
 atlas = SubResource("Resource_jigre")
 noteSheet = false
+countAsEncounter = true
 metadata/_custom_type_script = "uid://851asxmj8i78"

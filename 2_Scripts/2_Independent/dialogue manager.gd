@@ -50,7 +50,7 @@ var opponenetDialogueBubbleRef : PackedScene = preload("res://1_Scenes/1_Objects
 var separatorRef : PackedScene = preload("res://1_Scenes/1_Objects/different speaker separator.tscn")
 var bubbles : Array[DialogueBubble]
 
-func _create_dialogue_bubble() -> Tween:
+func _create_dialogue_bubble():
 	var encounterDialogue : DialogueTree = gameplayManager.playmatManager.characterSheet.dialogueTree
 	var newDialogue : Dialogue = encounterDialogue._get_new_dialogue()
 
@@ -84,7 +84,7 @@ func _create_dialogue_bubble() -> Tween:
 	
 	_set_dialogue_view_to_bottom()
 	await _animate_new_dialogue_bubble(dialogueBubble).finished
-	return 
+	return
 
 func _animate_new_dialogue_bubble(dialogueBubble : DialogueBubble) -> Tween:
 	var newTween : Tween = create_tween()
