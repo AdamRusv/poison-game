@@ -27,6 +27,7 @@ TweenManager="*uid://c6ojkbins2v4b"
 SoundManager="*uid://d3n8iwlhwslg6"
 GlobalReferences="*uid://be1788pmjydet"
 Overlay="*uid://sp4m3qieichu"
+BBCodeManager="*uid://dykp4apgivwjw"
 
 [debug]
 
