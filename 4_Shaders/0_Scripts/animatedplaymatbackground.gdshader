@@ -60,7 +60,7 @@ vec4 effect(vec2 screen_size, vec2 screen_coords) {
     highp float shape_value =
         horizontal_shapes
         + vertical_shapes
-        + diagonal_shapes * 0.45;
+        + diagonal_shapes * 0.05;
 
     // Divide the pattern into three solid-color regions.
     highp float middle_mask = step(-0.35, shape_value);

@@ -1,4 +1,6 @@
-extends Node
+extends Resource
+
+class_name BBCodePaperManager
 
 const LIE_COLOR : String = "#b65c5f"
 const FOOL_COLOR : String = "#66845f"
@@ -12,18 +14,17 @@ const KEYWORD_COLORS : Dictionary = {
 	"fools": FOOL_COLOR,
 	"sage": SAGE_COLOR,
 	"sages": SAGE_COLOR,
-
 }
 
 var _regex : RegEx
 
-func _ready() -> void:
+func _init() -> void:
 	var keys : Array = KEYWORD_COLORS.keys()
 	keys.sort_custom(func(a,b): return a.length() > b.length())
 	_regex = RegEx.new()
 	_regex.compile("(?i)\\b(" + "|".join(keys) + ")\\b")
-
-func highlight(text : String) -> String:
+	
+func _highlight(text : String) -> String:
 	var result : String = ""
 	var last_end : int = 0
 	for m in _regex.search_all(text):
