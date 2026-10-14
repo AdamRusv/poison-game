@@ -8,11 +8,17 @@
 [ext_resource type="Texture2D" uid="uid://45euc58cfisf" path="res://0_Art/New_Art(Needs Sorting)/Footer Sprite.png" id="4_7yujx"]
 [ext_resource type="Texture2D" uid="uid://d2186g0fqpjl" path="res://0_Art/New_Art(Needs Sorting)/Header Sprite.png" id="4_40vfy"]
 [ext_resource type="Resource" uid="uid://4sdebs2jy8hr" path="res://5_Resources/0_Papers/1_Character Sheets/0_Tutorial Region/tubby jones.tres" id="5_7yujx"]
+[ext_resource type="Texture2D" uid="uid://o2u0bg7rmjeg" path="res://0_Art/New_Art(Needs Sorting)/Portrait_Background.png" id="5_sv52f"]
 [ext_resource type="Resource" uid="uid://cj55yjaxgcvqn" path="res://5_Resources/0_Papers/1_Character Sheets/0_Tutorial Region/atlas regions/towerville.tres" id="6_40vfy"]
+[ext_resource type="Texture2D" uid="uid://bgs7wji7h15is" path="res://0_Art/New_Art(Needs Sorting)/Portrait_Midground.png" id="6_vpgj7"]
 [ext_resource type="Texture2D" uid="uid://btnen37gap7x0" path="res://0_Art/New_Art(Needs Sorting)/poisonGame-Screenshot.png" id="7_03xhq"]
+[ext_resource type="Texture2D" uid="uid://djf7k24188yma" path="res://0_Art/New_Art(Needs Sorting)/Portrait_Foreground.png" id="7_xesiu"]
 [ext_resource type="Texture2D" uid="uid://cemkxjrc7ks0p" path="res://0_Art/New_Art(Needs Sorting)/poison button-Sheet.png" id="8_03xhq"]
+[ext_resource type="Texture2D" uid="uid://cnujjxwui77dp" path="res://0_Art/New_Art(Needs Sorting)/Portrait_Background - New Color.png" id="8_m6j1m"]
 [ext_resource type="Script" uid="uid://dsk6k5x0e30hn" path="res://2_Scripts/2_Independent/poison manager.gd" id="9_50f8m"]
+[ext_resource type="Texture2D" uid="uid://co0id6c1gnyia" path="res://0_Art/New_Art(Needs Sorting)/Portrait_Midground - New Color.png" id="9_mnvto"]
 [ext_resource type="Script" uid="uid://v10r8rve43tc" path="res://2_Scripts/2_Independent/cups manager.gd" id="10_g2at3"]
+[ext_resource type="Texture2D" uid="uid://cahv8fckkdhw3" path="res://0_Art/New_Art(Needs Sorting)/Portrait_Foreground - New Color.png" id="10_qxjdy"]
 [ext_resource type="Texture2D" uid="uid://cc7m60xat02gv" path="res://0_Art/2_PNGs/cups indicator-Sheet.png" id="11_smu13"]
 [ext_resource type="Script" uid="uid://coy0g8tjc8t7i" path="res://2_Scripts/2_Independent/players manager.gd" id="12_dhbgt"]
 [ext_resource type="Texture2D" uid="uid://cfd153lq1jlhb" path="res://0_Art/New_Art(Needs Sorting)/Right Table Sprite Runner No Slice.png" id="12_q712t"]
@@ -24,15 +30,6 @@
 [ext_resource type="Texture2D" uid="uid://clow3s7e2s771" path="res://0_Art/New_Art(Needs Sorting)/settings icon.png" id="24_g2at3"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_w8sod"]
-load_path = "res://.godot/imported/poisonGame-PortraitAngled.png-fbbd62950710131a9302a256c0016ebd.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_q712t"]
-load_path = "res://.godot/imported/poisonGame-PortraitAngled.png-fbbd62950710131a9302a256c0016ebd.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_50f8m"]
-load_path = "res://.godot/imported/poisonGame-PortraitAngled.png-fbbd62950710131a9302a256c0016ebd.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_g2at3"]
 load_path = "res://.godot/imported/poisonGame-PortraitAngled.png-fbbd62950710131a9302a256c0016ebd.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_03xhq"]
@@ -1070,17 +1067,33 @@ layout_mode = 2
 texture = SubResource("CompressedTexture2D_w8sod")
 
 [node name="Background" type="TextureRect" parent="Main Game/HBoxContainer/VBoxContainer/Portrait" unique_id=1260617087]
+visible = false
 layout_mode = 2
 offset_transform_enabled = true
-texture = SubResource("CompressedTexture2D_q712t")
+texture = ExtResource("5_sv52f")
 
 [node name="Midground" type="TextureRect" parent="Main Game/HBoxContainer/VBoxContainer/Portrait" unique_id=1955906150]
+visible = false
 layout_mode = 2
-texture = SubResource("CompressedTexture2D_50f8m")
+texture = ExtResource("6_vpgj7")
 
 [node name="Foreground" type="TextureRect" parent="Main Game/HBoxContainer/VBoxContainer/Portrait" unique_id=1153960379]
+visible = false
 layout_mode = 2
-texture = SubResource("CompressedTexture2D_g2at3")
+texture = ExtResource("7_xesiu")
+
+[node name="Background - NC" type="TextureRect" parent="Main Game/HBoxContainer/VBoxContainer/Portrait" unique_id=1634258062]
+layout_mode = 2
+offset_transform_enabled = true
+texture = ExtResource("8_m6j1m")
+
+[node name="Midground - NC" type="TextureRect" parent="Main Game/HBoxContainer/VBoxContainer/Portrait" unique_id=1146049973]
+layout_mode = 2
+texture = ExtResource("9_mnvto")
+
+[node name="Foreground - NC" type="TextureRect" parent="Main Game/HBoxContainer/VBoxContainer/Portrait" unique_id=81598618]
+layout_mode = 2
+texture = ExtResource("10_qxjdy")
 
 [node name="Footer" type="MarginContainer" parent="Main Game/HBoxContainer/VBoxContainer" unique_id=522748834]
 custom_minimum_size = Vector2(0, 42)
@@ -1237,7 +1250,6 @@ layout_mode = 2
 texture = ExtResource("13_q712t")
 
 [node name="New Color Full" type="TextureRect" parent="Main Game/HBoxContainer/Playmat" unique_id=221424350]
-visible = false
 layout_mode = 2
 texture = ExtResource("14_50f8m")
 
