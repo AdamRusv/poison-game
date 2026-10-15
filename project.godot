@@ -11,10 +11,11 @@ config_version=5
 [application]
 
 config/name="Atropa"
-config/version="0.00.1"
-run/main_scene="uid://b30uvlt6um85f"
+config/description="Using logic, determine whether your opponent is a Fool or a Sage based on the provided information"
+config/version="0.00.2"
+run/main_scene="uid://ct7jlogagfbah"
 config/use_custom_user_dir=true
-config/custom_user_dir_name="Poison Game"
+config/custom_user_dir_name="Atropa"
 config/features=PackedStringArray("4.7", "Mobile")
 run/max_fps=160
 config/icon="res://0_Art/icon.svg"
@@ -25,6 +26,7 @@ Settings="*uid://b7h40e7hj32af"
 Keybinds="*uid://c8fo37kjonfjo"
 TweenManager="*uid://c6ojkbins2v4b"
 SoundManager="*uid://d3n8iwlhwslg6"
+TransitionManager="*uid://ctyunloqghaql"
 GlobalReferences="*uid://be1788pmjydet"
 Overlay="*uid://sp4m3qieichu"
 

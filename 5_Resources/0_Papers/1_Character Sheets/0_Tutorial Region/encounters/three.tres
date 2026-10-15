@@ -1,0 +1,55 @@
+[gd_resource type="Resource" script_class="EncounterInfo" format=3 uid="uid://c0r3iew4w8q46"]
+
+[ext_resource type="Script" uid="uid://e0ujmn3oiqx0" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue branch.gd" id="1_lpmyb"]
+[ext_resource type="Script" uid="uid://cg4ujw8mauohh" path="res://2_Scripts/3_Dependent/encounter info.gd" id="1_x58e1"]
+[ext_resource type="Script" uid="uid://fn2tb2dtu6fj" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue.gd" id="2_vfyv6"]
+[ext_resource type="Script" uid="uid://qr661epbiujn" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue tree.gd" id="3_yqjtl"]
+
+[sub_resource type="Resource" id="Resource_lpmyb"]
+script = ExtResource("2_vfyv6")
+dialogue = "Now that you know the basics"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_0wp8x"]
+script = ExtResource("2_vfyv6")
+dialogue = "It's time for you to have your first challenge!"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_vfyv6"]
+script = ExtResource("2_vfyv6")
+dialogue = "Same Papers as before, but now there are two Character Entries instead of just one"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_yqjtl"]
+script = ExtResource("2_vfyv6")
+dialogue = "The Trait Sheet also grew and now has four Traits listed"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_dgkr3"]
+script = ExtResource("2_vfyv6")
+dialogue = "You got this! I believe in you!"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_hi1fs"]
+script = ExtResource("1_lpmyb")
+dialogue = Array[ExtResource("2_vfyv6")]([SubResource("Resource_lpmyb"), SubResource("Resource_0wp8x"), SubResource("Resource_vfyv6"), SubResource("Resource_yqjtl"), SubResource("Resource_dgkr3")])
+metadata/_custom_type_script = "uid://e0ujmn3oiqx0"
+
+[sub_resource type="Resource" id="Resource_n6jon"]
+script = ExtResource("3_yqjtl")
+branches = Array[ExtResource("1_lpmyb")]([SubResource("Resource_hi1fs")])
+metadata/_custom_type_script = "uid://qr661epbiujn"
+
+[resource]
+script = ExtResource("1_x58e1")
+characterName = "Scrumpy Giggles Jr"
+dialogueTree = SubResource("Resource_n6jon")
+cupAnswer = 1
+title = "Character Sheet"
+info = Array[String]([", Scrumpytown 2
+
+
+1. Race: Satyr
+
+2. Occupation: Fletcher"])
+metadata/_custom_type_script = "uid://cg4ujw8mauohh"

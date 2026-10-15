@@ -1,0 +1,58 @@
+[gd_resource type="Resource" script_class="EncounterInfo" format=3 uid="uid://c331fdtleotss"]
+
+[ext_resource type="Script" uid="uid://e0ujmn3oiqx0" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue branch.gd" id="1_433kl"]
+[ext_resource type="Script" uid="uid://cg4ujw8mauohh" path="res://2_Scripts/3_Dependent/encounter info.gd" id="1_ti5pf"]
+[ext_resource type="Script" uid="uid://fn2tb2dtu6fj" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue.gd" id="2_xvvbx"]
+[ext_resource type="Script" uid="uid://qr661epbiujn" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue tree.gd" id="3_312to"]
+
+[sub_resource type="Resource" id="Resource_61cyn"]
+script = ExtResource("2_xvvbx")
+dialogue = "Good job at winning against Lillia"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_griqq"]
+script = ExtResource("2_xvvbx")
+dialogue = "Now that you know how to use the Poison, I will teach you how to use the Trait Sheet"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_kd850"]
+script = ExtResource("2_xvvbx")
+dialogue = "Take a look at the Papers in front of you"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_dv0cg"]
+script = ExtResource("2_xvvbx")
+dialogue = "By connecting the dots from my Character Sheet to the Trait Sheet..."
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_8lyae"]
+script = ExtResource("2_xvvbx")
+dialogue = "You should be able to figure out which cup to place the Poison in"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_c32j1"]
+script = ExtResource("2_xvvbx")
+dialogue = "Good luck!"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_atuju"]
+script = ExtResource("1_433kl")
+dialogue = Array[ExtResource("2_xvvbx")]([SubResource("Resource_61cyn"), SubResource("Resource_griqq"), SubResource("Resource_kd850"), SubResource("Resource_dv0cg"), SubResource("Resource_8lyae"), SubResource("Resource_c32j1")])
+metadata/_custom_type_script = "uid://e0ujmn3oiqx0"
+
+[sub_resource type="Resource" id="Resource_ebxdl"]
+script = ExtResource("3_312to")
+branches = Array[ExtResource("1_433kl")]([SubResource("Resource_atuju")])
+metadata/_custom_type_script = "uid://qr661epbiujn"
+
+[resource]
+script = ExtResource("1_ti5pf")
+characterName = "Poppy Power"
+dialogueTree = SubResource("Resource_ebxdl")
+cupAnswer = 2
+title = "Character Sheet"
+info = Array[String](["
+
+
+1. Sage"])
+metadata/_custom_type_script = "uid://cg4ujw8mauohh"

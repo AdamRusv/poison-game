@@ -13,15 +13,20 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	_manage_scroll()
 	
-	if Input.is_action_just_pressed("spacebar"):
-		_trigger_dialogue_branch()
+	#if Input.is_action_just_pressed("spacebar"):
+		#_trigger_dialogue_branch()
 
 #---------------
+func _start_dialogue():
+	var encounterDialogue : DialogueTree = gameplayManager.playmatManager.characterSheet.dialogueTree
+	encounterDialogue._setup_branches(gameplayManager)
+	
+	_trigger_dialogue_branch()
+
 func _trigger_dialogue_branch():
 	canScroll = false
 	
 	var encounterDialogue : DialogueTree = gameplayManager.playmatManager.characterSheet.dialogueTree
-	encounterDialogue._setup_branches(gameplayManager)
 	
 	var newDialogue : Dialogue = encounterDialogue._get_newest_dialogue()
 	if newDialogue == null:
@@ -34,7 +39,7 @@ func _trigger_dialogue_branch():
 		return
 	
 	await _create_dialogue_bubble()
-	await get_tree().create_timer(0.8).timeout ##TODO: replace with bubble tween
+	await get_tree().create_timer(0.8).timeout
 	_trigger_dialogue_branch()
 
 func _set_dialogue_view_to_bottom():

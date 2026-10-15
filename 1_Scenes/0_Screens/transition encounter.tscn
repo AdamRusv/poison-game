@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://nf0j4wfx3bih"]
+
+[ext_resource type="Script" uid="uid://c1igvtxqvjgy5" path="res://2_Scripts/2_Independent/transition encounter manager.gd" id="1_vlih6"]
+
+[sub_resource type="Gradient" id="Gradient_slp2b"]
+interpolation_mode = 1
+colors = PackedColorArray(0, 0, 0, 0, 0.8039216, 0.7294118, 0.5803922, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_504ay"]
+gradient = SubResource("Gradient_slp2b")
+width = 640
+height = 360
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Transition Encounter" type="Control" unique_id=1976091023 node_paths=PackedStringArray("circleTransition")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vlih6")
+circleTransition = NodePath("CanvasLayer/circle")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1445101702]
+
+[node name="circle" type="Sprite2D" parent="CanvasLayer" unique_id=1694783496]
+position = Vector2(320, 180)
+texture = SubResource("GradientTexture2D_504ay")
