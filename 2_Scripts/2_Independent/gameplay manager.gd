@@ -78,9 +78,15 @@ func _update_timeline_counter():
 
 #- - -
 func _setup_encounter_papers():
+	var nextEncounterIndex : int = gamestateJSON.currentCharacterIndex
+	if null: #TODO: have condition if passed last level
+		nextEncounterIndex = _get_next_encounter_index()
 	playmatManager.mainTraitSheet = currentRegion.traitSheet
-	playmatManager.characterSheet = currentRegion.characterSheets[_get_next_encounter_index()].duplicate(true)
+	playmatManager.characterSheet = currentRegion.characterSheets[nextEncounterIndex].duplicate(true)
 	playmatManager.atlasRegionSheet = currentRegion.atlas
+	
+	gamestateJSON.currentCharacterIndex = nextEncounterIndex
+	gamestateJSON._save_gamestate()
 
 #
 func _restart_current_encounter():
@@ -109,5 +115,13 @@ func _set_next_encounter():
 
 #- - -
 func _get_next_encounter_index() -> int:
-	#TODO: make random
-	return 0
+	var completedCharacters : Array = gamestateJSON.completedCharacters
+	var allCharacters : Array = currentRegion.characterSheets
+	var uncompletedCharacters : Array = []
+	for i in range(0, allCharacters.size()):
+		for completedCharacter in completedCharacters:
+			if i == completedCharacter:
+				continue
+		uncompletedCharacters.append(i)
+	var randomIndex : int = randi_range(0, uncompletedCharacters.size() - 1)
+	return uncompletedCharacters[randomIndex]

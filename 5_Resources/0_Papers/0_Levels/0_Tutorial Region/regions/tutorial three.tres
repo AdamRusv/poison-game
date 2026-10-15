@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cg4ujw8mauohh" path="res://2_Scripts/3_Dependent/encounter info.gd" id="1_ovmk1"]
 [ext_resource type="Script" uid="uid://851asxmj8i78" path="res://2_Scripts/3_Dependent/region info.gd" id="2_qesvq"]
-[ext_resource type="Resource" uid="uid://c0r3iew4w8q46" path="res://5_Resources/0_Papers/1_Character Sheets/0_Tutorial Region/encounters/three.tres" id="3_5ccs8"]
+[ext_resource type="Resource" uid="uid://c0r3iew4w8q46" path="res://5_Resources/0_Papers/0_Levels/0_Tutorial Region/encounters/three.tres" id="3_5ccs8"]
 [ext_resource type="Script" uid="uid://csy0x4mgdxs00" path="res://2_Scripts/3_Dependent/paperinfo.gd" id="3_qesvq"]
 
 [sub_resource type="Resource" id="Resource_5ccs8"]

@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="EncounterInfo" format=3 uid="uid://2ggvnaxi8ai6"]
+
+[ext_resource type="Script" uid="uid://e0ujmn3oiqx0" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue branch.gd" id="1_s6xrp"]
+[ext_resource type="Script" uid="uid://fn2tb2dtu6fj" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue.gd" id="2_tbb0o"]
+[ext_resource type="Script" uid="uid://chre6fsqbhfrk" path="res://2_Scripts/3_Dependent/0_Dialogue/branch intro.gd" id="3_n8rwi"]
+[ext_resource type="Script" uid="uid://qr661epbiujn" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue tree.gd" id="4_vvips"]
+[ext_resource type="Script" uid="uid://cg4ujw8mauohh" path="res://2_Scripts/3_Dependent/encounter info.gd" id="5_ajyuj"]
+
+[sub_resource type="Resource" id="Resource_83870"]
+script = ExtResource("2_tbb0o")
+dialogue = "fgnfgnfgn"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_hd02j"]
+script = ExtResource("3_n8rwi")
+dialogue = Array[ExtResource("2_tbb0o")]([SubResource("Resource_83870")])
+metadata/_custom_type_script = "uid://chre6fsqbhfrk"
+
+[sub_resource type="Resource" id="Resource_cgkhu"]
+script = ExtResource("4_vvips")
+branches = Array[ExtResource("1_s6xrp")]([SubResource("Resource_hd02j")])
+metadata/_custom_type_script = "uid://qr661epbiujn"
+
+[resource]
+script = ExtResource("5_ajyuj")
+characterName = "Jimmy James"
+dialogueTree = SubResource("Resource_cgkhu")
+cupAnswer = 2
+title = "Character Sheet"
+info = Array[String]([", Hollyberry
+
+
+1. Age: 61
+
+2. Occupation: Ranger
+
+3. Race: Human
+"])
+metadata/_custom_type_script = "uid://cg4ujw8mauohh"

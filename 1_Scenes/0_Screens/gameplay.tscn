@@ -976,7 +976,7 @@ theme_override_constants/margin_right = 9
 [node name="Region Label" type="RichTextLabel" parent="Layout/HBoxContainer/MarginContainer/VBoxContainer/Accessibility/solid background/Region Holder" unique_id=2028892843]
 layout_mode = 2
 theme = ExtResource("6_0hcow")
-text = "0 - 1"
+text = "0 - 0"
 fit_content = true
 autowrap_mode = 0
 
@@ -1119,7 +1119,7 @@ NEUTRAL_STATE = Rect2i(0, 0, 209, 64)
 HOVERED_STATE = Rect2i(209, 0, 209, 64)
 PRESSED_STATE = Rect2i(418, 0, 209, 64)
 
-[node name="Region Holder" type="MarginContainer" parent="Travel Texture" unique_id=1937392430]
+[node name="Travel Holder" type="MarginContainer" parent="Travel Texture" unique_id=1937392430]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1129,7 +1129,7 @@ grow_vertical = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 
-[node name="Region Label" type="RichTextLabel" parent="Travel Texture/Region Holder" unique_id=695078124]
+[node name="Travel Label" type="RichTextLabel" parent="Travel Texture/Travel Holder" unique_id=695078124]
 layout_mode = 2
 theme = ExtResource("6_0hcow")
 text = "Next Member"

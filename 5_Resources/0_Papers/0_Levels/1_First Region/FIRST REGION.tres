@@ -1,0 +1,52 @@
+[gd_resource type="Resource" script_class="RegionInfo" format=3 uid="uid://d2ifoduworfqa"]
+
+[ext_resource type="Script" uid="uid://csy0x4mgdxs00" path="res://2_Scripts/3_Dependent/paperinfo.gd" id="1_7puhk"]
+[ext_resource type="Script" uid="uid://cg4ujw8mauohh" path="res://2_Scripts/3_Dependent/encounter info.gd" id="2_bwi2o"]
+[ext_resource type="Resource" uid="uid://2ggvnaxi8ai6" path="res://5_Resources/0_Papers/0_Levels/1_First Region/encounters/Jimmy James.tres" id="3_ba5up"]
+[ext_resource type="Resource" uid="uid://bwfdoc58rkwhn" path="res://5_Resources/0_Papers/0_Levels/1_First Region/encounters/Sunny Moon.tres" id="4_bwi2o"]
+[ext_resource type="Script" uid="uid://851asxmj8i78" path="res://2_Scripts/3_Dependent/region info.gd" id="4_hfqk1"]
+
+[sub_resource type="Resource" id="Resource_ee7m0"]
+script = ExtResource("1_7puhk")
+title = "Atlas -> Towerville"
+info = Array[String](["Occupation:
+- Blacksmiths are Lying about their age
+
+- Rangers are Tricky
+
+Race:
+- Goblins are Deceptive
+
+Additional Notes:
+- Citizens that Lie about their Age are Sages
+
+- Citizens that are Truthful about their Age are Fools
+"])
+metadata/_custom_type_script = "uid://csy0x4mgdxs00"
+
+[sub_resource type="Resource" id="Resource_te4kt"]
+script = ExtResource("1_7puhk")
+title = "TRAIT SHEET"
+info = Array[String](["Fool: 
+	Drinks from the cup that is in front of them
+
+Sage:
+	Drinks from the cup that is NOT in front of themselves
+
+
+Tricky:
+	Odd entries in Character Sheet are false
+
+Deceptive:
+	Even entries in Character Sheet are false
+"])
+metadata/_custom_type_script = "uid://csy0x4mgdxs00"
+
+[resource]
+script = ExtResource("4_hfqk1")
+traitSheet = SubResource("Resource_te4kt")
+characterSheets = Array[ExtResource("2_bwi2o")]([ExtResource("3_ba5up"), ExtResource("4_bwi2o")])
+atlas = SubResource("Resource_ee7m0")
+noteSheet = false
+increaseRegion = true
+metadata/_custom_type_script = "uid://851asxmj8i78"

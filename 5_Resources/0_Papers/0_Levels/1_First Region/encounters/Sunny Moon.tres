@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="EncounterInfo" format=3 uid="uid://bwfdoc58rkwhn"]
+
+[ext_resource type="Script" uid="uid://e0ujmn3oiqx0" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue branch.gd" id="1_ov0x0"]
+[ext_resource type="Script" uid="uid://fn2tb2dtu6fj" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue.gd" id="2_x1tmx"]
+[ext_resource type="Script" uid="uid://chre6fsqbhfrk" path="res://2_Scripts/3_Dependent/0_Dialogue/branch intro.gd" id="3_ey2qs"]
+[ext_resource type="Script" uid="uid://qr661epbiujn" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue tree.gd" id="4_h1djw"]
+[ext_resource type="Script" uid="uid://cg4ujw8mauohh" path="res://2_Scripts/3_Dependent/encounter info.gd" id="5_a8jsl"]
+
+[sub_resource type="Resource" id="Resource_ov0x0"]
+script = ExtResource("2_x1tmx")
+dialogue = "fgnfgnfgn"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_x1tmx"]
+script = ExtResource("3_ey2qs")
+dialogue = Array[ExtResource("2_x1tmx")]([SubResource("Resource_ov0x0")])
+metadata/_custom_type_script = "uid://chre6fsqbhfrk"
+
+[sub_resource type="Resource" id="Resource_ey2qs"]
+script = ExtResource("4_h1djw")
+branches = Array[ExtResource("1_ov0x0")]([SubResource("Resource_x1tmx")])
+metadata/_custom_type_script = "uid://qr661epbiujn"
+
+[resource]
+script = ExtResource("5_a8jsl")
+characterName = "Sunny Moon"
+dialogueTree = SubResource("Resource_ey2qs")
+cupAnswer = 1
+title = "Character Sheet"
+info = Array[String]([", Hollyberry
+
+
+1. Race: Elf
+
+2. Age: 89
+"])
+metadata/_custom_type_script = "uid://cg4ujw8mauohh"
