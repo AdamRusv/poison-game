@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://b30x7fe3nhkk7"]
+[gd_scene format=3 uid="uid://d2up5d7qmvlo6"]
 
 [ext_resource type="Script" uid="uid://c3o8kvypxk7ko" path="res://2_Scripts/2_Independent/gameplay manager.gd" id="1_03xhq"]
 [ext_resource type="Texture2D" uid="uid://cgkjx4wb04kro" path="res://0_Art/2_PNGs/test layout background.png" id="2_gaqin"]
@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://bsh52mk5jg0dy" path="res://0_Art/New_Art(Needs Sorting)/Right Table Sprite New Color.png" id="14_50f8m"]
 [ext_resource type="Texture2D" uid="uid://brkvp2w453xgk" path="res://0_Art/2_PNGs/payer username-Sheet.png" id="14_sv52f"]
 [ext_resource type="Script" uid="uid://dwp2cvaysi6vj" path="res://2_Scripts/2_Independent/dialogue manager.gd" id="15_vpgj7"]
+[ext_resource type="Shader" uid="uid://bu2ub1l3bfm4y" path="res://4_Shaders/0_Scripts/animatedplaymatbackground.gdshader" id="18_vpgj7"]
 [ext_resource type="Texture2D" uid="uid://clow3s7e2s771" path="res://0_Art/New_Art(Needs Sorting)/settings icon.png" id="24_g2at3"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_w8sod"]
@@ -38,6 +39,119 @@ region = Rect2(0, 0, 206, 42)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_smu13"]
 load_path = "res://.godot/imported/Right Table Sprite.png-cf023f94765da7a3fb24887cc58f82e2.ctex"
+
+[sub_resource type="Shader" id="Shader_xesiu"]
+code = "shader_type canvas_item;
+
+uniform highp float move_speed = 7.0;
+uniform highp float shape_size = 2.5;
+
+uniform highp vec4 color_1 : source_color = vec4(0, 0, 0, 1.0);
+uniform highp vec4 color_2 : source_color = vec4(0, 0, 0, 1.0);
+uniform highp vec4 color_3 : source_color = vec4(0, 0, 0, 1.0);
+
+
+vec4 effect(vec2 screen_size, vec2 screen_coords) {
+    highp vec2 uv = (
+        screen_coords
+        - 0.5 * screen_size
+    ) / length(screen_size);
+
+    uv *= 12.0;
+
+    highp float movement = TIME * move_speed;
+    highp vec2 uv2 = vec2(uv.x + uv.y);
+
+    for (int i = 0; i < 3; i++) {
+        uv2 += sin(max(uv.x, uv.y)) + uv;
+
+        uv += 0.35 * vec2(
+            cos(
+                5.1123314
+                + 0.353 * uv2.y
+                + movement * 0.131121
+            ),
+            sin(
+                uv2.x
+                - 0.113 * movement
+            )
+        );
+
+        uv -= 0.35 * (
+            cos(uv.x + uv.y)
+            - sin(uv.x * 0.711 - uv.y)
+        );
+    }
+
+    highp vec2 shape_uv = uv / shape_size;
+
+    highp float horizontal_shapes = cos(
+        shape_uv.x * 2.0
+        + movement * 0.025
+    );
+
+    highp float vertical_shapes = cos(
+        shape_uv.y * 2.0
+        - movement * 0.018
+    );
+
+    highp float diagonal_shapes = sin(
+        (shape_uv.x + shape_uv.y) * 1.25
+        + movement * 0.012
+    );
+
+    highp float shape_value =
+        horizontal_shapes
+        + vertical_shapes
+        + diagonal_shapes * 0.05;
+
+    // Divide the pattern into three solid-color regions.
+    highp float middle_mask = step(-0.35, shape_value);
+    highp float upper_mask = step(0.65, shape_value);
+
+    highp vec4 final_color = color_3;
+    final_color = mix(final_color, color_2, middle_mask);
+    final_color = mix(final_color, color_1, upper_mask);
+
+    return final_color;
+}
+
+
+void fragment() {
+    COLOR *= effect(TEXTURE_PIXEL_SIZE, UV);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m6j1m"]
+shader = SubResource("Shader_xesiu")
+shader_parameter/move_speed = 4.0
+shader_parameter/shape_size = 0.7
+shader_parameter/color_1 = Color(0.16078432, 0.14117648, 0.09411765, 1)
+shader_parameter/color_2 = Color(0.32156864, 0.28235295, 0.22352941, 1)
+shader_parameter/color_3 = Color(0.16078432, 0.14117648, 0.09411765, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mnvto"]
+shader = ExtResource("18_vpgj7")
+shader_parameter/move_speed = 3.987
+shader_parameter/shape_size = 0.799
+shader_parameter/color_1 = Color(0.16078432, 0.14117648, 0.09411765, 1)
+shader_parameter/color_2 = Color(0.32156864, 0.28235295, 0.22352941, 1)
+shader_parameter/color_3 = Color(0.16078432, 0.14117648, 0.09411765, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qxjdy"]
+shader = ExtResource("18_vpgj7")
+shader_parameter/move_speed = 4.164
+shader_parameter/shape_size = 0.61
+shader_parameter/color_1 = Color(0.16078432, 0.14117648, 0.09411765, 1)
+shader_parameter/color_2 = Color(0.32156864, 0.28235295, 0.22352941, 1)
+shader_parameter/color_3 = Color(0.16078432, 0.14117648, 0.09411765, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o4imt"]
+shader = ExtResource("18_vpgj7")
+shader_parameter/move_speed = 3.444
+shader_parameter/shape_size = 0.516
+shader_parameter/color_1 = Color(0.16078432, 0.14117648, 0.09411765, 1)
+shader_parameter/color_2 = Color(0.32156864, 0.28235295, 0.22352941, 1)
+shader_parameter/color_3 = Color(0.16078432, 0.14117648, 0.09411765, 1)
 
 [sub_resource type="Shader" id="Shader_50f8m"]
 code = "shader_type canvas_item;
@@ -986,7 +1100,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Gameplay" type="Control" unique_id=1427164321]
+[node name="Gameplay2" type="Control" unique_id=1427164321]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1174,6 +1288,45 @@ offset_top = 2.0
 offset_right = 424.0
 offset_bottom = 57.0
 
+[node name="animated playmat background" type="Control" parent="Main Game/HBoxContainer/Playmat/Playmat Background Holder/Section 1" unique_id=1554904307]
+custom_minimum_size = Vector2(640, 360)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -214.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 301.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Main Game/HBoxContainer/Playmat/Playmat Background Holder/Section 1/animated playmat background" unique_id=221806945]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Main Game/HBoxContainer/Playmat/Playmat Background Holder/Section 1/animated playmat background/SubViewportContainer" unique_id=731978780]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+gui_snap_controls_to_pixels = false
+size = Vector2i(640, 360)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="Main Game/HBoxContainer/Playmat/Playmat Background Holder/Section 1/animated playmat background/SubViewportContainer/SubViewport" unique_id=675643042]
+material = SubResource("ShaderMaterial_m6j1m")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="Section 2" type="Control" parent="Main Game/HBoxContainer/Playmat/Playmat Background Holder" unique_id=226183524]
 clip_contents = true
 anchors_preset = 0
@@ -1181,6 +1334,45 @@ offset_left = 2.0
 offset_top = 58.0
 offset_right = 424.0
 offset_bottom = 87.0
+
+[node name="animated playmat background2" type="Control" parent="Main Game/HBoxContainer/Playmat/Playmat Background Holder/Section 2" unique_id=2106127389]
+custom_minimum_size = Vector2(640, 360)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -214.0
+offset_top = -60.0
+offset_right = 4.0
+offset_bottom = 271.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Main Game/HBoxContainer/Playmat/Playmat Background Holder/Section 2/animated playmat background2" unique_id=1750677909]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Main Game/HBoxContainer/Playmat/Playmat Background Holder/Section 2/animated playmat background2/SubViewportContainer" unique_id=362995321]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+gui_snap_controls_to_pixels = false
+size = Vector2i(640, 360)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="Main Game/HBoxContainer/Playmat/Playmat Background Holder/Section 2/animated playmat background2/SubViewportContainer/SubViewport" unique_id=1296879233]
+material = SubResource("ShaderMaterial_mnvto")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Section 3" type="Control" parent="Main Game/HBoxContainer/Playmat/Playmat Background Holder" unique_id=53329026]
 clip_contents = true
@@ -1190,6 +1382,45 @@ offset_top = 269.0
 offset_right = 424.0
 offset_bottom = 298.0
 
+[node name="animated playmat background3" type="Control" parent="Main Game/HBoxContainer/Playmat/Playmat Background Holder/Section 3" unique_id=981080384]
+custom_minimum_size = Vector2(640, 360)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -214.0
+offset_top = -271.0
+offset_right = 4.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Main Game/HBoxContainer/Playmat/Playmat Background Holder/Section 3/animated playmat background3" unique_id=1841701031]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Main Game/HBoxContainer/Playmat/Playmat Background Holder/Section 3/animated playmat background3/SubViewportContainer" unique_id=945371994]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+gui_snap_controls_to_pixels = false
+size = Vector2i(640, 360)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="Main Game/HBoxContainer/Playmat/Playmat Background Holder/Section 3/animated playmat background3/SubViewportContainer/SubViewport" unique_id=607596709]
+material = SubResource("ShaderMaterial_qxjdy")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="Section 4" type="Control" parent="Main Game/HBoxContainer/Playmat/Playmat Background Holder" unique_id=239495109]
 clip_contents = true
 anchors_preset = 0
@@ -1197,6 +1428,45 @@ offset_left = 2.0
 offset_top = 299.0
 offset_right = 424.0
 offset_bottom = 354.0
+
+[node name="animated playmat background4" type="Control" parent="Main Game/HBoxContainer/Playmat/Playmat Background Holder/Section 4" unique_id=557448623]
+custom_minimum_size = Vector2(640, 360)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -214.0
+offset_top = -301.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Main Game/HBoxContainer/Playmat/Playmat Background Holder/Section 4/animated playmat background4" unique_id=449834087]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Main Game/HBoxContainer/Playmat/Playmat Background Holder/Section 4/animated playmat background4/SubViewportContainer" unique_id=491225543]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+gui_snap_controls_to_pixels = false
+size = Vector2i(640, 360)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="Main Game/HBoxContainer/Playmat/Playmat Background Holder/Section 4/animated playmat background4/SubViewportContainer/SubViewport" unique_id=299018444]
+material = SubResource("ShaderMaterial_o4imt")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Full Background" type="Control" parent="Main Game/HBoxContainer/Playmat/Playmat Background Holder" unique_id=1223290613]
 visible = false
@@ -1250,6 +1520,7 @@ layout_mode = 2
 texture = ExtResource("13_q712t")
 
 [node name="New Color Full" type="TextureRect" parent="Main Game/HBoxContainer/Playmat" unique_id=221424350]
+visible = false
 layout_mode = 2
 texture = ExtResource("14_50f8m")
 
