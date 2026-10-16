@@ -11,7 +11,7 @@ script = ExtResource("1_61cyn")
 visualHolder = NodePath("visual holder")
 texture = NodePath("visual holder/NinePatchRect")
 labelHolder = NodePath("visual holder/MarginContainer")
-dialogueLabel = NodePath("visual holder/MarginContainer/dialogue label")
+dialogueLabel = NodePath("visual holder/MarginContainer/dialogue Label")
 
 [node name="visual holder" type="MarginContainer" parent="." unique_id=1138734156]
 custom_minimum_size = Vector2(0, 20)
