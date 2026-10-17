@@ -2,16 +2,14 @@
 
 [ext_resource type="Script" uid="uid://b1hcjlnogkytj" path="res://2_Scripts/2_Independent/paper.gd" id="1_dn5do"]
 [ext_resource type="Texture2D" uid="uid://btbkhfkp1pr81" path="res://0_Art/New_Art(Needs Sorting)/Atlas 2s-Sheet.png" id="2_3lemr"]
-[ext_resource type="Texture2D" uid="uid://bcdqtnukewrre" path="res://0_Art/New_Art(Needs Sorting)/BackPaperNineSlice.png" id="2_xmrx0"]
-[ext_resource type="Texture2D" uid="uid://c515g2bcyx028" path="res://0_Art/New_Art(Needs Sorting)/PaperNineSlice.png" id="3_3lemr"]
 [ext_resource type="Theme" uid="uid://bhvewryp1cmbt" path="res://6_Other/description font.tres" id="4_28i0q"]
 [ext_resource type="Texture2D" uid="uid://n82vq8gxieut" path="res://0_Art/New_Art(Needs Sorting)/PageCorner-Sheet.png" id="5_t11ig"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2y7yb"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmrx0"]
 atlas = ExtResource("2_3lemr")
-region = Rect2(0, 0, 242, 190)
+region = Rect2(0, 0, 242, 189)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2y7yb"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3lemr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_504ay"]
 atlas = ExtResource("5_t11ig")
@@ -19,43 +17,47 @@ region = Rect2(0, 0, 30, 30)
 
 [node name="Paper" type="MarginContainer" unique_id=1389312574 node_paths=PackedStringArray("paperTitleLabel", "paperInfoLabel", "packetParent", "packetBehindPaperParent", "pageFlipButton", "pageFlipTexture", "parentNode", "detectionArea")]
 z_index = 1
-offset_right = 236.0
-offset_bottom = 184.0
+offset_right = 242.0
+offset_bottom = 189.0
 script = ExtResource("1_dn5do")
-paperTitleLabel = NodePath("HBoxContainer/VBoxContainer/Title Container/Title Label")
-paperInfoLabel = NodePath("HBoxContainer/VBoxContainer/Info Container/Info Label")
+paperTitleLabel = NodePath("")
+paperInfoLabel = NodePath("")
 packetParent = NodePath("Page Flip Container")
-packetBehindPaperParent = NodePath("Packet Behind Paper")
+packetBehindPaperParent = NodePath("")
 pageFlipButton = NodePath("Page Flip Container/Page Flip Button")
 pageFlipTexture = NodePath("Page Flip Container/Page Flip Corner Texture")
 parentNode = NodePath(".")
 detectionArea = NodePath("Drag Button")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=2032249598]
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=444832334]
 layout_mode = 2
-texture = SubResource("AtlasTexture_2y7yb")
+texture = SubResource("AtlasTexture_xmrx0")
 stretch_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1184336347]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1134887535]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=2074008777]
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer" unique_id=372824145]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1291093204]
+custom_maximum_size = Vector2(-1, 150)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Top Separator" type="HSeparator" parent="HBoxContainer/VBoxContainer" unique_id=503676989]
+[node name="Top Separator" type="HSeparator" parent="HBoxContainer/VBoxContainer" unique_id=1719494700]
 layout_mode = 2
 theme_override_constants/separation = 15
-theme_override_styles/separator = SubResource("StyleBoxEmpty_2y7yb")
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3lemr")
 
-[node name="Title Container" type="MarginContainer" parent="HBoxContainer/VBoxContainer" unique_id=1006494222]
+[node name="Title Container" type="MarginContainer" parent="HBoxContainer/VBoxContainer" unique_id=432251444]
 layout_mode = 2
-theme_override_constants/margin_left = 10
+theme_override_constants/margin_left = 11
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 10
 
-[node name="Title Label" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/Title Container" unique_id=1411813506]
+[node name="Title Label" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/Title Container" unique_id=899227368]
 layout_mode = 2
 theme = ExtResource("4_28i0q")
 bbcode_enabled = true
@@ -63,30 +65,30 @@ text = "Hollyberry (Region 1)"
 fit_content = true
 scroll_active = false
 
-[node name="Title Seperation Container" type="MarginContainer" parent="HBoxContainer/VBoxContainer" unique_id=246599068]
+[node name="Title Seperation Container" type="MarginContainer" parent="HBoxContainer/VBoxContainer" unique_id=233732716]
 layout_mode = 2
-theme_override_constants/margin_left = 10
+theme_override_constants/margin_left = 11
 theme_override_constants/margin_right = 10
 
-[node name="Title Seperation Label" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/Title Seperation Container" unique_id=2027789018]
+[node name="Title Seperation Label" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/Title Seperation Container" unique_id=2082800009]
 layout_mode = 2
 theme = ExtResource("4_28i0q")
-text = "------------------------"
+text = "-----------------------"
 fit_content = true
 scroll_active = false
 
-[node name="Mid Separator" type="HSeparator" parent="HBoxContainer/VBoxContainer" unique_id=2059847499]
+[node name="Mid Separator" type="HSeparator" parent="HBoxContainer/VBoxContainer" unique_id=1033504552]
 layout_mode = 2
 theme_override_constants/separation = 10
-theme_override_styles/separator = SubResource("StyleBoxEmpty_2y7yb")
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3lemr")
 
-[node name="Info Container" type="MarginContainer" parent="HBoxContainer/VBoxContainer" unique_id=643291806]
+[node name="Info Container" type="MarginContainer" parent="HBoxContainer/VBoxContainer" unique_id=868544632]
 layout_mode = 2
-theme_override_constants/margin_left = 10
+theme_override_constants/margin_left = 11
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 20
 
-[node name="Info Label" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/Info Container" unique_id=1717520262]
+[node name="Info Label" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/Info Container" unique_id=456744920]
 layout_mode = 2
 theme = ExtResource("4_28i0q")
 bbcode_enabled = true
@@ -99,101 +101,69 @@ Rich with history, Hollyberry is home to an alarmingly aging population. Traveli
 fit_content = true
 scroll_active = false
 
-[node name="Bottom Separator" type="HSeparator" parent="HBoxContainer/VBoxContainer" unique_id=488004290]
-layout_mode = 2
-theme_override_constants/separation = 10
-theme_override_styles/separator = SubResource("StyleBoxEmpty_2y7yb")
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer" unique_id=1260060298]
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer" unique_id=18310606]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Top Separator" type="HSeparator" parent="HBoxContainer/VBoxContainer2" unique_id=1447587934]
+[node name="Top Separator" type="HSeparator" parent="HBoxContainer/VBoxContainer2" unique_id=2128856572]
 layout_mode = 2
 theme_override_constants/separation = 15
-theme_override_styles/separator = SubResource("StyleBoxEmpty_2y7yb")
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3lemr")
 
-[node name="Title Container" type="MarginContainer" parent="HBoxContainer/VBoxContainer2" unique_id=1177751888]
+[node name="Title Container" type="MarginContainer" parent="HBoxContainer/VBoxContainer2" unique_id=1746573781]
 layout_mode = 2
-theme_override_constants/margin_left = 10
+theme_override_constants/margin_left = 6
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 10
 
-[node name="Title Label" type="RichTextLabel" parent="HBoxContainer/VBoxContainer2/Title Container" unique_id=269659106]
+[node name="Title Label" type="RichTextLabel" parent="HBoxContainer/VBoxContainer2/Title Container" unique_id=2107894452]
 layout_mode = 2
 theme = ExtResource("4_28i0q")
 bbcode_enabled = true
-text = "Additional Notes"
+text = "Race"
 fit_content = true
 scroll_active = false
 
-[node name="Title Seperation Container" type="MarginContainer" parent="HBoxContainer/VBoxContainer2" unique_id=20442314]
+[node name="Title Seperation Container" type="MarginContainer" parent="HBoxContainer/VBoxContainer2" unique_id=2133457754]
 layout_mode = 2
-theme_override_constants/margin_left = 10
+theme_override_constants/margin_left = 6
 theme_override_constants/margin_right = 10
 
-[node name="Title Seperation Label" type="RichTextLabel" parent="HBoxContainer/VBoxContainer2/Title Seperation Container" unique_id=838573593]
+[node name="Title Seperation Label" type="RichTextLabel" parent="HBoxContainer/VBoxContainer2/Title Seperation Container" unique_id=1367806728]
 layout_mode = 2
 theme = ExtResource("4_28i0q")
 text = "------------------------"
 fit_content = true
 scroll_active = false
 
-[node name="Mid Separator" type="HSeparator" parent="HBoxContainer/VBoxContainer2" unique_id=1967024948]
+[node name="Mid Separator" type="HSeparator" parent="HBoxContainer/VBoxContainer2" unique_id=573291597]
 layout_mode = 2
-theme_override_constants/separation = 10
-theme_override_styles/separator = SubResource("StyleBoxEmpty_2y7yb")
+theme_override_constants/separation = 0
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3lemr")
 
-[node name="Info Container" type="MarginContainer" parent="HBoxContainer/VBoxContainer2" unique_id=70396329]
+[node name="Info Container" type="MarginContainer" parent="HBoxContainer/VBoxContainer2" unique_id=902643798]
 layout_mode = 2
-theme_override_constants/margin_left = 10
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 20
+theme_override_constants/margin_bottom = 0
 
-[node name="Info Label" type="RichTextLabel" parent="HBoxContainer/VBoxContainer2/Info Container" unique_id=1387362610]
+[node name="Info Label" type="RichTextLabel" parent="HBoxContainer/VBoxContainer2/Info Container" unique_id=1003441189]
 layout_mode = 2
 theme = ExtResource("4_28i0q")
 bbcode_enabled = true
-text = "- Citizens that Lie about their Age are Sages
+text = "- Humans are Honarble (3) and Confused
 
-- Citizens that are Truthful about their Age are Fools
-"
+- Wraiths are Holy?????????????
+
+- Devils who are Leaders can never be Sages
+
+- Vastaya are never religious believers
+
+- Humans over the age of 20 hate Vastaya"
 fit_content = true
 scroll_active = false
-
-[node name="Bottom Separator" type="HSeparator" parent="HBoxContainer/VBoxContainer2" unique_id=1502791996]
-layout_mode = 2
-theme_override_constants/separation = 10
-theme_override_styles/separator = SubResource("StyleBoxEmpty_2y7yb")
-
-[node name="Packet Behind Paper" type="MarginContainer" parent="." unique_id=916936904]
-visible = false
-layout_mode = 2
-offset_transform_enabled = true
-offset_transform_position = Vector2(5, 5)
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Packet Behind Paper" unique_id=814032050]
-layout_mode = 2
-texture = ExtResource("2_xmrx0")
-region_rect = Rect2(0, 0, 174, 135)
-patch_margin_left = 11
-patch_margin_top = 20
-patch_margin_right = 23
-patch_margin_bottom = 16
-axis_stretch_horizontal = 1
-axis_stretch_vertical = 2
-
-[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1961360989]
-visible = false
-layout_mode = 2
-texture = ExtResource("3_3lemr")
-region_rect = Rect2(0, 0, 174, 135)
-patch_margin_left = 20
-patch_margin_top = 20
-patch_margin_right = 25
-patch_margin_bottom = 25
-axis_stretch_vertical = 2
 
 [node name="Drag Button" type="Button" parent="." unique_id=1229789884]
 layout_mode = 2
