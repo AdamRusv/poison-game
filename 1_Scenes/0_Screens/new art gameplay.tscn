@@ -1,29 +1,171 @@
-[gd_scene format=3 uid="uid://b30x7fe3nhkk7"]
+[gd_scene format=3 uid="uid://d2up5d7qmvlo6"]
 
 [ext_resource type="Script" uid="uid://c3o8kvypxk7ko" path="res://2_Scripts/2_Independent/gameplay manager.gd" id="1_03xhq"]
 [ext_resource type="Texture2D" uid="uid://cgkjx4wb04kro" path="res://0_Art/2_PNGs/test layout background.png" id="2_gaqin"]
 [ext_resource type="Texture2D" uid="uid://ohc2u7n0g2an" path="res://0_Art/New_Art(Needs Sorting)/Background Sprite.png" id="2_miwci"]
+[ext_resource type="Resource" uid="uid://dr6ngv56pmqal" path="res://5_Resources/game timeline.tres" id="2_vpgj7"]
 [ext_resource type="Script" uid="uid://4xhbwaoygr14" path="res://2_Scripts/2_Independent/playmat manager.gd" id="3_miwci"]
-[ext_resource type="Resource" uid="uid://cg41pmm52w6kn" path="res://5_Resources/0_Papers/0_Trait Sheet/main trait sheet.tres" id="4_2cof7"]
 [ext_resource type="Texture2D" uid="uid://45euc58cfisf" path="res://0_Art/New_Art(Needs Sorting)/Footer Sprite.png" id="4_7yujx"]
 [ext_resource type="Texture2D" uid="uid://d2186g0fqpjl" path="res://0_Art/New_Art(Needs Sorting)/Header Sprite.png" id="4_40vfy"]
-[ext_resource type="Resource" uid="uid://4sdebs2jy8hr" path="res://5_Resources/0_Papers/1_Character Sheets/0_Tutorial Region/tubby jones.tres" id="5_7yujx"]
-[ext_resource type="Texture2D" uid="uid://e8g7oerk8row" path="res://0_Art/New_Art(Needs Sorting)/poisonGame-PortraitAngled.png" id="5_40vfy"]
-[ext_resource type="Resource" uid="uid://cj55yjaxgcvqn" path="res://5_Resources/0_Papers/1_Character Sheets/0_Tutorial Region/atlas regions/towerville.tres" id="6_40vfy"]
+[ext_resource type="Texture2D" uid="uid://o2u0bg7rmjeg" path="res://0_Art/New_Art(Needs Sorting)/Portrait_Background.png" id="5_sv52f"]
+[ext_resource type="Texture2D" uid="uid://bgs7wji7h15is" path="res://0_Art/New_Art(Needs Sorting)/Portrait_Midground.png" id="6_vpgj7"]
 [ext_resource type="Texture2D" uid="uid://btnen37gap7x0" path="res://0_Art/New_Art(Needs Sorting)/poisonGame-Screenshot.png" id="7_03xhq"]
-[ext_resource type="Texture2D" uid="uid://caj874nt8y12k" path="res://0_Art/New_Art(Needs Sorting)/Right Table Sprite.png" id="8_2cof7"]
+[ext_resource type="Texture2D" uid="uid://djf7k24188yma" path="res://0_Art/New_Art(Needs Sorting)/Portrait_Foreground.png" id="7_xesiu"]
 [ext_resource type="Texture2D" uid="uid://cemkxjrc7ks0p" path="res://0_Art/New_Art(Needs Sorting)/poison button-Sheet.png" id="8_03xhq"]
+[ext_resource type="Texture2D" uid="uid://cnujjxwui77dp" path="res://0_Art/New_Art(Needs Sorting)/Portrait_Background - New Color.png" id="8_m6j1m"]
 [ext_resource type="Script" uid="uid://dsk6k5x0e30hn" path="res://2_Scripts/2_Independent/poison manager.gd" id="9_50f8m"]
+[ext_resource type="Texture2D" uid="uid://co0id6c1gnyia" path="res://0_Art/New_Art(Needs Sorting)/Portrait_Midground - New Color.png" id="9_mnvto"]
 [ext_resource type="Script" uid="uid://v10r8rve43tc" path="res://2_Scripts/2_Independent/cups manager.gd" id="10_g2at3"]
+[ext_resource type="Texture2D" uid="uid://cahv8fckkdhw3" path="res://0_Art/New_Art(Needs Sorting)/Portrait_Foreground - New Color.png" id="10_qxjdy"]
 [ext_resource type="Texture2D" uid="uid://cc7m60xat02gv" path="res://0_Art/2_PNGs/cups indicator-Sheet.png" id="11_smu13"]
 [ext_resource type="Script" uid="uid://coy0g8tjc8t7i" path="res://2_Scripts/2_Independent/players manager.gd" id="12_dhbgt"]
+[ext_resource type="Texture2D" uid="uid://cfd153lq1jlhb" path="res://0_Art/New_Art(Needs Sorting)/Right Table Sprite Runner No Slice.png" id="12_q712t"]
 [ext_resource type="Texture2D" uid="uid://bmf0h3auqyyc8" path="res://0_Art/2_PNGs/players cup event-Sheet.png" id="13_27tka"]
+[ext_resource type="Texture2D" uid="uid://ctomog28uctgr" path="res://0_Art/New_Art(Needs Sorting)/Right Table Sprite Runner.png" id="13_q712t"]
+[ext_resource type="Texture2D" uid="uid://bsh52mk5jg0dy" path="res://0_Art/New_Art(Needs Sorting)/Right Table Sprite New Color.png" id="14_50f8m"]
 [ext_resource type="Texture2D" uid="uid://brkvp2w453xgk" path="res://0_Art/2_PNGs/payer username-Sheet.png" id="14_sv52f"]
 [ext_resource type="Script" uid="uid://dwp2cvaysi6vj" path="res://2_Scripts/2_Independent/dialogue manager.gd" id="15_vpgj7"]
+[ext_resource type="Shader" uid="uid://bu2ub1l3bfm4y" path="res://4_Shaders/0_Scripts/animatedplaymatbackground.gdshader" id="18_vpgj7"]
+[ext_resource type="Shader" uid="uid://cy1jtdmbpsv25" path="res://4_Shaders/0_Scripts/woodgrainplaymatbackground.gdshader" id="19_xesiu"]
+[ext_resource type="Texture2D" uid="uid://clow3s7e2s771" path="res://0_Art/New_Art(Needs Sorting)/settings icon.png" id="24_g2at3"]
+[ext_resource type="Texture2D" uid="uid://btbkhfkp1pr81" path="res://0_Art/New_Art(Needs Sorting)/Atlas 2s-Sheet.png" id="29_xesiu"]
+[ext_resource type="Theme" uid="uid://bhvewryp1cmbt" path="res://6_Other/description font.tres" id="30_m6j1m"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_w8sod"]
+load_path = "res://.godot/imported/poisonGame-PortraitAngled.png-fbbd62950710131a9302a256c0016ebd.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_03xhq"]
 atlas = ExtResource("8_03xhq")
 region = Rect2(0, 0, 206, 42)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_smu13"]
+load_path = "res://.godot/imported/Right Table Sprite.png-cf023f94765da7a3fb24887cc58f82e2.ctex"
+
+[sub_resource type="Shader" id="Shader_xesiu"]
+code = "shader_type canvas_item;
+
+uniform highp float move_speed = 7.0;
+uniform highp float shape_size = 2.5;
+
+uniform highp vec4 color_1 : source_color = vec4(0, 0, 0, 1.0);
+uniform highp vec4 color_2 : source_color = vec4(0, 0, 0, 1.0);
+uniform highp vec4 color_3 : source_color = vec4(0, 0, 0, 1.0);
+
+
+vec4 effect(vec2 screen_size, vec2 screen_coords) {
+    highp vec2 uv = (
+        screen_coords
+        - 0.5 * screen_size
+    ) / length(screen_size);
+
+    uv *= 12.0;
+
+    highp float movement = TIME * move_speed;
+    highp vec2 uv2 = vec2(uv.x + uv.y);
+
+    for (int i = 0; i < 3; i++) {
+        uv2 += sin(max(uv.x, uv.y)) + uv;
+
+        uv += 0.35 * vec2(
+            cos(
+                5.1123314
+                + 0.353 * uv2.y
+                + movement * 0.131121
+            ),
+            sin(
+                uv2.x
+                - 0.113 * movement
+            )
+        );
+
+        uv -= 0.35 * (
+            cos(uv.x + uv.y)
+            - sin(uv.x * 0.711 - uv.y)
+        );
+    }
+
+    highp vec2 shape_uv = uv / shape_size;
+
+    highp float horizontal_shapes = cos(
+        shape_uv.x * 2.0
+        + movement * 0.025
+    );
+
+    highp float vertical_shapes = cos(
+        shape_uv.y * 2.0
+        - movement * 0.018
+    );
+
+    highp float diagonal_shapes = sin(
+        (shape_uv.x + shape_uv.y) * 1.25
+        + movement * 0.012
+    );
+
+    highp float shape_value =
+        horizontal_shapes
+        + vertical_shapes
+        + diagonal_shapes * 0.05;
+
+    // Divide the pattern into three solid-color regions.
+    highp float middle_mask = step(-0.35, shape_value);
+    highp float upper_mask = step(0.65, shape_value);
+
+    highp vec4 final_color = color_3;
+    final_color = mix(final_color, color_2, middle_mask);
+    final_color = mix(final_color, color_1, upper_mask);
+
+    return final_color;
+}
+
+
+void fragment() {
+    COLOR *= effect(TEXTURE_PIXEL_SIZE, UV);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m6j1m"]
+shader = SubResource("Shader_xesiu")
+shader_parameter/move_speed = 4.0
+shader_parameter/shape_size = 0.7
+shader_parameter/color_1 = Color(0.16078432, 0.14117648, 0.09411765, 1)
+shader_parameter/color_2 = Color(0.32156864, 0.28235295, 0.22352941, 1)
+shader_parameter/color_3 = Color(0.16078432, 0.14117648, 0.09411765, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mnvto"]
+shader = ExtResource("18_vpgj7")
+shader_parameter/move_speed = 3.987
+shader_parameter/shape_size = 0.799
+shader_parameter/color_1 = Color(0.16078432, 0.14117648, 0.09411765, 1)
+shader_parameter/color_2 = Color(0.32156864, 0.28235295, 0.22352941, 1)
+shader_parameter/color_3 = Color(0.16078432, 0.14117648, 0.09411765, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qxjdy"]
+shader = ExtResource("18_vpgj7")
+shader_parameter/move_speed = 4.164
+shader_parameter/shape_size = 0.61
+shader_parameter/color_1 = Color(0.16078432, 0.14117648, 0.09411765, 1)
+shader_parameter/color_2 = Color(0.32156864, 0.28235295, 0.22352941, 1)
+shader_parameter/color_3 = Color(0.16078432, 0.14117648, 0.09411765, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o4imt"]
+shader = ExtResource("18_vpgj7")
+shader_parameter/move_speed = 3.444
+shader_parameter/shape_size = 0.516
+shader_parameter/color_1 = Color(0.16078432, 0.14117648, 0.09411765, 1)
+shader_parameter/color_2 = Color(0.32156864, 0.28235295, 0.22352941, 1)
+shader_parameter/color_3 = Color(0.16078432, 0.14117648, 0.09411765, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_smu13"]
+shader = ExtResource("19_xesiu")
+shader_parameter/light_color = Color(0.16078432, 0.14117648, 0.09411765, 1)
+shader_parameter/dark_color = Color(0.32156864, 0.28235295, 0.22352941, 1)
+shader_parameter/ring_scale = 4.4
+shader_parameter/wave_scale = 4.082000146395
+shader_parameter/random_scale = 4.6
+shader_parameter/noise_scale = 0.03
+shader_parameter/speed = 0.6
+shader_parameter/spin_speed = 0.2
+shader_parameter/warp_intensity = 0.5
+shader_parameter/band_cutoff = 0.50000002375
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ywih6"]
 atlas = ExtResource("11_smu13")
@@ -883,7 +1025,13 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Gameplay" type="Control" unique_id=1427164321]
+[sub_resource type="AtlasTexture" id="AtlasTexture_mnvto"]
+atlas = ExtResource("29_xesiu")
+region = Rect2(0, 0, 242, 189)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qxjdy"]
+
+[node name="Gameplay2" type="Control" unique_id=1427164321]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -891,6 +1039,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_03xhq")
+gameTimeline = ExtResource("2_vpgj7")
 
 [node name="Background" type="TextureRect" parent="." unique_id=2017103402]
 layout_mode = 1
@@ -959,8 +1108,38 @@ patch_margin_right = 4
 patch_margin_bottom = 4
 
 [node name="PortraitTexture" type="TextureRect" parent="Main Game/HBoxContainer/VBoxContainer/Portrait" unique_id=975184245]
+visible = false
 layout_mode = 2
-texture = ExtResource("5_40vfy")
+texture = SubResource("CompressedTexture2D_w8sod")
+
+[node name="Background" type="TextureRect" parent="Main Game/HBoxContainer/VBoxContainer/Portrait" unique_id=1260617087]
+visible = false
+layout_mode = 2
+offset_transform_enabled = true
+texture = ExtResource("5_sv52f")
+
+[node name="Midground" type="TextureRect" parent="Main Game/HBoxContainer/VBoxContainer/Portrait" unique_id=1955906150]
+visible = false
+layout_mode = 2
+texture = ExtResource("6_vpgj7")
+
+[node name="Foreground" type="TextureRect" parent="Main Game/HBoxContainer/VBoxContainer/Portrait" unique_id=1153960379]
+visible = false
+layout_mode = 2
+texture = ExtResource("7_xesiu")
+
+[node name="Background - NC" type="TextureRect" parent="Main Game/HBoxContainer/VBoxContainer/Portrait" unique_id=1634258062]
+layout_mode = 2
+offset_transform_enabled = true
+texture = ExtResource("8_m6j1m")
+
+[node name="Midground - NC" type="TextureRect" parent="Main Game/HBoxContainer/VBoxContainer/Portrait" unique_id=1146049973]
+layout_mode = 2
+texture = ExtResource("9_mnvto")
+
+[node name="Foreground - NC" type="TextureRect" parent="Main Game/HBoxContainer/VBoxContainer/Portrait" unique_id=81598618]
+layout_mode = 2
+texture = ExtResource("10_qxjdy")
 
 [node name="Footer" type="MarginContainer" parent="Main Game/HBoxContainer/VBoxContainer" unique_id=522748834]
 custom_minimum_size = Vector2(0, 42)
@@ -1009,9 +1188,6 @@ size_flags_stretch_ratio = 2.0
 script = ExtResource("3_miwci")
 gameplayManager = NodePath("../../..")
 paperHolder = NodePath("Parent/Paper Holder")
-mainTraitSheet = ExtResource("4_2cof7")
-characterSheet = ExtResource("5_7yujx")
-atlasRegionSheet = ExtResource("6_40vfy")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Main Game/HBoxContainer/Playmat" unique_id=331557050]
 visible = false
@@ -1025,8 +1201,263 @@ patch_margin_right = 4
 patch_margin_bottom = 4
 
 [node name="TextureRect" type="TextureRect" parent="Main Game/HBoxContainer/Playmat" unique_id=655792027]
+visible = false
 layout_mode = 2
-texture = ExtResource("8_2cof7")
+texture = SubResource("CompressedTexture2D_smu13")
+
+[node name="Playmat Background Holder" type="Control" parent="Main Game/HBoxContainer/Playmat" unique_id=1497006291]
+clip_contents = true
+layout_mode = 2
+
+[node name="Section 1" type="Control" parent="Main Game/HBoxContainer/Playmat/Playmat Background Holder" unique_id=1427541422]
+clip_contents = true
+anchors_preset = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 424.0
+offset_bottom = 57.0
+
+[node name="animated playmat background" type="Control" parent="Main Game/HBoxContainer/Playmat/Playmat Background Holder/Section 1" unique_id=1554904307]
+custom_minimum_size = Vector2(640, 360)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -214.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 301.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Main Game/HBoxContainer/Playmat/Playmat Background Holder/Section 1/animated playmat background" unique_id=221806945]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Main Game/HBoxContainer/Playmat/Playmat Background Holder/Section 1/animated playmat background/SubViewportContainer" unique_id=731978780]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+gui_snap_controls_to_pixels = false
+size = Vector2i(640, 360)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="Main Game/HBoxContainer/Playmat/Playmat Background Holder/Section 1/animated playmat background/SubViewportContainer/SubViewport" unique_id=675643042]
+material = SubResource("ShaderMaterial_m6j1m")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Section 2" type="Control" parent="Main Game/HBoxContainer/Playmat/Playmat Background Holder" unique_id=226183524]
+clip_contents = true
+anchors_preset = 0
+offset_left = 2.0
+offset_top = 58.0
+offset_right = 424.0
+offset_bottom = 87.0
+
+[node name="animated playmat background2" type="Control" parent="Main Game/HBoxContainer/Playmat/Playmat Background Holder/Section 2" unique_id=2106127389]
+custom_minimum_size = Vector2(640, 360)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -34.0
+offset_top = -138.0
+offset_right = 184.0
+offset_bottom = 193.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Main Game/HBoxContainer/Playmat/Playmat Background Holder/Section 2/animated playmat background2" unique_id=1750677909]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Main Game/HBoxContainer/Playmat/Playmat Background Holder/Section 2/animated playmat background2/SubViewportContainer" unique_id=362995321]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+gui_snap_controls_to_pixels = false
+size = Vector2i(640, 360)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="Main Game/HBoxContainer/Playmat/Playmat Background Holder/Section 2/animated playmat background2/SubViewportContainer/SubViewport" unique_id=1296879233]
+material = SubResource("ShaderMaterial_mnvto")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Section 3" type="Control" parent="Main Game/HBoxContainer/Playmat/Playmat Background Holder" unique_id=53329026]
+clip_contents = true
+anchors_preset = 0
+offset_left = 2.0
+offset_top = 269.0
+offset_right = 424.0
+offset_bottom = 298.0
+
+[node name="animated playmat background3" type="Control" parent="Main Game/HBoxContainer/Playmat/Playmat Background Holder/Section 3" unique_id=981080384]
+custom_minimum_size = Vector2(640, 360)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -43.0
+offset_top = -226.0
+offset_right = 175.0
+offset_bottom = 105.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Main Game/HBoxContainer/Playmat/Playmat Background Holder/Section 3/animated playmat background3" unique_id=1841701031]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Main Game/HBoxContainer/Playmat/Playmat Background Holder/Section 3/animated playmat background3/SubViewportContainer" unique_id=945371994]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+gui_snap_controls_to_pixels = false
+size = Vector2i(640, 360)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="Main Game/HBoxContainer/Playmat/Playmat Background Holder/Section 3/animated playmat background3/SubViewportContainer/SubViewport" unique_id=607596709]
+material = SubResource("ShaderMaterial_qxjdy")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Section 4" type="Control" parent="Main Game/HBoxContainer/Playmat/Playmat Background Holder" unique_id=239495109]
+clip_contents = true
+anchors_preset = 0
+offset_left = 2.0
+offset_top = 299.0
+offset_right = 424.0
+offset_bottom = 354.0
+
+[node name="animated playmat background4" type="Control" parent="Main Game/HBoxContainer/Playmat/Playmat Background Holder/Section 4" unique_id=557448623]
+custom_minimum_size = Vector2(640, 360)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -81.0
+offset_top = -251.0
+offset_right = 137.0
+offset_bottom = 54.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Main Game/HBoxContainer/Playmat/Playmat Background Holder/Section 4/animated playmat background4" unique_id=449834087]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Main Game/HBoxContainer/Playmat/Playmat Background Holder/Section 4/animated playmat background4/SubViewportContainer" unique_id=491225543]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+gui_snap_controls_to_pixels = false
+size = Vector2i(640, 360)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="Main Game/HBoxContainer/Playmat/Playmat Background Holder/Section 4/animated playmat background4/SubViewportContainer/SubViewport" unique_id=299018444]
+material = SubResource("ShaderMaterial_o4imt")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 37.0
+offset_right = 5.0
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Full Background" type="Control" parent="Main Game/HBoxContainer/Playmat/Playmat Background Holder" unique_id=1223290613]
+clip_contents = true
+anchors_preset = 0
+offset_right = 424.0
+offset_bottom = 354.0
+
+[node name="animated playmat background" type="Control" parent="Main Game/HBoxContainer/Playmat/Playmat Background Holder/Full Background" unique_id=99138283]
+anchors_preset = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 642.0
+offset_bottom = 362.0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Main Game/HBoxContainer/Playmat/Playmat Background Holder/Full Background/animated playmat background" unique_id=970548694]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Main Game/HBoxContainer/Playmat/Playmat Background Holder/Full Background/animated playmat background/SubViewportContainer" unique_id=210326149]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+gui_snap_controls_to_pixels = false
+size = Vector2i(640, 360)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="Main Game/HBoxContainer/Playmat/Playmat Background Holder/Full Background/animated playmat background/SubViewportContainer/SubViewport" unique_id=1564698244]
+visible = false
+material = SubResource("ShaderMaterial_smu13")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -85.0
+offset_top = -4.0
+offset_right = -85.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="New Color Runner No Slice" type="TextureRect" parent="Main Game/HBoxContainer/Playmat" unique_id=53777049]
+visible = false
+layout_mode = 2
+texture = ExtResource("12_q712t")
+
+[node name="New Color Runner And Slice2" type="TextureRect" parent="Main Game/HBoxContainer/Playmat" unique_id=14574483]
+layout_mode = 2
+texture = ExtResource("13_q712t")
+
+[node name="New Color Full" type="TextureRect" parent="Main Game/HBoxContainer/Playmat" unique_id=221424350]
+visible = false
+layout_mode = 2
+texture = ExtResource("14_50f8m")
 
 [node name="Parent" type="MarginContainer" parent="Main Game/HBoxContainer/Playmat" unique_id=895104866]
 layout_mode = 2
@@ -1051,6 +1482,7 @@ mouse_filter = 2
 texture = ExtResource("7_03xhq")
 
 [node name="Cups" type="Control" parent="." unique_id=1225528218 node_paths=PackedStringArray("gameplayManager", "detectionZones", "visualIndicators")]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -1144,3 +1576,160 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=777511926]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 5.0
+offset_right = 38.0
+offset_bottom = 35.0
+texture = ExtResource("24_g2at3")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1503618063]
+visible = false
+layout_mode = 0
+offset_left = 282.0
+offset_top = 126.0
+offset_right = 524.0
+offset_bottom = 315.0
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer" unique_id=1802935507]
+layout_mode = 2
+texture = SubResource("AtlasTexture_mnvto")
+stretch_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1347065694]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1562421540]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Top Separator" type="HSeparator" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=925968033]
+layout_mode = 2
+theme_override_constants/separation = 15
+theme_override_styles/separator = SubResource("StyleBoxEmpty_qxjdy")
+
+[node name="Title Container" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1189533140]
+layout_mode = 2
+theme_override_constants/margin_left = 13
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 10
+
+[node name="Title Label" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer/Title Container" unique_id=1047760453]
+layout_mode = 2
+theme = ExtResource("30_m6j1m")
+bbcode_enabled = true
+text = "Hollyberry (Region 1)"
+fit_content = true
+scroll_active = false
+
+[node name="Title Seperation Container" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=272293800]
+layout_mode = 2
+theme_override_constants/margin_left = 13
+theme_override_constants/margin_right = 10
+
+[node name="Title Seperation Label" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer/Title Seperation Container" unique_id=1284838908]
+layout_mode = 2
+theme = ExtResource("30_m6j1m")
+text = "------------------------"
+fit_content = true
+scroll_active = false
+
+[node name="Mid Separator" type="HSeparator" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=868146140]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxEmpty_qxjdy")
+
+[node name="Info Container" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=661414313]
+layout_mode = 2
+theme_override_constants/margin_left = 13
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 20
+
+[node name="Info Label" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer/Info Container" unique_id=1706993987]
+layout_mode = 2
+theme = ExtResource("30_m6j1m")
+bbcode_enabled = true
+text = "Population: 2.3M
+
+Tier: 5
+
+Rich with history, Hollyberry is home to an alarmingly aging population. Traveling warlocks have noted that this country may not last the decade.
+"
+fit_content = true
+scroll_active = false
+
+[node name="Bottom Separator" type="HSeparator" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1538344518]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxEmpty_qxjdy")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1399978248]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Top Separator" type="HSeparator" parent="MarginContainer/HBoxContainer/VBoxContainer2" unique_id=140235098]
+layout_mode = 2
+theme_override_constants/separation = 15
+theme_override_styles/separator = SubResource("StyleBoxEmpty_qxjdy")
+
+[node name="Title Container" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2" unique_id=162332548]
+layout_mode = 2
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 10
+
+[node name="Title Label" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer2/Title Container" unique_id=845435701]
+layout_mode = 2
+theme = ExtResource("30_m6j1m")
+bbcode_enabled = true
+text = "Race"
+fit_content = true
+scroll_active = false
+
+[node name="Title Seperation Container" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2" unique_id=454368259]
+layout_mode = 2
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_right = 10
+
+[node name="Title Seperation Label" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer2/Title Seperation Container" unique_id=29076204]
+layout_mode = 2
+theme = ExtResource("30_m6j1m")
+text = "------------------------"
+fit_content = true
+scroll_active = false
+
+[node name="Mid Separator" type="HSeparator" parent="MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1535894456]
+layout_mode = 2
+theme_override_constants/separation = 0
+theme_override_styles/separator = SubResource("StyleBoxEmpty_qxjdy")
+
+[node name="Info Container" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2" unique_id=639129932]
+layout_mode = 2
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 20
+
+[node name="Info Label" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer2/Info Container" unique_id=1340340068]
+layout_mode = 2
+theme = ExtResource("30_m6j1m")
+bbcode_enabled = true
+text = "- Humans are Honarble (3) and Confused
+
+- Wraiths are Holy?????????????
+
+- Devils who are Leaders can never be Sages
+
+- Vastaya are never religious believers
+
+- Humans over the age of 20 hate Vastaya"
+fit_content = true
+scroll_active = false
+
+[node name="Bottom Separator" type="HSeparator" parent="MarginContainer/HBoxContainer/VBoxContainer2" unique_id=862812670]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxEmpty_qxjdy")
