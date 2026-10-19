@@ -15,15 +15,12 @@ region = Rect2(0, 0, 242, 189)
 atlas = ExtResource("5_t11ig")
 region = Rect2(0, 0, 30, 30)
 
-[node name="Paper" type="MarginContainer" unique_id=1389312574 node_paths=PackedStringArray("paperTitleLabel", "paperInfoLabel", "packetParent", "packetBehindPaperParent", "pageFlipButton", "pageFlipTexture", "parentNode", "detectionArea")]
+[node name="Paper" type="MarginContainer" unique_id=1389312574 node_paths=PackedStringArray("packetParent", "pageFlipButton", "pageFlipTexture", "parentNode", "detectionArea")]
 z_index = 1
 offset_right = 242.0
 offset_bottom = 189.0
 script = ExtResource("1_dn5do")
-paperTitleLabel = NodePath("")
-paperInfoLabel = NodePath("")
 packetParent = NodePath("Page Flip Container")
-packetBehindPaperParent = NodePath("")
 pageFlipButton = NodePath("Page Flip Container/Page Flip Button")
 pageFlipTexture = NodePath("Page Flip Container/Page Flip Corner Texture")
 parentNode = NodePath(".")
@@ -36,28 +33,31 @@ stretch_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1134887535]
 layout_mode = 2
+theme_override_constants/separation = 0
 
-[node name="HSeparator" type="HSeparator" parent="HBoxContainer" unique_id=372824145]
+[node name="HSeparator" type="VSeparator" parent="HBoxContainer" unique_id=670428617]
 layout_mode = 2
+theme_override_constants/separation = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3lemr")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1291093204]
-custom_maximum_size = Vector2(-1, 150)
+[node name="General Info Holder" type="VBoxContainer" parent="HBoxContainer" unique_id=1291093204]
+custom_maximum_size = Vector2(115, 150)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Top Separator" type="HSeparator" parent="HBoxContainer/VBoxContainer" unique_id=1719494700]
+[node name="Top Separator" type="HSeparator" parent="HBoxContainer/General Info Holder" unique_id=1719494700]
 layout_mode = 2
 theme_override_constants/separation = 15
 theme_override_styles/separator = SubResource("StyleBoxEmpty_3lemr")
 
-[node name="Title Container" type="MarginContainer" parent="HBoxContainer/VBoxContainer" unique_id=432251444]
+[node name="Title Container" type="MarginContainer" parent="HBoxContainer/General Info Holder" unique_id=432251444]
 layout_mode = 2
 theme_override_constants/margin_left = 11
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 10
 
-[node name="Title Label" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/Title Container" unique_id=899227368]
+[node name="Title Label" type="RichTextLabel" parent="HBoxContainer/General Info Holder/Title Container" unique_id=899227368]
 layout_mode = 2
 theme = ExtResource("4_28i0q")
 bbcode_enabled = true
@@ -65,30 +65,30 @@ text = "Hollyberry (Region 1)"
 fit_content = true
 scroll_active = false
 
-[node name="Title Seperation Container" type="MarginContainer" parent="HBoxContainer/VBoxContainer" unique_id=233732716]
+[node name="Title Seperation Container" type="MarginContainer" parent="HBoxContainer/General Info Holder" unique_id=233732716]
 layout_mode = 2
 theme_override_constants/margin_left = 11
 theme_override_constants/margin_right = 10
 
-[node name="Title Seperation Label" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/Title Seperation Container" unique_id=2082800009]
+[node name="Title Seperation Label" type="RichTextLabel" parent="HBoxContainer/General Info Holder/Title Seperation Container" unique_id=2082800009]
 layout_mode = 2
 theme = ExtResource("4_28i0q")
 text = "-----------------------"
 fit_content = true
 scroll_active = false
 
-[node name="Mid Separator" type="HSeparator" parent="HBoxContainer/VBoxContainer" unique_id=1033504552]
+[node name="Mid Separator" type="HSeparator" parent="HBoxContainer/General Info Holder" unique_id=1033504552]
 layout_mode = 2
 theme_override_constants/separation = 10
 theme_override_styles/separator = SubResource("StyleBoxEmpty_3lemr")
 
-[node name="Info Container" type="MarginContainer" parent="HBoxContainer/VBoxContainer" unique_id=868544632]
+[node name="Info Container" type="MarginContainer" parent="HBoxContainer/General Info Holder" unique_id=868544632]
 layout_mode = 2
 theme_override_constants/margin_left = 11
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 20
 
-[node name="Info Label" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/Info Container" unique_id=456744920]
+[node name="Info Label" type="RichTextLabel" parent="HBoxContainer/General Info Holder/Info Container" unique_id=456744920]
 layout_mode = 2
 theme = ExtResource("4_28i0q")
 bbcode_enabled = true
@@ -101,23 +101,29 @@ Rich with history, Hollyberry is home to an alarmingly aging population. Traveli
 fit_content = true
 scroll_active = false
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer" unique_id=18310606]
+[node name="HSeparator2" type="VSeparator" parent="HBoxContainer" unique_id=360661199]
+layout_mode = 2
+theme_override_constants/separation = 4
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3lemr")
+
+[node name="Region Info Holder" type="VBoxContainer" parent="HBoxContainer" unique_id=18310606]
+custom_maximum_size = Vector2(115, 150)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Top Separator" type="HSeparator" parent="HBoxContainer/VBoxContainer2" unique_id=2128856572]
+[node name="Top Separator" type="HSeparator" parent="HBoxContainer/Region Info Holder" unique_id=2128856572]
 layout_mode = 2
 theme_override_constants/separation = 15
 theme_override_styles/separator = SubResource("StyleBoxEmpty_3lemr")
 
-[node name="Title Container" type="MarginContainer" parent="HBoxContainer/VBoxContainer2" unique_id=1746573781]
+[node name="Title Container" type="MarginContainer" parent="HBoxContainer/Region Info Holder" unique_id=1746573781]
 layout_mode = 2
 theme_override_constants/margin_left = 6
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 10
 
-[node name="Title Label" type="RichTextLabel" parent="HBoxContainer/VBoxContainer2/Title Container" unique_id=2107894452]
+[node name="Title Label" type="RichTextLabel" parent="HBoxContainer/Region Info Holder/Title Container" unique_id=2107894452]
 layout_mode = 2
 theme = ExtResource("4_28i0q")
 bbcode_enabled = true
@@ -125,31 +131,31 @@ text = "Race"
 fit_content = true
 scroll_active = false
 
-[node name="Title Seperation Container" type="MarginContainer" parent="HBoxContainer/VBoxContainer2" unique_id=2133457754]
+[node name="Title Seperation Container" type="MarginContainer" parent="HBoxContainer/Region Info Holder" unique_id=2133457754]
 layout_mode = 2
 theme_override_constants/margin_left = 6
 theme_override_constants/margin_right = 10
 
-[node name="Title Seperation Label" type="RichTextLabel" parent="HBoxContainer/VBoxContainer2/Title Seperation Container" unique_id=1367806728]
+[node name="Title Seperation Label" type="RichTextLabel" parent="HBoxContainer/Region Info Holder/Title Seperation Container" unique_id=1367806728]
 layout_mode = 2
 theme = ExtResource("4_28i0q")
 text = "------------------------"
 fit_content = true
 scroll_active = false
 
-[node name="Mid Separator" type="HSeparator" parent="HBoxContainer/VBoxContainer2" unique_id=573291597]
+[node name="Mid Separator" type="HSeparator" parent="HBoxContainer/Region Info Holder" unique_id=573291597]
 layout_mode = 2
 theme_override_constants/separation = 0
 theme_override_styles/separator = SubResource("StyleBoxEmpty_3lemr")
 
-[node name="Info Container" type="MarginContainer" parent="HBoxContainer/VBoxContainer2" unique_id=902643798]
+[node name="Info Container" type="MarginContainer" parent="HBoxContainer/Region Info Holder" unique_id=902643798]
 layout_mode = 2
 theme_override_constants/margin_left = 6
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 0
 
-[node name="Info Label" type="RichTextLabel" parent="HBoxContainer/VBoxContainer2/Info Container" unique_id=1003441189]
+[node name="Info Label" type="RichTextLabel" parent="HBoxContainer/Region Info Holder/Info Container" unique_id=1003441189]
 layout_mode = 2
 theme = ExtResource("4_28i0q")
 bbcode_enabled = true
@@ -166,6 +172,7 @@ fit_content = true
 scroll_active = false
 
 [node name="Drag Button" type="Button" parent="." unique_id=1229789884]
+visible = false
 layout_mode = 2
 focus_mode = 0
 flat = true
