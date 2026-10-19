@@ -893,7 +893,7 @@ animations = [{
 atlas = ExtResource("18_g7yw3")
 region = Rect2(0, 0, 55, 30)
 
-[node name="Gameplay" type="Control" unique_id=1427164321 node_paths=PackedStringArray("temporaryRegionNumber")]
+[node name="Gameplay" type="Control" unique_id=1427164321]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -902,7 +902,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0sltt")
 gameTimeline = ExtResource("2_g7yw3")
-temporaryRegionNumber = NodePath("temporary tutorial region number")
 
 [node name="background" type="ColorRect" parent="." unique_id=1846741751]
 layout_mode = 1

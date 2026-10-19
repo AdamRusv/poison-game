@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bsgsp1roqd7hj"]
+[gd_scene format=3 uid="uid://cmikwn8hrnr5g"]
 
 [ext_resource type="Script" uid="uid://b1hcjlnogkytj" path="res://2_Scripts/2_Independent/paper.gd" id="1_dn5do"]
 [ext_resource type="Texture2D" uid="uid://btbkhfkp1pr81" path="res://0_Art/New_Art(Needs Sorting)/Atlas 2s-Sheet.png" id="2_3lemr"]

@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://d2up5d7qmvlo6"]
+[gd_scene format=3 uid="uid://b30x7fe3nhkk7"]
 
 [ext_resource type="Script" uid="uid://c3o8kvypxk7ko" path="res://2_Scripts/2_Independent/gameplay manager.gd" id="1_03xhq"]
 [ext_resource type="Texture2D" uid="uid://cgkjx4wb04kro" path="res://0_Art/2_PNGs/test layout background.png" id="2_gaqin"]
