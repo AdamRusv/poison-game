@@ -21,10 +21,32 @@ script = ExtResource("4_vvips")
 branches = Array[ExtResource("1_s6xrp")]([SubResource("Resource_hd02j")])
 metadata/_custom_type_script = "uid://qr661epbiujn"
 
+[sub_resource type="Resource" id="Resource_xsf05"]
+script = ExtResource("2_tbb0o")
+speaker = 1
+dialogue = "How many Entries are you Lying about?"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_32h7f"]
+script = ExtResource("2_tbb0o")
+dialogue = "Two"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_j1jqe"]
+script = ExtResource("1_s6xrp")
+dialogue = Array[ExtResource("2_tbb0o")]([SubResource("Resource_xsf05"), SubResource("Resource_32h7f")])
+metadata/_custom_type_script = "uid://e0ujmn3oiqx0"
+
+[sub_resource type="Resource" id="Resource_neqfg"]
+script = ExtResource("4_vvips")
+branches = Array[ExtResource("1_s6xrp")]([SubResource("Resource_j1jqe")])
+metadata/_custom_type_script = "uid://qr661epbiujn"
+
 [resource]
 script = ExtResource("5_ajyuj")
 characterName = "Jimmy James"
 dialogueTree = SubResource("Resource_cgkhu")
+hints = SubResource("Resource_neqfg")
 cupAnswer = 2
 title = "Character Sheet"
 info = Array[String]([", Hollyberry

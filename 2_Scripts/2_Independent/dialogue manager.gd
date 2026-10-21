@@ -7,13 +7,12 @@ class_name DialogueManager
 @export var scrollContainer : ScrollContainer
 @export var content : VBoxContainer
 
+signal branchFinished(branch : DialogueBranch)
+
 func _ready() -> void:
 	gameplayManager.dialogueManager = self
 func _process(delta: float) -> void:
 	_manage_scroll()
-	
-	#if Input.is_action_just_pressed("spacebar"):
-		#_trigger_dialogue_branch()
 
 #---------------
 func _start_dialogue():
@@ -22,6 +21,8 @@ func _start_dialogue():
 	
 	_trigger_dialogue_branch()
 
+var currentBranch : DialogueBranch = null
+var newBranchSeparatorRef : PackedScene = preload("res://1_Scenes/1_Objects/new branch separator.tscn")
 func _trigger_dialogue_branch():
 	var encounterDialogue : DialogueTree = gameplayManager.playmatManager.characterSheet.dialogueTree
 	
@@ -29,9 +30,15 @@ func _trigger_dialogue_branch():
 	if newDialogue == null:
 		return
 	
-	if encounterDialogue._get_current_branch().newestDialogueIndex >= encounterDialogue._get_current_branch().dialogue.size() - 1:
-		encounterDialogue._get_current_branch().hasBeenShown = true
+	var newCurrentBranch : DialogueBranch = encounterDialogue._get_current_branch()
+	if newCurrentBranch.newestDialogueIndex >= newCurrentBranch.dialogue.size() - 1:
+		newCurrentBranch.hasBeenShown = true
+		branchFinished.emit(newCurrentBranch)
 		return
+	
+	if currentBranch != null && currentBranch != newCurrentBranch:
+		await _create_new_dialogue_branch_separator()
+	currentBranch = newCurrentBranch
 	
 	await _create_dialogue_bubble()
 	await get_tree().create_timer(0.8).timeout
@@ -42,7 +49,7 @@ func _set_dialogue_view_to_bottom():
 		return
 	await get_tree().process_frame
 	var maxScrollValue : float = scrollContainer.get_v_scroll_bar().max_value - scrollContainer.get_v_scroll_bar().page
-	scrollContainer.scroll_vertical = maxScrollValue 
+	scrollContainer.scroll_vertical = maxScrollValue
 
 #- - -
 var playerDialogueBubbleRef : PackedScene = preload("res://1_Scenes/1_Objects/player dialogue bubble.tscn")
@@ -53,7 +60,7 @@ var bubbles : Array[DialogueBubble]
 func _create_dialogue_bubble():
 	var encounterDialogue : DialogueTree = gameplayManager.playmatManager.characterSheet.dialogueTree
 	var newDialogue : Dialogue = encounterDialogue._get_new_dialogue()
-
+	
 	var dialogueBubble : DialogueBubble = null
 	if newDialogue.speaker == Dialogue.Speaker.opponent:
 		dialogueBubble = opponenetDialogueBubbleRef.instantiate()
@@ -84,8 +91,54 @@ func _create_dialogue_bubble():
 	
 	_set_dialogue_view_to_bottom()
 	await _animate_new_dialogue_bubble(dialogueBubble).finished
-	return
 
+func _create_independent_dialogue_bubble(dialogueTree : DialogueTree, dialogueBranch : DialogueBranch, dialogueIndex : int):
+	var newDialogue : Dialogue = dialogueBranch.dialogue[dialogueIndex]
+	
+	var dialogueBubble : DialogueBubble = null
+	if newDialogue.speaker == Dialogue.Speaker.opponent:
+		dialogueBubble = opponenetDialogueBubbleRef.instantiate()
+		dialogueBubble.speaker = Dialogue.Speaker.opponent
+	else:
+		dialogueBubble = playerDialogueBubbleRef.instantiate()
+		dialogueBubble.speaker = Dialogue.Speaker.player
+	
+	dialogueBubble.dialogueLabel.text = newDialogue.dialogue
+	
+	var separator : Control = null
+	if bubbles.size() > 0:
+		if newDialogue.speaker == Dialogue.Speaker.opponent:
+			if bubbles[bubbles.size() - 1].speaker == Dialogue.Speaker.player:
+				separator = separatorRef.instantiate()
+		else:
+			if bubbles[bubbles.size() - 1].speaker == Dialogue.Speaker.opponent:
+				separator = separatorRef.instantiate()
+	if separator != null:
+		content.add_child(separator)
+	
+	bubbles.append(dialogueBubble)
+	
+	content.add_child(dialogueBubble)
+	
+	dialogueBubble._set_length_size()
+	dialogueBubble._hide_label()
+	
+	_set_dialogue_view_to_bottom()
+	await _animate_new_dialogue_bubble(dialogueBubble).finished
+	await get_tree().create_timer(0.8).timeout
+
+#
+func _create_new_dialogue_branch_separator():
+	bubbles.clear()
+	var newBranchSeparator : Control = newBranchSeparatorRef.instantiate()
+	var separator = separatorRef.instantiate()
+	content.add_child(newBranchSeparator)
+	content.add_child(separator)
+	await _set_dialogue_view_to_bottom()
+	_animate_new_branch_separator(newBranchSeparator)
+	await get_tree().create_timer(0.4).timeout
+
+#
 func _animate_new_dialogue_bubble(dialogueBubble : DialogueBubble) -> Tween:
 	var newTween : Tween = create_tween()
 	
@@ -98,6 +151,14 @@ func _animate_new_dialogue_bubble(dialogueBubble : DialogueBubble) -> Tween:
 	newTween.tween_property(dialogueBubble.dialogueLabel, "visible_characters", dialogueCharacterCount, normalizedCharacterVisibilityDuration)
 	
 	return newTween
+
+#- - - - - -
+func _animate_new_branch_separator(newSeparator : HSeparator):
+	var newTween : Tween = create_tween().set_parallel()
+	
+	var line : StyleBoxLine = newSeparator.get_theme_stylebox("separator", )
+	newTween.tween_property(line, "grow_begin", 13, 0.5).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	newTween.tween_property(line, "grow_end", 13, 0.5).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 
 #---------------SCROLL---------------
 var isScrolling : bool = false

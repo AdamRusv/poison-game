@@ -9,6 +9,7 @@ var playmatManager : PlaymatManager
 var poisonManager : PoisonManager
 var cupsManager : CupsManager
 var dialogueManager : DialogueManager
+var hintSystemManager : HintSystemManager
 
 var cupCount : int = 2 #NOTE: change for other gamemodes
 
@@ -18,6 +19,7 @@ signal poisonReleased
 
 var cupIsPoisoned : bool = false
 signal cupHasBeenPoisoned
+var correctCupChosen : bool = false
 
 var playerIsDead : bool = false
 signal playerDied
@@ -44,6 +46,8 @@ func _ready() -> void:
 func _set_connections():
 	newEncounter.connect(_set_next_encounter)
 	restartEncounter.connect(_restart_current_encounter)
+	cupHasBeenPoisoned.connect(dialogueManager._trigger_dialogue_branch)
+	cupHasBeenPoisoned.connect(_check_if_cup_choice_is_correct)
 
 func _start_new_encounter():
 	TransitionManager._create_transition()
@@ -87,6 +91,13 @@ func _setup_encounter_papers():
 	gamestateJSON._save_gamestate()
 
 #
+func _check_if_cup_choice_is_correct():
+	var answerCup : EncounterInfo.CupAnswer = playmatManager.characterSheet.cupAnswer
+	if currentPoisonCup == CurrentPoisonCup.opponent && answerCup == EncounterInfo.CupAnswer.opponentCup:
+		correctCupChosen = true
+	elif currentPoisonCup == CurrentPoisonCup.player && answerCup == EncounterInfo.CupAnswer.playerCup:
+		correctCupChosen = true
+
 func _restart_current_encounter():
 	TransitionManager._create_transition()
 	await TransitionManager.transitionEncounter._start_transition().finished
