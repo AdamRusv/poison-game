@@ -1,15 +1,26 @@
 [gd_scene format=3 uid="uid://cmikwn8hrnr5g"]
 
 [ext_resource type="Script" uid="uid://b1hcjlnogkytj" path="res://2_Scripts/2_Independent/paper.gd" id="1_dn5do"]
-[ext_resource type="Texture2D" uid="uid://btbkhfkp1pr81" path="res://0_Art/New_Art(Needs Sorting)/Atlas 2s-Sheet.png" id="2_3lemr"]
+[ext_resource type="Texture2D" uid="uid://d1r4cfimm4n7i" path="res://0_Art/New_Art(Needs Sorting)/Atlas 2s.png" id="2_osfa7"]
+[ext_resource type="Shader" uid="uid://c4d77gi57kbka" path="res://4_Shaders/0_Scripts/atlas page turn.gdshader" id="3_3lemr"]
+[ext_resource type="Texture2D" uid="uid://dy1gjsxd0sb6m" path="res://0_Art/New_Art(Needs Sorting)/Single Page Atlas.png" id="3_dn5do"]
 [ext_resource type="Theme" uid="uid://bhvewryp1cmbt" path="res://6_Other/description font.tres" id="4_28i0q"]
+[ext_resource type="Texture2D" uid="uid://cgmy4jxo6fcca" path="res://0_Art/New_Art(Needs Sorting)/Atlas Bottom Page Trim.png" id="4_xmrx0"]
 [ext_resource type="Texture2D" uid="uid://n82vq8gxieut" path="res://0_Art/New_Art(Needs Sorting)/PageCorner-Sheet.png" id="5_t11ig"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xmrx0"]
-atlas = ExtResource("2_3lemr")
-region = Rect2(0, 0, 242, 189)
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3lemr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_28i0q"]
+shader = ExtResource("3_3lemr")
+shader_parameter/flip_h = true
+shader_parameter/flip_v = false
+shader_parameter/progress = 0.0
+shader_parameter/x_end_factor = 1.00000002375
+shader_parameter/y_end_factor = 0.9990001899525001
+shader_parameter/reverse_dark = 1.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_2y7yb"]
+viewport_path = NodePath("SubViewport")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_504ay"]
 atlas = ExtResource("5_t11ig")
@@ -17,8 +28,8 @@ region = Rect2(0, 0, 30, 30)
 
 [node name="Paper" type="MarginContainer" unique_id=1389312574 node_paths=PackedStringArray("packetParent", "pageFlipButton", "pageFlipTexture", "parentNode", "detectionArea")]
 z_index = 1
-offset_right = 242.0
-offset_bottom = 189.0
+offset_right = 236.0
+offset_bottom = 163.0
 script = ExtResource("1_dn5do")
 packetParent = NodePath("Page Flip Container")
 pageFlipButton = NodePath("Page Flip Container/Page Flip Button")
@@ -26,9 +37,9 @@ pageFlipTexture = NodePath("Page Flip Container/Page Flip Corner Texture")
 parentNode = NodePath(".")
 detectionArea = NodePath("Drag Button")
 
-[node name="TextureRect2" type="TextureRect" parent="." unique_id=444832334]
+[node name="Full Atlas" type="TextureRect" parent="." unique_id=444832334]
 layout_mode = 2
-texture = SubResource("AtlasTexture_xmrx0")
+texture = ExtResource("2_osfa7")
 stretch_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1134887535]
@@ -107,6 +118,7 @@ theme_override_constants/separation = 4
 theme_override_styles/separator = SubResource("StyleBoxEmpty_3lemr")
 
 [node name="Region Info Holder" type="VBoxContainer" parent="HBoxContainer" unique_id=18310606]
+visible = false
 custom_maximum_size = Vector2(115, 150)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -171,8 +183,24 @@ text = "- Humans are Honarble (3) and Confused
 fit_content = true
 scroll_active = false
 
+[node name="Page Projector" type="TextureRect" parent="." unique_id=2048782279]
+material = SubResource("ShaderMaterial_28i0q")
+layout_mode = 2
+texture = SubResource("ViewportTexture_2y7yb")
+
+[node name="Trim Container" type="MarginContainer" parent="." unique_id=384535913]
+layout_mode = 2
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 4
+
+[node name="Trim Sprite" type="TextureRect" parent="Trim Container" unique_id=1268765824]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture = ExtResource("4_xmrx0")
+stretch_mode = 2
+
 [node name="Drag Button" type="Button" parent="." unique_id=1229789884]
-visible = false
 layout_mode = 2
 focus_mode = 0
 flat = true
@@ -193,3 +221,92 @@ texture = SubResource("AtlasTexture_504ay")
 [node name="Page Flip Button" type="Button" parent="Page Flip Container" unique_id=940300415]
 layout_mode = 2
 flat = true
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=555889455]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+gui_snap_controls_to_pixels = false
+size = Vector2i(237, 163)
+
+[node name="Page Container" type="MarginContainer" parent="SubViewport" unique_id=1877625295]
+offset_right = 237.0
+offset_bottom = 163.0
+theme_override_constants/margin_right = 1
+
+[node name="Page Sprite" type="TextureRect" parent="SubViewport/Page Container" unique_id=1042208507]
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("3_dn5do")
+stretch_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="SubViewport" unique_id=231385002]
+offset_right = 640.0
+offset_bottom = 360.0
+theme_override_constants/margin_left = 122
+
+[node name="Region Info Holder" type="VBoxContainer" parent="SubViewport/MarginContainer" unique_id=1909880771]
+custom_maximum_size = Vector2(115, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Top Separator" type="HSeparator" parent="SubViewport/MarginContainer/Region Info Holder" unique_id=1539597412]
+layout_mode = 2
+theme_override_constants/separation = 15
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3lemr")
+
+[node name="Title Container" type="MarginContainer" parent="SubViewport/MarginContainer/Region Info Holder" unique_id=1873021111]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 10
+
+[node name="Title Label" type="RichTextLabel" parent="SubViewport/MarginContainer/Region Info Holder/Title Container" unique_id=320638909]
+layout_mode = 2
+theme = ExtResource("4_28i0q")
+bbcode_enabled = true
+text = "Race"
+fit_content = true
+scroll_active = false
+
+[node name="Title Seperation Container" type="MarginContainer" parent="SubViewport/MarginContainer/Region Info Holder" unique_id=1603940953]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_right = 10
+
+[node name="Title Seperation Label" type="RichTextLabel" parent="SubViewport/MarginContainer/Region Info Holder/Title Seperation Container" unique_id=586639354]
+layout_mode = 2
+theme = ExtResource("4_28i0q")
+text = "------------------------"
+fit_content = true
+scroll_active = false
+
+[node name="Mid Separator" type="HSeparator" parent="SubViewport/MarginContainer/Region Info Holder" unique_id=459219639]
+layout_mode = 2
+theme_override_constants/separation = 0
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3lemr")
+
+[node name="Info Container" type="MarginContainer" parent="SubViewport/MarginContainer/Region Info Holder" unique_id=1211441657]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 0
+
+[node name="Info Label" type="RichTextLabel" parent="SubViewport/MarginContainer/Region Info Holder/Info Container" unique_id=559816010]
+layout_mode = 2
+theme = ExtResource("4_28i0q")
+bbcode_enabled = true
+text = "- Humans are Honarble (3) and Confused
+
+- Wraiths are Holy
+
+- Devils who are Leaders can never be Sages
+
+- Vastaya are never religious believers
+
+- Humans over the age of 20 hate Vastaya"
+fit_content = true
+scroll_active = false
