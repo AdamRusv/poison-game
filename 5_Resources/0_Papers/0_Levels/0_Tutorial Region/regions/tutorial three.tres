@@ -2,17 +2,18 @@
 
 [ext_resource type="Script" uid="uid://cg4ujw8mauohh" path="res://2_Scripts/3_Dependent/encounter info.gd" id="1_ovmk1"]
 [ext_resource type="Script" uid="uid://851asxmj8i78" path="res://2_Scripts/3_Dependent/region info.gd" id="2_qesvq"]
-[ext_resource type="Resource" uid="uid://c0r3iew4w8q46" path="res://5_Resources/0_Papers/1_Character Sheets/0_Tutorial Region/encounters/three.tres" id="3_5ccs8"]
+[ext_resource type="Resource" uid="uid://c0r3iew4w8q46" path="res://5_Resources/0_Papers/0_Levels/0_Tutorial Region/encounters/three.tres" id="3_5ccs8"]
 [ext_resource type="Script" uid="uid://csy0x4mgdxs00" path="res://2_Scripts/3_Dependent/paperinfo.gd" id="3_qesvq"]
 
 [sub_resource type="Resource" id="Resource_5ccs8"]
 script = ExtResource("3_qesvq")
 title = "Atlas -> Scrumpytown 2"
 info = Array[String](["Race:
-- Satyrs Lie about their Occupation and are Sages
+- Satyrs [color=#b65c5f]Lie[/color] about their Occupation
 
-Additional Notes:
-- Citizens who Lie about their Occupation are Confused"])
+
+Country Notes:
+- Citizens who [color=#b65c5f]Lie[/color] about their Occupation are Fools"])
 metadata/_custom_type_script = "uid://csy0x4mgdxs00"
 
 [sub_resource type="Resource" id="Resource_vhogm"]
@@ -21,16 +22,9 @@ title = "TRAIT SHEET"
 info = Array[String](["Fool: 
 	Drinks from the cup that is in front of themselves
 
+
 Sage:
-	Drinks from the cup that is NOT in front of themselves
-
-Confused:
-	Believes all Fools are Sages and all Sages are Fools	
-
-
-Liar/Lying/Lie (x):
-	Character Sheet entry \"x\" is false
-"])
+	Drinks from the cup that is NOT in front of themselves"])
 metadata/_custom_type_script = "uid://csy0x4mgdxs00"
 
 [resource]

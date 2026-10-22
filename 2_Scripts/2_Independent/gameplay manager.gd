@@ -3,12 +3,13 @@ extends Control
 class_name GameplayManager
 
 @export var gameTimeline : GameTimeline
-@export var temporaryRegionNumber : TextureRect
+@export var timelineCounterLabel : RichTextLabel
 
 var playmatManager : PlaymatManager
 var poisonManager : PoisonManager
 var cupsManager : CupsManager
 var dialogueManager : DialogueManager
+var hintSystemManager : HintSystemManager
 
 var cupCount : int = 2 #NOTE: change for other gamemodes
 
@@ -18,6 +19,7 @@ signal poisonReleased
 
 var cupIsPoisoned : bool = false
 signal cupHasBeenPoisoned
+var correctCupChosen : bool = false
 
 var playerIsDead : bool = false
 signal playerDied
@@ -38,22 +40,14 @@ var gamestateJSON : GamestateJSON = GamestateJSON.new()
 func _ready() -> void:
 	gamestateJSON._load_gamestate()
 	currentRegion = gameTimeline.timeline[gamestateJSON.timelineIndex]
-	_temportary_set_region_number()
+	_update_timeline_counter()
 	_set_connections()
 	_start_new_encounter()
 func _set_connections():
 	newEncounter.connect(_set_next_encounter)
 	restartEncounter.connect(_restart_current_encounter)
-func _temportary_set_region_number():
-	match gamestateJSON.timelineIndex:
-		0:
-			temporaryRegionNumber.texture.region = Rect2i(0, 0, 55, 30)
-		1:
-			temporaryRegionNumber.texture.region = Rect2i(55, 0, 55, 30)
-		2:
-			temporaryRegionNumber.texture.region = Rect2i(55 * 2, 0, 55, 30)
-		3:
-			temporaryRegionNumber.texture.region = Rect2i(55 * 3, 0, 55, 30)
+	cupHasBeenPoisoned.connect(dialogueManager._trigger_dialogue_branch)
+	cupHasBeenPoisoned.connect(_check_if_cup_choice_is_correct)
 
 func _start_new_encounter():
 	TransitionManager._create_transition()
@@ -65,13 +59,45 @@ func _start_new_encounter():
 	await get_tree().create_timer(1).timeout
 	dialogueManager._start_dialogue()
 
+func _update_timeline_counter():
+	var counterText : String = ""
+	
+	var regionNumber : int = 0
+	var initalEncounterNumber : int = 0
+	for i in range(0, gameTimeline.timeline.size()):
+		var region : RegionInfo = gameTimeline.timeline[i]
+		if i > gamestateJSON.timelineIndex:
+			break
+		
+		if region.increaseRegion == true:
+			regionNumber += 1
+			initalEncounterNumber = 1
+		else:
+			initalEncounterNumber += 1
+		
+	var encounterNumber : int = initalEncounterNumber + gamestateJSON.currentRegionEncounterCount - 1
+	counterText = str(regionNumber) + " - " + str(encounterNumber)
+	timelineCounterLabel.text = counterText
+
 #- - -
 func _setup_encounter_papers():
+	var nextEncounterIndex : int = gamestateJSON.currentCharacterIndex
+	
 	playmatManager.mainTraitSheet = currentRegion.traitSheet
-	playmatManager.characterSheet = currentRegion.characterSheets[_get_next_encounter_index()].duplicate(true)
+	playmatManager.characterSheet = currentRegion.characterSheets[nextEncounterIndex].duplicate(true)
 	playmatManager.atlasRegionSheet = currentRegion.atlas
+	
+	gamestateJSON.currentCharacterIndex = nextEncounterIndex
+	gamestateJSON._save_gamestate()
 
 #
+func _check_if_cup_choice_is_correct():
+	var answerCup : EncounterInfo.CupAnswer = playmatManager.characterSheet.cupAnswer
+	if currentPoisonCup == CurrentPoisonCup.opponent && answerCup == EncounterInfo.CupAnswer.opponentCup:
+		correctCupChosen = true
+	elif currentPoisonCup == CurrentPoisonCup.player && answerCup == EncounterInfo.CupAnswer.playerCup:
+		correctCupChosen = true
+
 func _restart_current_encounter():
 	TransitionManager._create_transition()
 	await TransitionManager.transitionEncounter._start_transition().finished
@@ -83,13 +109,17 @@ func _set_next_encounter():
 	TransitionManager._create_transition()
 	await TransitionManager.transitionEncounter._start_transition().finished
 	
-	if gamestateJSON.timelineIndex >= gameTimeline.timeline.size() - 1:
+	if gamestateJSON.timelineIndex >= gameTimeline.timeline.size() - 1 && gamestateJSON.currentRegionEncounterCount >= currentRegion.totalEncounters:
 		return
 	if gamestateJSON.currentRegionEncounterCount >= currentRegion.totalEncounters:
 		gamestateJSON.timelineIndex += 1
 		gamestateJSON.currentRegionEncounterCount = 1
+		gamestateJSON.completedCharacters.clear()
 	else:
 		gamestateJSON.currentRegionEncounterCount += 1
+		gamestateJSON.completedCharacters.append(gamestateJSON.currentCharacterIndex)
+	
+	gamestateJSON.currentCharacterIndex = _get_next_encounter_index()
 	
 	gamestateJSON._save_gamestate()
 	
@@ -98,5 +128,19 @@ func _set_next_encounter():
 
 #- - -
 func _get_next_encounter_index() -> int:
-	#TODO: make random
-	return 0
+	var nextRegion : RegionInfo = gameTimeline.timeline[gamestateJSON.timelineIndex]
+	
+	var completedCharacters : Array = gamestateJSON.completedCharacters
+	var allCharacters : Array = nextRegion.characterSheets
+	var uncompletedCharacters : Array = []
+	for i in range(0, allCharacters.size()):
+		var isCompleted : bool = false
+		for completedCharacter in completedCharacters:
+			if i == completedCharacter:
+				isCompleted = true
+				break
+		if isCompleted == false:
+			uncompletedCharacters.append(i)
+	print(uncompletedCharacters)
+	var randomIndex : int = randi_range(0, uncompletedCharacters.size() - 1)
+	return uncompletedCharacters[randomIndex]

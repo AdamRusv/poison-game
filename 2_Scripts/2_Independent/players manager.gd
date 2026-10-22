@@ -27,6 +27,11 @@ func _trigger_drink_animations():
 	
 	players[0].frame = opponentRange.x
 	players[1].frame = playerRange.x
+	
+	var currentBranch : DialogueBranch = await gameplayManager.dialogueManager.branchFinished
+	if currentBranch is DialogueBranchIntro:
+		return
+	
 	players[0].play()
 	players[1].play()
 	

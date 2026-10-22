@@ -6,11 +6,16 @@ const GAMESTATE_PATH : String = "user://gamestate.json"
 
 var timelineIndex : int = 0
 var currentRegionEncounterCount : int = 1
+##for current run per region (reset on death and entering new region)
+var completedCharacters : Array[int] = []
+var currentCharacterIndex : int = 0
 
 func _save_gamestate() -> void:
 	var gamestateData : Dictionary = {
 		"timelineIndex": timelineIndex,
-		"currentRegionEncounter": currentRegionEncounterCount
+		"currentRegionEncounter": currentRegionEncounterCount,
+		"completedCharacters": completedCharacters,
+		"currentCharacterIndex": currentCharacterIndex
 	}
 	
 	var file : FileAccess = FileAccess.open(GAMESTATE_PATH, FileAccess.WRITE)
@@ -40,5 +45,10 @@ func _load_gamestate() -> void:
 		return
 	
 	timelineIndex = int(gamestateData.get("timelineIndex", timelineIndex))
-	currentRegionEncounterCount = int(gamestateData.get("musicVolume", currentRegionEncounterCount))
+	currentRegionEncounterCount = int(gamestateData.get("currentRegionEncounter", currentRegionEncounterCount))
+	currentCharacterIndex = int(gamestateData.get("currentCharacterIndex", currentCharacterIndex))
+	
+	completedCharacters.clear()
+	for value in gamestateData.get("completedCharacters", completedCharacters):
+		completedCharacters.append(int(value))
 	
