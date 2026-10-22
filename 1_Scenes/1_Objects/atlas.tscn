@@ -13,31 +13,31 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_28i0q"]
 shader = ExtResource("3_3lemr")
 shader_parameter/progress = 0.0
-shader_parameter/spine_x = 0.50000002375
-shader_parameter/bend = -1.000000022352
-shader_parameter/reverse_dark = 0.99999998509863
+shader_parameter/spine_x = 0.5
+shader_parameter/bend = -0.8000000268224001
+shader_parameter/reverse_dark = 1.0
 shader_parameter/perspective = 0.050000002375
 shader_parameter/shadow_strength = 0.0
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_uiekx"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_35o85"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_504ay"]
 atlas = ExtResource("5_t11ig")
 region = Rect2(0, 0, 30, 30)
 
-[node name="Paper" type="MarginContainer" unique_id=1389312574 node_paths=PackedStringArray("paperTitleLabel", "paperInfoLabel", "mirrorTitleLabel", "mirrorInfoLabel", "packetParent", "pageFlipButton", "pageFlipTexture", "parentNode", "detectionArea")]
+[node name="Paper" type="MarginContainer" unique_id=1389312574 node_paths=PackedStringArray("paperTitleLabel", "paperInfoLabel", "packetParent", "pageFlipButton", "pageFlipTexture", "mirrorTitleLabel", "mirrorInfoLabel", "parentNode", "detectionArea")]
 z_index = 1
 offset_right = 236.0
 offset_bottom = 163.0
 script = ExtResource("1_dn5do")
 paperTitleLabel = NodePath("HBoxContainer/Region Info Holder/Title Container/Title Label")
 paperInfoLabel = NodePath("HBoxContainer/Region Info Holder/Info Container/Info Label")
-mirrorTitleLabel = NodePath("SubViewport/MarginContainer/Region Info Holder/Title Container/Title Label")
-mirrorInfoLabel = NodePath("SubViewport/MarginContainer/Region Info Holder/Info Container/Info Label")
 packetParent = NodePath("Page Flip Container")
 pageFlipButton = NodePath("Page Flip Container/Page Flip Button")
 pageFlipTexture = NodePath("Page Flip Container/Page Flip Corner Texture")
+mirrorTitleLabel = NodePath("SubViewport/MarginContainer/Region Info Holder/Title Container/Title Label")
+mirrorInfoLabel = NodePath("SubViewport/MarginContainer/Region Info Holder/Info Container/Info Label")
 parentNode = NodePath(".")
 detectionArea = NodePath("Drag Button")
 
@@ -190,7 +190,7 @@ scroll_active = false
 [node name="Page Projector" type="TextureRect" parent="." unique_id=2048782279]
 material = SubResource("ShaderMaterial_28i0q")
 layout_mode = 2
-texture = SubResource("ViewportTexture_uiekx")
+texture = SubResource("ViewportTexture_35o85")
 
 [node name="Trim Container Right" type="MarginContainer" parent="." unique_id=384535913]
 layout_mode = 2
