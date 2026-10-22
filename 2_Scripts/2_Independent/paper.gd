@@ -12,6 +12,7 @@ class_name Paper
 @export var pageFlipTexture : TextureRect
 
 var playmat : PlaymatManager = null
+var bbcodeManager : BBCodePaperManager = BBCodePaperManager.new()
 
 var paperInfo : PaperInfo = null
 var isPacket : bool = false
@@ -62,12 +63,13 @@ func _setup_paper(newPaperInfo : PaperInfo):
 	
 	pageFlipTexture.texture = pageFlipTexture.texture.duplicate(true)
 	
-	paperTitleLabel.text = paperInfo.title
+	#paperTitleLabel.text = paperInfo.title #NOTE: Old text grabber, new one highlights as well
+	paperTitleLabel.text = bbcodeManager._highlight(paperInfo.title)
 	if newPaperInfo is EncounterInfo:
 		var newEncounterInfo : EncounterInfo = newPaperInfo
-		paperInfoLabel.text = newEncounterInfo.characterName + paperInfo.info[0]
+		paperInfoLabel.text = bbcodeManager._highlight(newEncounterInfo.characterName + paperInfo.info[0])
 	else:
-		paperInfoLabel.text = paperInfo.info[0]
+		paperInfoLabel.text = bbcodeManager._highlight(paperInfo.info[0])
 	
 	packetParent.visible = false
 	packetBehindPaperParent.visible = false
@@ -118,7 +120,7 @@ func _on_pageflip_clicked():
 	await _squish_paper().finished
 	_reset_paper()
 
-	paperInfoLabel.text = paperInfo.info[currentPage] #NOTE: does not work with EncounterInfo
+	paperInfoLabel.text = bbcodeManager._highlight(paperInfo.info[currentPage]) #NOTE: does not work with EncounterInfo
 
 #-
 func _set_pageflip_texture_to(newRect : Rect2):
