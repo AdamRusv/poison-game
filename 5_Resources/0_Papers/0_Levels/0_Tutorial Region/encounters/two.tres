@@ -45,7 +45,7 @@ metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
 
 [sub_resource type="Resource" id="Resource_6eb78"]
 script = ExtResource("2_kd850")
-dialogue = "I was hoping to pass on my knowledge"
+dialogue = "Maybe i'll be able to pass my knowledge onto my next student"
 metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
 
 [sub_resource type="Resource" id="Resource_g7yw3"]

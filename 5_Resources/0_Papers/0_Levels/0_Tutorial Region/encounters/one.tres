@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://fn2tb2dtu6fj" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue.gd" id="2_xvvbx"]
 [ext_resource type="Script" uid="uid://qr661epbiujn" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue tree.gd" id="3_312to"]
 [ext_resource type="Script" uid="uid://chre6fsqbhfrk" path="res://2_Scripts/3_Dependent/0_Dialogue/branch intro.gd" id="3_xvvbx"]
+[ext_resource type="Script" uid="uid://cwxljhi0yey0n" path="res://2_Scripts/3_Dependent/0_Dialogue/branch cups.gd" id="4_ipl76"]
 
 [sub_resource type="Resource" id="Resource_3d4uv"]
 script = ExtResource("2_xvvbx")
@@ -36,9 +37,45 @@ script = ExtResource("3_xvvbx")
 dialogue = Array[ExtResource("2_xvvbx")]([SubResource("Resource_3d4uv"), SubResource("Resource_mqosg"), SubResource("Resource_32h7f"), SubResource("Resource_68y56"), SubResource("Resource_vrhoy")])
 metadata/_custom_type_script = "uid://chre6fsqbhfrk"
 
+[sub_resource type="Resource" id="Resource_r8cea"]
+script = ExtResource("2_xvvbx")
+dialogue = "Splendid"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_ua68t"]
+script = ExtResource("2_xvvbx")
+dialogue = "I'm proud of you"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_5k22h"]
+script = ExtResource("2_xvvbx")
+dialogue = "A toast to my honorable death!"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_5j8ym"]
+script = ExtResource("4_ipl76")
+cupPlacement = 2
+dialogue = Array[ExtResource("2_xvvbx")]([SubResource("Resource_r8cea"), SubResource("Resource_ua68t"), SubResource("Resource_5k22h")])
+metadata/_custom_type_script = "uid://cwxljhi0yey0n"
+
+[sub_resource type="Resource" id="Resource_woypx"]
+script = ExtResource("2_xvvbx")
+dialogue = "Sigh..."
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_ottgi"]
+script = ExtResource("2_xvvbx")
+dialogue = "I was really hoping to lose today"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_muuq1"]
+script = ExtResource("4_ipl76")
+dialogue = Array[ExtResource("2_xvvbx")]([SubResource("Resource_woypx"), SubResource("Resource_ottgi")])
+metadata/_custom_type_script = "uid://cwxljhi0yey0n"
+
 [sub_resource type="Resource" id="Resource_ebxdl"]
 script = ExtResource("3_312to")
-branches = Array[ExtResource("1_433kl")]([SubResource("Resource_0hcow")])
+branches = Array[ExtResource("1_433kl")]([SubResource("Resource_0hcow"), SubResource("Resource_5j8ym"), SubResource("Resource_muuq1")])
 metadata/_custom_type_script = "uid://qr661epbiujn"
 
 [resource]

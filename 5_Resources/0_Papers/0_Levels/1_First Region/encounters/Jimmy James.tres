@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://e0ujmn3oiqx0" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue branch.gd" id="1_s6xrp"]
 [ext_resource type="Script" uid="uid://fn2tb2dtu6fj" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue.gd" id="2_tbb0o"]
 [ext_resource type="Script" uid="uid://chre6fsqbhfrk" path="res://2_Scripts/3_Dependent/0_Dialogue/branch intro.gd" id="3_n8rwi"]
+[ext_resource type="Script" uid="uid://cwxljhi0yey0n" path="res://2_Scripts/3_Dependent/0_Dialogue/branch cups.gd" id="4_tbb0o"]
 [ext_resource type="Script" uid="uid://qr661epbiujn" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue tree.gd" id="4_vvips"]
 [ext_resource type="Script" uid="uid://cg4ujw8mauohh" path="res://2_Scripts/3_Dependent/encounter info.gd" id="5_ajyuj"]
 
@@ -16,9 +17,36 @@ script = ExtResource("3_n8rwi")
 dialogue = Array[ExtResource("2_tbb0o")]([SubResource("Resource_83870")])
 metadata/_custom_type_script = "uid://chre6fsqbhfrk"
 
+[sub_resource type="Resource" id="Resource_p6775"]
+script = ExtResource("2_tbb0o")
+dialogue = "Ah"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_2cybq"]
+script = ExtResource("2_tbb0o")
+dialogue = "Well done"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_k2od1"]
+script = ExtResource("4_tbb0o")
+cupPlacement = 2
+dialogue = Array[ExtResource("2_tbb0o")]([SubResource("Resource_p6775"), SubResource("Resource_2cybq")])
+metadata/_custom_type_script = "uid://cwxljhi0yey0n"
+
+[sub_resource type="Resource" id="Resource_bp1mh"]
+script = ExtResource("2_tbb0o")
+speaker = 1
+dialogue = "Goodbye."
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_67qe7"]
+script = ExtResource("4_tbb0o")
+dialogue = Array[ExtResource("2_tbb0o")]([SubResource("Resource_bp1mh")])
+metadata/_custom_type_script = "uid://cwxljhi0yey0n"
+
 [sub_resource type="Resource" id="Resource_cgkhu"]
 script = ExtResource("4_vvips")
-branches = Array[ExtResource("1_s6xrp")]([SubResource("Resource_hd02j")])
+branches = Array[ExtResource("1_s6xrp")]([SubResource("Resource_hd02j"), SubResource("Resource_k2od1"), SubResource("Resource_67qe7")])
 metadata/_custom_type_script = "uid://qr661epbiujn"
 
 [sub_resource type="Resource" id="Resource_xsf05"]

@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://fn2tb2dtu6fj" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue.gd" id="2_x1tmx"]
 [ext_resource type="Script" uid="uid://chre6fsqbhfrk" path="res://2_Scripts/3_Dependent/0_Dialogue/branch intro.gd" id="3_ey2qs"]
 [ext_resource type="Script" uid="uid://qr661epbiujn" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue tree.gd" id="4_h1djw"]
+[ext_resource type="Script" uid="uid://cwxljhi0yey0n" path="res://2_Scripts/3_Dependent/0_Dialogue/branch cups.gd" id="4_x1tmx"]
 [ext_resource type="Script" uid="uid://cg4ujw8mauohh" path="res://2_Scripts/3_Dependent/encounter info.gd" id="5_a8jsl"]
 
 [sub_resource type="Resource" id="Resource_ov0x0"]
@@ -16,9 +17,35 @@ script = ExtResource("3_ey2qs")
 dialogue = Array[ExtResource("2_x1tmx")]([SubResource("Resource_ov0x0")])
 metadata/_custom_type_script = "uid://chre6fsqbhfrk"
 
+[sub_resource type="Resource" id="Resource_7q6wp"]
+script = ExtResource("2_x1tmx")
+dialogue = "Noooo!"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_jhwtg"]
+script = ExtResource("2_x1tmx")
+dialogue = "Sigh..."
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_ba5up"]
+script = ExtResource("4_x1tmx")
+dialogue = Array[ExtResource("2_x1tmx")]([SubResource("Resource_7q6wp"), SubResource("Resource_jhwtg")])
+metadata/_custom_type_script = "uid://cwxljhi0yey0n"
+
+[sub_resource type="Resource" id="Resource_a6xer"]
+script = ExtResource("2_x1tmx")
+dialogue = "Haha!"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_bwi2o"]
+script = ExtResource("4_x1tmx")
+cupPlacement = 2
+dialogue = Array[ExtResource("2_x1tmx")]([SubResource("Resource_a6xer")])
+metadata/_custom_type_script = "uid://cwxljhi0yey0n"
+
 [sub_resource type="Resource" id="Resource_ey2qs"]
 script = ExtResource("4_h1djw")
-branches = Array[ExtResource("1_ov0x0")]([SubResource("Resource_x1tmx")])
+branches = Array[ExtResource("1_ov0x0")]([SubResource("Resource_x1tmx"), SubResource("Resource_ba5up"), SubResource("Resource_bwi2o")])
 metadata/_custom_type_script = "uid://qr661epbiujn"
 
 [sub_resource type="Resource" id="Resource_68y56"]
