@@ -64,6 +64,7 @@ theme_override_constants/margin_right = 8
 [node name="Title Label" type="RichTextLabel" parent="VBoxContainer/Title Container" unique_id=1411813506]
 layout_mode = 2
 theme = ExtResource("2_fmnio")
+bbcode_enabled = true
 text = "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
 fit_content = true
 scroll_active = false
@@ -76,6 +77,7 @@ theme_override_constants/margin_right = 8
 [node name="Title Seperation Label" type="RichTextLabel" parent="VBoxContainer/Title Seperation Container" unique_id=2027789018]
 layout_mode = 2
 theme = ExtResource("2_fmnio")
+bbcode_enabled = true
 text = "-------------------------------------"
 fit_content = true
 scroll_active = false
@@ -93,6 +95,7 @@ theme_override_constants/margin_right = 8
 [node name="Info Label" type="RichTextLabel" parent="VBoxContainer/Info Container" unique_id=1717520262]
 layout_mode = 2
 theme = ExtResource("2_fmnio")
+bbcode_enabled = true
 text = "????????????????????????????????????
 
 ???????????????????????????????????"

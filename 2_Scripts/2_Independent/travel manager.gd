@@ -5,6 +5,8 @@ class_name TravelTexture
 @export_category("References")
 @export var gameplayManager : GameplayManager
 @export var travelTexture : TextureRect 
+@export var nextMemberLabel : RichTextLabel
+@export var restartLabel : RichTextLabel
 
 var travelTriggered : bool = false
 
@@ -30,5 +32,11 @@ func _go_to_next_encounter():
 #- - -
 func _show():
 	travelTexture.visible = true
+	if gameplayManager.correctCupChosen == true:
+		nextMemberLabel.visible = true
+	else:
+		restartLabel.visible = true
 func _hide():
 	travelTexture.visible = false
+	nextMemberLabel.visible = false
+	restartLabel.visible = false
