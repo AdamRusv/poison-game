@@ -1566,11 +1566,12 @@ offset_bottom = 35.0
 texture = ExtResource("24_g2at3")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1503618063]
+visible = false
 layout_mode = 0
-offset_left = 282.0
-offset_top = 126.0
-offset_right = 524.0
-offset_bottom = 315.0
+offset_left = 299.0
+offset_top = 150.0
+offset_right = 541.0
+offset_bottom = 339.0
 
 [node name="TextureRect2" type="TextureRect" parent="MarginContainer" unique_id=1802935507]
 layout_mode = 2

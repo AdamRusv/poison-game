@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b1hcjlnogkytj" path="res://2_Scripts/2_Independent/paper.gd" id="1_dn5do"]
 [ext_resource type="Texture2D" uid="uid://d1r4cfimm4n7i" path="res://0_Art/New_Art(Needs Sorting)/Atlas 2s.png" id="2_osfa7"]
-[ext_resource type="Shader" uid="uid://c4d77gi57kbka" path="res://4_Shaders/0_Scripts/atlas page turn.gdshader" id="3_3lemr"]
+[ext_resource type="Shader" uid="uid://bc1nbfmlr01a3" path="res://4_Shaders/0_Scripts/atlas page turn bend.gdshader" id="3_3lemr"]
 [ext_resource type="Texture2D" uid="uid://dy1gjsxd0sb6m" path="res://0_Art/New_Art(Needs Sorting)/Single Page Atlas.png" id="3_dn5do"]
 [ext_resource type="Theme" uid="uid://bhvewryp1cmbt" path="res://6_Other/description font.tres" id="4_28i0q"]
 [ext_resource type="Texture2D" uid="uid://cgmy4jxo6fcca" path="res://0_Art/New_Art(Needs Sorting)/Atlas Bottom Page Trim.png" id="4_xmrx0"]
@@ -12,25 +12,29 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_28i0q"]
 shader = ExtResource("3_3lemr")
-shader_parameter/flip_h = true
-shader_parameter/flip_v = false
 shader_parameter/progress = 0.0
-shader_parameter/x_end_factor = 1.00000002375
-shader_parameter/y_end_factor = 0.9990001899525001
-shader_parameter/reverse_dark = 1.0
+shader_parameter/spine_x = 0.50000002375
+shader_parameter/bend = -1.000000022352
+shader_parameter/reverse_dark = 0.99999998509863
+shader_parameter/perspective = 0.050000002375
+shader_parameter/shadow_strength = 0.0
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_2y7yb"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_uiekx"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_504ay"]
 atlas = ExtResource("5_t11ig")
 region = Rect2(0, 0, 30, 30)
 
-[node name="Paper" type="MarginContainer" unique_id=1389312574 node_paths=PackedStringArray("packetParent", "pageFlipButton", "pageFlipTexture", "parentNode", "detectionArea")]
+[node name="Paper" type="MarginContainer" unique_id=1389312574 node_paths=PackedStringArray("paperTitleLabel", "paperInfoLabel", "mirrorTitleLabel", "mirrorInfoLabel", "packetParent", "pageFlipButton", "pageFlipTexture", "parentNode", "detectionArea")]
 z_index = 1
 offset_right = 236.0
 offset_bottom = 163.0
 script = ExtResource("1_dn5do")
+paperTitleLabel = NodePath("HBoxContainer/Region Info Holder/Title Container/Title Label")
+paperInfoLabel = NodePath("HBoxContainer/Region Info Holder/Info Container/Info Label")
+mirrorTitleLabel = NodePath("SubViewport/MarginContainer/Region Info Holder/Title Container/Title Label")
+mirrorInfoLabel = NodePath("SubViewport/MarginContainer/Region Info Holder/Info Container/Info Label")
 packetParent = NodePath("Page Flip Container")
 pageFlipButton = NodePath("Page Flip Container/Page Flip Button")
 pageFlipTexture = NodePath("Page Flip Container/Page Flip Corner Texture")
@@ -186,19 +190,36 @@ scroll_active = false
 [node name="Page Projector" type="TextureRect" parent="." unique_id=2048782279]
 material = SubResource("ShaderMaterial_28i0q")
 layout_mode = 2
-texture = SubResource("ViewportTexture_2y7yb")
+texture = SubResource("ViewportTexture_uiekx")
 
-[node name="Trim Container" type="MarginContainer" parent="." unique_id=384535913]
+[node name="Trim Container Right" type="MarginContainer" parent="." unique_id=384535913]
 layout_mode = 2
-theme_override_constants/margin_right = 5
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="Trim Sprite" type="TextureRect" parent="Trim Container" unique_id=1268765824]
+[node name="Trim Sprite" type="TextureRect" parent="Trim Container Right" unique_id=1268765824]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 texture = ExtResource("4_xmrx0")
 stretch_mode = 2
+
+[node name="Trim Container Left" type="MarginContainer" parent="." unique_id=1828632082]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Trim Sprite" type="TextureRect" parent="Trim Container Left" unique_id=995752040]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture = ExtResource("4_xmrx0")
+stretch_mode = 2
+flip_h = true
 
 [node name="Drag Button" type="Button" parent="." unique_id=1229789884]
 layout_mode = 2
@@ -228,7 +249,7 @@ transparent_bg = true
 handle_input_locally = false
 canvas_item_default_texture_filter = 0
 gui_snap_controls_to_pixels = false
-size = Vector2i(237, 163)
+size = Vector2i(236, 163)
 
 [node name="Page Container" type="MarginContainer" parent="SubViewport" unique_id=1877625295]
 offset_right = 237.0

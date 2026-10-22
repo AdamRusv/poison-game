@@ -12,6 +12,7 @@ var atlasRegionSheet : PaperInfo
 
 #var testPaperRef : PackedScene = load("res://1_Scenes/1_Objects/paper.tscn") #TODO: Make actual papers, replace variable
 var testPaperRef : PackedScene = load("res://1_Scenes/1_Objects/test_paper.tscn")
+var testAtlasRef : PackedScene = load("res://1_Scenes/1_Objects/atlas.tscn")
 
 var papers : Array[Paper]
 
@@ -26,7 +27,7 @@ func _add_main_papers():
 		_create_paper(testPaperRef, Color("4b3d44"), characterSheet)
 	
 	if atlasRegionSheet != null:
-		_create_paper(testPaperRef, Color("4b3d44"), atlasRegionSheet)
+		_create_paper(testAtlasRef, Color("4b3d44"), atlasRegionSheet)
 
 
 #-----------------------
