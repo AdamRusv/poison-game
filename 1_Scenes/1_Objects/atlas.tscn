@@ -19,7 +19,7 @@ shader_parameter/reverse_dark = 1.0
 shader_parameter/perspective = 0.050000002375
 shader_parameter/shadow_strength = 0.0
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_35o85"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_qmmsl"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_504ay"]
@@ -27,7 +27,6 @@ atlas = ExtResource("5_t11ig")
 region = Rect2(0, 0, 30, 30)
 
 [node name="Paper" type="MarginContainer" unique_id=1389312574 node_paths=PackedStringArray("paperTitleLabel", "paperInfoLabel", "packetParent", "pageFlipButton", "pageFlipTexture", "mirrorTitleLabel", "mirrorInfoLabel", "parentNode", "detectionArea")]
-z_index = 1
 offset_right = 236.0
 offset_bottom = 163.0
 script = ExtResource("1_dn5do")
@@ -190,7 +189,7 @@ scroll_active = false
 [node name="Page Projector" type="TextureRect" parent="." unique_id=2048782279]
 material = SubResource("ShaderMaterial_28i0q")
 layout_mode = 2
-texture = SubResource("ViewportTexture_35o85")
+texture = SubResource("ViewportTexture_qmmsl")
 
 [node name="Trim Container Right" type="MarginContainer" parent="." unique_id=384535913]
 layout_mode = 2
