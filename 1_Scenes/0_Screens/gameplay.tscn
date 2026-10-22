@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cvg0nvvipe48r" path="res://0_Art/2_PNGs/placeholder mockup.png" id="3_82xv0"]
 [ext_resource type="Texture2D" uid="uid://0kb1u8s0qjx5" path="res://0_Art/2_PNGs/trim.png" id="4_0hcow"]
 [ext_resource type="Texture2D" uid="uid://dy254ypb8l7vp" path="res://0_Art/2_PNGs/poison button-Sheet.png" id="4_gngdi"]
+[ext_resource type="Theme" uid="uid://3jsfntrv31jg" path="res://6_Other/large font.tres" id="6_0hcow"]
 [ext_resource type="Script" uid="uid://dsk6k5x0e30hn" path="res://2_Scripts/2_Independent/poison manager.gd" id="6_pq3d1"]
 [ext_resource type="Script" uid="uid://v10r8rve43tc" path="res://2_Scripts/2_Independent/cups manager.gd" id="7_3udmd"]
 [ext_resource type="Texture2D" uid="uid://flm20d8isxx2" path="res://0_Art/2_PNGs/travel button-Sheet.png" id="10_fn5ot"]
@@ -17,7 +18,10 @@
 [ext_resource type="Texture2D" uid="uid://bmf0h3auqyyc8" path="res://0_Art/2_PNGs/players cup event-Sheet.png" id="12_rkkk6"]
 [ext_resource type="Script" uid="uid://coy0g8tjc8t7i" path="res://2_Scripts/2_Independent/players manager.gd" id="12_ywih6"]
 [ext_resource type="Texture2D" uid="uid://brkvp2w453xgk" path="res://0_Art/2_PNGs/payer username-Sheet.png" id="14_c4l6l"]
-[ext_resource type="Texture2D" uid="uid://cbh3nokegijqt" path="res://0_Art/2_PNGs/temporary tutorial region numbers-Sheet.png" id="18_g7yw3"]
+[ext_resource type="Script" uid="uid://b6leqhh7ijbgo" path="res://2_Scripts/2_Independent/hint system manager.gd" id="19_0hcow"]
+[ext_resource type="Texture2D" uid="uid://cwydpac31fwmh" path="res://0_Art/2_PNGs/placeholder paper 9slice.png" id="20_6eb78"]
+[ext_resource type="Theme" uid="uid://bhvewryp1cmbt" path="res://6_Other/description font.tres" id="21_neqfg"]
+[ext_resource type="Theme" uid="uid://d3w6t6oupqff1" path="res://6_Other/reverse description font.tres" id="22_neqfg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fb3j3"]
 shader = ExtResource("2_1cjw6")
@@ -889,11 +893,15 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yprsh"]
-atlas = ExtResource("18_g7yw3")
-region = Rect2(0, 0, 55, 30)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_504ay"]
 
-[node name="Gameplay" type="Control" unique_id=1427164321 node_paths=PackedStringArray("temporaryRegionNumber")]
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_6eb78"]
+color = Color(0.9019608, 0.80784315, 0.6745098, 1)
+grow_begin = 7.0
+grow_end = 5.0
+thickness = 2
+
+[node name="Gameplay" type="Control" unique_id=1427164321 node_paths=PackedStringArray("timelineCounterLabel")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -902,7 +910,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0sltt")
 gameTimeline = ExtResource("2_g7yw3")
-temporaryRegionNumber = NodePath("temporary tutorial region number")
+timelineCounterLabel = NodePath("Layout/HBoxContainer/MarginContainer/VBoxContainer/Accessibility/solid background/Region Holder/Region Label")
 
 [node name="background" type="ColorRect" parent="." unique_id=1846741751]
 layout_mode = 1
@@ -971,6 +979,19 @@ theme_override_constants/margin_bottom = 4
 layout_mode = 2
 color = Color(0.16078432, 0.14117648, 0.09411765, 1)
 
+[node name="Region Holder" type="MarginContainer" parent="Layout/HBoxContainer/MarginContainer/VBoxContainer/Accessibility/solid background" unique_id=922834627]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/margin_right = 9
+
+[node name="Region Label" type="RichTextLabel" parent="Layout/HBoxContainer/MarginContainer/VBoxContainer/Accessibility/solid background/Region Holder" unique_id=2028892843]
+layout_mode = 2
+theme = ExtResource("6_0hcow")
+text = "0 - 0"
+fit_content = true
+autowrap_mode = 0
+
 [node name="Character" type="MarginContainer" parent="Layout/HBoxContainer/MarginContainer/VBoxContainer" unique_id=1308443707]
 layout_mode = 2
 size_flags_vertical = 3
@@ -1021,7 +1042,7 @@ theme_override_constants/margin_bottom = 4
 layout_mode = 2
 color = Color(0.16078432, 0.14117648, 0.09411765, 1)
 
-[node name="Playmat" type="MarginContainer" parent="Layout/HBoxContainer" unique_id=1398525186 node_paths=PackedStringArray("gameplayManager", "paperHolder")]
+[node name="Playmat" type="MarginContainer" parent="Layout/HBoxContainer" unique_id=1398525186 node_paths=PackedStringArray("gameplayManager", "paperHolder", "spawnLocations")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -1030,6 +1051,7 @@ theme_override_constants/margin_left = 2
 script = ExtResource("2_lv7np")
 gameplayManager = NodePath("../../..")
 paperHolder = NodePath("Parent/Paper Holder")
+spawnLocations = NodePath("Parent/Paper Holder/Spawn Locations")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Layout/HBoxContainer/Playmat" unique_id=331557050]
 layout_mode = 2
@@ -1051,6 +1073,14 @@ theme_override_constants/margin_bottom = 6
 [node name="Paper Holder" type="Control" parent="Layout/HBoxContainer/Playmat/Parent" unique_id=1898689258]
 clip_contents = true
 layout_mode = 2
+
+[node name="Spawn Locations" type="Control" parent="Layout/HBoxContainer/Playmat/Parent/Paper Holder" unique_id=2004756531]
+anchors_preset = 0
+offset_left = 29.0
+offset_top = 35.0
+offset_right = 224.0
+offset_bottom = 151.0
+mouse_filter = 2
 
 [node name="Flat Mockup" type="TextureRect" parent="." unique_id=904773487]
 layout_mode = 1
@@ -1084,7 +1114,7 @@ offset_bottom = 55.0
 focus_mode = 0
 flat = true
 
-[node name="Travel Texture" type="TextureRect" parent="." unique_id=2140607965 node_paths=PackedStringArray("gameplayManager", "travelTexture", "buttonSelf", "visual")]
+[node name="Travel Texture" type="TextureRect" parent="." unique_id=2140607965 node_paths=PackedStringArray("gameplayManager", "travelTexture", "nextMemberLabel", "restartLabel", "buttonSelf", "visual")]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 292.0
@@ -1095,17 +1125,47 @@ stretch_mode = 3
 script = ExtResource("11_1cjw6")
 gameplayManager = NodePath("..")
 travelTexture = NodePath(".")
+nextMemberLabel = NodePath("Travel Holder/Travel Label")
+restartLabel = NodePath("Travel Holder/Restart")
 buttonSelf = NodePath("travel button")
 visual = NodePath(".")
 NEUTRAL_STATE = Rect2i(0, 0, 209, 64)
 HOVERED_STATE = Rect2i(209, 0, 209, 64)
 PRESSED_STATE = Rect2i(418, 0, 209, 64)
 
+[node name="Travel Holder" type="MarginContainer" parent="Travel Texture" unique_id=1937392430]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="Travel Label" type="RichTextLabel" parent="Travel Texture/Travel Holder" unique_id=695078124]
+layout_mode = 2
+theme = ExtResource("6_0hcow")
+text = "Next Member"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Restart" type="RichTextLabel" parent="Travel Texture/Travel Holder" unique_id=400284497]
+layout_mode = 2
+theme = ExtResource("6_0hcow")
+text = "Restart"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="travel button" type="Button" parent="Travel Texture" unique_id=1700823552]
 layout_mode = 0
-offset_left = 9.0
+offset_left = 30.0
 offset_top = 8.0
-offset_right = 200.0
+offset_right = 179.0
 offset_bottom = 57.0
 focus_mode = 0
 flat = true
@@ -1200,11 +1260,218 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 
-[node name="temporary tutorial region number" type="TextureRect" parent="." unique_id=419289354]
+[node name="Hint System" type="Control" parent="." unique_id=917421299 node_paths=PackedStringArray("gameplayManager", "closedDetectionZone", "openDetectionZone", "hintBox", "hintLabels", "hintButtons", "hoveredLabelBackgrounds", "hoveredHintLabels")]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("19_0hcow")
+gameplayManager = NodePath("..")
+closedDetectionZone = NodePath("Closed Detection Area")
+openDetectionZone = NodePath("Hint Box Holder")
+hintBox = NodePath("Hint Box Holder/Hint Box")
+hintLabels = [NodePath("Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/1/hint 1"), NodePath("Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/2/hint 2"), NodePath("Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/3/hint 3")]
+hintButtons = [NodePath("Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/1/hovered hint 1/hint button 1"), NodePath("Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/2/hovered hint 2/hint button 2"), NodePath("Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/3/hovered hint 3/hint button 3")]
+hoveredLabelBackgrounds = [NodePath("Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/1/hovered hint 1/background 1"), NodePath("Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/2/hovered hint 2/background 2"), NodePath("Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/3/hovered hint 3/background 3")]
+hoveredHintLabels = [NodePath("Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/1/hovered hint 1/MarginContainer2/hovered hint 1"), NodePath("Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/2/hovered hint 2/MarginContainer2/hovered hint 2"), NodePath("Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/3/hovered hint 3/MarginContainer2/hovered hint 3")]
+
+[node name="Closed Detection Area" type="Control" parent="Hint System" unique_id=1032475029]
+anchors_preset = 0
+offset_left = 151.0
+offset_top = 206.0
+offset_right = 182.0
+offset_bottom = 259.0
+
+[node name="Opened Detection Area" type="Control" parent="Hint System" unique_id=1206578270]
+visible = false
+anchors_preset = 0
+offset_left = 151.0
+offset_top = 166.0
+offset_right = 249.0
+offset_bottom = 259.0
+
+[node name="Hint Box Holder" type="MarginContainer" parent="Hint System" unique_id=1858164333]
 layout_mode = 0
-offset_left = 157.0
-offset_top = 5.0
-offset_right = 212.0
-offset_bottom = 35.0
-texture = SubResource("AtlasTexture_yprsh")
-stretch_mode = 2
+offset_left = 151.0
+offset_top = 176.0
+offset_right = 227.0
+offset_bottom = 259.0
+theme_override_constants/margin_left = 35
+
+[node name="Hint Box" type="MarginContainer" parent="Hint System/Hint Box Holder" unique_id=1615275609]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Hint System/Hint Box Holder/Hint Box" unique_id=143885875]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("20_6eb78")
+region_rect = Rect2(0, 0, 12, 12)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="Hint System/Hint Box Holder/Hint Box" unique_id=286114657]
+layout_mode = 2
+theme_override_constants/margin_left = 9
+theme_override_constants/margin_right = 9
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Hint System/Hint Box Holder/Hint Box/MarginContainer" unique_id=1320321207]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="HSeparator" type="HSeparator" parent="Hint System/Hint Box Holder/Hint Box/MarginContainer/VBoxContainer" unique_id=416305671]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxEmpty_504ay")
+
+[node name="Ask" type="MarginContainer" parent="Hint System/Hint Box Holder/Hint Box/MarginContainer/VBoxContainer" unique_id=1737317407]
+layout_mode = 2
+
+[node name="ask label" type="RichTextLabel" parent="Hint System/Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/Ask" unique_id=1094527285]
+layout_mode = 2
+theme = ExtResource("21_neqfg")
+text = "Ask:"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+visible_characters_behavior = 1
+
+[node name="HSeparator3" type="HSeparator" parent="Hint System/Hint Box Holder/Hint Box/MarginContainer/VBoxContainer" unique_id=1426589103]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxLine_6eb78")
+
+[node name="1" type="MarginContainer" parent="Hint System/Hint Box Holder/Hint Box/MarginContainer/VBoxContainer" unique_id=1536980152]
+layout_mode = 2
+theme_override_constants/margin_top = 7
+
+[node name="hint 1" type="RichTextLabel" parent="Hint System/Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/1" unique_id=1868395340]
+layout_mode = 2
+theme = ExtResource("21_neqfg")
+text = "???????????"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+visible_characters_behavior = 1
+
+[node name="hovered hint 1" type="MarginContainer" parent="Hint System/Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/1" unique_id=804445301]
+layout_mode = 2
+theme_override_constants/margin_left = -2
+theme_override_constants/margin_top = -5
+theme_override_constants/margin_right = -2
+theme_override_constants/margin_bottom = -2
+
+[node name="background 1" type="ColorRect" parent="Hint System/Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/1/hovered hint 1" unique_id=474597617]
+layout_mode = 2
+color = Color(0.9019608, 0.80784315, 0.6745098, 1)
+
+[node name="MarginContainer2" type="MarginContainer" parent="Hint System/Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/1/hovered hint 1" unique_id=796181643]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 5
+
+[node name="hovered hint 1" type="RichTextLabel" parent="Hint System/Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/1/hovered hint 1/MarginContainer2" unique_id=886488810]
+layout_mode = 2
+theme = ExtResource("22_neqfg")
+text = "???????????"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+visible_characters_behavior = 1
+
+[node name="hint button 1" type="Button" parent="Hint System/Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/1/hovered hint 1" unique_id=489798157]
+layout_mode = 2
+focus_mode = 0
+flat = true
+
+[node name="2" type="MarginContainer" parent="Hint System/Hint Box Holder/Hint Box/MarginContainer/VBoxContainer" unique_id=364485618]
+layout_mode = 2
+theme_override_constants/margin_top = 7
+
+[node name="hint 2" type="RichTextLabel" parent="Hint System/Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/2" unique_id=1209363576]
+layout_mode = 2
+theme = ExtResource("21_neqfg")
+text = "???????????"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+visible_characters_behavior = 1
+
+[node name="hovered hint 2" type="MarginContainer" parent="Hint System/Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/2" unique_id=1402932502]
+layout_mode = 2
+theme_override_constants/margin_left = -2
+theme_override_constants/margin_top = -5
+theme_override_constants/margin_right = -2
+theme_override_constants/margin_bottom = -2
+
+[node name="background 2" type="ColorRect" parent="Hint System/Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/2/hovered hint 2" unique_id=68230733]
+layout_mode = 2
+color = Color(0.9019608, 0.80784315, 0.6745098, 1)
+
+[node name="MarginContainer2" type="MarginContainer" parent="Hint System/Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/2/hovered hint 2" unique_id=710632831]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 5
+
+[node name="hovered hint 2" type="RichTextLabel" parent="Hint System/Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/2/hovered hint 2/MarginContainer2" unique_id=205660474]
+layout_mode = 2
+theme = ExtResource("22_neqfg")
+text = "???????????"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+visible_characters_behavior = 1
+
+[node name="hint button 2" type="Button" parent="Hint System/Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/2/hovered hint 2" unique_id=1392024818]
+layout_mode = 2
+focus_mode = 0
+flat = true
+
+[node name="3" type="MarginContainer" parent="Hint System/Hint Box Holder/Hint Box/MarginContainer/VBoxContainer" unique_id=1306533668]
+layout_mode = 2
+theme_override_constants/margin_top = 7
+
+[node name="hint 3" type="RichTextLabel" parent="Hint System/Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/3" unique_id=463997443]
+layout_mode = 2
+theme = ExtResource("21_neqfg")
+text = "???????????"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+visible_characters_behavior = 1
+
+[node name="hovered hint 3" type="MarginContainer" parent="Hint System/Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/3" unique_id=1978005398]
+layout_mode = 2
+theme_override_constants/margin_left = -2
+theme_override_constants/margin_top = -5
+theme_override_constants/margin_right = -2
+theme_override_constants/margin_bottom = -2
+
+[node name="background 3" type="ColorRect" parent="Hint System/Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/3/hovered hint 3" unique_id=1418066856]
+layout_mode = 2
+color = Color(0.9019608, 0.80784315, 0.6745098, 1)
+
+[node name="MarginContainer2" type="MarginContainer" parent="Hint System/Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/3/hovered hint 3" unique_id=1423541055]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 5
+
+[node name="hovered hint 3" type="RichTextLabel" parent="Hint System/Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/3/hovered hint 3/MarginContainer2" unique_id=2113803137]
+layout_mode = 2
+theme = ExtResource("22_neqfg")
+text = "???????????"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+visible_characters_behavior = 1
+
+[node name="hint button 3" type="Button" parent="Hint System/Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/3/hovered hint 3" unique_id=1509097560]
+layout_mode = 2
+focus_mode = 0
+flat = true
+
+[node name="HSeparator2" type="HSeparator" parent="Hint System/Hint Box Holder/Hint Box/MarginContainer/VBoxContainer" unique_id=748824979]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxEmpty_504ay")

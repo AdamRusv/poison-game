@@ -1,0 +1,87 @@
+[gd_resource type="Resource" script_class="EncounterInfo" format=3 uid="uid://bsh6js0264vx8"]
+
+[ext_resource type="Script" uid="uid://cg4ujw8mauohh" path="res://2_Scripts/3_Dependent/encounter info.gd" id="1_2435v"]
+[ext_resource type="Script" uid="uid://e0ujmn3oiqx0" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue branch.gd" id="1_griqq"]
+[ext_resource type="Script" uid="uid://fn2tb2dtu6fj" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue.gd" id="2_kd850"]
+[ext_resource type="Script" uid="uid://qr661epbiujn" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue tree.gd" id="3_dv0cg"]
+[ext_resource type="Script" uid="uid://chre6fsqbhfrk" path="res://2_Scripts/3_Dependent/0_Dialogue/branch intro.gd" id="3_kd850"]
+[ext_resource type="Script" uid="uid://cwxljhi0yey0n" path="res://2_Scripts/3_Dependent/0_Dialogue/branch cups.gd" id="4_nrtmg"]
+
+[sub_resource type="Resource" id="Resource_pc0g8"]
+script = ExtResource("2_kd850")
+speaker = 1
+dialogue = "Greetings!"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_l4ijl"]
+script = ExtResource("2_kd850")
+dialogue = "Hello there!"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_312to"]
+script = ExtResource("2_kd850")
+dialogue = "You now have an Atlas"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_xvvbx"]
+script = ExtResource("2_kd850")
+dialogue = "The Atlas is the middleman between the Character Sheet and the Trait Sheet"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_433kl"]
+script = ExtResource("2_kd850")
+dialogue = "Best of luck!"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_yqjtl"]
+script = ExtResource("3_kd850")
+dialogue = Array[ExtResource("2_kd850")]([SubResource("Resource_pc0g8"), SubResource("Resource_l4ijl"), SubResource("Resource_312to"), SubResource("Resource_xvvbx"), SubResource("Resource_433kl")])
+metadata/_custom_type_script = "uid://chre6fsqbhfrk"
+
+[sub_resource type="Resource" id="Resource_fb3j3"]
+script = ExtResource("2_kd850")
+dialogue = "Too bad..."
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_6eb78"]
+script = ExtResource("2_kd850")
+dialogue = "Maybe i'll be able to pass my knowledge onto my next student"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_g7yw3"]
+script = ExtResource("4_nrtmg")
+cupPlacement = 2
+dialogue = Array[ExtResource("2_kd850")]([SubResource("Resource_fb3j3"), SubResource("Resource_6eb78")])
+metadata/_custom_type_script = "uid://cwxljhi0yey0n"
+
+[sub_resource type="Resource" id="Resource_neqfg"]
+script = ExtResource("2_kd850")
+dialogue = "Congratulations"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_j1jqe"]
+script = ExtResource("2_kd850")
+dialogue = "You have bested I, Scrumpy Giggles!"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_0hcow"]
+script = ExtResource("4_nrtmg")
+dialogue = Array[ExtResource("2_kd850")]([SubResource("Resource_neqfg"), SubResource("Resource_j1jqe")])
+metadata/_custom_type_script = "uid://cwxljhi0yey0n"
+
+[sub_resource type="Resource" id="Resource_uflgm"]
+script = ExtResource("3_dv0cg")
+branches = Array[ExtResource("1_griqq")]([SubResource("Resource_yqjtl"), SubResource("Resource_g7yw3"), SubResource("Resource_0hcow")])
+metadata/_custom_type_script = "uid://qr661epbiujn"
+
+[resource]
+script = ExtResource("1_2435v")
+characterName = "Scrumpy Giggles"
+dialogueTree = SubResource("Resource_uflgm")
+cupAnswer = 1
+title = "Character Sheet"
+info = Array[String]([", Scrumpytown
+
+
+1. Race: Satyr"])
+metadata/_custom_type_script = "uid://cg4ujw8mauohh"

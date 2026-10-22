@@ -5,6 +5,7 @@ var settingsJSON : SettingsJSON = SettingsJSON.new()
 signal togglefullscreen
 
 func _ready() -> void:
+	randomize()
 	settingsJSON._load_settings()
 	togglefullscreen.connect(_toggle_fullscreen)
 	_update_fullscreen()

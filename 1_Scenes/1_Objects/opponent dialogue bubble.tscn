@@ -4,14 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://ewtkf8nl0qkn" path="res://0_Art/2_PNGs/dialogue bubble.png" id="2_dovws"]
 [ext_resource type="Theme" uid="uid://bhvewryp1cmbt" path="res://6_Other/description font.tres" id="3_b18gr"]
 
-[node name="opponent dialogue bubble" type="MarginContainer" unique_id=1645530191 node_paths=PackedStringArray("visualHolder", "texture", "labelHolder", "dialogueLabel")]
-offset_right = 78.0
-offset_bottom = 16.0
+[node name="opponent dialogue bubble" type="MarginContainer" unique_id=1645530191 node_paths=PackedStringArray("visualHolder", "texture", "dialogueLabel")]
+offset_right = 66.0
+offset_bottom = 20.0
 script = ExtResource("1_61cyn")
 visualHolder = NodePath("visual holder")
 texture = NodePath("visual holder/NinePatchRect")
-labelHolder = NodePath("visual holder/MarginContainer")
-dialogueLabel = NodePath("visual holder/MarginContainer/dialogue Label")
+dialogueLabel = NodePath("visual holder/MarginContainer/dialogue label")
 
 [node name="visual holder" type="MarginContainer" parent="." unique_id=1138734156]
 custom_minimum_size = Vector2(0, 20)
@@ -37,11 +36,11 @@ theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 3
 theme_override_constants/margin_bottom = 4
 
-[node name="dialogue Label" type="RichTextLabel" parent="visual holder/MarginContainer" unique_id=1528100966]
-custom_maximum_size = Vector2(111, -1)
+[node name="dialogue label" type="RichTextLabel" parent="visual holder/MarginContainer" unique_id=30857362]
 layout_mode = 2
 theme = ExtResource("3_b18gr")
-text = "????????????????????????"
+text = "???????????????"
 fit_content = true
 scroll_active = false
+autowrap_mode = 0
 visible_characters_behavior = 1
