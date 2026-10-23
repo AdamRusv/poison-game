@@ -19,6 +19,7 @@ var playmat : PlaymatManager = null
 var bbcodeManager : BBCodePaperManager = BBCodePaperManager.new()
 
 var paperInfo : PaperInfo = null
+var canBePacket : bool = true
 var isPacket : bool = false
 
 var paperPadding : float = 40
@@ -31,9 +32,10 @@ func _ready() -> void:
 
 func _set_connections():
 	super._set_connections()
-	pageFlipButton.mouse_entered.connect(_on_pageflip_enter)
-	pageFlipButton.mouse_exited.connect(_on_pageflip_exit)
-	pageFlipButton.pressed.connect(_on_pageflip_clicked)
+	if canBePacket == true:
+		pageFlipButton.mouse_entered.connect(_on_pageflip_enter)
+		pageFlipButton.mouse_exited.connect(_on_pageflip_exit)
+		pageFlipButton.pressed.connect(_on_pageflip_clicked)
 
 func _process(delta: float) -> void:
 	super._process(delta)
@@ -65,7 +67,8 @@ func _clamp_paper():
 func _setup_paper(newPaperInfo : PaperInfo):
 	paperInfo = newPaperInfo
 	
-	pageFlipTexture.texture = pageFlipTexture.texture.duplicate(true)
+	if canBePacket == true:
+		pageFlipTexture.texture = pageFlipTexture.texture.duplicate(true)
 	
 	#paperTitleLabel.text = paperInfo.title #NOTE: Old text grabber, new one highlights as well
 	_set_label_text(paperTitleLabel, mirrorTitleLabel, bbcodeManager._highlight(paperInfo.title))
@@ -75,12 +78,13 @@ func _setup_paper(newPaperInfo : PaperInfo):
 	else:
 		_set_label_text(paperInfoLabel, mirrorInfoLabel, bbcodeManager._highlight(paperInfo.info[0]))
 	
-	packetParent.visible = false
-	if packetBehindPaperParent != null:
-		packetBehindPaperParent.visible = false
-	
-	if paperInfo.info.size() > 1:
-		_setup_packet()
+	if canBePacket == true:
+		packetParent.visible = false
+		if packetBehindPaperParent != null:
+			packetBehindPaperParent.visible = false
+		
+		if paperInfo.info.size() > 1:
+			_setup_packet()
 
 func _set_label_text(label : RichTextLabel, mirror : RichTextLabel, newText : String):
 	label.text = newText

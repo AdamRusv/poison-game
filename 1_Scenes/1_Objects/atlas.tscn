@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cmikwn8hrnr5g"]
 
-[ext_resource type="Script" uid="uid://b1hcjlnogkytj" path="res://2_Scripts/2_Independent/paper.gd" id="1_dn5do"]
-[ext_resource type="Texture2D" uid="uid://d1r4cfimm4n7i" path="res://0_Art/New_Art(Needs Sorting)/Atlas 2s.png" id="2_osfa7"]
-[ext_resource type="Shader" uid="uid://bc1nbfmlr01a3" path="res://4_Shaders/0_Scripts/atlas page turn bend.gdshader" id="3_3lemr"]
+[ext_resource type="Script" uid="uid://de22md0e38xn2" path="res://2_Scripts/2_Independent/atlas book.gd" id="1_3lemr"]
+[ext_resource type="Texture2D" uid="uid://d0n6gp3gmvjne" path="res://0_Art/New_Art(Needs Sorting)/Atlas.png" id="2_3lemr"]
+[ext_resource type="Texture2D" uid="uid://cyfq2etchayqu" path="res://0_Art/New_Art(Needs Sorting)/Atlas Cover Page.png" id="2_28i0q"]
 [ext_resource type="Texture2D" uid="uid://dy1gjsxd0sb6m" path="res://0_Art/New_Art(Needs Sorting)/Single Page Atlas.png" id="3_dn5do"]
 [ext_resource type="Theme" uid="uid://bhvewryp1cmbt" path="res://6_Other/description font.tres" id="4_28i0q"]
 [ext_resource type="Texture2D" uid="uid://cgmy4jxo6fcca" path="res://0_Art/New_Art(Needs Sorting)/Atlas Bottom Page Trim.png" id="4_xmrx0"]
@@ -10,39 +10,197 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3lemr"]
 
+[sub_resource type="Shader" id="Shader_t11ig"]
+code = "shader_type canvas_item;
+
+// 0 = page lying on the right, 0.5 = upright at the spine, 1 = lying flat on the left.
+uniform float progress : hint_range(0.0, 1.0, 0.001) = 0.0;
+// Horizontal position of the spine in UV space. The turning page is the texture region to its right.
+uniform float spine_x : hint_range(0.0, 1.0, 0.001) = 0.5;
+// How much the free edge leads (positive) or trails (negative) the spine edge mid-turn.
+uniform float bend : hint_range(-2.0, 2.0, 0.01) = 0.8;
+// Darkening applied to the back of the page.
+uniform float reverse_dark : hint_range(0.2, 1.0, 0.01) = 0.75;
+// How much parts of the page closer to the camera look taller.
+uniform float perspective : hint_range(0.0, 0.5, 0.001) = 0.12;
+// How dark the page gets where it is turned edge-on to the camera.
+uniform float shadow_strength : hint_range(0.0, 1.0, 0.01) = 0.35;
+
+const int SEGMENTS = 48;
+
+// The page is a curve whose angle changes linearly along its length: theta(t) = angle + bend * sin(angle) * t.
+// It is walked in small segments, and the nearest segment that covers this pixel's x is drawn.
+void fragment() {
+	float angle = progress * PI;
+	float page_w = 1.0 - spine_x;
+	float bend_amt = bend * sin(angle);
+	float target = (UV.x - spine_x) / page_w;
+
+	vec4 col = vec4(0.0);
+	float best_z = -1e9;
+	float x0 = 0.0;
+	float z0 = 0.0;
+
+	for (int i = 0; i < SEGMENTS; i++) {
+		float t0 = float(i) / float(SEGMENTS);
+		float t1 = float(i + 1) / float(SEGMENTS);
+		float theta = angle + bend_amt * (t0 + t1) * 0.5;
+		float x1 = x0 + cos(theta) / float(SEGMENTS);
+		float z1 = z0 + sin(theta) / float(SEGMENTS);
+
+		float lo = min(x0, x1);
+		float hi = max(x0, x1);
+		if (target >= lo && target <= hi) {
+			float f = hi > lo ? (target - x0) / (x1 - x0) : 0.0;
+			float z = mix(z0, z1, f);
+
+			if (z > best_z) {
+				float t = mix(t0, t1, f);
+				float scale_y = max(1.0 + perspective * z, 0.1);
+				float v = 0.5 + (UV.y - 0.5) / scale_y;
+
+				if (v >= 0.0 && v <= 1.0) {
+					best_z = z;
+					col = texture(TEXTURE, vec2(spine_x + t * page_w, v));
+
+					float shade = 1.0 - shadow_strength * abs(sin(theta));
+					if (cos(theta) < 0.0) {
+						shade *= reverse_dark;
+					}
+					col.rgb *= shade;
+				}
+			}
+		}
+
+		x0 = x1;
+		z0 = z1;
+	}
+
+	COLOR = col;
+}
+"
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_28i0q"]
-shader = ExtResource("3_3lemr")
+shader = SubResource("Shader_t11ig")
 shader_parameter/progress = 0.0
 shader_parameter/spine_x = 0.5
-shader_parameter/bend = -0.8000000268224001
+shader_parameter/bend = -4.4704000057294024e-08
 shader_parameter/reverse_dark = 1.0
 shader_parameter/perspective = 0.050000002375
 shader_parameter/shadow_strength = 0.0
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_qmmsl"]
-viewport_path = NodePath("SubViewport")
+viewport_path = NodePath("Front Page")
+
+[sub_resource type="Shader" id="Shader_3lemr"]
+code = "shader_type canvas_item;
+
+// 0 = page lying on the right, 0.5 = upright at the spine, 1 = lying flat on the left.
+uniform float progress : hint_range(0.0, 1.0, 0.001) = 0.0;
+// Horizontal position of the spine in UV space. The turning page is the texture region to its right.
+uniform float spine_x : hint_range(0.0, 1.0, 0.001) = 0.5;
+// How much the free edge leads (positive) or trails (negative) the spine edge mid-turn.
+uniform float bend : hint_range(-2.0, 2.0, 0.01) = 0.8;
+// Darkening applied to the back of the page.
+uniform float reverse_dark : hint_range(0.2, 1.0, 0.01) = 0.75;
+// How much parts of the page closer to the camera look taller.
+uniform float perspective : hint_range(0.0, 0.5, 0.001) = 0.12;
+// How dark the page gets where it is turned edge-on to the camera.
+uniform float shadow_strength : hint_range(0.0, 1.0, 0.01) = 0.35;
+
+const int SEGMENTS = 48;
+
+// The page is a curve whose angle changes linearly along its length: theta(t) = angle + bend * sin(angle) * t.
+// It is walked in small segments, and the nearest segment that covers this pixel's x is drawn.
+void fragment() {
+	float angle = progress * PI;
+	float page_w = 1.0 - spine_x;
+	float bend_amt = bend * sin(angle);
+	float target = (UV.x - spine_x) / page_w;
+
+	vec4 col = vec4(0.0);
+	float best_z = -1e9;
+	float x0 = 0.0;
+	float z0 = 0.0;
+
+	for (int i = 0; i < SEGMENTS; i++) {
+		float t0 = float(i) / float(SEGMENTS);
+		float t1 = float(i + 1) / float(SEGMENTS);
+		float theta = angle + bend_amt * (t0 + t1) * 0.5;
+		float x1 = x0 + cos(theta) / float(SEGMENTS);
+		float z1 = z0 + sin(theta) / float(SEGMENTS);
+
+		float lo = min(x0, x1);
+		float hi = max(x0, x1);
+		if (target >= lo && target <= hi) {
+			float f = hi > lo ? (target - x0) / (x1 - x0) : 0.0;
+			float z = mix(z0, z1, f);
+
+			if (z > best_z) {
+				float t = mix(t0, t1, f);
+				float scale_y = max(1.0 + perspective * z, 0.1);
+				float v = 0.5 + (UV.y - 0.5) / scale_y;
+
+				if (v >= 0.0 && v <= 1.0) {
+					best_z = z;
+					col = texture(TEXTURE, vec2(spine_x + t * page_w, v));
+
+					float shade = 1.0 - shadow_strength * abs(sin(theta));
+					if (cos(theta) < 0.0) {
+						shade *= reverse_dark;
+					}
+					col.rgb *= shade;
+				}
+			}
+		}
+
+		x0 = x1;
+		z0 = z1;
+	}
+
+	COLOR = col;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t11ig"]
+shader = SubResource("Shader_3lemr")
+shader_parameter/progress = 1.0
+shader_parameter/spine_x = 0.5
+shader_parameter/bend = -4.4704000057294024e-08
+shader_parameter/reverse_dark = 1.0
+shader_parameter/perspective = 0.050000002375
+shader_parameter/shadow_strength = 0.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_3lemr"]
+viewport_path = NodePath("Back Page")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_504ay"]
 atlas = ExtResource("5_t11ig")
 region = Rect2(0, 0, 30, 30)
 
-[node name="Paper" type="MarginContainer" unique_id=1389312574 node_paths=PackedStringArray("paperTitleLabel", "paperInfoLabel", "packetParent", "pageFlipButton", "pageFlipTexture", "mirrorTitleLabel", "mirrorInfoLabel", "parentNode", "detectionArea")]
+[node name="Atlas" type="MarginContainer" unique_id=1389312574 node_paths=PackedStringArray("mapPageSprite", "atlasFullPageSprite", "atlasSinglePageSprite", "leftDetectionZone", "rightDetectionZone", "paperTitleLabel", "paperInfoLabel", "parentNode", "detectionArea")]
 offset_right = 236.0
 offset_bottom = 163.0
-script = ExtResource("1_dn5do")
-paperTitleLabel = NodePath("HBoxContainer/Region Info Holder/Title Container/Title Label")
-paperInfoLabel = NodePath("HBoxContainer/Region Info Holder/Info Container/Info Label")
-packetParent = NodePath("Page Flip Container")
-pageFlipButton = NodePath("Page Flip Container/Page Flip Button")
-pageFlipTexture = NodePath("Page Flip Container/Page Flip Corner Texture")
-mirrorTitleLabel = NodePath("SubViewport/MarginContainer/Region Info Holder/Title Container/Title Label")
-mirrorInfoLabel = NodePath("SubViewport/MarginContainer/Region Info Holder/Info Container/Info Label")
+script = ExtResource("1_3lemr")
+mapPageSprite = NodePath("Map Page")
+atlasFullPageSprite = NodePath("Atlas Page")
+atlasSinglePageSprite = NodePath("Front Page Projector")
+leftDetectionZone = NodePath("Detection Zone Holder/Turn Page Zone Left")
+rightDetectionZone = NodePath("Detection Zone Holder/Turn Page Zone Right")
+paperTitleLabel = NodePath("HBoxContainer/General Info Holder/Title Container/Title Label")
+paperInfoLabel = NodePath("Front Page/MarginContainer/Region Info Holder/Info Container/Info Label")
 parentNode = NodePath(".")
 detectionArea = NodePath("Drag Button")
 
-[node name="Full Atlas" type="TextureRect" parent="." unique_id=444832334]
+[node name="Map Page" type="TextureRect" parent="." unique_id=217660512]
+visible = false
 layout_mode = 2
-texture = ExtResource("2_osfa7")
+texture = ExtResource("2_28i0q")
+stretch_mode = 2
+
+[node name="Atlas Page" type="TextureRect" parent="." unique_id=444832334]
+layout_mode = 2
+texture = ExtResource("2_3lemr")
 stretch_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1134887535]
@@ -186,10 +344,17 @@ text = "- Humans are Honarble (3) and Confused
 fit_content = true
 scroll_active = false
 
-[node name="Page Projector" type="TextureRect" parent="." unique_id=2048782279]
+[node name="Front Page Projector" type="TextureRect" parent="." unique_id=2048782279]
 material = SubResource("ShaderMaterial_28i0q")
 layout_mode = 2
 texture = SubResource("ViewportTexture_qmmsl")
+
+[node name="Back Page Projector" type="TextureRect" parent="." unique_id=53488933]
+visible = false
+material = SubResource("ShaderMaterial_t11ig")
+layout_mode = 2
+texture = SubResource("ViewportTexture_3lemr")
+flip_h = true
 
 [node name="Trim Container Right" type="MarginContainer" parent="." unique_id=384535913]
 layout_mode = 2
@@ -242,48 +407,49 @@ texture = SubResource("AtlasTexture_504ay")
 layout_mode = 2
 flat = true
 
-[node name="SubViewport" type="SubViewport" parent="." unique_id=555889455]
+[node name="Back Page" type="SubViewport" parent="." unique_id=1909665784]
 disable_3d = true
 transparent_bg = true
 handle_input_locally = false
 canvas_item_default_texture_filter = 0
 gui_snap_controls_to_pixels = false
-size = Vector2i(236, 163)
+size = Vector2i(236, 166)
 
-[node name="Page Container" type="MarginContainer" parent="SubViewport" unique_id=1877625295]
+[node name="Page Container" type="MarginContainer" parent="Back Page" unique_id=600668051]
 offset_right = 237.0
 offset_bottom = 163.0
 theme_override_constants/margin_right = 1
 
-[node name="Page Sprite" type="TextureRect" parent="SubViewport/Page Container" unique_id=1042208507]
+[node name="Page Sprite" type="TextureRect" parent="Back Page/Page Container" unique_id=935922612]
 layout_mode = 2
 size_flags_horizontal = 8
 texture = ExtResource("3_dn5do")
 stretch_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="SubViewport" unique_id=231385002]
+[node name="MarginContainer" type="MarginContainer" parent="Back Page" unique_id=704680164]
 offset_right = 640.0
 offset_bottom = 360.0
-theme_override_constants/margin_left = 122
+scale = Vector2(-1, 1)
+theme_override_constants/margin_left = -229
 
-[node name="Region Info Holder" type="VBoxContainer" parent="SubViewport/MarginContainer" unique_id=1909880771]
+[node name="Region Info Holder" type="VBoxContainer" parent="Back Page/MarginContainer" unique_id=1468465151]
 custom_maximum_size = Vector2(115, 150)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Top Separator" type="HSeparator" parent="SubViewport/MarginContainer/Region Info Holder" unique_id=1539597412]
+[node name="Top Separator" type="HSeparator" parent="Back Page/MarginContainer/Region Info Holder" unique_id=519231678]
 layout_mode = 2
 theme_override_constants/separation = 15
 theme_override_styles/separator = SubResource("StyleBoxEmpty_3lemr")
 
-[node name="Title Container" type="MarginContainer" parent="SubViewport/MarginContainer/Region Info Holder" unique_id=1873021111]
+[node name="Title Container" type="MarginContainer" parent="Back Page/MarginContainer/Region Info Holder" unique_id=1233341197]
 layout_mode = 2
 theme_override_constants/margin_left = 6
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 10
 
-[node name="Title Label" type="RichTextLabel" parent="SubViewport/MarginContainer/Region Info Holder/Title Container" unique_id=320638909]
+[node name="Title Label" type="RichTextLabel" parent="Back Page/MarginContainer/Region Info Holder/Title Container" unique_id=635452247]
 layout_mode = 2
 theme = ExtResource("4_28i0q")
 bbcode_enabled = true
@@ -291,31 +457,31 @@ text = "Race"
 fit_content = true
 scroll_active = false
 
-[node name="Title Seperation Container" type="MarginContainer" parent="SubViewport/MarginContainer/Region Info Holder" unique_id=1603940953]
+[node name="Title Seperation Container" type="MarginContainer" parent="Back Page/MarginContainer/Region Info Holder" unique_id=2031694091]
 layout_mode = 2
 theme_override_constants/margin_left = 6
 theme_override_constants/margin_right = 10
 
-[node name="Title Seperation Label" type="RichTextLabel" parent="SubViewport/MarginContainer/Region Info Holder/Title Seperation Container" unique_id=586639354]
+[node name="Title Seperation Label" type="RichTextLabel" parent="Back Page/MarginContainer/Region Info Holder/Title Seperation Container" unique_id=1121930157]
 layout_mode = 2
 theme = ExtResource("4_28i0q")
 text = "------------------------"
 fit_content = true
 scroll_active = false
 
-[node name="Mid Separator" type="HSeparator" parent="SubViewport/MarginContainer/Region Info Holder" unique_id=459219639]
+[node name="Mid Separator" type="HSeparator" parent="Back Page/MarginContainer/Region Info Holder" unique_id=1111176110]
 layout_mode = 2
 theme_override_constants/separation = 0
 theme_override_styles/separator = SubResource("StyleBoxEmpty_3lemr")
 
-[node name="Info Container" type="MarginContainer" parent="SubViewport/MarginContainer/Region Info Holder" unique_id=1211441657]
+[node name="Info Container" type="MarginContainer" parent="Back Page/MarginContainer/Region Info Holder" unique_id=440569465]
 layout_mode = 2
 theme_override_constants/margin_left = 6
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 0
 
-[node name="Info Label" type="RichTextLabel" parent="SubViewport/MarginContainer/Region Info Holder/Info Container" unique_id=559816010]
+[node name="Info Label" type="RichTextLabel" parent="Back Page/MarginContainer/Region Info Holder/Info Container" unique_id=1934647985]
 layout_mode = 2
 theme = ExtResource("4_28i0q")
 bbcode_enabled = true
@@ -330,3 +496,119 @@ text = "- Humans are Honarble (3) and Confused
 - Humans over the age of 20 hate Vastaya"
 fit_content = true
 scroll_active = false
+
+[node name="Front Page" type="SubViewport" parent="." unique_id=555889455]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+gui_snap_controls_to_pixels = false
+size = Vector2i(236, 166)
+
+[node name="Page Container" type="MarginContainer" parent="Front Page" unique_id=1877625295]
+offset_right = 237.0
+offset_bottom = 163.0
+theme_override_constants/margin_right = 1
+
+[node name="Page Sprite" type="TextureRect" parent="Front Page/Page Container" unique_id=1042208507]
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("3_dn5do")
+stretch_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Front Page" unique_id=231385002]
+offset_right = 640.0
+offset_bottom = 360.0
+theme_override_constants/margin_left = 122
+
+[node name="Region Info Holder" type="VBoxContainer" parent="Front Page/MarginContainer" unique_id=1909880771]
+custom_maximum_size = Vector2(115, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Top Separator" type="HSeparator" parent="Front Page/MarginContainer/Region Info Holder" unique_id=1539597412]
+layout_mode = 2
+theme_override_constants/separation = 15
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3lemr")
+
+[node name="Title Container" type="MarginContainer" parent="Front Page/MarginContainer/Region Info Holder" unique_id=1873021111]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 10
+
+[node name="Title Label" type="RichTextLabel" parent="Front Page/MarginContainer/Region Info Holder/Title Container" unique_id=320638909]
+layout_mode = 2
+theme = ExtResource("4_28i0q")
+bbcode_enabled = true
+text = "Race"
+fit_content = true
+scroll_active = false
+
+[node name="Title Seperation Container" type="MarginContainer" parent="Front Page/MarginContainer/Region Info Holder" unique_id=1603940953]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_right = 10
+
+[node name="Title Seperation Label" type="RichTextLabel" parent="Front Page/MarginContainer/Region Info Holder/Title Seperation Container" unique_id=586639354]
+layout_mode = 2
+theme = ExtResource("4_28i0q")
+text = "------------------------"
+fit_content = true
+scroll_active = false
+
+[node name="Mid Separator" type="HSeparator" parent="Front Page/MarginContainer/Region Info Holder" unique_id=459219639]
+layout_mode = 2
+theme_override_constants/separation = 0
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3lemr")
+
+[node name="Info Container" type="MarginContainer" parent="Front Page/MarginContainer/Region Info Holder" unique_id=1211441657]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 0
+
+[node name="Info Label" type="RichTextLabel" parent="Front Page/MarginContainer/Region Info Holder/Info Container" unique_id=559816010]
+layout_mode = 2
+theme = ExtResource("4_28i0q")
+bbcode_enabled = true
+text = "- Humans are Honarble (3) and Confused
+
+- Wraiths are Holy
+
+- Devils who are Leaders can never be Sages
+
+- Vastaya are never religious believers
+
+- Humans over the age of 20 hate Vastaya"
+fit_content = true
+scroll_active = false
+
+[node name="Detection Zone Holder" type="Control" parent="." unique_id=1702103227]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Turn Page Zone Left" type="Button" parent="Detection Zone Holder" unique_id=32389062]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_right = 11.0
+grow_vertical = 2
+focus_mode = 0
+flat = true
+
+[node name="Turn Page Zone Right" type="Button" parent="Detection Zone Holder" unique_id=913177037]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -12.0
+offset_right = 3.0
+grow_horizontal = 0
+grow_vertical = 2
+focus_mode = 0
+flat = true
