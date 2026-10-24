@@ -28,7 +28,6 @@ func _set_connections():
 	rightDetectionZone.button_down.connect(_on_page_down)
 	rightDetectionZone.pressed.connect(_go_to_next_right_page)
 
-
 #- - -
 func _on_enter_next_page(isLeftPage : bool):
 	GlobalReferences.cursor._swap_cursor_to(GlobalReferences.cursor.atlasPageTurnCursor)
@@ -45,23 +44,28 @@ func _on_page_down():
 
 func _go_to_next_left_page():
 	GlobalReferences.cursor.imageNode.frame = 0
+	_set_bend_amount(0.8)
 	_animate_left_to_right_page_turn()
 
 func _go_to_next_right_page():
 	GlobalReferences.cursor.imageNode.frame = 0
+	_set_bend_amount(-0.8)
 	_animate_right_to_left_page_turn()
 
 #- - -
 func _animate_right_to_left_page_turn():
 	var newTween : Tween = create_tween()
 
-	newTween.tween_method(_set_page_progress, 0.0, 1.0, 0.4).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	newTween.tween_method(_set_page_progress, 0.0, 1.0, .4).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 
 func _animate_left_to_right_page_turn():
 	var newTween: Tween = create_tween()
 
-	newTween.tween_method(_set_page_progress, 1.0, 0.0, 0.4).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	newTween.tween_method(_set_page_progress, 1.0, 0.0, .4).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 
 #--------------
 func _set_page_progress(value : float):
 	pageFlipMaterial.set_shader_parameter("progress", value)
+
+func _set_bend_amount(value : float):
+	pageFlipMaterial.set_shader_parameter("bend", value)
