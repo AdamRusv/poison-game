@@ -6,16 +6,30 @@ class_name AtlasBook
 @export var mapPageSprite : TextureRect
 @export var atlasFullPageSprite : TextureRect
 @export var atlasSinglePageSprite : TextureRect
+@export var coverSprite : TextureRect
 @export var leftDetectionZone : Button
 @export var rightDetectionZone : Button
 
+var isTurning : bool = false
+var currentPageIndex : int = 0
+var maxPages : int = 3
+
 var pageFlipMaterial : ShaderMaterial = null
+var coverMaterial : ShaderMaterial = null
+var activeMaterial : ShaderMaterial = null
 
 func _init() -> void:
 	canBePacket = false
+
 func _ready() -> void:
 	super._ready()
 	pageFlipMaterial = atlasSinglePageSprite.material
+	coverMaterial = coverSprite.material
+	activeMaterial = coverMaterial
+	_set_bend_amount(0)
+	_set_page_progress(0.0) # start book closed
+	_update_page_state()
+
 func _set_connections():
 	super._set_connections()
 	leftDetectionZone.mouse_entered.connect(_on_enter_next_page.bind(true))
@@ -43,29 +57,82 @@ func _on_page_down():
 	GlobalReferences.cursor.imageNode.frame = 1
 
 func _go_to_next_left_page():
+	if isTurning || currentPageIndex <= 0:
+		return
+	
+	var isClosingCover : bool = _is_first_page() # check before index changes
+	
+	isTurning = true
+	currentPageIndex -= 1
+
 	GlobalReferences.cursor.imageNode.frame = 0
-	_set_bend_amount(0.8)
-	_animate_left_to_right_page_turn()
+	_prepare_turn(isClosingCover, 0.8)
+	await _animate_left_to_right_page_turn().finished
+	_finish_turn()
 
 func _go_to_next_right_page():
+	if isTurning || currentPageIndex >= maxPages:
+		return
+
+	var isOpeningCover : bool = _is_closed() # check before index changes
+
+	isTurning = true
+	currentPageIndex += 1
+
 	GlobalReferences.cursor.imageNode.frame = 0
-	_set_bend_amount(-0.8)
-	_animate_right_to_left_page_turn()
+	_prepare_turn(isOpeningCover, -0.8)
+	await _animate_right_to_left_page_turn().finished
+	_finish_turn()
+
+func _prepare_turn(isCoverTurn : bool, pageBend : float):
+	if isCoverTurn:
+		activeMaterial = coverMaterial
+		_set_bend_amount(0)
+	else:
+		activeMaterial = pageFlipMaterial
+		_set_bend_amount(pageBend)
+
+func _finish_turn():
+	isTurning = false
+	_update_page_state()
 
 #- - -
-func _animate_right_to_left_page_turn():
+func _is_closed() -> bool:
+	return currentPageIndex == 0
+
+func _is_first_page() -> bool:
+	return currentPageIndex == 1
+
+func _is_last_page() -> bool:
+	return currentPageIndex == maxPages
+
+func _update_page_state():
+	var leftWasHovered : bool = leftDetectionZone.is_hovered()
+	var rightWasHovered : bool = rightDetectionZone.is_hovered()
+	
+	leftDetectionZone.visible = !_is_closed()
+	rightDetectionZone.visible = !_is_last_page() && !_is_first_page()
+	
+	# Hidden buttons don't fire mouse_exited, so reset the cursor manually
+	if (leftWasHovered && !leftDetectionZone.visible) || (rightWasHovered && !rightDetectionZone.visible):
+		_on_exit_next_page()
+
+#- - -
+func _animate_right_to_left_page_turn() -> Tween:
 	var newTween : Tween = create_tween()
 
 	newTween.tween_method(_set_page_progress, 0.0, 1.0, .4).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	return newTween
 
-func _animate_left_to_right_page_turn():
+func _animate_left_to_right_page_turn() -> Tween:
 	var newTween: Tween = create_tween()
 
 	newTween.tween_method(_set_page_progress, 1.0, 0.0, .4).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	return newTween
 
 #--------------
 func _set_page_progress(value : float):
-	pageFlipMaterial.set_shader_parameter("progress", value)
+	activeMaterial.set_shader_parameter("progress", value)
 
 func _set_bend_amount(value : float):
-	pageFlipMaterial.set_shader_parameter("bend", value)
+	activeMaterial.set_shader_parameter("bend", value)

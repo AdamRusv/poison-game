@@ -6,20 +6,27 @@
 [ext_resource type="Texture2D" uid="uid://dy1gjsxd0sb6m" path="res://0_Art/New_Art(Needs Sorting)/Single Page Atlas.png" id="3_dn5do"]
 [ext_resource type="Texture2D" uid="uid://bt71wrtc3cuyi" path="res://0_Art/New_Art(Needs Sorting)/Atlas map left.png" id="3_t11ig"]
 [ext_resource type="Theme" uid="uid://bhvewryp1cmbt" path="res://6_Other/description font.tres" id="4_28i0q"]
+[ext_resource type="Texture2D" uid="uid://ica3osox2320" path="res://0_Art/New_Art(Needs Sorting)/Book Cover.png" id="4_t11ig"]
 [ext_resource type="Texture2D" uid="uid://cgmy4jxo6fcca" path="res://0_Art/New_Art(Needs Sorting)/Atlas Bottom Page Trim.png" id="4_xmrx0"]
 [ext_resource type="Shader" uid="uid://bc1nbfmlr01a3" path="res://4_Shaders/0_Scripts/atlas page turn.gdshader" id="6_bendsh"]
+[ext_resource type="Texture2D" uid="uid://c3vbjdr3p85om" path="res://0_Art/New_Art(Needs Sorting)/Country Sprite.png" id="6_l6vnv"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_6cxtl"]
+viewport_path = NodePath("Map Atlas/Left Page Viewport")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t11ig"]
+resource_local_to_scene = true
 shader = ExtResource("6_bendsh")
-shader_parameter/progress = 0.0
-shader_parameter/spine_x = 0.5
+shader_parameter/progress = 1.0
+shader_parameter/spine_x = 0.50000002375
 shader_parameter/bend = -4.4704000057294024e-08
+shader_parameter/back_texture = SubResource("ViewportTexture_6cxtl")
 shader_parameter/perspective = 0.050000002375
 shader_parameter/shadow_strength = 0.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3lemr"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_fuo7k"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_danpe"]
 viewport_path = NodePath("Main Atlas/Back Page")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_28i0q"]
@@ -27,21 +34,22 @@ resource_local_to_scene = true
 shader = ExtResource("6_bendsh")
 shader_parameter/progress = 0.0
 shader_parameter/spine_x = 0.5
-shader_parameter/bend = -2.0
-shader_parameter/back_texture = SubResource("ViewportTexture_fuo7k")
+shader_parameter/bend = -0.8000000268224001
+shader_parameter/back_texture = SubResource("ViewportTexture_danpe")
 shader_parameter/perspective = 0.050000002375
 shader_parameter/shadow_strength = 0.0
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_qmmsl"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_1ohyt"]
 viewport_path = NodePath("Main Atlas/Front Page")
 
-[node name="Atlas" type="MarginContainer" unique_id=1389312574 node_paths=PackedStringArray("mapPageSprite", "atlasFullPageSprite", "atlasSinglePageSprite", "leftDetectionZone", "rightDetectionZone", "paperTitleLabel", "paperInfoLabel", "parentNode", "detectionArea")]
+[node name="Atlas" type="MarginContainer" unique_id=1389312574 node_paths=PackedStringArray("mapPageSprite", "atlasFullPageSprite", "atlasSinglePageSprite", "coverSprite", "leftDetectionZone", "rightDetectionZone", "paperTitleLabel", "paperInfoLabel", "parentNode", "detectionArea")]
 offset_right = 236.0
 offset_bottom = 163.0
 script = ExtResource("1_3lemr")
-mapPageSprite = NodePath("")
+mapPageSprite = NodePath("Map Atlas/Right Page")
 atlasFullPageSprite = NodePath("Main Atlas/Atlas Page")
 atlasSinglePageSprite = NodePath("Main Atlas/Page Projector")
+coverSprite = NodePath("Map Atlas/Cover & Left Page")
 leftDetectionZone = NodePath("Detection Zone Holder/Turn Page Zone Left")
 rightDetectionZone = NodePath("Detection Zone Holder/Turn Page Zone Right")
 paperTitleLabel = NodePath("Main Atlas/HBoxContainer/General Info Holder/Title Container/Title Label")
@@ -50,20 +58,43 @@ parentNode = NodePath(".")
 detectionArea = NodePath("Drag Button")
 
 [node name="Map Atlas" type="MarginContainer" parent="." unique_id=1750337560]
+visible = false
 layout_mode = 2
 
 [node name="Right Page" type="TextureRect" parent="Map Atlas" unique_id=1841334381]
 layout_mode = 2
 offset_transform_enabled = true
 texture = ExtResource("2_28i0q")
+stretch_mode = 2
 
-[node name="Left Page" type="TextureRect" parent="Map Atlas" unique_id=1584471552]
+[node name="Cover & Left Page" type="TextureRect" parent="Map Atlas" unique_id=1584471552]
 material = SubResource("ShaderMaterial_t11ig")
 layout_mode = 2
+offset_transform_position = Vector2(-2, 0)
+texture = ExtResource("4_t11ig")
+stretch_mode = 2
+
+[node name="Left Page Viewport" type="SubViewport" parent="Map Atlas" unique_id=1379452548]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+gui_snap_controls_to_pixels = false
+size = Vector2i(236, 166)
+
+[node name="Page" type="TextureRect" parent="Map Atlas/Left Page Viewport" unique_id=1768444028]
+offset_right = 40.0
+offset_bottom = 40.0
 texture = ExtResource("3_t11ig")
+flip_h = true
+
+[node name="TextureRect2" type="TextureRect" parent="Map Atlas/Left Page Viewport" unique_id=744329270]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("6_l6vnv")
+flip_h = true
 
 [node name="Main Atlas" type="MarginContainer" parent="." unique_id=1597565978]
-visible = false
 layout_mode = 2
 
 [node name="Atlas Page" type="TextureRect" parent="Main Atlas" unique_id=444832334]
@@ -141,81 +172,10 @@ Rich with history, Hollyberry is home to an alarmingly aging population. Traveli
 fit_content = true
 scroll_active = false
 
-[node name="HSeparator2" type="VSeparator" parent="Main Atlas/HBoxContainer" unique_id=360661199]
-layout_mode = 2
-theme_override_constants/separation = 4
-theme_override_styles/separator = SubResource("StyleBoxEmpty_3lemr")
-
-[node name="Region Info Holder" type="VBoxContainer" parent="Main Atlas/HBoxContainer" unique_id=18310606]
-visible = false
-custom_maximum_size = Vector2(115, 150)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 0
-
-[node name="Top Separator" type="HSeparator" parent="Main Atlas/HBoxContainer/Region Info Holder" unique_id=2128856572]
-layout_mode = 2
-theme_override_constants/separation = 15
-theme_override_styles/separator = SubResource("StyleBoxEmpty_3lemr")
-
-[node name="Title Container" type="MarginContainer" parent="Main Atlas/HBoxContainer/Region Info Holder" unique_id=1746573781]
-layout_mode = 2
-theme_override_constants/margin_left = 6
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 10
-
-[node name="Title Label" type="RichTextLabel" parent="Main Atlas/HBoxContainer/Region Info Holder/Title Container" unique_id=2107894452]
-layout_mode = 2
-theme = ExtResource("4_28i0q")
-bbcode_enabled = true
-text = "Race"
-fit_content = true
-scroll_active = false
-
-[node name="Title Seperation Container" type="MarginContainer" parent="Main Atlas/HBoxContainer/Region Info Holder" unique_id=2133457754]
-layout_mode = 2
-theme_override_constants/margin_left = 6
-theme_override_constants/margin_right = 10
-
-[node name="Title Seperation Label" type="RichTextLabel" parent="Main Atlas/HBoxContainer/Region Info Holder/Title Seperation Container" unique_id=1367806728]
-layout_mode = 2
-theme = ExtResource("4_28i0q")
-text = "------------------------"
-fit_content = true
-scroll_active = false
-
-[node name="Mid Separator" type="HSeparator" parent="Main Atlas/HBoxContainer/Region Info Holder" unique_id=573291597]
-layout_mode = 2
-theme_override_constants/separation = 0
-theme_override_styles/separator = SubResource("StyleBoxEmpty_3lemr")
-
-[node name="Info Container" type="MarginContainer" parent="Main Atlas/HBoxContainer/Region Info Holder" unique_id=902643798]
-layout_mode = 2
-theme_override_constants/margin_left = 6
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 0
-
-[node name="Info Label" type="RichTextLabel" parent="Main Atlas/HBoxContainer/Region Info Holder/Info Container" unique_id=1003441189]
-layout_mode = 2
-theme = ExtResource("4_28i0q")
-bbcode_enabled = true
-text = "- Humans are Honarble (3) and Confused
-
-- Wraiths are Holy
-
-- Devils who are Leaders can never be Sages
-
-- Vastaya are never religious believers
-
-- Humans over the age of 20 hate Vastaya"
-fit_content = true
-scroll_active = false
-
 [node name="Page Projector" type="TextureRect" parent="Main Atlas" unique_id=2048782279]
 material = SubResource("ShaderMaterial_28i0q")
 layout_mode = 2
-texture = SubResource("ViewportTexture_qmmsl")
+texture = SubResource("ViewportTexture_1ohyt")
 
 [node name="Trim Container Right" type="MarginContainer" parent="Main Atlas" unique_id=384535913]
 layout_mode = 2
@@ -314,7 +274,7 @@ size = Vector2i(236, 166)
 [node name="Page Container" type="MarginContainer" parent="Main Atlas/Front Page" unique_id=1877625295]
 offset_right = 237.0
 offset_bottom = 163.0
-theme_override_constants/margin_right = 1
+theme_override_constants/margin_right = 0
 
 [node name="Page Sprite" type="TextureRect" parent="Main Atlas/Front Page/Page Container" unique_id=1042208507]
 layout_mode = 2
@@ -325,7 +285,7 @@ stretch_mode = 2
 [node name="MarginContainer" type="MarginContainer" parent="Main Atlas/Front Page" unique_id=231385002]
 offset_right = 640.0
 offset_bottom = 360.0
-theme_override_constants/margin_left = 122
+theme_override_constants/margin_left = 123
 
 [node name="Region Info Holder" type="VBoxContainer" parent="Main Atlas/Front Page/MarginContainer" unique_id=1909880771]
 custom_maximum_size = Vector2(115, 150)
