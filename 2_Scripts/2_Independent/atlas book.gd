@@ -67,7 +67,7 @@ func _go_to_next_left_page():
 
 	GlobalReferences.cursor.imageNode.frame = 0
 	_prepare_turn(isClosingCover, 0.8)
-	await _animate_left_to_right_page_turn().finished
+	await _animate_left_to_right_page_turn(0.4).finished
 	_finish_turn()
 
 func _go_to_next_right_page():
@@ -81,7 +81,7 @@ func _go_to_next_right_page():
 
 	GlobalReferences.cursor.imageNode.frame = 0
 	_prepare_turn(isOpeningCover, -0.8)
-	await _animate_right_to_left_page_turn().finished
+	await _animate_right_to_left_page_turn(0.4).finished
 	_finish_turn()
 
 func _prepare_turn(isCoverTurn : bool, pageBend : float):
@@ -118,16 +118,16 @@ func _update_page_state():
 		_on_exit_next_page()
 
 #- - -
-func _animate_right_to_left_page_turn() -> Tween:
+func _animate_right_to_left_page_turn(turnSpeed : float) -> Tween:
 	var newTween : Tween = create_tween()
 
-	newTween.tween_method(_set_page_progress, 0.0, 1.0, .4).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	newTween.tween_method(_set_page_progress, 0.0, 1.0, turnSpeed).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	return newTween
 
-func _animate_left_to_right_page_turn() -> Tween:
+func _animate_left_to_right_page_turn(turnSpeed : float) -> Tween:
 	var newTween: Tween = create_tween()
 
-	newTween.tween_method(_set_page_progress, 1.0, 0.0, .4).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	newTween.tween_method(_set_page_progress, 1.0, 0.0, turnSpeed).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	return newTween
 
 #--------------
