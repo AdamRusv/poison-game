@@ -1282,7 +1282,6 @@ offset_right = 182.0
 offset_bottom = 259.0
 
 [node name="Opened Detection Area" type="Control" parent="Hint System" unique_id=1206578270]
-visible = false
 anchors_preset = 0
 offset_left = 151.0
 offset_top = 166.0

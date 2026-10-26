@@ -141,6 +141,6 @@ func _get_next_encounter_index() -> int:
 				break
 		if isCompleted == false:
 			uncompletedCharacters.append(i)
-	print(uncompletedCharacters)
+	
 	var randomIndex : int = randi_range(0, uncompletedCharacters.size() - 1)
 	return uncompletedCharacters[randomIndex]

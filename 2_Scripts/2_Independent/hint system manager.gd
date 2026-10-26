@@ -19,6 +19,7 @@ var usedHints : Array[int] = []
 func _ready() -> void:
 	gameplayManager.hintSystemManager = self
 	hintBox.visible = false
+	closedDetectionZone.visible = false
 	openDetectionZone.visible = false
 	
 	_hide_all_hovers()
@@ -41,9 +42,6 @@ func _process(delta: float) -> void:
 	if _is_inside_open_detection_zone() == false && openDetectionZone.visible == true:
 		openDetectionZone.visible = false
 		hintBox.visible = false
-	
-	if Input.is_action_just_pressed("spacebar"):
-		_trigger_hint(0)
 
 #- - -
 func _closed_detection_enter():
@@ -57,8 +55,9 @@ func _closed_detection_enter():
 var hints : DialogueTree = null
 func _setup_hint_box():
 	hints = gameplayManager.playmatManager.characterSheet.hints
-	if hints == null:
-		closedDetectionZone.visible = false
+	if hints != null:
+		closedDetectionZone.visible = true
+	else:
 		return
 	hints._setup_branches(gameplayManager)
 	
@@ -90,9 +89,9 @@ func _trigger_hint(currentBranch : int):
 	
 	var dialogueManager : DialogueManager = gameplayManager.dialogueManager
 	dialogueManager._create_new_dialogue_branch_separator()
-	await dialogueManager._create_independent_dialogue_bubble(hints, hints.branches[currentBranch], 0)
+	await dialogueManager._create_dialogue_bubble(hints.branches[currentBranch], 0)
 	for i in range(1, hints.branches[currentBranch].dialogue.size()): #ignore first index since its always player dialogue
-		await dialogueManager._create_independent_dialogue_bubble(hints, hints.branches[currentBranch], i)
+		await dialogueManager._create_dialogue_bubble(hints.branches[currentBranch], i)
 
 #---------------------------
 func _hide_all_hovers():
