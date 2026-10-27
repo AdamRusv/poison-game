@@ -1424,11 +1424,11 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="New Color Runner No Slice" type="TextureRect" parent="Main Game/HBoxContainer/Playmat" unique_id=53777049]
-visible = false
 layout_mode = 2
 texture = ExtResource("12_q712t")
 
 [node name="New Color Runner And Slice2" type="TextureRect" parent="Main Game/HBoxContainer/Playmat" unique_id=14574483]
+visible = false
 layout_mode = 2
 texture = ExtResource("13_q712t")
 
