@@ -1,63 +1,163 @@
-[gd_scene format=3 uid="uid://bsgsp1roqd7hj"]
+[gd_scene format=3 uid="uid://cmikwn8hrnr5g"]
 
-[ext_resource type="Script" uid="uid://b1hcjlnogkytj" path="res://2_Scripts/2_Independent/paper.gd" id="1_dn5do"]
-[ext_resource type="Texture2D" uid="uid://btbkhfkp1pr81" path="res://0_Art/New_Art(Needs Sorting)/Atlas 2s-Sheet.png" id="2_3lemr"]
+[ext_resource type="Script" uid="uid://de22md0e38xn2" path="res://2_Scripts/2_Independent/atlas book.gd" id="1_3lemr"]
+[ext_resource type="Texture2D" uid="uid://d0n6gp3gmvjne" path="res://0_Art/New_Art(Needs Sorting)/Atlas.png" id="2_3lemr"]
+[ext_resource type="Texture2D" uid="uid://cahruded1bb2q" path="res://0_Art/New_Art(Needs Sorting)/Atlas map right.png" id="2_28i0q"]
+[ext_resource type="Texture2D" uid="uid://dy1gjsxd0sb6m" path="res://0_Art/New_Art(Needs Sorting)/Single Page Atlas.png" id="3_dn5do"]
+[ext_resource type="Texture2D" uid="uid://bt71wrtc3cuyi" path="res://0_Art/New_Art(Needs Sorting)/Atlas map left.png" id="3_t11ig"]
 [ext_resource type="Theme" uid="uid://bhvewryp1cmbt" path="res://6_Other/description font.tres" id="4_28i0q"]
-[ext_resource type="Texture2D" uid="uid://n82vq8gxieut" path="res://0_Art/New_Art(Needs Sorting)/PageCorner-Sheet.png" id="5_t11ig"]
+[ext_resource type="Texture2D" uid="uid://ica3osox2320" path="res://0_Art/New_Art(Needs Sorting)/Book Cover.png" id="4_t11ig"]
+[ext_resource type="Texture2D" uid="uid://cgmy4jxo6fcca" path="res://0_Art/New_Art(Needs Sorting)/Atlas Bottom Page Trim.png" id="4_xmrx0"]
+[ext_resource type="Shader" uid="uid://bc1nbfmlr01a3" path="res://4_Shaders/0_Scripts/atlas page turn.gdshader" id="6_bendsh"]
+[ext_resource type="Texture2D" uid="uid://c3vbjdr3p85om" path="res://0_Art/New_Art(Needs Sorting)/Country Sprite.png" id="6_l6vnv"]
+[ext_resource type="Texture2D" uid="uid://byquwvhqreo86" path="res://0_Art/New_Art(Needs Sorting)/Map-Sheet.png" id="7_ve5rj"]
+[ext_resource type="BitMap" uid="uid://dunhxa6oov2q6" path="res://0_Art/New_Art(Needs Sorting)/Map-Mask.png" id="8_u0ylq"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xmrx0"]
-atlas = ExtResource("2_3lemr")
-region = Rect2(0, 0, 242, 189)
+[sub_resource type="ViewportTexture" id="ViewportTexture_u0ylq"]
+viewport_path = NodePath("Map Atlas/Left Page Viewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t11ig"]
+resource_local_to_scene = true
+shader = ExtResource("6_bendsh")
+shader_parameter/progress = 1.0
+shader_parameter/spine_x = 0.50000002375
+shader_parameter/bend = -4.4704000057294024e-08
+shader_parameter/back_texture = SubResource("ViewportTexture_u0ylq")
+shader_parameter/perspective = 0.050000002375
+shader_parameter/shadow_strength = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1ldt"]
+atlas = ExtResource("7_ve5rj")
+region = Rect2(0, 0, 236, 166)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fs7e8"]
+atlas = ExtResource("7_ve5rj")
+region = Rect2(0, 0, 236, 166)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6j7dn"]
+atlas = ExtResource("7_ve5rj")
+region = Rect2(236, 0, 236, 166)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3lemr"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_504ay"]
-atlas = ExtResource("5_t11ig")
-region = Rect2(0, 0, 30, 30)
+[sub_resource type="ViewportTexture" id="ViewportTexture_6j7dn"]
+viewport_path = NodePath("Main Atlas/Back Page")
 
-[node name="Paper" type="MarginContainer" unique_id=1389312574 node_paths=PackedStringArray("paperTitleLabel", "paperInfoLabel", "packetParent", "packetBehindPaperParent", "pageFlipButton", "pageFlipTexture", "parentNode", "detectionArea")]
-z_index = 1
-offset_right = 242.0
-offset_bottom = 189.0
-script = ExtResource("1_dn5do")
-paperTitleLabel = NodePath("")
-paperInfoLabel = NodePath("")
-packetParent = NodePath("Page Flip Container")
-packetBehindPaperParent = NodePath("")
-pageFlipButton = NodePath("Page Flip Container/Page Flip Button")
-pageFlipTexture = NodePath("Page Flip Container/Page Flip Corner Texture")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_28i0q"]
+resource_local_to_scene = true
+shader = ExtResource("6_bendsh")
+shader_parameter/progress = 0.0
+shader_parameter/spine_x = 0.5
+shader_parameter/bend = -0.8000000268224001
+shader_parameter/back_texture = SubResource("ViewportTexture_6j7dn")
+shader_parameter/perspective = 0.050000002375
+shader_parameter/shadow_strength = 0.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_fs7e8"]
+viewport_path = NodePath("Main Atlas/Front Page")
+
+[node name="Atlas" type="MarginContainer" unique_id=1389312574 node_paths=PackedStringArray("mapPageSprite", "atlasFullPageSprite", "atlasSinglePageSprite", "coverSprite", "leftDetectionZone", "rightDetectionZone", "paperTitleLabel", "paperInfoLabel", "parentNode", "detectionArea")]
+offset_right = 236.0
+offset_bottom = 163.0
+script = ExtResource("1_3lemr")
+mapPageSprite = NodePath("Map Atlas/Right Page")
+atlasFullPageSprite = NodePath("Main Atlas/Atlas Page")
+atlasSinglePageSprite = NodePath("Main Atlas/Page Projector")
+coverSprite = NodePath("Map Atlas/Cover & Left Page")
+leftDetectionZone = NodePath("Detection Zone Holder/Turn Page Zone Left")
+rightDetectionZone = NodePath("Detection Zone Holder/Turn Page Zone Right")
+paperTitleLabel = NodePath("Main Atlas/HBoxContainer/General Info Holder/Title Container/Title Label")
+paperInfoLabel = NodePath("Main Atlas/Front Page/MarginContainer/Region Info Holder/Info Container/Info Label")
 parentNode = NodePath(".")
 detectionArea = NodePath("Drag Button")
 
-[node name="TextureRect2" type="TextureRect" parent="." unique_id=444832334]
+[node name="Map Atlas" type="MarginContainer" parent="." unique_id=1750337560]
+visible = false
 layout_mode = 2
-texture = SubResource("AtlasTexture_xmrx0")
+
+[node name="Right Page" type="TextureRect" parent="Map Atlas" unique_id=1841334381]
+layout_mode = 2
+offset_transform_enabled = true
+texture = ExtResource("2_28i0q")
 stretch_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1134887535]
+[node name="Cover & Left Page" type="TextureRect" parent="Map Atlas" unique_id=1584471552]
+material = SubResource("ShaderMaterial_t11ig")
+layout_mode = 2
+offset_transform_position = Vector2(-2, 0)
+texture = ExtResource("4_t11ig")
+stretch_mode = 2
+
+[node name="Left Page Viewport" type="SubViewport" parent="Map Atlas" unique_id=1379452548]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+gui_snap_controls_to_pixels = false
+size = Vector2i(236, 166)
+
+[node name="Page" type="TextureRect" parent="Map Atlas/Left Page Viewport" unique_id=1768444028]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_t11ig")
+flip_h = true
+
+[node name="TextureRect2" type="TextureRect" parent="Map Atlas/Left Page Viewport" unique_id=744329270]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("6_l6vnv")
+flip_h = true
+
+[node name="Button Holder" type="Control" parent="Map Atlas" unique_id=412236024]
+visible = false
 layout_mode = 2
 
-[node name="HSeparator" type="HSeparator" parent="HBoxContainer" unique_id=372824145]
+[node name="Country" type="TextureButton" parent="Map Atlas/Button Holder" unique_id=1070710083]
+modulate = Color(1, 0.47843137, 1, 1)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+focus_mode = 0
+texture_normal = SubResource("AtlasTexture_e1ldt")
+texture_pressed = SubResource("AtlasTexture_fs7e8")
+texture_hover = SubResource("AtlasTexture_6j7dn")
+texture_click_mask = ExtResource("8_u0ylq")
+
+[node name="Main Atlas" type="MarginContainer" parent="." unique_id=1597565978]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1291093204]
-custom_maximum_size = Vector2(-1, 150)
+[node name="Atlas Page" type="TextureRect" parent="Main Atlas" unique_id=444832334]
+layout_mode = 2
+texture = ExtResource("2_3lemr")
+stretch_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Main Atlas" unique_id=1134887535]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="HSeparator" type="VSeparator" parent="Main Atlas/HBoxContainer" unique_id=670428617]
+layout_mode = 2
+theme_override_constants/separation = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3lemr")
+
+[node name="General Info Holder" type="VBoxContainer" parent="Main Atlas/HBoxContainer" unique_id=1291093204]
+custom_maximum_size = Vector2(115, 150)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Top Separator" type="HSeparator" parent="HBoxContainer/VBoxContainer" unique_id=1719494700]
+[node name="Top Separator" type="HSeparator" parent="Main Atlas/HBoxContainer/General Info Holder" unique_id=1719494700]
 layout_mode = 2
 theme_override_constants/separation = 15
 theme_override_styles/separator = SubResource("StyleBoxEmpty_3lemr")
 
-[node name="Title Container" type="MarginContainer" parent="HBoxContainer/VBoxContainer" unique_id=432251444]
+[node name="Title Container" type="MarginContainer" parent="Main Atlas/HBoxContainer/General Info Holder" unique_id=432251444]
 layout_mode = 2
 theme_override_constants/margin_left = 11
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 10
 
-[node name="Title Label" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/Title Container" unique_id=899227368]
+[node name="Title Label" type="RichTextLabel" parent="Main Atlas/HBoxContainer/General Info Holder/Title Container" unique_id=899227368]
 layout_mode = 2
 theme = ExtResource("4_28i0q")
 bbcode_enabled = true
@@ -65,30 +165,30 @@ text = "Hollyberry (Region 1)"
 fit_content = true
 scroll_active = false
 
-[node name="Title Seperation Container" type="MarginContainer" parent="HBoxContainer/VBoxContainer" unique_id=233732716]
+[node name="Title Seperation Container" type="MarginContainer" parent="Main Atlas/HBoxContainer/General Info Holder" unique_id=233732716]
 layout_mode = 2
 theme_override_constants/margin_left = 11
 theme_override_constants/margin_right = 10
 
-[node name="Title Seperation Label" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/Title Seperation Container" unique_id=2082800009]
+[node name="Title Seperation Label" type="RichTextLabel" parent="Main Atlas/HBoxContainer/General Info Holder/Title Seperation Container" unique_id=2082800009]
 layout_mode = 2
 theme = ExtResource("4_28i0q")
 text = "-----------------------"
 fit_content = true
 scroll_active = false
 
-[node name="Mid Separator" type="HSeparator" parent="HBoxContainer/VBoxContainer" unique_id=1033504552]
+[node name="Mid Separator" type="HSeparator" parent="Main Atlas/HBoxContainer/General Info Holder" unique_id=1033504552]
 layout_mode = 2
 theme_override_constants/separation = 10
 theme_override_styles/separator = SubResource("StyleBoxEmpty_3lemr")
 
-[node name="Info Container" type="MarginContainer" parent="HBoxContainer/VBoxContainer" unique_id=868544632]
+[node name="Info Container" type="MarginContainer" parent="Main Atlas/HBoxContainer/General Info Holder" unique_id=868544632]
 layout_mode = 2
 theme_override_constants/margin_left = 11
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 20
 
-[node name="Info Label" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/Info Container" unique_id=456744920]
+[node name="Info Label" type="RichTextLabel" parent="Main Atlas/HBoxContainer/General Info Holder/Info Container" unique_id=456744920]
 layout_mode = 2
 theme = ExtResource("4_28i0q")
 bbcode_enabled = true
@@ -101,61 +201,146 @@ Rich with history, Hollyberry is home to an alarmingly aging population. Traveli
 fit_content = true
 scroll_active = false
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer" unique_id=18310606]
+[node name="Page Projector" type="TextureRect" parent="Main Atlas" unique_id=2048782279]
+material = SubResource("ShaderMaterial_28i0q")
+layout_mode = 2
+texture = SubResource("ViewportTexture_fs7e8")
+
+[node name="Trim Container Right" type="MarginContainer" parent="Main Atlas" unique_id=384535913]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Trim Sprite" type="TextureRect" parent="Main Atlas/Trim Container Right" unique_id=1268765824]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture = ExtResource("4_xmrx0")
+stretch_mode = 2
+
+[node name="Trim Container Left" type="MarginContainer" parent="Main Atlas" unique_id=1828632082]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Trim Sprite" type="TextureRect" parent="Main Atlas/Trim Container Left" unique_id=995752040]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture = ExtResource("4_xmrx0")
+stretch_mode = 2
+flip_h = true
+
+[node name="Back Page" type="SubViewport" parent="Main Atlas" unique_id=1909665784]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+gui_snap_controls_to_pixels = false
+size = Vector2i(236, 166)
+
+[node name="Page Container" type="MarginContainer" parent="Main Atlas/Back Page" unique_id=600668051]
+offset_right = 237.0
+offset_bottom = 163.0
+theme_override_constants/margin_right = 1
+
+[node name="Page Sprite" type="TextureRect" parent="Main Atlas/Back Page/Page Container" unique_id=935922612]
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("3_dn5do")
+stretch_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Main Atlas/Back Page" unique_id=704680164]
+offset_right = 640.0
+offset_bottom = 360.0
+scale = Vector2(-1, 1)
+theme_override_constants/margin_left = -228
+
+[node name="Region Info Holder" type="VBoxContainer" parent="Main Atlas/Back Page/MarginContainer" unique_id=1468465151]
+custom_maximum_size = Vector2(115, 150)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Top Separator" type="HSeparator" parent="HBoxContainer/VBoxContainer2" unique_id=2128856572]
+[node name="Top Separator" type="HSeparator" parent="Main Atlas/Back Page/MarginContainer/Region Info Holder" unique_id=519231678]
 layout_mode = 2
 theme_override_constants/separation = 15
 theme_override_styles/separator = SubResource("StyleBoxEmpty_3lemr")
 
-[node name="Title Container" type="MarginContainer" parent="HBoxContainer/VBoxContainer2" unique_id=1746573781]
-layout_mode = 2
-theme_override_constants/margin_left = 6
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 10
-
-[node name="Title Label" type="RichTextLabel" parent="HBoxContainer/VBoxContainer2/Title Container" unique_id=2107894452]
-layout_mode = 2
-theme = ExtResource("4_28i0q")
-bbcode_enabled = true
-text = "Race"
-fit_content = true
-scroll_active = false
-
-[node name="Title Seperation Container" type="MarginContainer" parent="HBoxContainer/VBoxContainer2" unique_id=2133457754]
-layout_mode = 2
-theme_override_constants/margin_left = 6
-theme_override_constants/margin_right = 10
-
-[node name="Title Seperation Label" type="RichTextLabel" parent="HBoxContainer/VBoxContainer2/Title Seperation Container" unique_id=1367806728]
-layout_mode = 2
-theme = ExtResource("4_28i0q")
-text = "------------------------"
-fit_content = true
-scroll_active = false
-
-[node name="Mid Separator" type="HSeparator" parent="HBoxContainer/VBoxContainer2" unique_id=573291597]
-layout_mode = 2
-theme_override_constants/separation = 0
-theme_override_styles/separator = SubResource("StyleBoxEmpty_3lemr")
-
-[node name="Info Container" type="MarginContainer" parent="HBoxContainer/VBoxContainer2" unique_id=902643798]
+[node name="Info Container" type="MarginContainer" parent="Main Atlas/Back Page/MarginContainer/Region Info Holder" unique_id=440569465]
 layout_mode = 2
 theme_override_constants/margin_left = 6
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 0
 
-[node name="Info Label" type="RichTextLabel" parent="HBoxContainer/VBoxContainer2/Info Container" unique_id=1003441189]
+[node name="Info Label" type="RichTextLabel" parent="Main Atlas/Back Page/MarginContainer/Region Info Holder/Info Container" unique_id=1934647985]
+layout_mode = 2
+theme = ExtResource("4_28i0q")
+bbcode_enabled = true
+text = "????????????????????????
+????????????????????????
+????????????????????????
+????????????????????????
+????????????????????????
+????????????????????????
+????????????????????????"
+fit_content = true
+scroll_active = false
+
+[node name="Front Page" type="SubViewport" parent="Main Atlas" unique_id=555889455]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+gui_snap_controls_to_pixels = false
+size = Vector2i(236, 166)
+
+[node name="Page Container" type="MarginContainer" parent="Main Atlas/Front Page" unique_id=1877625295]
+offset_right = 237.0
+offset_bottom = 163.0
+theme_override_constants/margin_right = 0
+
+[node name="Page Sprite" type="TextureRect" parent="Main Atlas/Front Page/Page Container" unique_id=1042208507]
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("3_dn5do")
+stretch_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Main Atlas/Front Page" unique_id=231385002]
+offset_right = 640.0
+offset_bottom = 360.0
+theme_override_constants/margin_left = 123
+
+[node name="Region Info Holder" type="VBoxContainer" parent="Main Atlas/Front Page/MarginContainer" unique_id=1909880771]
+custom_maximum_size = Vector2(115, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Top Separator" type="HSeparator" parent="Main Atlas/Front Page/MarginContainer/Region Info Holder" unique_id=1539597412]
+layout_mode = 2
+theme_override_constants/separation = 15
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3lemr")
+
+[node name="Info Container" type="MarginContainer" parent="Main Atlas/Front Page/MarginContainer/Region Info Holder" unique_id=1211441657]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 0
+
+[node name="Info Label" type="RichTextLabel" parent="Main Atlas/Front Page/MarginContainer/Region Info Holder/Info Container" unique_id=559816010]
 layout_mode = 2
 theme = ExtResource("4_28i0q")
 bbcode_enabled = true
 text = "- Humans are Honarble (3) and Confused
 
-- Wraiths are Holy?????????????
+- Wraiths are Holy
 
 - Devils who are Leaders can never be Sages
 
@@ -170,19 +355,29 @@ layout_mode = 2
 focus_mode = 0
 flat = true
 
-[node name="Page Flip Container" type="MarginContainer" parent="." unique_id=1337673711]
-visible = false
-custom_minimum_size = Vector2(20, 20)
+[node name="Detection Zone Holder" type="Control" parent="." unique_id=1702103227]
 layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 8
-offset_transform_enabled = true
-offset_transform_position = Vector2(-2, -2)
+mouse_filter = 2
 
-[node name="Page Flip Corner Texture" type="TextureRect" parent="Page Flip Container" unique_id=1735048998]
-layout_mode = 2
-texture = SubResource("AtlasTexture_504ay")
+[node name="Turn Page Zone Left" type="Button" parent="Detection Zone Holder" unique_id=32389062]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_right = 11.0
+grow_vertical = 2
+focus_mode = 0
+flat = true
 
-[node name="Page Flip Button" type="Button" parent="Page Flip Container" unique_id=940300415]
-layout_mode = 2
+[node name="Turn Page Zone Right" type="Button" parent="Detection Zone Holder" unique_id=913177037]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -12.0
+offset_right = 3.0
+grow_horizontal = 0
+grow_vertical = 2
+focus_mode = 0
 flat = true

@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://sp4m3qieichu"]
 
 [ext_resource type="Script" uid="uid://cukm107wdraq2" path="res://2_Scripts/2_Independent/cursor manager.gd" id="1_ncivp"]
-[ext_resource type="Texture2D" uid="uid://dl03qg5okk7oj" path="res://0_Art/Daniel_Art/cursor - Copy-Sheet.png" id="2_tbbhu"]
+[ext_resource type="Texture2D" uid="uid://pid10cr8mcuy" path="res://0_Art/2_PNGs/cursor-Sheet.png" id="2_tbbhu"]
 [ext_resource type="Material" uid="uid://t1e6kib2odfk" path="res://4_Shaders/1_Materials/ppf.tres" id="2_uy6oh"]
 [ext_resource type="Texture2D" uid="uid://bqv6rpoaa8o78" path="res://0_Art/2_PNGs/poison vile cursor-Sheet.png" id="3_tbbhu"]
+[ext_resource type="Texture2D" uid="uid://cl7exv067rndj" path="res://0_Art/New_Art(Needs Sorting)/Turn Atlas Page Cursor-Sheet.png" id="4_3unbd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ii050"]
 atlas = ExtResource("2_tbbhu")
@@ -49,6 +50,28 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_h56nj"]
+atlas = ExtResource("4_3unbd")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0nc1"]
+atlas = ExtResource("4_3unbd")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sfkw3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h56nj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x0nc1")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Overlay" type="Control" unique_id=2084235641]
 layout_mode = 3
 anchors_preset = 15
@@ -62,7 +85,7 @@ position = Vector2(320, 180)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1022946578]
 
-[node name="Cursor" type="Control" parent="CanvasLayer" unique_id=932440608 node_paths=PackedStringArray("defaultCursor", "poisonVileCursor")]
+[node name="Cursor" type="Control" parent="CanvasLayer" unique_id=932440608 node_paths=PackedStringArray("defaultCursor", "poisonVileCursor", "atlasPageTurnCursor")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -71,14 +94,20 @@ mouse_filter = 2
 script = ExtResource("1_ncivp")
 defaultCursor = NodePath("default")
 poisonVileCursor = NodePath("poison vile")
+atlasPageTurnCursor = NodePath("atlas page turn")
 
 [node name="default" type="AnimatedSprite2D" parent="CanvasLayer/Cursor" unique_id=1329314917]
 position = Vector2(14, 14)
 sprite_frames = SubResource("SpriteFrames_i53fj")
+frame_progress = 0.22950417
 
 [node name="poison vile" type="AnimatedSprite2D" parent="CanvasLayer/Cursor" unique_id=2134445894]
 position = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_pq3d1")
+
+[node name="atlas page turn" type="AnimatedSprite2D" parent="CanvasLayer/Cursor" unique_id=1245409318]
+position = Vector2(1, 1)
+sprite_frames = SubResource("SpriteFrames_sfkw3")
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1263083811]
 visible = false

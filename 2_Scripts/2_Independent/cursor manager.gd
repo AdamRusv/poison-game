@@ -5,6 +5,7 @@ class_name CustomCursor
 @export var defaultCursor : AnimatedSprite2D
 ##frame 0 is pouring, frame 1 is still (since swaps while being held down)
 @export var poisonVileCursor : AnimatedSprite2D
+@export var atlasPageTurnCursor : AnimatedSprite2D
 
 var imageNode : AnimatedSprite2D
 var hotspot : Vector2 = Vector2.ZERO
@@ -74,6 +75,7 @@ func _is_os_cursor_hidden() -> bool:
 func _hide_all_cursors():
 	defaultCursor.visible = false
 	poisonVileCursor.visible = false
+	atlasPageTurnCursor.visible = false
 
 ##grab reference from this script
 func _swap_cursor_to(newCursor : AnimatedSprite2D):

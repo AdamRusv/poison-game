@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://d2up5d7qmvlo6"]
+[gd_scene format=3 uid="uid://b30x7fe3nhkk7"]
 
 [ext_resource type="Script" uid="uid://c3o8kvypxk7ko" path="res://2_Scripts/2_Independent/gameplay manager.gd" id="1_03xhq"]
 [ext_resource type="Texture2D" uid="uid://cgkjx4wb04kro" path="res://0_Art/2_PNGs/test layout background.png" id="2_gaqin"]
@@ -7,10 +7,7 @@
 [ext_resource type="Script" uid="uid://4xhbwaoygr14" path="res://2_Scripts/2_Independent/playmat manager.gd" id="3_miwci"]
 [ext_resource type="Texture2D" uid="uid://45euc58cfisf" path="res://0_Art/New_Art(Needs Sorting)/Footer Sprite.png" id="4_7yujx"]
 [ext_resource type="Texture2D" uid="uid://d2186g0fqpjl" path="res://0_Art/New_Art(Needs Sorting)/Header Sprite.png" id="4_40vfy"]
-[ext_resource type="Texture2D" uid="uid://o2u0bg7rmjeg" path="res://0_Art/New_Art(Needs Sorting)/Portrait_Background.png" id="5_sv52f"]
-[ext_resource type="Texture2D" uid="uid://bgs7wji7h15is" path="res://0_Art/New_Art(Needs Sorting)/Portrait_Midground.png" id="6_vpgj7"]
 [ext_resource type="Texture2D" uid="uid://btnen37gap7x0" path="res://0_Art/New_Art(Needs Sorting)/poisonGame-Screenshot.png" id="7_03xhq"]
-[ext_resource type="Texture2D" uid="uid://djf7k24188yma" path="res://0_Art/New_Art(Needs Sorting)/Portrait_Foreground.png" id="7_xesiu"]
 [ext_resource type="Texture2D" uid="uid://cemkxjrc7ks0p" path="res://0_Art/New_Art(Needs Sorting)/poison button-Sheet.png" id="8_03xhq"]
 [ext_resource type="Texture2D" uid="uid://cnujjxwui77dp" path="res://0_Art/New_Art(Needs Sorting)/Portrait_Background - New Color.png" id="8_m6j1m"]
 [ext_resource type="Script" uid="uid://dsk6k5x0e30hn" path="res://2_Scripts/2_Independent/poison manager.gd" id="9_50f8m"]
@@ -28,15 +25,11 @@
 [ext_resource type="Shader" uid="uid://bu2ub1l3bfm4y" path="res://4_Shaders/0_Scripts/animatedplaymatbackground.gdshader" id="18_vpgj7"]
 [ext_resource type="Shader" uid="uid://cy1jtdmbpsv25" path="res://4_Shaders/0_Scripts/woodgrainplaymatbackground.gdshader" id="19_xesiu"]
 [ext_resource type="Texture2D" uid="uid://clow3s7e2s771" path="res://0_Art/New_Art(Needs Sorting)/settings icon.png" id="24_g2at3"]
-[ext_resource type="Texture2D" uid="uid://btbkhfkp1pr81" path="res://0_Art/New_Art(Needs Sorting)/Atlas 2s-Sheet.png" id="29_xesiu"]
 [ext_resource type="Theme" uid="uid://bhvewryp1cmbt" path="res://6_Other/description font.tres" id="30_m6j1m"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_w8sod"]
-load_path = "res://.godot/imported/poisonGame-PortraitAngled.png-fbbd62950710131a9302a256c0016ebd.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_03xhq"]
 atlas = ExtResource("8_03xhq")
-region = Rect2(0, 0, 206, 42)
+region = Rect2(0, 0, 206, 58)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_smu13"]
 load_path = "res://.godot/imported/Right Table Sprite.png-cf023f94765da7a3fb24887cc58f82e2.ctex"
@@ -1026,7 +1019,6 @@ animations = [{
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mnvto"]
-atlas = ExtResource("29_xesiu")
 region = Rect2(0, 0, 242, 189)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qxjdy"]
@@ -1092,7 +1084,7 @@ layout_mode = 2
 texture = ExtResource("4_40vfy")
 
 [node name="Portrait" type="MarginContainer" parent="Main Game/HBoxContainer/VBoxContainer" unique_id=1308443707]
-custom_minimum_size = Vector2(0, 270)
+custom_minimum_size = Vector2(0, 252)
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -1107,42 +1099,24 @@ patch_margin_top = 4
 patch_margin_right = 4
 patch_margin_bottom = 4
 
-[node name="PortraitTexture" type="TextureRect" parent="Main Game/HBoxContainer/VBoxContainer/Portrait" unique_id=975184245]
-visible = false
-layout_mode = 2
-texture = SubResource("CompressedTexture2D_w8sod")
-
-[node name="Background" type="TextureRect" parent="Main Game/HBoxContainer/VBoxContainer/Portrait" unique_id=1260617087]
-visible = false
-layout_mode = 2
-offset_transform_enabled = true
-texture = ExtResource("5_sv52f")
-
-[node name="Midground" type="TextureRect" parent="Main Game/HBoxContainer/VBoxContainer/Portrait" unique_id=1955906150]
-visible = false
-layout_mode = 2
-texture = ExtResource("6_vpgj7")
-
-[node name="Foreground" type="TextureRect" parent="Main Game/HBoxContainer/VBoxContainer/Portrait" unique_id=1153960379]
-visible = false
-layout_mode = 2
-texture = ExtResource("7_xesiu")
-
 [node name="Background - NC" type="TextureRect" parent="Main Game/HBoxContainer/VBoxContainer/Portrait" unique_id=1634258062]
+visible = false
 layout_mode = 2
 offset_transform_enabled = true
 texture = ExtResource("8_m6j1m")
 
 [node name="Midground - NC" type="TextureRect" parent="Main Game/HBoxContainer/VBoxContainer/Portrait" unique_id=1146049973]
+visible = false
 layout_mode = 2
 texture = ExtResource("9_mnvto")
 
 [node name="Foreground - NC" type="TextureRect" parent="Main Game/HBoxContainer/VBoxContainer/Portrait" unique_id=81598618]
+visible = false
 layout_mode = 2
 texture = ExtResource("10_qxjdy")
 
 [node name="Footer" type="MarginContainer" parent="Main Game/HBoxContainer/VBoxContainer" unique_id=522748834]
-custom_minimum_size = Vector2(0, 42)
+custom_minimum_size = Vector2(0, 59)
 layout_mode = 2
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Main Game/HBoxContainer/VBoxContainer/Footer" unique_id=1201418195]
@@ -1159,24 +1133,23 @@ patch_margin_bottom = 4
 [node name="Footer Background" type="TextureRect" parent="Main Game/HBoxContainer/VBoxContainer/Footer" unique_id=398850699]
 layout_mode = 2
 texture = ExtResource("4_7yujx")
+stretch_mode = 3
 
-[node name="Poison Texture" type="TextureRect" parent="Main Game/HBoxContainer/VBoxContainer/Footer/Footer Background" unique_id=1840736645 node_paths=PackedStringArray("gameplayManager", "poisonTexture", "poisonButton")]
-layout_mode = 0
-offset_right = 210.0
-offset_bottom = 46.0
+[node name="Poison Texture" type="TextureRect" parent="Main Game/HBoxContainer/VBoxContainer/Footer" unique_id=1840736645 node_paths=PackedStringArray("gameplayManager", "poisonTexture", "poisonButton")]
+layout_mode = 2
 texture = SubResource("AtlasTexture_03xhq")
 stretch_mode = 3
 script = ExtResource("9_50f8m")
-gameplayManager = NodePath("../../../../../..")
+gameplayManager = NodePath("../../../../..")
 poisonTexture = NodePath(".")
 poisonButton = NodePath("poison button")
 
-[node name="poison button" type="Button" parent="Main Game/HBoxContainer/VBoxContainer/Footer/Footer Background/Poison Texture" unique_id=2059727328]
+[node name="poison button" type="Button" parent="Main Game/HBoxContainer/VBoxContainer/Footer/Poison Texture" unique_id=2059727328]
 layout_mode = 0
-offset_left = 86.0
-offset_top = 4.0
-offset_right = 120.0
-offset_bottom = 38.0
+offset_left = 88.0
+offset_top = 6.0
+offset_right = 122.0
+offset_bottom = 40.0
 focus_mode = 0
 flat = true
 
@@ -1253,8 +1226,13 @@ material = SubResource("ShaderMaterial_m6j1m")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 5.0
+offset_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.0840566, 1.004887)
 
 [node name="Section 2" type="Control" parent="Main Game/HBoxContainer/Playmat/Playmat Background Holder" unique_id=226183524]
 clip_contents = true
@@ -1446,11 +1424,11 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="New Color Runner No Slice" type="TextureRect" parent="Main Game/HBoxContainer/Playmat" unique_id=53777049]
-visible = false
 layout_mode = 2
 texture = ExtResource("12_q712t")
 
 [node name="New Color Runner And Slice2" type="TextureRect" parent="Main Game/HBoxContainer/Playmat" unique_id=14574483]
+visible = false
 layout_mode = 2
 texture = ExtResource("13_q712t")
 
@@ -1588,10 +1566,10 @@ texture = ExtResource("24_g2at3")
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1503618063]
 visible = false
 layout_mode = 0
-offset_left = 282.0
-offset_top = 126.0
-offset_right = 524.0
-offset_bottom = 315.0
+offset_left = 299.0
+offset_top = 150.0
+offset_right = 541.0
+offset_bottom = 339.0
 
 [node name="TextureRect2" type="TextureRect" parent="MarginContainer" unique_id=1802935507]
 layout_mode = 2
