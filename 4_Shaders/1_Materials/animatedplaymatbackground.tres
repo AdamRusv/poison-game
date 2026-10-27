@@ -4,7 +4,7 @@
 
 [resource]
 shader = ExtResource("1_6j4iw")
-shader_parameter/move_speed = 60.0
+shader_parameter/move_speed = 1.0
 shader_parameter/shape_size = 1.0
 shader_parameter/color_1 = Color(0.16078432, 0.14117648, 0.09411765, 1)
 shader_parameter/color_2 = Color(0.32156864, 0.28235295, 0.22352941, 1)

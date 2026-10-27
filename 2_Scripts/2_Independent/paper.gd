@@ -10,11 +10,16 @@ class_name Paper
 @export var packetBehindPaperParent : Control
 @export var pageFlipButton : Button
 @export var pageFlipTexture : TextureRect
+@export_group("Optional Mirror Labels")
+## Extra labels that show the same text (e.g. the atlas page-flip viewport copy)
+@export var mirrorTitleLabel : RichTextLabel
+@export var mirrorInfoLabel : RichTextLabel
 
 var playmat : PlaymatManager = null
 var bbcodeManager : BBCodePaperManager = BBCodePaperManager.new()
 
 var paperInfo : PaperInfo = null
+var canBePacket : bool = true
 var isPacket : bool = false
 
 var paperPadding : float = 40
@@ -27,9 +32,10 @@ func _ready() -> void:
 
 func _set_connections():
 	super._set_connections()
-	pageFlipButton.mouse_entered.connect(_on_pageflip_enter)
-	pageFlipButton.mouse_exited.connect(_on_pageflip_exit)
-	pageFlipButton.pressed.connect(_on_pageflip_clicked)
+	if canBePacket == true:
+		pageFlipButton.mouse_entered.connect(_on_pageflip_enter)
+		pageFlipButton.mouse_exited.connect(_on_pageflip_exit)
+		pageFlipButton.pressed.connect(_on_pageflip_clicked)
 
 func _process(delta: float) -> void:
 	super._process(delta)
@@ -61,27 +67,36 @@ func _clamp_paper():
 func _setup_paper(newPaperInfo : PaperInfo):
 	paperInfo = newPaperInfo
 	
-	pageFlipTexture.texture = pageFlipTexture.texture.duplicate(true)
+	if canBePacket == true:
+		pageFlipTexture.texture = pageFlipTexture.texture.duplicate(true)
 	
 	#paperTitleLabel.text = paperInfo.title #NOTE: Old text grabber, new one highlights as well
-	paperTitleLabel.text = bbcodeManager._highlight(paperInfo.title)
+	_set_label_text(paperTitleLabel, mirrorTitleLabel, bbcodeManager._highlight(paperInfo.title))
 	if newPaperInfo is EncounterInfo:
 		var newEncounterInfo : EncounterInfo = newPaperInfo
-		paperInfoLabel.text = bbcodeManager._highlight(newEncounterInfo.characterName + paperInfo.info[0])
+		_set_label_text(paperInfoLabel, mirrorInfoLabel, bbcodeManager._highlight(newEncounterInfo.characterName + paperInfo.info[0]))
 	else:
-		paperInfoLabel.text = bbcodeManager._highlight(paperInfo.info[0])
+		_set_label_text(paperInfoLabel, mirrorInfoLabel, bbcodeManager._highlight(paperInfo.info[0]))
 	
-	packetParent.visible = false
-	packetBehindPaperParent.visible = false
-	
-	if paperInfo.info.size() > 1:
-		_setup_packet()
+	if canBePacket == true:
+		packetParent.visible = false
+		if packetBehindPaperParent != null:
+			packetBehindPaperParent.visible = false
+		
+		if paperInfo.info.size() > 1:
+			_setup_packet()
+
+func _set_label_text(label : RichTextLabel, mirror : RichTextLabel, newText : String):
+	label.text = newText
+	if mirror != null:
+		mirror.text = newText
 
 func _setup_packet():
 	isPacket = true
 	
 	packetParent.visible = true
-	packetBehindPaperParent.visible = true
+	if packetBehindPaperParent != null:
+		packetBehindPaperParent.visible = true
 
 #- - -
 func _reset_paper() -> Tween:
@@ -120,7 +135,7 @@ func _on_pageflip_clicked():
 	await _squish_paper().finished
 	_reset_paper()
 
-	paperInfoLabel.text = bbcodeManager._highlight(paperInfo.info[currentPage]) #NOTE: does not work with EncounterInfo
+	_set_label_text(paperInfoLabel, mirrorInfoLabel, bbcodeManager._highlight(paperInfo.info[currentPage])) #NOTE: does not work with EncounterInfo
 
 #-
 func _set_pageflip_texture_to(newRect : Rect2):
