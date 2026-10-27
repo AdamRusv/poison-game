@@ -1,0 +1,184 @@
+[gd_scene format=3 uid="uid://drqfsei5lg7y6"]
+
+[ext_resource type="Script" uid="uid://b1hcjlnogkytj" path="res://2_Scripts/2_Independent/paper.gd" id="1_6s36k"]
+[ext_resource type="Texture2D" uid="uid://btbkhfkp1pr81" path="res://0_Art/New_Art(Needs Sorting)/Atlas 2s-Sheet.png" id="2_84w75"]
+[ext_resource type="Theme" uid="uid://bhvewryp1cmbt" path="res://6_Other/description font.tres" id="3_rs6y8"]
+[ext_resource type="Texture2D" uid="uid://n82vq8gxieut" path="res://0_Art/New_Art(Needs Sorting)/PageCorner-Sheet.png" id="4_kyb5q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmrx0"]
+atlas = ExtResource("2_84w75")
+region = Rect2(0, 0, 242, 189)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3lemr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_504ay"]
+atlas = ExtResource("4_kyb5q")
+region = Rect2(0, 0, 30, 30)
+
+[node name="Paper" type="MarginContainer" unique_id=1389312574 node_paths=PackedStringArray("packetParent", "pageFlipButton", "pageFlipTexture", "parentNode", "detectionArea")]
+z_index = 1
+offset_right = 242.0
+offset_bottom = 189.0
+script = ExtResource("1_6s36k")
+packetParent = NodePath("Page Flip Container")
+pageFlipButton = NodePath("Page Flip Container/Page Flip Button")
+pageFlipTexture = NodePath("Page Flip Container/Page Flip Corner Texture")
+parentNode = NodePath(".")
+detectionArea = NodePath("Drag Button")
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=444832334]
+layout_mode = 2
+texture = SubResource("AtlasTexture_xmrx0")
+stretch_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1134887535]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer" unique_id=372824145]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1291093204]
+custom_maximum_size = Vector2(-1, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Top Separator" type="HSeparator" parent="HBoxContainer/VBoxContainer" unique_id=1719494700]
+layout_mode = 2
+theme_override_constants/separation = 15
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3lemr")
+
+[node name="Title Container" type="MarginContainer" parent="HBoxContainer/VBoxContainer" unique_id=432251444]
+layout_mode = 2
+theme_override_constants/margin_left = 11
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 10
+
+[node name="Title Label" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/Title Container" unique_id=899227368]
+layout_mode = 2
+theme = ExtResource("3_rs6y8")
+bbcode_enabled = true
+text = "Hollyberry (Region 1)"
+fit_content = true
+scroll_active = false
+
+[node name="Title Seperation Container" type="MarginContainer" parent="HBoxContainer/VBoxContainer" unique_id=233732716]
+layout_mode = 2
+theme_override_constants/margin_left = 11
+theme_override_constants/margin_right = 10
+
+[node name="Title Seperation Label" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/Title Seperation Container" unique_id=2082800009]
+layout_mode = 2
+theme = ExtResource("3_rs6y8")
+text = "-----------------------"
+fit_content = true
+scroll_active = false
+
+[node name="Mid Separator" type="HSeparator" parent="HBoxContainer/VBoxContainer" unique_id=1033504552]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3lemr")
+
+[node name="Info Container" type="MarginContainer" parent="HBoxContainer/VBoxContainer" unique_id=868544632]
+layout_mode = 2
+theme_override_constants/margin_left = 11
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 20
+
+[node name="Info Label" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/Info Container" unique_id=456744920]
+layout_mode = 2
+theme = ExtResource("3_rs6y8")
+bbcode_enabled = true
+text = "Population: 2.3M
+
+Tier: 5
+
+Rich with history, Hollyberry is home to an alarmingly aging population. Traveling warlocks have noted that this country may not last the decade.
+"
+fit_content = true
+scroll_active = false
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer" unique_id=18310606]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Top Separator" type="HSeparator" parent="HBoxContainer/VBoxContainer2" unique_id=2128856572]
+layout_mode = 2
+theme_override_constants/separation = 15
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3lemr")
+
+[node name="Title Container" type="MarginContainer" parent="HBoxContainer/VBoxContainer2" unique_id=1746573781]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 10
+
+[node name="Title Label" type="RichTextLabel" parent="HBoxContainer/VBoxContainer2/Title Container" unique_id=2107894452]
+layout_mode = 2
+theme = ExtResource("3_rs6y8")
+bbcode_enabled = true
+text = "Race"
+fit_content = true
+scroll_active = false
+
+[node name="Title Seperation Container" type="MarginContainer" parent="HBoxContainer/VBoxContainer2" unique_id=2133457754]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_right = 10
+
+[node name="Title Seperation Label" type="RichTextLabel" parent="HBoxContainer/VBoxContainer2/Title Seperation Container" unique_id=1367806728]
+layout_mode = 2
+theme = ExtResource("3_rs6y8")
+text = "------------------------"
+fit_content = true
+scroll_active = false
+
+[node name="Mid Separator" type="HSeparator" parent="HBoxContainer/VBoxContainer2" unique_id=573291597]
+layout_mode = 2
+theme_override_constants/separation = 0
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3lemr")
+
+[node name="Info Container" type="MarginContainer" parent="HBoxContainer/VBoxContainer2" unique_id=902643798]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 0
+
+[node name="Info Label" type="RichTextLabel" parent="HBoxContainer/VBoxContainer2/Info Container" unique_id=1003441189]
+layout_mode = 2
+theme = ExtResource("3_rs6y8")
+bbcode_enabled = true
+text = "- Humans are Honarble (3) and Confused
+
+- Wraiths are Holy?????????????
+
+- Devils who are Leaders can never be Sages
+
+- Vastaya are never religious believers
+
+- Humans over the age of 20 hate Vastaya"
+fit_content = true
+scroll_active = false
+
+[node name="Drag Button" type="Button" parent="." unique_id=1229789884]
+layout_mode = 2
+focus_mode = 0
+flat = true
+
+[node name="Page Flip Container" type="MarginContainer" parent="." unique_id=1337673711]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+offset_transform_enabled = true
+offset_transform_position = Vector2(-2, -2)
+
+[node name="Page Flip Corner Texture" type="TextureRect" parent="Page Flip Container" unique_id=1735048998]
+layout_mode = 2
+texture = SubResource("AtlasTexture_504ay")
+
+[node name="Page Flip Button" type="Button" parent="Page Flip Container" unique_id=940300415]
+layout_mode = 2
+flat = true
