@@ -1274,15 +1274,7 @@ hintButtons = [NodePath("Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/
 hoveredLabelBackgrounds = [NodePath("Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/1/hovered hint 1/background 1"), NodePath("Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/2/hovered hint 2/background 2"), NodePath("Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/3/hovered hint 3/background 3")]
 hoveredHintLabels = [NodePath("Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/1/hovered hint 1/MarginContainer2/hovered hint 1"), NodePath("Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/2/hovered hint 2/MarginContainer2/hovered hint 2"), NodePath("Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/3/hovered hint 3/MarginContainer2/hovered hint 3")]
 
-[node name="Closed Detection Area" type="Control" parent="Hint System" unique_id=1032475029]
-anchors_preset = 0
-offset_left = 151.0
-offset_top = 206.0
-offset_right = 182.0
-offset_bottom = 259.0
-
 [node name="Opened Detection Area" type="Control" parent="Hint System" unique_id=1206578270]
-visible = false
 anchors_preset = 0
 offset_left = 151.0
 offset_top = 166.0
@@ -1475,3 +1467,10 @@ flat = true
 layout_mode = 2
 theme_override_constants/separation = 10
 theme_override_styles/separator = SubResource("StyleBoxEmpty_504ay")
+
+[node name="Closed Detection Area" type="Control" parent="Hint System" unique_id=1032475029]
+anchors_preset = 0
+offset_left = 151.0
+offset_top = 206.0
+offset_right = 182.0
+offset_bottom = 259.0
