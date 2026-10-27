@@ -1,0 +1,8 @@
+[gd_resource type="Theme" format=3 uid="uid://d3w6t6oupqff1"]
+
+[ext_resource type="FontFile" uid="uid://dct02xhe1381w" path="res://0_Art/3_Fonts/Description Font.ttf" id="1_xl4by"]
+
+[resource]
+default_font = ExtResource("1_xl4by")
+default_font_size = 8
+RichTextLabel/colors/default_color = Color(0.16078432, 0.14117648, 0.09411765, 1)

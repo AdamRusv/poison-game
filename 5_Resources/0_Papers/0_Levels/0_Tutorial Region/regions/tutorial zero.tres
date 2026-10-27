@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="RegionInfo" format=3 uid="uid://bukn8mli4a340"]
 
 [ext_resource type="Script" uid="uid://cg4ujw8mauohh" path="res://2_Scripts/3_Dependent/encounter info.gd" id="1_hvbcb"]
-[ext_resource type="Resource" uid="uid://0wvhtmiro1wy" path="res://5_Resources/0_Papers/1_Character Sheets/0_Tutorial Region/encounters/zero.tres" id="2_dc7e1"]
+[ext_resource type="Resource" uid="uid://0wvhtmiro1wy" path="res://5_Resources/0_Papers/0_Levels/0_Tutorial Region/encounters/zero.tres" id="2_dc7e1"]
 [ext_resource type="Script" uid="uid://851asxmj8i78" path="res://2_Scripts/3_Dependent/region info.gd" id="3_o16es"]
 
 [resource]
