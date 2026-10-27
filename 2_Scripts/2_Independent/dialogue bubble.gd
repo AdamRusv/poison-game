@@ -24,7 +24,7 @@ func _set_length_size():
 		_custom_autowrap()
 
 func _hide_label():
-	dialogueLabel.visible_characters = 2
+	dialogueLabel.visible_characters = 0
 	dialogueLabel.visible = false
 
 func _show_label():
