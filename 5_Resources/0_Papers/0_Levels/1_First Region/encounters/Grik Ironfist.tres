@@ -1,0 +1,120 @@
+[gd_resource type="Resource" script_class="EncounterInfo" format=3 uid="uid://b6refrdgn1tew"]
+
+[ext_resource type="Script" uid="uid://cg4ujw8mauohh" path="res://2_Scripts/3_Dependent/encounter info.gd" id="1_3m4fa"]
+[ext_resource type="Script" uid="uid://e0ujmn3oiqx0" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue branch.gd" id="1_o71sy"]
+[ext_resource type="Script" uid="uid://fn2tb2dtu6fj" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue.gd" id="2_2t557"]
+[ext_resource type="Script" uid="uid://chre6fsqbhfrk" path="res://2_Scripts/3_Dependent/0_Dialogue/branch intro.gd" id="3_f6f14"]
+[ext_resource type="Script" uid="uid://cwxljhi0yey0n" path="res://2_Scripts/3_Dependent/0_Dialogue/branch cups.gd" id="4_fko71"]
+[ext_resource type="Script" uid="uid://qr661epbiujn" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue tree.gd" id="5_pefi2"]
+
+[sub_resource type="Resource" id="Resource_fko71"]
+script = ExtResource("2_2t557")
+dialogue = "You're gonna regret challenging me!"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_f6f14"]
+script = ExtResource("2_2t557")
+speaker = 1
+dialogue = "Just play the game"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_2t557"]
+script = ExtResource("2_2t557")
+dialogue = "Don't tell me what to do"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_yxeby"]
+script = ExtResource("3_f6f14")
+dialogue = Array[ExtResource("2_2t557")]([SubResource("Resource_fko71"), SubResource("Resource_f6f14"), SubResource("Resource_2t557")])
+metadata/_custom_type_script = "uid://chre6fsqbhfrk"
+
+[sub_resource type="Resource" id="Resource_pefi2"]
+script = ExtResource("2_2t557")
+dialogue = "Whatever, man"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_5xns7"]
+script = ExtResource("2_2t557")
+dialogue = "You win"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_6j7dn"]
+script = ExtResource("4_fko71")
+dialogue = Array[ExtResource("2_2t557")]([SubResource("Resource_pefi2"), SubResource("Resource_5xns7")])
+metadata/_custom_type_script = "uid://cwxljhi0yey0n"
+
+[sub_resource type="Resource" id="Resource_ekay8"]
+script = ExtResource("2_2t557")
+dialogue = "HAHHAHAHAH"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_hlf45"]
+script = ExtResource("2_2t557")
+dialogue = "You idiot!"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_ly3rn"]
+script = ExtResource("4_fko71")
+cupPlacement = 2
+dialogue = Array[ExtResource("2_2t557")]([SubResource("Resource_ekay8"), SubResource("Resource_hlf45")])
+metadata/_custom_type_script = "uid://cwxljhi0yey0n"
+
+[sub_resource type="Resource" id="Resource_u0ylq"]
+script = ExtResource("5_pefi2")
+branches = Array[ExtResource("1_o71sy")]([SubResource("Resource_yxeby"), SubResource("Resource_6j7dn"), SubResource("Resource_ly3rn")])
+metadata/_custom_type_script = "uid://qr661epbiujn"
+
+[sub_resource type="Resource" id="Resource_tbv1v"]
+script = ExtResource("2_2t557")
+speaker = 1
+dialogue = "Are you a Goblin?"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_6ctbc"]
+script = ExtResource("2_2t557")
+dialogue = "Yes, I am"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_b2elf"]
+script = ExtResource("1_o71sy")
+dialogue = Array[ExtResource("2_2t557")]([SubResource("Resource_tbv1v"), SubResource("Resource_6ctbc")])
+metadata/_custom_type_script = "uid://e0ujmn3oiqx0"
+
+[sub_resource type="Resource" id="Resource_2qd5g"]
+script = ExtResource("2_2t557")
+speaker = 1
+dialogue = "How many Entries are you Lying about?"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_ic68h"]
+script = ExtResource("2_2t557")
+dialogue = "Just One"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_tivwy"]
+script = ExtResource("1_o71sy")
+dialogue = Array[ExtResource("2_2t557")]([SubResource("Resource_2qd5g"), SubResource("Resource_ic68h")])
+metadata/_custom_type_script = "uid://e0ujmn3oiqx0"
+
+[sub_resource type="Resource" id="Resource_icpc4"]
+script = ExtResource("5_pefi2")
+branches = Array[ExtResource("1_o71sy")]([SubResource("Resource_b2elf"), SubResource("Resource_tivwy")])
+metadata/_custom_type_script = "uid://qr661epbiujn"
+
+[resource]
+script = ExtResource("1_3m4fa")
+characterName = "Grik Ironfist"
+dialogueTree = SubResource("Resource_u0ylq")
+hints = SubResource("Resource_icpc4")
+cupAnswer = 1
+title = "Character Sheet"
+info = Array[String]([", Hollyberry
+
+
+1. Race: Goblin
+
+2. Occupation: Blacksmith
+
+3. Age: 74
+"])
+metadata/_custom_type_script = "uid://cg4ujw8mauohh"

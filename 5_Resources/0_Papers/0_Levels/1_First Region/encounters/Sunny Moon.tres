@@ -9,12 +9,28 @@
 
 [sub_resource type="Resource" id="Resource_ov0x0"]
 script = ExtResource("2_x1tmx")
-dialogue = "fgnfgnfgn"
+dialogue = "Hey!"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_h1djw"]
+script = ExtResource("2_x1tmx")
+dialogue = "Fancy a game of poison? HUH??!?!?"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_wu0w4"]
+script = ExtResource("2_x1tmx")
+dialogue = "I ain't gonna take it easy on ya!"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_a8jsl"]
+script = ExtResource("2_x1tmx")
+speaker = 1
+dialogue = "I didn't expect you would"
 metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
 
 [sub_resource type="Resource" id="Resource_x1tmx"]
 script = ExtResource("3_ey2qs")
-dialogue = Array[ExtResource("2_x1tmx")]([SubResource("Resource_ov0x0")])
+dialogue = Array[ExtResource("2_x1tmx")]([SubResource("Resource_ov0x0"), SubResource("Resource_h1djw"), SubResource("Resource_wu0w4"), SubResource("Resource_a8jsl")])
 metadata/_custom_type_script = "uid://chre6fsqbhfrk"
 
 [sub_resource type="Resource" id="Resource_7q6wp"]
