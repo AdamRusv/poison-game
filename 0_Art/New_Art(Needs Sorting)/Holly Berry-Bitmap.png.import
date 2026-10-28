@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://pjoi5wl6ckdf"
+path="res://.godot/imported/Holly Berry-Bitmap.png-e921d0335393682bd1e161b193e3aaea.res"
+
+[deps]
+
+source_file="res://0_Art/New_Art(Needs Sorting)/Holly Berry-Bitmap.png"
+dest_files=["res://.godot/imported/Holly Berry-Bitmap.png-e921d0335393682bd1e161b193e3aaea.res"]
+
+[params]
+
+create_from=1
+threshold=0.5

@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bsgsp1roqd7hj"]
+[gd_scene format=3 uid="uid://cmikwn8hrnr5g"]
 
 [ext_resource type="Script" uid="uid://de22md0e38xn2" path="res://2_Scripts/2_Independent/atlas book.gd" id="1_3lemr"]
 [ext_resource type="Texture2D" uid="uid://d0n6gp3gmvjne" path="res://0_Art/New_Art(Needs Sorting)/Atlas.png" id="2_3lemr"]
@@ -9,9 +9,13 @@
 [ext_resource type="Texture2D" uid="uid://ica3osox2320" path="res://0_Art/New_Art(Needs Sorting)/Book Cover.png" id="4_t11ig"]
 [ext_resource type="Texture2D" uid="uid://cgmy4jxo6fcca" path="res://0_Art/New_Art(Needs Sorting)/Atlas Bottom Page Trim.png" id="4_xmrx0"]
 [ext_resource type="Shader" uid="uid://bc1nbfmlr01a3" path="res://4_Shaders/0_Scripts/atlas page turn.gdshader" id="6_bendsh"]
-[ext_resource type="Texture2D" uid="uid://c3vbjdr3p85om" path="res://0_Art/New_Art(Needs Sorting)/Country Sprite.png" id="6_l6vnv"]
-[ext_resource type="Texture2D" uid="uid://byquwvhqreo86" path="res://0_Art/New_Art(Needs Sorting)/Map-Sheet.png" id="7_ve5rj"]
-[ext_resource type="BitMap" uid="uid://dunhxa6oov2q6" path="res://0_Art/New_Art(Needs Sorting)/Map-Mask.png" id="8_u0ylq"]
+[ext_resource type="Texture2D" uid="uid://b3kr1bjwl7lil" path="res://0_Art/New_Art(Needs Sorting)/Map.png" id="6_u0ylq"]
+[ext_resource type="Script" uid="uid://c0kvam1s1i16v" path="res://1_Scenes/1_Objects/atlas map manager.gd" id="7_fs7e8"]
+[ext_resource type="Texture2D" uid="uid://bxmmkihvvtvo5" path="res://0_Art/New_Art(Needs Sorting)/Holly Berry-Sheet.png" id="8_6j7dn"]
+[ext_resource type="BitMap" uid="uid://pjoi5wl6ckdf" path="res://0_Art/New_Art(Needs Sorting)/Holly Berry-Bitmap.png" id="13_fs7e8"]
+[ext_resource type="Texture2D" uid="uid://ciesw0mf7ssp0" path="res://0_Art/New_Art(Needs Sorting)/Map-Text.png" id="14_6j7dn"]
+[ext_resource type="Texture2D" uid="uid://xfwlhmfipmqm" path="res://0_Art/New_Art(Needs Sorting)/Schloozyville-Sheet.png" id="14_yxeby"]
+[ext_resource type="BitMap" uid="uid://dm4p3n6mlugj7" path="res://0_Art/New_Art(Needs Sorting)/Schloozyville-Bitmap.png" id="15_icpc4"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_u0ylq"]
 viewport_path = NodePath("Map Atlas/Left Page Viewport")
@@ -26,21 +30,9 @@ shader_parameter/back_texture = SubResource("ViewportTexture_u0ylq")
 shader_parameter/perspective = 0.050000002375
 shader_parameter/shadow_strength = 0.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_e1ldt"]
-atlas = ExtResource("7_ve5rj")
-region = Rect2(0, 0, 236, 166)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fs7e8"]
-atlas = ExtResource("7_ve5rj")
-region = Rect2(0, 0, 236, 166)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6j7dn"]
-atlas = ExtResource("7_ve5rj")
-region = Rect2(236, 0, 236, 166)
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3lemr"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_6j7dn"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_bjlx3"]
 viewport_path = NodePath("Main Atlas/Back Page")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_28i0q"]
@@ -49,30 +41,48 @@ shader = ExtResource("6_bendsh")
 shader_parameter/progress = 0.0
 shader_parameter/spine_x = 0.5
 shader_parameter/bend = -0.8000000268224001
-shader_parameter/back_texture = SubResource("ViewportTexture_6j7dn")
+shader_parameter/back_texture = SubResource("ViewportTexture_bjlx3")
 shader_parameter/perspective = 0.050000002375
 shader_parameter/shadow_strength = 0.0
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_fs7e8"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_vkltb"]
 viewport_path = NodePath("Main Atlas/Front Page")
 
-[node name="Atlas" type="MarginContainer" unique_id=1389312574 node_paths=PackedStringArray("mapPageSprite", "atlasFullPageSprite", "atlasSinglePageSprite", "coverSprite", "leftDetectionZone", "rightDetectionZone", "paperTitleLabel", "paperInfoLabel", "parentNode", "detectionArea")]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2y7yb"]
+atlas = ExtResource("8_6j7dn")
+region = Rect2(0, 0, 236, 166)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6j7dn"]
+atlas = ExtResource("8_6j7dn")
+region = Rect2(236, 0, 236, 166)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yamgb"]
+atlas = ExtResource("14_yxeby")
+region = Rect2(0, 0, 236, 166)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2elf"]
+atlas = ExtResource("14_yxeby")
+region = Rect2(236, 0, 236, 166)
+
+[node name="Atlas" type="MarginContainer" unique_id=1389312574 node_paths=PackedStringArray("mapAtlas", "mainAtlas", "mapHolder", "leftDetectionZone", "rightDetectionZone", "mapPageSprite", "atlasFullPageSprite", "atlasSinglePageSprite", "coverSprite", "paperTitleLabel", "paperInfoLabel", "parentNode", "detectionArea")]
 offset_right = 236.0
 offset_bottom = 163.0
 script = ExtResource("1_3lemr")
+mapAtlas = NodePath("Map Atlas")
+mainAtlas = NodePath("Main Atlas")
+mapHolder = NodePath("Drag Button/Map Holder")
+leftDetectionZone = NodePath("Detection Zone Holder/Turn Page Zone Left")
+rightDetectionZone = NodePath("Detection Zone Holder/Turn Page Zone Right")
 mapPageSprite = NodePath("Map Atlas/Right Page")
 atlasFullPageSprite = NodePath("Main Atlas/Atlas Page")
 atlasSinglePageSprite = NodePath("Main Atlas/Page Projector")
 coverSprite = NodePath("Map Atlas/Cover & Left Page")
-leftDetectionZone = NodePath("Detection Zone Holder/Turn Page Zone Left")
-rightDetectionZone = NodePath("Detection Zone Holder/Turn Page Zone Right")
 paperTitleLabel = NodePath("Main Atlas/HBoxContainer/General Info Holder/Title Container/Title Label")
 paperInfoLabel = NodePath("Main Atlas/Front Page/MarginContainer/Region Info Holder/Info Container/Info Label")
 parentNode = NodePath(".")
 detectionArea = NodePath("Drag Button")
 
 [node name="Map Atlas" type="MarginContainer" parent="." unique_id=1750337560]
-visible = false
 layout_mode = 2
 
 [node name="Right Page" type="TextureRect" parent="Map Atlas" unique_id=1841334381]
@@ -102,26 +112,11 @@ offset_bottom = 40.0
 texture = ExtResource("3_t11ig")
 flip_h = true
 
-[node name="TextureRect2" type="TextureRect" parent="Map Atlas/Left Page Viewport" unique_id=744329270]
+[node name="Countries" type="TextureRect" parent="Map Atlas/Left Page Viewport" unique_id=744329270]
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("6_l6vnv")
+texture = ExtResource("6_u0ylq")
 flip_h = true
-
-[node name="Button Holder" type="Control" parent="Map Atlas" unique_id=412236024]
-visible = false
-layout_mode = 2
-
-[node name="Country" type="TextureButton" parent="Map Atlas/Button Holder" unique_id=1070710083]
-modulate = Color(1, 0.47843137, 1, 1)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-focus_mode = 0
-texture_normal = SubResource("AtlasTexture_e1ldt")
-texture_pressed = SubResource("AtlasTexture_fs7e8")
-texture_hover = SubResource("AtlasTexture_6j7dn")
-texture_click_mask = ExtResource("8_u0ylq")
 
 [node name="Main Atlas" type="MarginContainer" parent="." unique_id=1597565978]
 layout_mode = 2
@@ -161,7 +156,7 @@ theme_override_constants/margin_right = 10
 layout_mode = 2
 theme = ExtResource("4_28i0q")
 bbcode_enabled = true
-text = "Hollyberry (Region 1)"
+text = "???"
 fit_content = true
 scroll_active = false
 
@@ -192,19 +187,14 @@ theme_override_constants/margin_bottom = 20
 layout_mode = 2
 theme = ExtResource("4_28i0q")
 bbcode_enabled = true
-text = "Population: 2.3M
-
-Tier: 5
-
-Rich with history, Hollyberry is home to an alarmingly aging population. Traveling warlocks have noted that this country may not last the decade.
-"
+text = "????"
 fit_content = true
 scroll_active = false
 
 [node name="Page Projector" type="TextureRect" parent="Main Atlas" unique_id=2048782279]
 material = SubResource("ShaderMaterial_28i0q")
 layout_mode = 2
-texture = SubResource("ViewportTexture_fs7e8")
+texture = SubResource("ViewportTexture_vkltb")
 
 [node name="Trim Container Right" type="MarginContainer" parent="Main Atlas" unique_id=384535913]
 layout_mode = 2
@@ -327,6 +317,26 @@ layout_mode = 2
 theme_override_constants/separation = 15
 theme_override_styles/separator = SubResource("StyleBoxEmpty_3lemr")
 
+[node name="header container" type="MarginContainer" parent="Main Atlas/Front Page/MarginContainer/Region Info Holder" unique_id=1666950350]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 0
+
+[node name="Info Label" type="RichTextLabel" parent="Main Atlas/Front Page/MarginContainer/Region Info Holder/header container" unique_id=1562137215]
+layout_mode = 2
+theme = ExtResource("4_28i0q")
+bbcode_enabled = true
+text = "?????"
+fit_content = true
+scroll_active = false
+
+[node name="Mid Separator" type="HSeparator" parent="Main Atlas/Front Page/MarginContainer/Region Info Holder" unique_id=603847112]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3lemr")
+
 [node name="Info Container" type="MarginContainer" parent="Main Atlas/Front Page/MarginContainer/Region Info Holder" unique_id=1211441657]
 layout_mode = 2
 theme_override_constants/margin_left = 6
@@ -338,15 +348,7 @@ theme_override_constants/margin_bottom = 0
 layout_mode = 2
 theme = ExtResource("4_28i0q")
 bbcode_enabled = true
-text = "- Humans are Honarble (3) and Confused
-
-- Wraiths are Holy
-
-- Devils who are Leaders can never be Sages
-
-- Vastaya are never religious believers
-
-- Humans over the age of 20 hate Vastaya"
+text = "???"
 fit_content = true
 scroll_active = false
 
@@ -354,6 +356,43 @@ scroll_active = false
 layout_mode = 2
 focus_mode = 0
 flat = true
+
+[node name="Map Holder" type="Control" parent="Drag Button" unique_id=412236024 node_paths=PackedStringArray("countryButtons", "atlas")]
+visible = false
+anchors_preset = 0
+offset_right = 236.0
+offset_bottom = 166.0
+mouse_filter = 2
+script = ExtResource("7_fs7e8")
+countryButtons = [NodePath("Hollyberry"), NodePath("Schloozyville")]
+atlas = NodePath("../..")
+
+[node name="Hollyberry" type="TextureButton" parent="Drag Button/Map Holder" unique_id=1070710083]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+focus_mode = 0
+mouse_filter = 1
+texture_normal = SubResource("AtlasTexture_2y7yb")
+texture_hover = SubResource("AtlasTexture_6j7dn")
+texture_click_mask = ExtResource("13_fs7e8")
+
+[node name="Schloozyville" type="TextureButton" parent="Drag Button/Map Holder" unique_id=1799862331]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+focus_mode = 0
+mouse_filter = 1
+texture_normal = SubResource("AtlasTexture_yamgb")
+texture_hover = SubResource("AtlasTexture_b2elf")
+texture_click_mask = ExtResource("15_icpc4")
+
+[node name="TextureRect" type="TextureRect" parent="Drag Button/Map Holder" unique_id=211669331]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+texture = ExtResource("14_6j7dn")
 
 [node name="Detection Zone Holder" type="Control" parent="." unique_id=1702103227]
 layout_mode = 2

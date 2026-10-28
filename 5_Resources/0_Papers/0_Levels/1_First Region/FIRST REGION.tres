@@ -1,7 +1,6 @@
 [gd_resource type="Resource" script_class="RegionInfo" format=3 uid="uid://d2ifoduworfqa"]
 
 [ext_resource type="Script" uid="uid://csy0x4mgdxs00" path="res://2_Scripts/3_Dependent/paperinfo.gd" id="1_7puhk"]
-[ext_resource type="Resource" uid="uid://w6yvhusmm6x3" path="res://5_Resources/0_Papers/0_Levels/99_country infos/Hollyberry.tres" id="1_hfqk1"]
 [ext_resource type="Script" uid="uid://cg4ujw8mauohh" path="res://2_Scripts/3_Dependent/encounter info.gd" id="2_bwi2o"]
 [ext_resource type="Resource" uid="uid://2ggvnaxi8ai6" path="res://5_Resources/0_Papers/0_Levels/1_First Region/encounters/Jimmy James.tres" id="3_ba5up"]
 [ext_resource type="Resource" uid="uid://bwfdoc58rkwhn" path="res://5_Resources/0_Papers/0_Levels/1_First Region/encounters/Sunny Moon.tres" id="4_bwi2o"]
@@ -30,7 +29,6 @@ metadata/_custom_type_script = "uid://csy0x4mgdxs00"
 script = ExtResource("4_hfqk1")
 traitSheet = SubResource("Resource_te4kt")
 characterSheets = Array[ExtResource("2_bwi2o")]([ExtResource("3_ba5up"), ExtResource("4_bwi2o"), ExtResource("5_a6xer")])
-atlas = ExtResource("1_hfqk1")
 noteSheet = false
 increaseRegion = true
 metadata/_custom_type_script = "uid://851asxmj8i78"

@@ -3,12 +3,17 @@ extends Paper
 class_name AtlasBook
 
 @export_category("References")
+@export var mapAtlas : Control
+@export var mainAtlas : Control
+@export var mapHolder : AtlasMapManager
+@export var leftDetectionZone : Button
+@export var rightDetectionZone : Button
+
+@export_group("Pages")
 @export var mapPageSprite : TextureRect
 @export var atlasFullPageSprite : TextureRect
 @export var atlasSinglePageSprite : TextureRect
 @export var coverSprite : TextureRect
-@export var leftDetectionZone : Button
-@export var rightDetectionZone : Button
 
 var isTurning : bool = false
 var currentPageIndex : int = 0
@@ -26,6 +31,7 @@ func _ready() -> void:
 	pageFlipMaterial = atlasSinglePageSprite.material
 	coverMaterial = coverSprite.material
 	activeMaterial = coverMaterial
+	mapHolder.visible = false
 	_set_bend_amount(0)
 	_set_page_progress(0.0) # start book closed
 	_update_page_state()
@@ -61,12 +67,18 @@ func _go_to_next_left_page():
 		return
 	
 	var isClosingCover : bool = _is_first_page() # check before index changes
+	var isTurningToMap : bool = _is_on_main()
+
+	if(isTurningToMap):
+		_flip_to_map()
+		return
 	
 	isTurning = true
 	currentPageIndex -= 1
 
 	GlobalReferences.cursor.imageNode.frame = 0
-	_prepare_turn(isClosingCover, 0.8)
+	_prepare_turn(isClosingCover, 2)
+	mapHolder.visible = _is_first_page()
 	await _animate_left_to_right_page_turn(0.4).finished
 	_finish_turn()
 
@@ -80,8 +92,9 @@ func _go_to_next_right_page():
 	currentPageIndex += 1
 
 	GlobalReferences.cursor.imageNode.frame = 0
-	_prepare_turn(isOpeningCover, -0.8)
+	_prepare_turn(isOpeningCover, -2)
 	await _animate_right_to_left_page_turn(0.4).finished
+
 	_finish_turn()
 
 func _prepare_turn(isCoverTurn : bool, pageBend : float):
@@ -103,6 +116,9 @@ func _is_closed() -> bool:
 func _is_first_page() -> bool:
 	return currentPageIndex == 1
 
+func _is_on_main() -> bool:
+	return currentPageIndex == 2
+
 func _is_last_page() -> bool:
 	return currentPageIndex == maxPages
 
@@ -112,6 +128,8 @@ func _update_page_state():
 	
 	leftDetectionZone.visible = !_is_closed()
 	rightDetectionZone.visible = !_is_last_page() && !_is_first_page()
+
+	mapHolder.visible = _is_first_page()
 	
 	# Hidden buttons don't fire mouse_exited, so reset the cursor manually
 	if (leftWasHovered && !leftDetectionZone.visible) || (rightWasHovered && !rightDetectionZone.visible):
@@ -136,3 +154,20 @@ func _set_page_progress(value : float):
 
 func _set_bend_amount(value : float):
 	activeMaterial.set_shader_parameter("bend", value)
+
+
+#-------------------------ATLAS SECTIONS-------------------------
+func _flip_to_main():
+	mapHolder.visible = false
+	mapAtlas.visible = false
+	mainAtlas.visible = true
+	currentPageIndex = 2
+	_update_page_state()
+
+
+func _flip_to_map():
+	mapHolder.visible = true
+	mapAtlas.visible = true
+	mainAtlas.visible = false
+	currentPageIndex = 1
+	_update_page_state()

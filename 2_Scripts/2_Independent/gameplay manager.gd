@@ -3,6 +3,7 @@ extends Control
 class_name GameplayManager
 
 @export var gameTimeline : GameTimeline
+@export var atlasHolder : AtlasHolder
 @export var timelineCounterLabel : RichTextLabel
 
 var playmatManager : PlaymatManager

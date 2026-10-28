@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AtlasHolder" format=3 uid="uid://cfcnquyvlosks"]
+
+[ext_resource type="Script" uid="uid://gp81tvupt8kv" path="res://2_Scripts/3_Dependent/atlas info.gd" id="1_lmq1o"]
+[ext_resource type="Resource" uid="uid://dx3tug8vxti3k" path="res://5_Resources/0_Papers/0_Levels/99_country infos/Hollyberry.tres" id="2_fhw78"]
+[ext_resource type="Script" uid="uid://b27f4t7nco0r0" path="res://2_Scripts/3_Dependent/atlas holder.gd" id="2_qbf3x"]
+
+[resource]
+script = ExtResource("2_qbf3x")
+countryInfos = Array[ExtResource("1_lmq1o")]([ExtResource("2_fhw78")])
+metadata/_custom_type_script = "uid://b27f4t7nco0r0"

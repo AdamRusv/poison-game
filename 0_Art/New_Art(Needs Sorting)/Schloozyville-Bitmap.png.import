@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://dm4p3n6mlugj7"
+path="res://.godot/imported/Schloozyville-Bitmap.png-8119b73a049058af181d2d38dac952c7.res"
+
+[deps]
+
+source_file="res://0_Art/New_Art(Needs Sorting)/Schloozyville-Bitmap.png"
+dest_files=["res://.godot/imported/Schloozyville-Bitmap.png-8119b73a049058af181d2d38dac952c7.res"]
+
+[params]
+
+create_from=1
+threshold=0.5

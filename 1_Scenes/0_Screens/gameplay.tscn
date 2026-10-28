@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://4xhbwaoygr14" path="res://2_Scripts/2_Independent/playmat manager.gd" id="2_lv7np"]
 [ext_resource type="Texture2D" uid="uid://b0kklffb4n85e" path="res://0_Art/2_PNGs/pattern playmat background.png" id="3_1cjw6"]
 [ext_resource type="Texture2D" uid="uid://cvg0nvvipe48r" path="res://0_Art/2_PNGs/placeholder mockup.png" id="3_82xv0"]
+[ext_resource type="Resource" uid="uid://cfcnquyvlosks" path="res://5_Resources/atlas holder.tres" id="3_j1jqe"]
 [ext_resource type="Texture2D" uid="uid://0kb1u8s0qjx5" path="res://0_Art/2_PNGs/trim.png" id="4_0hcow"]
 [ext_resource type="Texture2D" uid="uid://dy254ypb8l7vp" path="res://0_Art/2_PNGs/poison button-Sheet.png" id="4_gngdi"]
 [ext_resource type="Theme" uid="uid://3jsfntrv31jg" path="res://6_Other/large font.tres" id="6_0hcow"]
@@ -910,6 +911,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0sltt")
 gameTimeline = ExtResource("2_g7yw3")
+atlasHolder = ExtResource("3_j1jqe")
 timelineCounterLabel = NodePath("Layout/HBoxContainer/MarginContainer/VBoxContainer/Accessibility/solid background/Region Holder/Region Label")
 
 [node name="background" type="ColorRect" parent="." unique_id=1846741751]
@@ -1184,7 +1186,7 @@ anchors_preset = 0
 offset_left = 83.0
 offset_top = 201.0
 offset_right = 102.0
-offset_bottom = 227.0
+offset_bottom = 243.0
 
 [node name="opponent indicator" type="AnimatedSprite2D" parent="Cups/opponent cup detection zone" unique_id=906605216]
 self_modulate = Color(0.7411765, 0.64705884, 0.5137255, 1)
@@ -1199,7 +1201,7 @@ anchors_preset = 0
 offset_left = 115.0
 offset_top = 201.0
 offset_right = 134.0
-offset_bottom = 227.0
+offset_bottom = 243.0
 
 [node name="players indicator" type="AnimatedSprite2D" parent="Cups/player cup detection zone" unique_id=347739370]
 self_modulate = Color(0.7411765, 0.64705884, 0.5137255, 1)
@@ -1248,6 +1250,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -11.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -1273,13 +1276,6 @@ hintLabels = [NodePath("Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/1
 hintButtons = [NodePath("Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/1/hovered hint 1/hint button 1"), NodePath("Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/2/hovered hint 2/hint button 2"), NodePath("Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/3/hovered hint 3/hint button 3")]
 hoveredLabelBackgrounds = [NodePath("Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/1/hovered hint 1/background 1"), NodePath("Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/2/hovered hint 2/background 2"), NodePath("Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/3/hovered hint 3/background 3")]
 hoveredHintLabels = [NodePath("Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/1/hovered hint 1/MarginContainer2/hovered hint 1"), NodePath("Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/2/hovered hint 2/MarginContainer2/hovered hint 2"), NodePath("Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/3/hovered hint 3/MarginContainer2/hovered hint 3")]
-
-[node name="Opened Detection Area" type="Control" parent="Hint System" unique_id=1206578270]
-anchors_preset = 0
-offset_left = 151.0
-offset_top = 166.0
-offset_right = 249.0
-offset_bottom = 259.0
 
 [node name="Hint Box Holder" type="MarginContainer" parent="Hint System" unique_id=1858164333]
 layout_mode = 0

@@ -1,21 +1,38 @@
-[gd_resource type="Resource" script_class="PaperInfo" format=3 uid="uid://w6yvhusmm6x3"]
+[gd_resource type="Resource" script_class="AtlasInfo" format=3 uid="uid://dx3tug8vxti3k"]
 
-[ext_resource type="Script" uid="uid://csy0x4mgdxs00" path="res://2_Scripts/3_Dependent/paperinfo.gd" id="1_jt8rp"]
+[ext_resource type="Script" uid="uid://dn3cxe2u865qv" path="res://2_Scripts/3_Dependent/single page.gd" id="1_6vard"]
+[ext_resource type="Script" uid="uid://gp81tvupt8kv" path="res://2_Scripts/3_Dependent/atlas info.gd" id="2_u4l8q"]
+
+[sub_resource type="Resource" id="Resource_6vard"]
+script = ExtResource("1_6vard")
+title = "Country Notes:"
+info = "- Citizens that Lie about their Age are Sages
+
+- Citizens that are Truthful about their Age are Fools"
+metadata/_custom_type_script = "uid://dn3cxe2u865qv"
+
+[sub_resource type="Resource" id="Resource_u4l8q"]
+script = ExtResource("1_6vard")
+title = "Race:"
+info = "- Goblins are Deceptive"
+metadata/_custom_type_script = "uid://dn3cxe2u865qv"
+
+[sub_resource type="Resource" id="Resource_jqg6x"]
+script = ExtResource("1_6vard")
+title = "Occupation:"
+info = "- Blacksmiths are Lying about their age
+
+- Rangers are Tricky"
+metadata/_custom_type_script = "uid://dn3cxe2u865qv"
 
 [resource]
-script = ExtResource("1_jt8rp")
-title = "Atlas -> Hollyberry"
-info = Array[String](["Occupation:
-- Blacksmiths are Lying about their age
+script = ExtResource("2_u4l8q")
+pages = Array[ExtResource("1_6vard")]([SubResource("Resource_6vard"), SubResource("Resource_u4l8q"), SubResource("Resource_jqg6x")])
+countryTitle = "Hollyberry"
+funInfo = "Population: 2.3M
 
-- Rangers are Tricky
+Tier: 5
 
-Race:
-- Goblins are Deceptive
-
-Country Notes:
-- Citizens that Lie about their Age are Sages
-
-- Citizens that are Truthful about their Age are Fools
-"])
-metadata/_custom_type_script = "uid://csy0x4mgdxs00"
+Rich with history, Hollyberry is home to an alarmingly aging population. Traveling warlocks have noted that this country may not last the decade.
+"
+metadata/_custom_type_script = "uid://gp81tvupt8kv"
