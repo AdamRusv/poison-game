@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cmikwn8hrnr5g"]
+[gd_scene format=3 uid="uid://bsgsp1roqd7hj"]
 
 [ext_resource type="Script" uid="uid://de22md0e38xn2" path="res://2_Scripts/2_Independent/atlas book.gd" id="1_3lemr"]
 [ext_resource type="Texture2D" uid="uid://d0n6gp3gmvjne" path="res://0_Art/New_Art(Needs Sorting)/Atlas.png" id="2_3lemr"]
@@ -303,7 +303,7 @@ size = Vector2i(236, 166)
 [node name="Page Container" type="MarginContainer" parent="Main Atlas/Front Page" unique_id=1877625295]
 offset_right = 237.0
 offset_bottom = 163.0
-theme_override_constants/margin_right = 0
+theme_override_constants/margin_right = 1
 
 [node name="Page Sprite" type="TextureRect" parent="Main Atlas/Front Page/Page Container" unique_id=1042208507]
 layout_mode = 2

@@ -36,7 +36,6 @@ theme_override_constants/margin_bottom = 4
 [node name="dialogue Label" type="RichTextLabel" parent="Visual Holder/MarginContainer" unique_id=30857362]
 layout_mode = 2
 theme = ExtResource("3_ywpx2")
-theme_override_colors/default_color = Color(0.9490891, 0.89567226, 0.8264895, 1)
 text = "?????????????????"
 fit_content = true
 scroll_active = false

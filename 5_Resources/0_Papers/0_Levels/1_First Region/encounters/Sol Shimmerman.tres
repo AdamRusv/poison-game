@@ -1,0 +1,102 @@
+[gd_resource type="Resource" script_class="EncounterInfo" format=3 uid="uid://dsdk74a6efros"]
+
+[ext_resource type="Script" uid="uid://e0ujmn3oiqx0" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue branch.gd" id="1_8umwt"]
+[ext_resource type="Script" uid="uid://cg4ujw8mauohh" path="res://2_Scripts/3_Dependent/encounter info.gd" id="1_h7fey"]
+[ext_resource type="Script" uid="uid://fn2tb2dtu6fj" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue.gd" id="2_kf355"]
+[ext_resource type="Script" uid="uid://chre6fsqbhfrk" path="res://2_Scripts/3_Dependent/0_Dialogue/branch intro.gd" id="3_8lbue"]
+[ext_resource type="Script" uid="uid://cwxljhi0yey0n" path="res://2_Scripts/3_Dependent/0_Dialogue/branch cups.gd" id="4_r7640"]
+[ext_resource type="Script" uid="uid://qr661epbiujn" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue tree.gd" id="5_36eoe"]
+
+[sub_resource type="Resource" id="Resource_y0efq"]
+script = ExtResource("2_kf355")
+dialogue = "Alright. Let's make this quick"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_yb4ys"]
+script = ExtResource("2_kf355")
+dialogue = "I only get 30 minutes for my lunch break"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_fk0bc"]
+script = ExtResource("2_kf355")
+speaker = 1
+dialogue = "Don’t worry, I won't waste your time"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_kf355"]
+script = ExtResource("3_8lbue")
+dialogue = Array[ExtResource("2_kf355")]([SubResource("Resource_y0efq"), SubResource("Resource_yb4ys"), SubResource("Resource_fk0bc")])
+metadata/_custom_type_script = "uid://chre6fsqbhfrk"
+
+[sub_resource type="Resource" id="Resource_r33c3"]
+script = ExtResource("2_kf355")
+dialogue = "Well, guess my breakfast was my last meal"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_k18tf"]
+script = ExtResource("4_r7640")
+cupPlacement = 2
+dialogue = Array[ExtResource("2_kf355")]([SubResource("Resource_r33c3")])
+metadata/_custom_type_script = "uid://cwxljhi0yey0n"
+
+[sub_resource type="Resource" id="Resource_4o4op"]
+script = ExtResource("2_kf355")
+dialogue = "Thank goodness"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_7l40v"]
+script = ExtResource("2_kf355")
+dialogue = "I can eat my lunch now"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_0m5x8"]
+script = ExtResource("4_r7640")
+dialogue = Array[ExtResource("2_kf355")]([SubResource("Resource_4o4op"), SubResource("Resource_7l40v")])
+metadata/_custom_type_script = "uid://cwxljhi0yey0n"
+
+[sub_resource type="Resource" id="Resource_4y6tu"]
+script = ExtResource("5_36eoe")
+branches = Array[ExtResource("1_8umwt")]([SubResource("Resource_kf355"), SubResource("Resource_k18tf"), SubResource("Resource_0m5x8")])
+metadata/_custom_type_script = "uid://qr661epbiujn"
+
+[sub_resource type="Resource" id="Resource_r7640"]
+script = ExtResource("2_kf355")
+speaker = 1
+dialogue = "Are you a Blacksmith?"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_36eoe"]
+script = ExtResource("2_kf355")
+dialogue = "No, I’ve never touched an anvil"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_8lbue"]
+script = ExtResource("1_8umwt")
+dialogue = Array[ExtResource("2_kf355")]([SubResource("Resource_r7640"), SubResource("Resource_36eoe")])
+metadata/_custom_type_script = "uid://e0ujmn3oiqx0"
+
+[sub_resource type="Resource" id="Resource_bgqxo"]
+script = ExtResource("5_36eoe")
+branches = Array[ExtResource("1_8umwt")]([SubResource("Resource_8lbue")])
+metadata/_custom_type_script = "uid://qr661epbiujn"
+
+[resource]
+script = ExtResource("1_h7fey")
+characterName = "Sol Shimmerman"
+dialogueTree = SubResource("Resource_4y6tu")
+hints = SubResource("Resource_bgqxo")
+cupAnswer = 2
+title = "Character Sheet"
+info = Array[String]([", Hollyberry
+
+
+1. Race: Human
+
+2. Occupation: Blacksmith
+
+3. Is Deceptive
+
+4. Age: 22
+
+"])
+metadata/_custom_type_script = "uid://cg4ujw8mauohh"
