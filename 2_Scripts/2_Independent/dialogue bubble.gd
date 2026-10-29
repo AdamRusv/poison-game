@@ -14,6 +14,8 @@ var dialogueSize : Vector2 = Vector2.ZERO
 const MAX_BUBBLE_SIZE : float = 120.0
 var singleLineSize : float = 0
 
+var finishedTween : bool = false
+
 func _set_length_size():
 	dialogueSize = visualHolder.size
 	
@@ -42,3 +44,10 @@ func _custom_autowrap():
 		longestLine = maxf(longestLine, newParagraph.get_line_width(i))
 	dialogueSize.x = longestLine
 	visualHolder.custom_minimum_size.y = 12 + newParagraph.get_line_count() * 8
+
+func _add_cutoff(): #NOTE: sometimes causes a jump in bubble size if "-" is larger than character being deleted (LOL)
+	var newestVisibleCharacterPos : int = dialogueLabel.visible_characters
+	
+	dialogueLabel.text = dialogueLabel.text.erase(newestVisibleCharacterPos)
+	dialogueLabel.text = dialogueLabel.text.insert(newestVisibleCharacterPos, "-")
+	dialogueLabel.visible_characters += 1

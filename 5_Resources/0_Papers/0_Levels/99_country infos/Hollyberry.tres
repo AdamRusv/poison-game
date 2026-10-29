@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="PaperInfo" format=3 uid="uid://w6yvhusmm6x3"]
+
+[ext_resource type="Script" uid="uid://csy0x4mgdxs00" path="res://2_Scripts/3_Dependent/paperinfo.gd" id="1_jt8rp"]
+
+[resource]
+script = ExtResource("1_jt8rp")
+title = "Atlas -> Hollyberry"
+info = Array[String](["Occupation:
+- Blacksmiths are Lying about their age
+
+- Rangers are Tricky
+
+Race:
+- Goblins are Deceptive
+
+Country Notes:
+- Citizens that Lie about their Age are Sages
+
+- Citizens that are Truthful about their Age are Fools
+"])
+metadata/_custom_type_script = "uid://csy0x4mgdxs00"

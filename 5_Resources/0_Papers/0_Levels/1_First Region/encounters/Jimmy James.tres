@@ -9,12 +9,23 @@
 
 [sub_resource type="Resource" id="Resource_83870"]
 script = ExtResource("2_tbb0o")
-dialogue = "fgnfgnfgn"
+speaker = 1
+dialogue = "Just so you know, I've won the last 4 games in a row"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_3hc6k"]
+script = ExtResource("2_tbb0o")
+dialogue = "That doesn't scare me, kid"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_jugk7"]
+script = ExtResource("2_tbb0o")
+dialogue = "I've been playing this game for years"
 metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
 
 [sub_resource type="Resource" id="Resource_hd02j"]
 script = ExtResource("3_n8rwi")
-dialogue = Array[ExtResource("2_tbb0o")]([SubResource("Resource_83870")])
+dialogue = Array[ExtResource("2_tbb0o")]([SubResource("Resource_83870"), SubResource("Resource_3hc6k"), SubResource("Resource_jugk7")])
 metadata/_custom_type_script = "uid://chre6fsqbhfrk"
 
 [sub_resource type="Resource" id="Resource_p6775"]
