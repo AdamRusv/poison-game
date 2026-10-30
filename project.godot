@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Atropa"
 config/description="Using logic, determine whether your opponent is a Fool or a Sage based on the provided information"
-config/version="0.00.2"
+config/version="0.00.3"
 run/main_scene="uid://ct7jlogagfbah"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="Atropa"
