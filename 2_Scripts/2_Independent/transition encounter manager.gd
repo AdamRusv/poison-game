@@ -3,7 +3,7 @@ extends Control
 class_name TransitionEncounter
 
 @export_category("References")
-@export var circleTransition : Sprite2D
+@export var transitionBackground : TextureRect
 
 var duration : float = 0.7
 
@@ -23,5 +23,5 @@ func _end_transition() -> Tween:
 
 #-
 func _tween_circle_transition(newValue : float):
-	var gradient : GradientTexture2D = circleTransition.texture
+	var gradient : GradientTexture2D = transitionBackground.texture
 	gradient.gradient.set_offset(1, newValue)

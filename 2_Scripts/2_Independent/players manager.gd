@@ -13,10 +13,14 @@ const SAFE_CLOSE_CUP : Vector2i = Vector2i(0, 12)
 const SAFE_FAR_CUP : Vector2i = Vector2i(42, 55)
 const DEATH_CLOSE_CUP : Vector2i = Vector2i(13, 26)
 const DEATH_FAR_CUP : Vector2i = Vector2i(27, 41)
+##for each of the animation brackets, the "x" frame is when they are holding the cup while standing
+const STANDING_HOLDING_CUP_PAUSE_POS_CLOSE : int = 5
+const STANDING_HOLDING_CUP_PAUSE_POS_FAR : int = 6
 
 var opponentRange : Vector2i = Vector2i.ZERO
 var playerRange : Vector2i = Vector2i.ZERO
-var isAnimating : bool = false
+var isDrinking : bool = false
+var isGrabbingDrink : bool = false
 
 func _ready() -> void:
 	gameplayManager.cupHasBeenPoisoned.connect(_trigger_drink_animations)
@@ -28,19 +32,43 @@ func _trigger_drink_animations():
 	players[0].frame = opponentRange.x
 	players[1].frame = playerRange.x
 	
+	gameplayManager.dialogueManager._trigger_dialogue_branch()
 	var currentBranch : DialogueBranch = await gameplayManager.dialogueManager.branchFinished
 	if currentBranch is DialogueBranchIntro:
 		return
-	
 	players[0].play()
-	players[1].play()
 	
-	isAnimating = true
+	isGrabbingDrink = true
 
 func _process(delta: float) -> void:
-	if isAnimating == false:
-		return
+	if isGrabbingDrink == true && isDrinking != true:
+		_pause_at_standing_holding_cup()
 	
+	if isGrabbingDrink != true && isDrinking == true:
+		_pause_at_dead()
+
+#
+func _pause_at_standing_holding_cup():
+	var solutionCupPos : int = -1
+	if playerRange == DEATH_CLOSE_CUP || playerRange == SAFE_CLOSE_CUP:
+		solutionCupPos = STANDING_HOLDING_CUP_PAUSE_POS_CLOSE
+	else:
+		solutionCupPos = STANDING_HOLDING_CUP_PAUSE_POS_FAR
+	
+	if players[0].frame == opponentRange.x + solutionCupPos - 1:
+		players[0].pause()
+		players[1].play()
+	
+	if players[1].frame == playerRange.x + solutionCupPos - 1:
+		players[1].pause()
+		isGrabbingDrink = false
+		isDrinking = true
+		
+		await get_tree().create_timer(0.3).timeout
+		players[0].play()
+		players[1].play()
+
+func _pause_at_dead():
 	if players[0].frame == opponentRange.y:
 		players[0].pause()
 	
