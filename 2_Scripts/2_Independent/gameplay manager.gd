@@ -41,6 +41,7 @@ var gamestateJSON : GamestateJSON = GamestateJSON.new()
 func _ready() -> void:
 	gamestateJSON._load_gamestate()
 	currentRegion = gameTimeline.timeline[gamestateJSON.timelineIndex]
+	SoundManager._set_region_music(currentRegion.music, _get_encounter_number())
 	_update_timeline_counter()
 	_set_connections()
 	_start_new_encounter()
@@ -60,25 +61,21 @@ func _start_new_encounter():
 	await get_tree().create_timer(1).timeout
 	dialogueManager._start_dialogue()
 
-func _update_timeline_counter():
-	var counterText : String = ""
-	
-	var regionNumber : int = 0
-	var initalEncounterNumber : int = 0
-	for i in range(0, gameTimeline.timeline.size()):
-		var region : RegionInfo = gameTimeline.timeline[i]
-		if i > gamestateJSON.timelineIndex:
-			break
-		
-		if region.increaseRegion == true:
-			regionNumber += 1
-			initalEncounterNumber = 1
+func _get_encounter_number() -> int:
+	var initialEncounterNumber : int = 0
+	for i in range(0, gamestateJSON.timelineIndex + 1):
+		if gameTimeline.timeline[i].increaseRegion == true:
+			initialEncounterNumber = 1
 		else:
-			initalEncounterNumber += 1
-		
-	var encounterNumber : int = initalEncounterNumber + gamestateJSON.currentRegionEncounterCount - 1
-	counterText = str(regionNumber) + " - " + str(encounterNumber)
-	timelineCounterLabel.text = counterText
+			initialEncounterNumber += 1
+	return initialEncounterNumber + gamestateJSON.currentRegionEncounterCount - 1
+
+func _update_timeline_counter():
+	var regionNumber : int = 0
+	for i in range(0, gamestateJSON.timelineIndex + 1):
+		if gameTimeline.timeline[i].increaseRegion == true:
+			regionNumber += 1
+	timelineCounterLabel.text = str(regionNumber) + " - " + str(_get_encounter_number())
 
 #- - -
 func _setup_encounter_papers():
@@ -86,7 +83,8 @@ func _setup_encounter_papers():
 	
 	playmatManager.mainTraitSheet = currentRegion.traitSheet
 	playmatManager.characterSheet = currentRegion.characterSheets[nextEncounterIndex].duplicate(true)
-	playmatManager.atlasRegionSheet = currentRegion.atlas
+	#TODO: atlas rework, RegionInfo.atlas was removed
+	#playmatManager.atlasRegionSheet = currentRegion.atlas
 	
 	gamestateJSON.currentCharacterIndex = nextEncounterIndex
 	gamestateJSON._save_gamestate()

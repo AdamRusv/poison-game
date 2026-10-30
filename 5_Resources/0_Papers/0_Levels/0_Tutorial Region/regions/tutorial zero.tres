@@ -3,10 +3,12 @@
 [ext_resource type="Script" uid="uid://cg4ujw8mauohh" path="res://2_Scripts/3_Dependent/encounter info.gd" id="1_hvbcb"]
 [ext_resource type="Resource" uid="uid://0wvhtmiro1wy" path="res://5_Resources/0_Papers/0_Levels/0_Tutorial Region/encounters/zero.tres" id="2_dc7e1"]
 [ext_resource type="Script" uid="uid://851asxmj8i78" path="res://2_Scripts/3_Dependent/region info.gd" id="3_o16es"]
+[ext_resource type="Resource" uid="uid://ct4ydjigik5kq" path="res://5_Resources/1_RegionMusic/tutorial music.tres" id="3_oduuj"]
 
 [resource]
 script = ExtResource("3_o16es")
 totalEncounters = 1
 characterSheets = Array[ExtResource("1_hvbcb")]([ExtResource("2_dc7e1")])
 noteSheet = false
+music = ExtResource("3_oduuj")
 metadata/_custom_type_script = "uid://851asxmj8i78"

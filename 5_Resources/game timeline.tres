@@ -7,7 +7,7 @@
 [ext_resource type="Resource" uid="uid://hyjafvb7n1hg" path="res://5_Resources/0_Papers/0_Levels/0_Tutorial Region/regions/tutorial two.tres" id="5_vrwh6"]
 [ext_resource type="Resource" uid="uid://igfj8dv0ajyr" path="res://5_Resources/0_Papers/0_Levels/0_Tutorial Region/regions/tutorial three.tres" id="6_f3tm4"]
 [ext_resource type="Script" uid="uid://cg4ujw8mauohh" path="res://2_Scripts/3_Dependent/encounter info.gd" id="7_rmm27"]
-[ext_resource type="Resource" uid="uid://w6yvhusmm6x3" path="res://5_Resources/0_Papers/0_Levels/99_country infos/Hollyberry.tres" id="7_vun0i"]
+[ext_resource type="Resource" uid="uid://dlt86vr4taqr1" path="res://5_Resources/1_RegionMusic/region one music.tres" id="9_05g13"]
 [ext_resource type="Resource" uid="uid://bwfdoc58rkwhn" path="res://5_Resources/0_Papers/0_Levels/1_First Region/encounters/Sunny Moon.tres" id="9_tmc60"]
 [ext_resource type="Script" uid="uid://csy0x4mgdxs00" path="res://2_Scripts/3_Dependent/paperinfo.gd" id="10_05g13"]
 [ext_resource type="Resource" uid="uid://2ggvnaxi8ai6" path="res://5_Resources/0_Papers/0_Levels/1_First Region/encounters/Jimmy James.tres" id="11_g5j7o"]
@@ -37,8 +37,8 @@ script = ExtResource("2_fvdvp")
 totalEncounters = 1
 traitSheet = SubResource("Resource_te4kt")
 characterSheets = Array[ExtResource("7_rmm27")]([ExtResource("9_tmc60")])
-atlas = ExtResource("7_vun0i")
 noteSheet = false
+music = ExtResource("9_05g13")
 increaseRegion = true
 metadata/_custom_type_script = "uid://851asxmj8i78"
 
@@ -47,8 +47,8 @@ script = ExtResource("2_fvdvp")
 totalEncounters = 1
 traitSheet = SubResource("Resource_te4kt")
 characterSheets = Array[ExtResource("7_rmm27")]([ExtResource("11_g5j7o")])
-atlas = ExtResource("7_vun0i")
 noteSheet = false
+music = ExtResource("9_05g13")
 metadata/_custom_type_script = "uid://851asxmj8i78"
 
 [sub_resource type="Resource" id="Resource_8i6pb"]
@@ -56,8 +56,8 @@ script = ExtResource("2_fvdvp")
 totalEncounters = 1
 traitSheet = SubResource("Resource_te4kt")
 characterSheets = Array[ExtResource("7_rmm27")]([ExtResource("12_1ul4d")])
-atlas = ExtResource("7_vun0i")
 noteSheet = false
+music = ExtResource("9_05g13")
 metadata/_custom_type_script = "uid://851asxmj8i78"
 
 [sub_resource type="Resource" id="Resource_tj3on"]
@@ -65,8 +65,8 @@ script = ExtResource("2_fvdvp")
 totalEncounters = 1
 traitSheet = SubResource("Resource_te4kt")
 characterSheets = Array[ExtResource("7_rmm27")]([ExtResource("13_tmc60")])
-atlas = ExtResource("7_vun0i")
 noteSheet = false
+music = ExtResource("9_05g13")
 metadata/_custom_type_script = "uid://851asxmj8i78"
 
 [resource]

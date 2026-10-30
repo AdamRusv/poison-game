@@ -11,6 +11,9 @@ class_name RegionInfo
 
 @export var noteSheet : bool = true
 
+##regions that share the same RegionMusic resource keep the song playing instead of restarting it
+@export var music : RegionMusic
+
 @export_group("Timeline Counter")
 @export var increaseRegion : bool = false
 

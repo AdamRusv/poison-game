@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AtlasInfo" format=3 uid="uid://dx3tug8vxti3k"]
+[gd_resource type="Resource" script_class="CountryInfo" format=3 uid="uid://dx3tug8vxti3k"]
 
 [ext_resource type="Script" uid="uid://dn3cxe2u865qv" path="res://2_Scripts/3_Dependent/single page.gd" id="1_6vard"]
 [ext_resource type="Script" uid="uid://gp81tvupt8kv" path="res://2_Scripts/3_Dependent/atlas info.gd" id="2_u4l8q"]
