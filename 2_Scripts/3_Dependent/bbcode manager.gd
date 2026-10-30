@@ -4,7 +4,8 @@ class_name BBCodePaperManager
 
 const LIE_COLOR : String = "#b65c5f"
 const FOOL_COLOR : String = "#66845f"
-const SAGE_COLOR : String = "#6c67eb"
+const SAGE_COLOR : String = "#6a78c4"
+#const SAGE_COLOR : String = "#6e7ccc"
 
 const KEYWORD_COLORS : Dictionary = {
 	"lie": LIE_COLOR,

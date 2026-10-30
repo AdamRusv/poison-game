@@ -9,7 +9,6 @@ class_name PlaymatManager
 
 var mainTraitSheet : PaperInfo
 var characterSheet : EncounterInfo
-var atlasRegionSheet : PaperInfo
 
 #var testPaperRef : PackedScene = load("res://1_Scenes/1_Objects/paper.tscn") #TODO: Make actual papers, replace variable
 var testPaperRef : PackedScene = load("res://1_Scenes/1_Objects/paper.tscn")
@@ -22,26 +21,35 @@ func _ready() -> void:
 
 func _add_main_papers():
 	if mainTraitSheet != null:
-		_create_paper(testPaperRef, Color("4b3d44"), mainTraitSheet)
+		_create_paper(testPaperRef, mainTraitSheet)
 	
 	if characterSheet != null:
-		_create_paper(testPaperRef, Color("4b3d44"), characterSheet)
+		_create_paper(testPaperRef, characterSheet)
 	
-	if atlasRegionSheet != null:
-		_create_paper(testAtlasRef, Color("4b3d44"), atlasRegionSheet)
+	if gameplayManager.atlasHolder != null:
+		_create_atlas(testAtlasRef, gameplayManager.atlasHolder, gameplayManager.currentRegion)
 
 
 #-----------------------
 
-func _create_paper(paperRef : PackedScene, paperColor : Color, paperInfo : PaperInfo):
+func _create_paper(paperRef : PackedScene, paperInfo : PaperInfo):
 	var paperInstance : Paper = paperRef.instantiate()
 
 	paperInstance._setup_paper(paperInfo)
-	
-	paperInstance.self_modulate = paperColor
+
 	paperInstance.playmat = self
 	
 	paperHolder.add_child(paperInstance)
+
+func _create_atlas(atlasRef : PackedScene, atlasHolder : AtlasHolder, regionInfo : RegionInfo):
+	var atlasInstance : AtlasBook = atlasRef.instantiate()
+
+	atlasInstance._setup_atlas(atlasHolder, regionInfo)
+
+	atlasInstance.playmat = self
+
+
+	paperHolder.add_child(atlasInstance)
 
 #----------------------
 func _get_random_paper_spawn_location() -> Vector2:
