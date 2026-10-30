@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://xfwlhmfipmqm" path="res://0_Art/New_Art(Needs Sorting)/Schloozyville-Sheet.png" id="14_yxeby"]
 [ext_resource type="BitMap" uid="uid://dm4p3n6mlugj7" path="res://0_Art/New_Art(Needs Sorting)/Schloozyville-Bitmap.png" id="15_icpc4"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_u0ylq"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_yxeby"]
 viewport_path = NodePath("Map Atlas/Left Page Viewport")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t11ig"]
@@ -26,13 +26,13 @@ shader = ExtResource("6_bendsh")
 shader_parameter/progress = 1.0
 shader_parameter/spine_x = 0.50000002375
 shader_parameter/bend = -4.4704000057294024e-08
-shader_parameter/back_texture = SubResource("ViewportTexture_u0ylq")
+shader_parameter/back_texture = SubResource("ViewportTexture_yxeby")
 shader_parameter/perspective = 0.050000002375
 shader_parameter/shadow_strength = 0.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3lemr"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_bjlx3"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_b2elf"]
 viewport_path = NodePath("Main Atlas/Back Page")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_28i0q"]
@@ -41,11 +41,11 @@ shader = ExtResource("6_bendsh")
 shader_parameter/progress = 0.0
 shader_parameter/spine_x = 0.5
 shader_parameter/bend = -0.8000000268224001
-shader_parameter/back_texture = SubResource("ViewportTexture_bjlx3")
+shader_parameter/back_texture = SubResource("ViewportTexture_b2elf")
 shader_parameter/perspective = 0.050000002375
 shader_parameter/shadow_strength = 0.0
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_vkltb"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_icpc4"]
 viewport_path = NodePath("Main Atlas/Front Page")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2y7yb"]
@@ -64,7 +64,7 @@ region = Rect2(0, 0, 236, 166)
 atlas = ExtResource("14_yxeby")
 region = Rect2(236, 0, 236, 166)
 
-[node name="Atlas" type="MarginContainer" unique_id=1389312574 node_paths=PackedStringArray("mapAtlas", "mainAtlas", "mapHolder", "leftDetectionZone", "rightDetectionZone", "mapPageSprite", "atlasFullPageSprite", "atlasSinglePageSprite", "coverSprite", "paperTitleLabel", "paperInfoLabel", "parentNode", "detectionArea")]
+[node name="Atlas" type="MarginContainer" unique_id=1389312574 node_paths=PackedStringArray("mapAtlas", "mainAtlas", "mapHolder", "leftDetectionZone", "rightDetectionZone", "mapPageSprite", "atlasFullPageSprite", "atlasSinglePageSprite", "coverSprite", "pageTitles", "pageInfos", "paperTitleLabel", "paperInfoLabel", "parentNode", "detectionArea")]
 offset_right = 236.0
 offset_bottom = 163.0
 script = ExtResource("1_3lemr")
@@ -77,12 +77,15 @@ mapPageSprite = NodePath("Map Atlas/Right Page")
 atlasFullPageSprite = NodePath("Main Atlas/Atlas Page")
 atlasSinglePageSprite = NodePath("Main Atlas/Page Projector")
 coverSprite = NodePath("Map Atlas/Cover & Left Page")
-paperTitleLabel = NodePath("Main Atlas/HBoxContainer/General Info Holder/Title Container/Title Label")
-paperInfoLabel = NodePath("Main Atlas/Front Page/MarginContainer/Region Info Holder/Info Container/Info Label")
+pageTitles = [NodePath("Main Atlas/First & Last Page Holder/General Info Holder/Title Container/Title Label"), NodePath("Main Atlas/Front Page/Region Info Container/Region Info Holder/Title Container/Title Label"), NodePath("Main Atlas/Back Page/Region Info Container/Region Info Holder/Title Container/Title Label"), NodePath("Main Atlas/First & Last Page Holder/Last Page Holder/Title Container/Title Label")]
+pageInfos = [NodePath("Main Atlas/First & Last Page Holder/General Info Holder/Info Container/Info Label"), NodePath("Main Atlas/Front Page/Region Info Container/Region Info Holder/Info Container/Info Label"), NodePath("Main Atlas/Back Page/Region Info Container/Region Info Holder/Info Container/Info Label"), NodePath("Main Atlas/First & Last Page Holder/Last Page Holder/Info Container/Info Label")]
+paperTitleLabel = NodePath("Main Atlas/First & Last Page Holder/General Info Holder/Title Container/Title Label")
+paperInfoLabel = NodePath("Main Atlas/Front Page/Region Info Container/Region Info Holder/Info Container/Info Label")
 parentNode = NodePath(".")
 detectionArea = NodePath("Drag Button")
 
 [node name="Map Atlas" type="MarginContainer" parent="." unique_id=1750337560]
+visible = false
 layout_mode = 2
 
 [node name="Right Page" type="TextureRect" parent="Map Atlas" unique_id=1841334381]
@@ -126,33 +129,33 @@ layout_mode = 2
 texture = ExtResource("2_3lemr")
 stretch_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Main Atlas" unique_id=1134887535]
+[node name="First & Last Page Holder" type="HBoxContainer" parent="Main Atlas" unique_id=1134887535]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="HSeparator" type="VSeparator" parent="Main Atlas/HBoxContainer" unique_id=670428617]
+[node name="HSeparator" type="VSeparator" parent="Main Atlas/First & Last Page Holder" unique_id=670428617]
 layout_mode = 2
 theme_override_constants/separation = 3
 theme_override_styles/separator = SubResource("StyleBoxEmpty_3lemr")
 
-[node name="General Info Holder" type="VBoxContainer" parent="Main Atlas/HBoxContainer" unique_id=1291093204]
+[node name="General Info Holder" type="VBoxContainer" parent="Main Atlas/First & Last Page Holder" unique_id=1291093204]
 custom_maximum_size = Vector2(115, 150)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Top Separator" type="HSeparator" parent="Main Atlas/HBoxContainer/General Info Holder" unique_id=1719494700]
+[node name="Top Separator" type="HSeparator" parent="Main Atlas/First & Last Page Holder/General Info Holder" unique_id=1719494700]
 layout_mode = 2
 theme_override_constants/separation = 15
 theme_override_styles/separator = SubResource("StyleBoxEmpty_3lemr")
 
-[node name="Title Container" type="MarginContainer" parent="Main Atlas/HBoxContainer/General Info Holder" unique_id=432251444]
+[node name="Title Container" type="MarginContainer" parent="Main Atlas/First & Last Page Holder/General Info Holder" unique_id=432251444]
 layout_mode = 2
 theme_override_constants/margin_left = 11
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 10
 
-[node name="Title Label" type="RichTextLabel" parent="Main Atlas/HBoxContainer/General Info Holder/Title Container" unique_id=899227368]
+[node name="Title Label" type="RichTextLabel" parent="Main Atlas/First & Last Page Holder/General Info Holder/Title Container" unique_id=899227368]
 layout_mode = 2
 theme = ExtResource("4_28i0q")
 bbcode_enabled = true
@@ -160,30 +163,74 @@ text = "???"
 fit_content = true
 scroll_active = false
 
-[node name="Title Seperation Container" type="MarginContainer" parent="Main Atlas/HBoxContainer/General Info Holder" unique_id=233732716]
+[node name="Title Seperation Container" type="MarginContainer" parent="Main Atlas/First & Last Page Holder/General Info Holder" unique_id=233732716]
 layout_mode = 2
 theme_override_constants/margin_left = 11
 theme_override_constants/margin_right = 10
 
-[node name="Title Seperation Label" type="RichTextLabel" parent="Main Atlas/HBoxContainer/General Info Holder/Title Seperation Container" unique_id=2082800009]
+[node name="Title Seperation Label" type="RichTextLabel" parent="Main Atlas/First & Last Page Holder/General Info Holder/Title Seperation Container" unique_id=2082800009]
 layout_mode = 2
 theme = ExtResource("4_28i0q")
 text = "-----------------------"
 fit_content = true
 scroll_active = false
 
-[node name="Mid Separator" type="HSeparator" parent="Main Atlas/HBoxContainer/General Info Holder" unique_id=1033504552]
+[node name="Mid Separator" type="HSeparator" parent="Main Atlas/First & Last Page Holder/General Info Holder" unique_id=1033504552]
 layout_mode = 2
 theme_override_constants/separation = 10
 theme_override_styles/separator = SubResource("StyleBoxEmpty_3lemr")
 
-[node name="Info Container" type="MarginContainer" parent="Main Atlas/HBoxContainer/General Info Holder" unique_id=868544632]
+[node name="Info Container" type="MarginContainer" parent="Main Atlas/First & Last Page Holder/General Info Holder" unique_id=868544632]
 layout_mode = 2
 theme_override_constants/margin_left = 11
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 20
 
-[node name="Info Label" type="RichTextLabel" parent="Main Atlas/HBoxContainer/General Info Holder/Info Container" unique_id=456744920]
+[node name="Info Label" type="RichTextLabel" parent="Main Atlas/First & Last Page Holder/General Info Holder/Info Container" unique_id=456744920]
+layout_mode = 2
+theme = ExtResource("4_28i0q")
+bbcode_enabled = true
+text = "????"
+fit_content = true
+scroll_active = false
+
+[node name="Last Page Holder" type="VBoxContainer" parent="Main Atlas/First & Last Page Holder" unique_id=265165349]
+custom_maximum_size = Vector2(115, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Top Separator" type="HSeparator" parent="Main Atlas/First & Last Page Holder/Last Page Holder" unique_id=745750199]
+layout_mode = 2
+theme_override_constants/separation = 15
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3lemr")
+
+[node name="Title Container" type="MarginContainer" parent="Main Atlas/First & Last Page Holder/Last Page Holder" unique_id=1957408472]
+layout_mode = 2
+theme_override_constants/margin_left = 11
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 10
+
+[node name="Title Label" type="RichTextLabel" parent="Main Atlas/First & Last Page Holder/Last Page Holder/Title Container" unique_id=453041751]
+layout_mode = 2
+theme = ExtResource("4_28i0q")
+bbcode_enabled = true
+text = "???"
+fit_content = true
+scroll_active = false
+
+[node name="Mid Separator" type="HSeparator" parent="Main Atlas/First & Last Page Holder/Last Page Holder" unique_id=1341487186]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3lemr")
+
+[node name="Info Container" type="MarginContainer" parent="Main Atlas/First & Last Page Holder/Last Page Holder" unique_id=1294513897]
+layout_mode = 2
+theme_override_constants/margin_left = 11
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 20
+
+[node name="Info Label" type="RichTextLabel" parent="Main Atlas/First & Last Page Holder/Last Page Holder/Info Container" unique_id=1238274618]
 layout_mode = 2
 theme = ExtResource("4_28i0q")
 bbcode_enabled = true
@@ -194,7 +241,7 @@ scroll_active = false
 [node name="Page Projector" type="TextureRect" parent="Main Atlas" unique_id=2048782279]
 material = SubResource("ShaderMaterial_28i0q")
 layout_mode = 2
-texture = SubResource("ViewportTexture_vkltb")
+texture = SubResource("ViewportTexture_icpc4")
 
 [node name="Trim Container Right" type="MarginContainer" parent="Main Atlas" unique_id=384535913]
 layout_mode = 2
@@ -244,41 +291,55 @@ size_flags_horizontal = 8
 texture = ExtResource("3_dn5do")
 stretch_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Main Atlas/Back Page" unique_id=704680164]
+[node name="Region Info Container" type="MarginContainer" parent="Main Atlas/Back Page" unique_id=713106190]
 offset_right = 640.0
 offset_bottom = 360.0
 scale = Vector2(-1, 1)
 theme_override_constants/margin_left = -228
 
-[node name="Region Info Holder" type="VBoxContainer" parent="Main Atlas/Back Page/MarginContainer" unique_id=1468465151]
+[node name="Region Info Holder" type="VBoxContainer" parent="Main Atlas/Back Page/Region Info Container" unique_id=1266112631]
 custom_maximum_size = Vector2(115, 150)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Top Separator" type="HSeparator" parent="Main Atlas/Back Page/MarginContainer/Region Info Holder" unique_id=519231678]
+[node name="Top Separator" type="HSeparator" parent="Main Atlas/Back Page/Region Info Container/Region Info Holder" unique_id=1970139634]
 layout_mode = 2
 theme_override_constants/separation = 15
 theme_override_styles/separator = SubResource("StyleBoxEmpty_3lemr")
 
-[node name="Info Container" type="MarginContainer" parent="Main Atlas/Back Page/MarginContainer/Region Info Holder" unique_id=440569465]
+[node name="Title Container" type="MarginContainer" parent="Main Atlas/Back Page/Region Info Container/Region Info Holder" unique_id=632595033]
 layout_mode = 2
 theme_override_constants/margin_left = 6
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 0
 
-[node name="Info Label" type="RichTextLabel" parent="Main Atlas/Back Page/MarginContainer/Region Info Holder/Info Container" unique_id=1934647985]
+[node name="Title Label" type="RichTextLabel" parent="Main Atlas/Back Page/Region Info Container/Region Info Holder/Title Container" unique_id=261185088]
 layout_mode = 2
 theme = ExtResource("4_28i0q")
 bbcode_enabled = true
-text = "????????????????????????
-????????????????????????
-????????????????????????
-????????????????????????
-????????????????????????
-????????????????????????
-????????????????????????"
+text = "?????"
+fit_content = true
+scroll_active = false
+
+[node name="Mid Separator" type="HSeparator" parent="Main Atlas/Back Page/Region Info Container/Region Info Holder" unique_id=1373206254]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3lemr")
+
+[node name="Info Container" type="MarginContainer" parent="Main Atlas/Back Page/Region Info Container/Region Info Holder" unique_id=28071254]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 0
+
+[node name="Info Label" type="RichTextLabel" parent="Main Atlas/Back Page/Region Info Container/Region Info Holder/Info Container" unique_id=298407665]
+layout_mode = 2
+theme = ExtResource("4_28i0q")
+bbcode_enabled = true
+text = "???"
 fit_content = true
 scroll_active = false
 
@@ -301,30 +362,30 @@ size_flags_horizontal = 8
 texture = ExtResource("3_dn5do")
 stretch_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Main Atlas/Front Page" unique_id=231385002]
+[node name="Region Info Container" type="MarginContainer" parent="Main Atlas/Front Page" unique_id=231385002]
 offset_right = 640.0
 offset_bottom = 360.0
 theme_override_constants/margin_left = 123
 
-[node name="Region Info Holder" type="VBoxContainer" parent="Main Atlas/Front Page/MarginContainer" unique_id=1909880771]
+[node name="Region Info Holder" type="VBoxContainer" parent="Main Atlas/Front Page/Region Info Container" unique_id=1909880771]
 custom_maximum_size = Vector2(115, 150)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Top Separator" type="HSeparator" parent="Main Atlas/Front Page/MarginContainer/Region Info Holder" unique_id=1539597412]
+[node name="Top Separator" type="HSeparator" parent="Main Atlas/Front Page/Region Info Container/Region Info Holder" unique_id=1539597412]
 layout_mode = 2
 theme_override_constants/separation = 15
 theme_override_styles/separator = SubResource("StyleBoxEmpty_3lemr")
 
-[node name="header container" type="MarginContainer" parent="Main Atlas/Front Page/MarginContainer/Region Info Holder" unique_id=1666950350]
+[node name="Title Container" type="MarginContainer" parent="Main Atlas/Front Page/Region Info Container/Region Info Holder" unique_id=1666950350]
 layout_mode = 2
 theme_override_constants/margin_left = 6
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 0
 
-[node name="Info Label" type="RichTextLabel" parent="Main Atlas/Front Page/MarginContainer/Region Info Holder/header container" unique_id=1562137215]
+[node name="Title Label" type="RichTextLabel" parent="Main Atlas/Front Page/Region Info Container/Region Info Holder/Title Container" unique_id=1562137215]
 layout_mode = 2
 theme = ExtResource("4_28i0q")
 bbcode_enabled = true
@@ -332,19 +393,19 @@ text = "?????"
 fit_content = true
 scroll_active = false
 
-[node name="Mid Separator" type="HSeparator" parent="Main Atlas/Front Page/MarginContainer/Region Info Holder" unique_id=603847112]
+[node name="Mid Separator" type="HSeparator" parent="Main Atlas/Front Page/Region Info Container/Region Info Holder" unique_id=603847112]
 layout_mode = 2
 theme_override_constants/separation = 10
 theme_override_styles/separator = SubResource("StyleBoxEmpty_3lemr")
 
-[node name="Info Container" type="MarginContainer" parent="Main Atlas/Front Page/MarginContainer/Region Info Holder" unique_id=1211441657]
+[node name="Info Container" type="MarginContainer" parent="Main Atlas/Front Page/Region Info Container/Region Info Holder" unique_id=1211441657]
 layout_mode = 2
 theme_override_constants/margin_left = 6
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 0
 
-[node name="Info Label" type="RichTextLabel" parent="Main Atlas/Front Page/MarginContainer/Region Info Holder/Info Container" unique_id=559816010]
+[node name="Info Label" type="RichTextLabel" parent="Main Atlas/Front Page/Region Info Container/Region Info Holder/Info Container" unique_id=559816010]
 layout_mode = 2
 theme = ExtResource("4_28i0q")
 bbcode_enabled = true

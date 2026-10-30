@@ -18,4 +18,9 @@ func _turn_to_country(i : int):
 	if atlas._has_moved() == true:
 		return
 	
+	if atlas.atlasHolder.countryInfos[i] != null:
+		atlas.countryInfo = atlas.atlasHolder.countryInfos[i]
+	
+	atlas._initialize_pages()
+
 	atlas._flip_to_main()

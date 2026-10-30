@@ -86,7 +86,6 @@ func _setup_encounter_papers():
 	
 	playmatManager.mainTraitSheet = currentRegion.traitSheet
 	playmatManager.characterSheet = currentRegion.characterSheets[nextEncounterIndex].duplicate(true)
-	playmatManager.atlasRegionSheet = currentRegion.atlas
 	
 	gamestateJSON.currentCharacterIndex = nextEncounterIndex
 	gamestateJSON._save_gamestate()

@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="AtlasInfo" format=3 uid="uid://dx3tug8vxti3k"]
+[gd_resource type="Resource" script_class="CountryInfo" format=3 uid="uid://dx3tug8vxti3k"]
 
 [ext_resource type="Script" uid="uid://dn3cxe2u865qv" path="res://2_Scripts/3_Dependent/single page.gd" id="1_6vard"]
-[ext_resource type="Script" uid="uid://gp81tvupt8kv" path="res://2_Scripts/3_Dependent/atlas info.gd" id="2_u4l8q"]
+[ext_resource type="Script" uid="uid://gp81tvupt8kv" path="res://2_Scripts/3_Dependent/country info.gd" id="2_u4l8q"]
 
 [sub_resource type="Resource" id="Resource_6vard"]
 script = ExtResource("1_6vard")
@@ -25,9 +25,21 @@ info = "- Blacksmiths are Lying about their age
 - Rangers are Tricky"
 metadata/_custom_type_script = "uid://dn3cxe2u865qv"
 
+[sub_resource type="Resource" id="Resource_yxeby"]
+script = ExtResource("1_6vard")
+title = "Age:"
+info = "Adam is so gay"
+metadata/_custom_type_script = "uid://dn3cxe2u865qv"
+
+[sub_resource type="Resource" id="Resource_icpc4"]
+script = ExtResource("1_6vard")
+title = "Religion"
+info = "Daniel is such a fag"
+metadata/_custom_type_script = "uid://dn3cxe2u865qv"
+
 [resource]
 script = ExtResource("2_u4l8q")
-pages = Array[ExtResource("1_6vard")]([SubResource("Resource_6vard"), SubResource("Resource_u4l8q"), SubResource("Resource_jqg6x")])
+pages = Array[ExtResource("1_6vard")]([SubResource("Resource_6vard"), SubResource("Resource_u4l8q"), SubResource("Resource_jqg6x"), SubResource("Resource_yxeby"), SubResource("Resource_icpc4")])
 countryTitle = "Hollyberry"
 funInfo = "Population: 2.3M
 

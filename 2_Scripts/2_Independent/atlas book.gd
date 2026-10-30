@@ -14,10 +14,18 @@ class_name AtlasBook
 @export var atlasFullPageSprite : TextureRect
 @export var atlasSinglePageSprite : TextureRect
 @export var coverSprite : TextureRect
+##SET TO 4
+@export var pageTitles : Array[RichTextLabel]
+##SET TO 4
+@export var pageInfos : Array[RichTextLabel]
 
 var isTurning : bool = false
 var currentPageIndex : int = 0
 var maxPages : int = 3
+
+var atlasHolder : AtlasHolder = null
+var countryInfo : CountryInfo = null
+var maxCountries : int = 0
 
 var pageFlipMaterial : ShaderMaterial = null
 var coverMaterial : ShaderMaterial = null
@@ -31,6 +39,7 @@ func _ready() -> void:
 	pageFlipMaterial = atlasSinglePageSprite.material
 	coverMaterial = coverSprite.material
 	activeMaterial = coverMaterial
+	coverMaterial.set_shader_parameter("progress" , 0)
 	mapHolder.visible = false
 	_set_bend_amount(0)
 	_set_page_progress(0.0) # start book closed
@@ -109,6 +118,24 @@ func _finish_turn():
 	isTurning = false
 	_update_page_state()
 
+#- - - 
+
+func _setup_atlas(newAtlasHolder : AtlasHolder, regionInfo : RegionInfo):
+	atlasHolder = newAtlasHolder
+	maxCountries = regionInfo.maxCountryCount
+
+	mapAtlas.visible = true
+	mainAtlas.visible = false
+	
+	for i in range(0, mapHolder.countryButtons.size()):
+		mapHolder.countryButtons[i].visible = false
+
+	for i in range(0, mapHolder.countryButtons.size()):
+		print(maxCountries)
+		if i < maxCountries:
+			print("wqefqfqwf")
+			mapHolder.countryButtons[i].visible = true
+
 #- - -
 func _is_closed() -> bool:
 	return currentPageIndex == 0
@@ -134,6 +161,22 @@ func _update_page_state():
 	# Hidden buttons don't fire mouse_exited, so reset the cursor manually
 	if (leftWasHovered && !leftDetectionZone.visible) || (rightWasHovered && !rightDetectionZone.visible):
 		_on_exit_next_page()
+
+func _initialize_pages():
+	pageTitles[0].text = countryInfo.countryTitle
+	pageInfos[0].text = countryInfo.funInfo
+
+	pageTitles[1].text = countryInfo.pages[0].title
+	pageInfos[1].text = countryInfo.pages[0].info
+
+	pageTitles[2].text = countryInfo.pages[1].title
+	pageInfos[2].text = countryInfo.pages[1].info
+
+	pageTitles[3].text = countryInfo.pages[2].title
+	pageInfos[3].text = countryInfo.pages[2].info
+
+func _update_pages():
+	pass
 
 #- - -
 func _animate_right_to_left_page_turn(turnSpeed : float) -> Tween:

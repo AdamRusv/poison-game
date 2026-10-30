@@ -1,29 +1,9 @@
 [gd_resource type="Resource" script_class="RegionInfo" format=3 uid="uid://igfj8dv0ajyr"]
 
 [ext_resource type="Script" uid="uid://cg4ujw8mauohh" path="res://2_Scripts/3_Dependent/encounter info.gd" id="1_ovmk1"]
-[ext_resource type="Script" uid="uid://dn3cxe2u865qv" path="res://2_Scripts/3_Dependent/single page.gd" id="1_yoh6c"]
 [ext_resource type="Script" uid="uid://851asxmj8i78" path="res://2_Scripts/3_Dependent/region info.gd" id="2_qesvq"]
-[ext_resource type="Script" uid="uid://gp81tvupt8kv" path="res://2_Scripts/3_Dependent/atlas info.gd" id="2_r1wg2"]
 [ext_resource type="Resource" uid="uid://c0r3iew4w8q46" path="res://5_Resources/0_Papers/0_Levels/0_Tutorial Region/encounters/three.tres" id="3_5ccs8"]
 [ext_resource type="Script" uid="uid://csy0x4mgdxs00" path="res://2_Scripts/3_Dependent/paperinfo.gd" id="3_qesvq"]
-
-[sub_resource type="Resource" id="Resource_icpc4"]
-script = ExtResource("1_yoh6c")
-title = "Country Notes:"
-info = "- Citizens who Lie about their Occupation are Fools"
-metadata/_custom_type_script = "uid://dn3cxe2u865qv"
-
-[sub_resource type="Resource" id="Resource_b2elf"]
-script = ExtResource("1_yoh6c")
-title = "Race:"
-info = "- Satyrs Lie about their Occupation"
-metadata/_custom_type_script = "uid://dn3cxe2u865qv"
-
-[sub_resource type="Resource" id="Resource_yxeby"]
-script = ExtResource("2_r1wg2")
-pages = Array[ExtResource("1_yoh6c")]([SubResource("Resource_icpc4"), SubResource("Resource_b2elf")])
-countryTitle = "Scrumpytown 2"
-metadata/_custom_type_script = "uid://gp81tvupt8kv"
 
 [sub_resource type="Resource" id="Resource_vhogm"]
 script = ExtResource("3_qesvq")
@@ -41,6 +21,5 @@ script = ExtResource("2_qesvq")
 totalEncounters = 1
 traitSheet = SubResource("Resource_vhogm")
 characterSheets = Array[ExtResource("1_ovmk1")]([ExtResource("3_5ccs8")])
-atlas = SubResource("Resource_yxeby")
 noteSheet = false
 metadata/_custom_type_script = "uid://851asxmj8i78"
