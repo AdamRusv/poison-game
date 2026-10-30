@@ -1,9 +1,17 @@
 [gd_scene format=3 uid="uid://nf0j4wfx3bih"]
 
 [ext_resource type="Script" uid="uid://c1igvtxqvjgy5" path="res://2_Scripts/2_Independent/transition encounter manager.gd" id="1_vlih6"]
+[ext_resource type="Texture2D" uid="uid://c4hp5ns8dj7s3" path="res://0_Art/2_PNGs/Transition/player shadow.png" id="2_6lbvw"]
+[ext_resource type="Theme" uid="uid://cwlqkqp53luod" path="res://6_Other/reverse large font.tres" id="2_a8td8"]
+[ext_resource type="PackedScene" uid="uid://b3gd4fts8wm41" path="res://1_Scenes/1_Objects/lower map encounter node.tscn" id="3_707ql"]
+[ext_resource type="Texture2D" uid="uid://dfabveojxye82" path="res://0_Art/2_PNGs/Transition/dashed line.png" id="4_plbhf"]
+[ext_resource type="PackedScene" uid="uid://cgi8l21c6vhd8" path="res://1_Scenes/1_Objects/upper map encounter node.tscn" id="5_qtmdu"]
+[ext_resource type="Theme" uid="uid://doykia4nvd4tf" path="res://6_Other/reverse medium font.tres" id="5_wk2qx"]
+[ext_resource type="Texture2D" uid="uid://b80xkd3ql7dbk" path="res://0_Art/2_PNGs/Transition/player icon.png" id="7_bfjil"]
 
 [sub_resource type="Gradient" id="Gradient_slp2b"]
 interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0)
 colors = PackedColorArray(0, 0, 0, 0, 0.8039216, 0.7294118, 0.5803922, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_504ay"]
@@ -13,7 +21,9 @@ height = 360
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[node name="Transition Encounter" type="Control" unique_id=1976091023 node_paths=PackedStringArray("circleTransition")]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_504ay"]
+
+[node name="Transition Encounter" type="Control" unique_id=1976091023 node_paths=PackedStringArray("transitionBackground")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,10 +31,149 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_vlih6")
-circleTransition = NodePath("CanvasLayer/circle")
+transitionBackground = NodePath("CanvasLayer/transition background")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1445101702]
 
-[node name="circle" type="Sprite2D" parent="CanvasLayer" unique_id=1694783496]
-position = Vector2(320, 180)
+[node name="transition background" type="TextureRect" parent="CanvasLayer" unique_id=1649384069]
+offset_right = 40.0
+offset_bottom = 40.0
 texture = SubResource("GradientTexture2D_504ay")
+
+[node name="Player Shadow" type="TextureRect" parent="CanvasLayer/transition background" unique_id=1956123780]
+layout_mode = 0
+offset_left = 175.0
+offset_top = 172.0
+offset_right = 215.0
+offset_bottom = 212.0
+texture = ExtResource("2_6lbvw")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer/transition background" unique_id=922009781]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/transition background/SubViewportContainer" unique_id=225144913]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+gui_snap_controls_to_pixels = false
+size = Vector2i(640, 360)
+render_target_update_mode = 4
+
+[node name="Line2D" type="Line2D" parent="CanvasLayer/transition background/SubViewportContainer/SubViewport" unique_id=1829074083]
+texture_repeat = 2
+points = PackedVector2Array(177, 221, 272, 135, 367, 221, 462, 135)
+width = 3.5
+texture = ExtResource("4_plbhf")
+texture_mode = 1
+
+[node name="Cutscene Holder" type="MarginContainer" parent="CanvasLayer/transition background" unique_id=1098581351]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/transition background/Cutscene Holder" unique_id=706618327]
+layout_mode = 2
+alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/transition background/Cutscene Holder/VBoxContainer" unique_id=26647999]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_504ay")
+
+[node name="traveling to Holder" type="MarginContainer" parent="CanvasLayer/transition background/Cutscene Holder/VBoxContainer" unique_id=378778866]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="traveling to" type="RichTextLabel" parent="CanvasLayer/transition background/Cutscene Holder/VBoxContainer/traveling to Holder" unique_id=1222720318]
+clip_contents = false
+layout_mode = 2
+theme = ExtResource("2_a8td8")
+bbcode_enabled = true
+text = "[wave amp=25.0 freq=3.0 connected=1]Traveling . . .[/wave]"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="HSeparator4" type="HSeparator" parent="CanvasLayer/transition background/Cutscene Holder/VBoxContainer" unique_id=365322298]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_504ay")
+
+[node name="HSeparator6" type="HSeparator" parent="CanvasLayer/transition background/Cutscene Holder/VBoxContainer" unique_id=369946802]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_504ay")
+
+[node name="Visual Map Holder" type="MarginContainer" parent="CanvasLayer/transition background/Cutscene Holder/VBoxContainer" unique_id=1708020188]
+custom_minimum_size = Vector2(0, 144.68)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Visual Map" type="HBoxContainer" parent="CanvasLayer/transition background/Cutscene Holder/VBoxContainer/Visual Map Holder" unique_id=2109369928]
+layout_mode = 2
+theme_override_constants/separation = 45
+alignment = 1
+
+[node name="Lower Map Encounter Node" parent="CanvasLayer/transition background/Cutscene Holder/VBoxContainer/Visual Map Holder/Visual Map" unique_id=1860752224 instance=ExtResource("3_707ql")]
+layout_mode = 2
+
+[node name="Upper Map Encounter Node" parent="CanvasLayer/transition background/Cutscene Holder/VBoxContainer/Visual Map Holder/Visual Map" unique_id=907241868 instance=ExtResource("5_qtmdu")]
+layout_mode = 2
+
+[node name="Lower Map Encounter Node2" parent="CanvasLayer/transition background/Cutscene Holder/VBoxContainer/Visual Map Holder/Visual Map" unique_id=920305437 instance=ExtResource("3_707ql")]
+layout_mode = 2
+
+[node name="Upper Map Encounter Node2" parent="CanvasLayer/transition background/Cutscene Holder/VBoxContainer/Visual Map Holder/Visual Map" unique_id=1942751213 instance=ExtResource("5_qtmdu")]
+layout_mode = 2
+
+[node name="HSeparator3" type="HSeparator" parent="CanvasLayer/transition background/Cutscene Holder/VBoxContainer" unique_id=1483121574]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_504ay")
+
+[node name="HSeparator5" type="HSeparator" parent="CanvasLayer/transition background/Cutscene Holder/VBoxContainer" unique_id=508232115]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_504ay")
+
+[node name="additional text" type="MarginContainer" parent="CanvasLayer/transition background/Cutscene Holder/VBoxContainer" unique_id=804120571]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/transition background/Cutscene Holder/VBoxContainer/additional text" unique_id=2107724447]
+layout_mode = 2
+theme_override_constants/separation = 11
+
+[node name="additional text" type="RichTextLabel" parent="CanvasLayer/transition background/Cutscene Holder/VBoxContainer/additional text/VBoxContainer" unique_id=1861643951]
+layout_mode = 2
+theme = ExtResource("5_wk2qx")
+text = "Did you know?"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="additional text2" type="RichTextLabel" parent="CanvasLayer/transition background/Cutscene Holder/VBoxContainer/additional text/VBoxContainer" unique_id=227919420]
+layout_mode = 2
+theme = ExtResource("5_wk2qx")
+text = "Hollyberry was once the biggest country in Atropa"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="CanvasLayer/transition background/Cutscene Holder/VBoxContainer" unique_id=174533131]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_504ay")
+
+[node name="Player" type="TextureRect" parent="CanvasLayer" unique_id=698229283]
+offset_left = 175.0
+offset_top = 172.0
+offset_right = 215.0
+offset_bottom = 212.0
+texture = ExtResource("7_bfjil")
