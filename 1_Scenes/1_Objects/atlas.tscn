@@ -438,6 +438,19 @@ texture_normal = SubResource("AtlasTexture_2y7yb")
 texture_hover = SubResource("AtlasTexture_6j7dn")
 texture_click_mask = ExtResource("13_fs7e8")
 
+[node name="Title Label" type="RichTextLabel" parent="Drag Button/Map Holder/Hollyberry" unique_id=229802324]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 49.0
+offset_right = 61.0
+offset_bottom = 57.0
+mouse_filter = 2
+theme = ExtResource("4_28i0q")
+bbcode_enabled = true
+text = "Hollyberry"
+fit_content = true
+scroll_active = false
+
 [node name="Schloozyville" type="TextureButton" parent="Drag Button/Map Holder" unique_id=1799862331]
 layout_mode = 0
 offset_right = 40.0
@@ -448,7 +461,22 @@ texture_normal = SubResource("AtlasTexture_yamgb")
 texture_hover = SubResource("AtlasTexture_b2elf")
 texture_click_mask = ExtResource("15_icpc4")
 
+[node name="Title Label" type="RichTextLabel" parent="Drag Button/Map Holder/Schloozyville" unique_id=660859124]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 87.0
+offset_right = 89.0
+offset_bottom = 95.0
+mouse_filter = 2
+theme = ExtResource("4_28i0q")
+bbcode_enabled = true
+text = "Shloozyville"
+fit_content = true
+scroll_active = false
+
 [node name="TextureRect" type="TextureRect" parent="Drag Button/Map Holder" unique_id=211669331]
+visible = false
+modulate = Color(1, 0, 1, 0.44313726)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0

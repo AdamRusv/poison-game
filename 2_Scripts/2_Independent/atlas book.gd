@@ -164,16 +164,16 @@ func _update_page_state():
 
 func _initialize_pages():
 	pageTitles[0].text = countryInfo.countryTitle
-	pageInfos[0].text = countryInfo.funInfo
+	pageInfos[0].text = bbcodeManager._highlight(countryInfo.funInfo)
 
 	pageTitles[1].text = countryInfo.pages[0].title
-	pageInfos[1].text = countryInfo.pages[0].info
+	pageInfos[1].text = bbcodeManager._highlight(countryInfo.pages[0].info)
 
 	pageTitles[2].text = countryInfo.pages[1].title
-	pageInfos[2].text = countryInfo.pages[1].info
+	pageInfos[2].text = bbcodeManager._highlight(countryInfo.pages[1].info)
 
 	pageTitles[3].text = countryInfo.pages[2].title
-	pageInfos[3].text = countryInfo.pages[2].info
+	pageInfos[3].text = bbcodeManager._highlight(countryInfo.pages[2].info)
 
 func _update_pages():
 	pass

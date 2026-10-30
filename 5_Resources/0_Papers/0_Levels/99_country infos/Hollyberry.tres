@@ -33,7 +33,7 @@ metadata/_custom_type_script = "uid://dn3cxe2u865qv"
 
 [sub_resource type="Resource" id="Resource_icpc4"]
 script = ExtResource("1_6vard")
-title = "Religion"
+title = "Religion:"
 info = "Daniel is such a fag"
 metadata/_custom_type_script = "uid://dn3cxe2u865qv"
 
