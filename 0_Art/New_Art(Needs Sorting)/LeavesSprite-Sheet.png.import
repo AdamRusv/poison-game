@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bw4l4h22j7ufc"
-path="res://.godot/imported/fps24BackgroundAnim-Sheet.png-b82679d24642ab97982c5f3e430508e3.ctex"
+uid="uid://dcrhdpltdmjog"
+path="res://.godot/imported/LeavesSprite-Sheet.png-0e110170bc21c85c4f4d5253eb1467ee.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://0_Art/New_Art(Needs Sorting)/fps24BackgroundAnim-Sheet.png"
-dest_files=["res://.godot/imported/fps24BackgroundAnim-Sheet.png-b82679d24642ab97982c5f3e430508e3.ctex"]
+source_file="res://0_Art/New_Art(Needs Sorting)/LeavesSprite-Sheet.png"
+dest_files=["res://.godot/imported/LeavesSprite-Sheet.png-0e110170bc21c85c4f4d5253eb1467ee.ctex"]
 
 [params]
 
