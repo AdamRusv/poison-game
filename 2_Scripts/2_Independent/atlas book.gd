@@ -22,6 +22,8 @@ class_name AtlasBook
 var isTurning : bool = false
 var currentPageIndex : int = 0
 var maxPages : int = 3
+var loadedBaseSpread : int = -1  # slots 0, 1
+var loadedFlipSpread : int = -1  # slots 2, 3
 
 var atlasHolder : AtlasHolder = null
 var countryInfo : CountryInfo = null
@@ -133,7 +135,6 @@ func _setup_atlas(newAtlasHolder : AtlasHolder, regionInfo : RegionInfo):
 	for i in range(0, mapHolder.countryButtons.size()):
 		print(maxCountries)
 		if i < maxCountries:
-			print("wqefqfqwf")
 			mapHolder.countryButtons[i].visible = true
 
 #- - -
@@ -162,21 +163,41 @@ func _update_page_state():
 	if (leftWasHovered && !leftDetectionZone.visible) || (rightWasHovered && !rightDetectionZone.visible):
 		_on_exit_next_page()
 
-func _initialize_pages():
-	pageTitles[0].text = countryInfo.countryTitle
-	pageInfos[0].text = bbcodeManager._highlight(countryInfo.funInfo)
-
-	pageTitles[1].text = countryInfo.pages[0].title
-	pageInfos[1].text = bbcodeManager._highlight(countryInfo.pages[0].info)
-
-	pageTitles[2].text = countryInfo.pages[1].title
-	pageInfos[2].text = bbcodeManager._highlight(countryInfo.pages[1].info)
-
-	pageTitles[3].text = countryInfo.pages[2].title
-	pageInfos[3].text = bbcodeManager._highlight(countryInfo.pages[2].info)
-
 func _update_pages():
 	pass
+
+func _set_slot(slot : int, contentIndex : int):
+	var page : Dictionary = countryInfo._get_page(contentIndex)
+	pageTitles[slot].text = page.title
+	pageInfos[slot].text = bbcodeManager._highlight(page.info)
+
+func _load_spread(spread : int, isFlipSide : bool):
+	if isFlipSide:
+		if loadedFlipSpread == spread:
+			return
+		loadedFlipSpread = spread
+	else:
+		if loadedBaseSpread == spread:
+			return
+		loadedBaseSpread = spread
+
+	var firstSlot : int = 2 if isFlipSide else 0
+	_set_slot(firstSlot, spread * 2)
+	_set_slot(firstSlot + 1, spread * 2 + 1)
+
+func _initialize_pages():
+	_recalculate_max_pages()
+
+	loadedBaseSpread = -1
+	loadedFlipSpread = -1
+
+	_load_spread(0, false)
+	_load_spread(1,true)
+
+
+func _recalculate_max_pages():
+	var spreads : int = ceili(countryInfo._get_page_count() / 2.0)
+	maxPages = 1 + spreads
 
 #- - -
 func _animate_right_to_left_page_turn(turnSpeed : float) -> Tween:
