@@ -28,18 +28,36 @@ metadata/_custom_type_script = "uid://dn3cxe2u865qv"
 [sub_resource type="Resource" id="Resource_yxeby"]
 script = ExtResource("1_6vard")
 title = "Age:"
-info = "Adam is so gay"
+info = "TEST!!!!!! DELETE BEFORE BUILD"
 metadata/_custom_type_script = "uid://dn3cxe2u865qv"
 
 [sub_resource type="Resource" id="Resource_icpc4"]
 script = ExtResource("1_6vard")
 title = "Religion:"
-info = "Daniel is such a fag"
+info = "TEST!!!!!! DELETE BEFORE BUILD"
+metadata/_custom_type_script = "uid://dn3cxe2u865qv"
+
+[sub_resource type="Resource" id="Resource_c8n5s"]
+script = ExtResource("1_6vard")
+title = "Extra:"
+info = "TEST!!!!!! DELETE BEFORE BUILD"
+metadata/_custom_type_script = "uid://dn3cxe2u865qv"
+
+[sub_resource type="Resource" id="Resource_rhbqo"]
+script = ExtResource("1_6vard")
+title = "Extra:"
+info = "TEST!!!!!! DELETE BEFORE BUILD"
+metadata/_custom_type_script = "uid://dn3cxe2u865qv"
+
+[sub_resource type="Resource" id="Resource_b2elf"]
+script = ExtResource("1_6vard")
+title = "Extra:"
+info = "TEST!!!!!! DELETE BEFORE BUILD"
 metadata/_custom_type_script = "uid://dn3cxe2u865qv"
 
 [resource]
 script = ExtResource("2_u4l8q")
-pages = Array[ExtResource("1_6vard")]([SubResource("Resource_6vard"), SubResource("Resource_u4l8q"), SubResource("Resource_jqg6x"), SubResource("Resource_yxeby"), SubResource("Resource_icpc4")])
+pages = Array[ExtResource("1_6vard")]([SubResource("Resource_6vard"), SubResource("Resource_u4l8q"), SubResource("Resource_jqg6x"), SubResource("Resource_yxeby"), SubResource("Resource_icpc4"), SubResource("Resource_c8n5s"), SubResource("Resource_rhbqo"), SubResource("Resource_b2elf")])
 countryTitle = "Hollyberry"
 funInfo = "Population: 2.3M
 

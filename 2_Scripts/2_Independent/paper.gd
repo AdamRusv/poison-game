@@ -55,14 +55,17 @@ func _on_up():
 	_reset_paper()
 
 #-------------------
+func _get_solid_rect() -> Rect2:
+	return Rect2(Vector2.ZERO, parentNode.size)
+
 func _clamp_paper():
 	if paperIsMoving == true:
 		return
 	var playmatRect : Rect2 = playmat.get_rect()
-	var paperRect : Rect2 = parentNode.get_rect()
+	var solid : Rect2 = _get_solid_rect()
 	
-	parentNode.position.x = clamp(parentNode.position.x, 0 - paperPadding, playmatRect.size.x - paperRect.size.x + paperPadding)
-	parentNode.position.y = clamp(parentNode.position.y, 0 - paperPadding, playmatRect.size.y - paperRect.size.y + paperPadding)
+	parentNode.position.x = clamp(parentNode.position.x, 0 - paperPadding - solid.position.x, playmatRect.size.x - solid.end.x + paperPadding)
+	parentNode.position.y = clamp(parentNode.position.y, 0 - paperPadding - solid.position.y, playmatRect.size.y - solid.end.y + paperPadding)
 
 func _setup_paper(newPaperInfo : PaperInfo):
 	paperInfo = newPaperInfo

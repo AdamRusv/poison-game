@@ -18,6 +18,7 @@ class_name AtlasBook
 @export var pageTitles : Array[RichTextLabel]
 ##SET TO 4
 @export var pageInfos : Array[RichTextLabel]
+@export var titleSeparator : Control
 
 var isTurning : bool = false
 var currentPageIndex : int = 0
@@ -89,8 +90,10 @@ func _go_to_next_left_page():
 
 	GlobalReferences.cursor.imageNode.frame = 0
 	_prepare_turn(isClosingCover, 2)
+	await _update_pages(false)
 	mapHolder.visible = _is_first_page()
 	await _animate_left_to_right_page_turn(0.4).finished
+	
 	_finish_turn()
 
 func _go_to_next_right_page():
@@ -101,9 +104,11 @@ func _go_to_next_right_page():
 
 	isTurning = true
 	currentPageIndex += 1
+	_update_drag_area()
 
 	GlobalReferences.cursor.imageNode.frame = 0
 	_prepare_turn(isOpeningCover, -2)
+	await _update_pages(true)
 	await _animate_right_to_left_page_turn(0.4).finished
 
 	_finish_turn()
@@ -162,14 +167,48 @@ func _update_page_state():
 	# Hidden buttons don't fire mouse_exited, so reset the cursor manually
 	if (leftWasHovered && !leftDetectionZone.visible) || (rightWasHovered && !rightDetectionZone.visible):
 		_on_exit_next_page()
+	
+	_update_drag_area()
 
-func _update_pages():
-	pass
+func _initialize_pages():
+	_recalculate_max_pages()
+
+	loadedBaseSpread = -1
+	loadedFlipSpread = -1
+
+	_load_spread(0, false)
+	_load_spread(1,true)
+
+func _update_pages(isTurningRight : bool):
+	if currentPageIndex < 2:
+		return
+	
+	var newSpread : int = currentPageIndex - 2
+
+	if isTurningRight:
+		_load_spread(newSpread - 1, false)
+		await _wait_for_viewports()
+		_set_page_progress(0.0)
+		_load_spread(newSpread, true)
+	else:
+		_load_spread(newSpread + 1, true)
+		await _wait_for_viewports()
+		_set_page_progress(1.0)
+		_load_spread(newSpread, false)
+	
+	await _wait_for_viewports()
+
+func _wait_for_viewports():
+	await get_tree().process_frame
+	await RenderingServer.frame_post_draw
 
 func _set_slot(slot : int, contentIndex : int):
 	var page : Dictionary = countryInfo._get_page(contentIndex)
 	pageTitles[slot].text = page.title
 	pageInfos[slot].text = bbcodeManager._highlight(page.info)
+
+	if slot == 0:
+		titleSeparator.visible = (contentIndex == 0)
 
 func _load_spread(spread : int, isFlipSide : bool):
 	if isFlipSide:
@@ -184,16 +223,6 @@ func _load_spread(spread : int, isFlipSide : bool):
 	var firstSlot : int = 2 if isFlipSide else 0
 	_set_slot(firstSlot, spread * 2)
 	_set_slot(firstSlot + 1, spread * 2 + 1)
-
-func _initialize_pages():
-	_recalculate_max_pages()
-
-	loadedBaseSpread = -1
-	loadedFlipSpread = -1
-
-	_load_spread(0, false)
-	_load_spread(1,true)
-
 
 func _recalculate_max_pages():
 	var spreads : int = ceili(countryInfo._get_page_count() / 2.0)
@@ -219,6 +248,25 @@ func _set_page_progress(value : float):
 func _set_bend_amount(value : float):
 	activeMaterial.set_shader_parameter("bend", value)
 
+#-------Cover Drag Area------------
+
+# Closed means closed and not mid-animation, so the area doesn't shrink while the cover is still visibly open
+func _is_visually_closed() -> bool:
+	return _is_closed() && !isTurning
+
+func _get_solid_rect() -> Rect2:
+	if _is_visually_closed():
+		var halfWidth : float = parentNode.size.x / 2.0
+		return Rect2(Vector2(halfWidth, 0), Vector2(halfWidth, parentNode.size.y))
+	return super._get_solid_rect()
+
+func _update_drag_area():
+	if _is_visually_closed():
+		detectionArea.size_flags_horizontal = Control.SIZE_SHRINK_END
+		detectionArea.custom_minimum_size.x = parentNode.size.x / 2.0
+	else:
+		detectionArea.size_flags_horizontal = Control.SIZE_FILL
+		detectionArea.custom_minimum_size.x = 0
 
 #-------------------------ATLAS SECTIONS-------------------------
 func _flip_to_main():

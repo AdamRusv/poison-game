@@ -64,7 +64,7 @@ region = Rect2(0, 0, 236, 166)
 atlas = ExtResource("14_yxeby")
 region = Rect2(236, 0, 236, 166)
 
-[node name="Atlas" type="MarginContainer" unique_id=1389312574 node_paths=PackedStringArray("mapAtlas", "mainAtlas", "mapHolder", "leftDetectionZone", "rightDetectionZone", "mapPageSprite", "atlasFullPageSprite", "atlasSinglePageSprite", "coverSprite", "pageTitles", "pageInfos", "parentNode", "detectionArea")]
+[node name="Atlas" type="MarginContainer" unique_id=1389312574 node_paths=PackedStringArray("mapAtlas", "mainAtlas", "mapHolder", "leftDetectionZone", "rightDetectionZone", "mapPageSprite", "atlasFullPageSprite", "atlasSinglePageSprite", "coverSprite", "pageTitles", "pageInfos", "titleSeparator", "parentNode", "detectionArea")]
 offset_right = 236.0
 offset_bottom = 163.0
 script = ExtResource("1_3lemr")
@@ -79,6 +79,7 @@ atlasSinglePageSprite = NodePath("Main Atlas/Page Projector")
 coverSprite = NodePath("Map Atlas/Cover & Left Page")
 pageTitles = [NodePath("Main Atlas/First & Last Page Holder/General Info Holder/Title Container/Title Label"), NodePath("Main Atlas/Front Page/Region Info Container/Region Info Holder/Title Container/Title Label"), NodePath("Main Atlas/Back Page/Region Info Container/Region Info Holder/Title Container/Title Label"), NodePath("Main Atlas/First & Last Page Holder/Last Page Holder/Title Container/Title Label")]
 pageInfos = [NodePath("Main Atlas/First & Last Page Holder/General Info Holder/Info Container/Info Label"), NodePath("Main Atlas/Front Page/Region Info Container/Region Info Holder/Info Container/Info Label"), NodePath("Main Atlas/Back Page/Region Info Container/Region Info Holder/Info Container/Info Label"), NodePath("Main Atlas/First & Last Page Holder/Last Page Holder/Info Container/Info Label")]
+titleSeparator = NodePath("Main Atlas/First & Last Page Holder/General Info Holder/Title Seperation Container")
 parentNode = NodePath(".")
 detectionArea = NodePath("Drag Button")
 
