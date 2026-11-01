@@ -62,7 +62,7 @@ func _start_new_encounter():
 func _update_timeline_counter():
 	var counterText : String = ""
 	
-	var regionNumber : int = 0
+	var regionNumber : int = -1
 	var initalEncounterNumber : int = 0
 	for i in range(0, gameTimeline.timeline.size()):
 		var region : RegionInfo = gameTimeline.timeline[i]
@@ -76,6 +76,7 @@ func _update_timeline_counter():
 			initalEncounterNumber += 1
 		
 	var encounterNumber : int = initalEncounterNumber + gamestateJSON.currentRegionEncounterCount - 1
+	
 	counterText = str(regionNumber) + " - " + str(encounterNumber)
 	timelineCounterLabel.text = counterText
 

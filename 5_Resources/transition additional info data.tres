@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="TransitionAdditionalInfoData" format=3 uid="uid://dpqluuuhckmwb"]
+
+[ext_resource type="Script" uid="uid://bqp7mgnwuv8yk" path="res://2_Scripts/3_Dependent/transition additional info data.gd" id="1_tqmmj"]
+
+[resource]
+script = ExtResource("1_tqmmj")
+tips = Array[String](["Click on Yourself to ask for Hints"])
+didYouKnows = Array[String](["Hollyberry was once the largest country in Atropa"])
+metadata/_custom_type_script = "uid://bqp7mgnwuv8yk"

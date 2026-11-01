@@ -4,6 +4,7 @@ class_name TransitionEncounter
 
 @export_category("References")
 @export var transitionBackground : TextureRect
+@export var transitionCutscene : TransitionCutscene
 
 var duration : float = 0.7
 
