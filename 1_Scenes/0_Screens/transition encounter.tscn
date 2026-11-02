@@ -45,7 +45,9 @@ texture = SubResource("GradientTexture2D_504ay")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-pivot_offset_ratio = Vector2(0.5, 0.5)
+offset_transform_enabled = true
+offset_transform_pivot = Vector2(0, 35.5)
+offset_transform_pivot_ratio = Vector2(0.5, 0)
 texture = ExtResource("2_6lbvw")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer/transition background" unique_id=922009781]

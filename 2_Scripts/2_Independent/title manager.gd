@@ -26,7 +26,7 @@ func _play():
 	var gameplayScene : GameplayManager = gameplaySceneInstance.instantiate()
 	
 	TransitionManager._create_transition()
-	await TransitionManager.transitionEncounter._start_transition().finished
+	await TransitionManager.transitionEncounter._start_transition()
 	
 	await get_tree().create_timer(0.6).timeout
 	get_tree().change_scene_to_node(gameplayScene)

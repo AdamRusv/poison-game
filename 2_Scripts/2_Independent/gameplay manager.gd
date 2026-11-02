@@ -50,10 +50,11 @@ func _set_connections():
 	cupHasBeenPoisoned.connect(_check_if_cup_choice_is_correct)
 
 func _start_new_encounter():
-	#TransitionManager._create_transition()
+	_setup_encounter_papers()
+	
+	await TransitionManager.transitionEncounter.transitionCutscene.finishedAnimating
 	TransitionManager.transitionEncounter._end_transition()
 	
-	_setup_encounter_papers()
 	playmatManager._add_main_papers()
 	
 	await get_tree().create_timer(1).timeout
@@ -101,14 +102,14 @@ func _check_if_cup_choice_is_correct():
 
 func _restart_current_encounter():
 	TransitionManager._create_transition()
-	await TransitionManager.transitionEncounter._start_transition().finished
+	await TransitionManager.transitionEncounter._start_transition()
 	
 	await get_tree().create_timer(0.6).timeout
 	get_tree().reload_current_scene()
 
 func _set_next_encounter():
 	TransitionManager._create_transition()
-	await TransitionManager.transitionEncounter._start_transition().finished
+	await TransitionManager.transitionEncounter._start_transition()
 	
 	if gamestateJSON.timelineIndex >= gameTimeline.timeline.size() - 1 && gamestateJSON.currentRegionEncounterCount >= currentRegion.totalEncounters:
 		return

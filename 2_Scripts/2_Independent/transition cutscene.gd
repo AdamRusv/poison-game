@@ -30,15 +30,28 @@ var linePoints : Array[Vector2]
 func _ready() -> void:
 	gamestateJSON._load_gamestate()
 	
-	_hide_all()
+	_hide_and_setup_all()
 	_set_visuals()
-func _hide_all():
-	travelingLabel.visible = false
-	playerIcon.visible = false
-	playerShadow.visible = false
-	line.visible = false
-	additionalInfoHeaderLabel.visible = false
-	additionalInfoDescriptionLabel.visible = false
+	
+	await transitionEncounter.fullyClosed
+	_trigger_animations()
+func _hide_and_setup_all():
+	travelingLabel.offset_transform_enabled = true
+	travelingLabel.offset_transform_position.y = 10.0
+	additionalInfoHeaderLabel.offset_transform_enabled = true
+	additionalInfoHeaderLabel.offset_transform_position.y = 10.0
+	additionalInfoDescriptionLabel.offset_transform_enabled = true
+	additionalInfoDescriptionLabel.offset_transform_position.y = 10.0
+	
+	travelingLabel.self_modulate.a = 0
+	
+	playerIcon.offset_transform_enabled = true
+	playerIcon.offset_transform_position.y = -350.0
+	playerShadow.offset_transform_enabled = true
+	playerShadow.offset_transform_scale = Vector2.ZERO
+	
+	additionalInfoHeaderLabel.self_modulate.a = 0
+	additionalInfoDescriptionLabel.self_modulate.a = 0
 func _set_visuals():
 	var totalEncounters : int = _get_total_encounters_for_current_region()
 	var regionNumber : int = _get_region_number()
@@ -73,6 +86,8 @@ func _set_line(totalEncounters : int):
 	for i in range(0, totalEncounters):
 		var nextNodePosition : Vector2 = mapEncounterNodes[i]._get_global_icon_center()
 		linePoints.append(nextNodePosition)
+	
+	line.add_point(linePoints[0])
 func _set_additional_info():
 	var isTip : bool = true
 	if randi_range(0, 1) == 1:
@@ -136,3 +151,85 @@ func _get_timeline_index_of_current_region_start() -> int:
 			return i
 		
 	return -1
+
+
+#----------------------ANIMATIONS----------------------
+signal finishedAnimating
+
+const MAP_NODE_DELAY : float = 0.15
+const LINE_TRAVEL_TIME : float = 0.3
+const PLAYER_INTRO_DURATION : float = 1.0
+const LABEL_FADE_IN_DURATION : float = 0.2
+
+func _trigger_animations():
+	_show_traveling()
+	
+	await _animate_visual()
+	await _intro_player()
+	
+	await _show_additional_info_header()
+	await _show_additional_info_description()
+	
+	await get_tree().create_timer(1).timeout
+	finishedAnimating.emit()
+
+func _animate_visual():
+	var currentEncounterNumber : int = _get_current_encounter_number()
+	
+	for i in range(0, mapEncounterNodes.size()):
+		mapEncounterNodes[i]._show()
+		if i == currentEncounterNumber - 1:
+			break
+		await get_tree().create_timer(MAP_NODE_DELAY).timeout
+		await _animate_line_point(i + 1)
+func _animate_line_point(i : int):
+	if i > linePoints.size() - 1:
+		return
+	
+	line.add_point(linePoints[i - 1])
+	
+	var newTween : Tween = create_tween()
+	
+	newTween.tween_method(_set_point_position.bind(i), linePoints[i - 1], linePoints[i], LINE_TRAVEL_TIME)\
+	.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	
+	await newTween.finished
+func _set_point_position(newPosition : Vector2, index : int):
+	line.set_point_position(index, newPosition)
+func _intro_player():
+	var newTween : Tween = create_tween().set_parallel()
+	
+	newTween.tween_property(playerShadow, "offset_transform_scale", Vector2.ONE, PLAYER_INTRO_DURATION)\
+	.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	
+	newTween.tween_property(playerIcon, "offset_transform_position:y", 0.0, PLAYER_INTRO_DURATION)\
+	.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	
+	await newTween.finished
+
+func _show_traveling():
+	var newTween : Tween = create_tween().set_parallel()
+	
+	newTween.tween_property(travelingLabel, "self_modulate:a", 1, LABEL_FADE_IN_DURATION)\
+	.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	
+	newTween.tween_property(travelingLabel, "offset_transform_position:y", 0.0, LABEL_FADE_IN_DURATION * 2)\
+	.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+
+func _show_additional_info_header():
+	var newTween : Tween = create_tween().set_parallel()
+	
+	newTween.tween_property(additionalInfoHeaderLabel, "self_modulate:a", 1, LABEL_FADE_IN_DURATION)\
+	.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	newTween.tween_property(additionalInfoHeaderLabel, "offset_transform_position:y", 0.0, LABEL_FADE_IN_DURATION * 2)\
+	.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	
+	await newTween.finished
+func _show_additional_info_description():
+	var newTween : Tween = create_tween().set_parallel()
+	
+	newTween.tween_property(additionalInfoDescriptionLabel, "self_modulate:a", 1, LABEL_FADE_IN_DURATION)\
+	.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	newTween.tween_property(additionalInfoDescriptionLabel, "offset_transform_position:y", 0.0, LABEL_FADE_IN_DURATION * 2)\
+	.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	await newTween.finished
