@@ -74,7 +74,7 @@ width = 3.5
 texture = ExtResource("4_plbhf")
 texture_mode = 1
 
-[node name="Cutscene Holder" type="MarginContainer" parent="CanvasLayer/transition background" unique_id=1098581351 node_paths=PackedStringArray("transitionEncounter", "travelingLabel", "playerIcon", "playerShadow", "visualMapHolder", "line", "additionalInfoHeaderLabel", "additionalInfoDescriptionLabel")]
+[node name="Cutscene Holder" type="MarginContainer" parent="CanvasLayer/transition background" unique_id=1098581351 node_paths=PackedStringArray("transitionEncounter", "travelingLabel", "playerIcon", "playerShadow", "visualMapHolder", "lineHolder", "line", "additionalInfoHeaderLabel", "additionalInfoDescriptionLabel")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -88,6 +88,7 @@ travelingLabel = NodePath("VBoxContainer/traveling Holder/traveling")
 playerIcon = NodePath("../../Player")
 playerShadow = NodePath("../Player Shadow")
 visualMapHolder = NodePath("VBoxContainer/Visual Map Holder/Visual Map")
+lineHolder = NodePath("../SubViewportContainer")
 line = NodePath("../SubViewportContainer/SubViewport/Line2D")
 additionalInfoHeaderLabel = NodePath("VBoxContainer/additional info/VBoxContainer/header")
 additionalInfoDescriptionLabel = NodePath("VBoxContainer/additional info/VBoxContainer/description")

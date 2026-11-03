@@ -21,12 +21,22 @@ func _hide():
 	iconVisual.offset_transform_scale = Vector2.ZERO
 	regionEncounterLabel.offset_transform_scale = Vector2.ZERO
 
-func _show():
+func _animate_show():
 	var newTween : Tween = create_tween()
 	
-	newTween.tween_property(iconVisual, "offset_transform_scale", Vector2(1, 1), SCALE_DURATION)\
+	newTween.tween_property(iconVisual, "offset_transform_scale", Vector2.ONE, SCALE_DURATION)\
 	.set_trans(Tween.TRANS_BACK). set_ease(Tween.EASE_OUT)
-	newTween.tween_property(regionEncounterLabel, "offset_transform_scale", Vector2(1, 1), SCALE_DURATION)\
+	newTween.tween_property(regionEncounterLabel, "offset_transform_scale", Vector2.ONE, SCALE_DURATION)\
+	.set_trans(Tween.TRANS_BACK). set_ease(Tween.EASE_OUT)
+	
+	await newTween.finished
+
+func _animate_hide():
+	var newTween : Tween = create_tween().set_parallel()
+	
+	newTween.tween_property(iconVisual, "offset_transform_scale", Vector2.ZERO, SCALE_DURATION)\
+	.set_trans(Tween.TRANS_BACK). set_ease(Tween.EASE_OUT)
+	newTween.tween_property(regionEncounterLabel, "offset_transform_scale", Vector2.ZERO, SCALE_DURATION)\
 	.set_trans(Tween.TRANS_BACK). set_ease(Tween.EASE_OUT)
 	
 	await newTween.finished

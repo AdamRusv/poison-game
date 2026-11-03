@@ -31,6 +31,5 @@ horizontal_alignment = 1
 
 [node name="encounter 1" type="TextureRect" parent="VBoxContainer" unique_id=16703671]
 layout_mode = 2
-offset_transform_rotation = 0.13788101
 texture = ExtResource("1_mtwmc")
 stretch_mode = 3

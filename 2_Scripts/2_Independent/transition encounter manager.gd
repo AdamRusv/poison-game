@@ -6,11 +6,15 @@ class_name TransitionEncounter
 @export var transitionBackground : TextureRect
 @export var transitionCutscene : TransitionCutscene
 
+var transitionState : TransitionManager.TransitionStates = TransitionManager.TransitionStates.blank
+
 var duration : float = 0.7
 
 signal fullyClosed
 
-func _start_transition():
+func _start_transition(state : TransitionManager.TransitionStates):
+	transitionState = state
+	
 	var newTween : Tween = create_tween()
 	newTween.tween_method(_tween_circle_transition, 1.0, 0.0, duration)
 	

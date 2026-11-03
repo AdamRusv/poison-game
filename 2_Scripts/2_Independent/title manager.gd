@@ -25,8 +25,7 @@ func _play():
 	var gameplaySceneInstance : PackedScene = load(gameplayScenePath)
 	var gameplayScene : GameplayManager = gameplaySceneInstance.instantiate()
 	
-	TransitionManager._create_transition()
-	await TransitionManager.transitionEncounter._start_transition()
+	await TransitionManager._create_transition(TransitionManager.TransitionStates.mainMenuTraveling)
 	
 	await get_tree().create_timer(0.6).timeout
 	get_tree().change_scene_to_node(gameplayScene)

@@ -53,7 +53,6 @@ func _start_new_encounter():
 	_setup_encounter_papers()
 	
 	await TransitionManager.transitionEncounter.transitionCutscene.finishedAnimating
-	TransitionManager.transitionEncounter._end_transition()
 	
 	playmatManager._add_main_papers()
 	
@@ -101,15 +100,13 @@ func _check_if_cup_choice_is_correct():
 		correctCupChosen = true
 
 func _restart_current_encounter():
-	TransitionManager._create_transition()
-	await TransitionManager.transitionEncounter._start_transition()
+	await TransitionManager._create_transition(TransitionManager.TransitionStates.restarting)
 	
 	await get_tree().create_timer(0.6).timeout
 	get_tree().reload_current_scene()
 
 func _set_next_encounter():
-	TransitionManager._create_transition()
-	await TransitionManager.transitionEncounter._start_transition()
+	await TransitionManager._create_transition(TransitionManager.TransitionStates.traveling)
 	
 	if gamestateJSON.timelineIndex >= gameTimeline.timeline.size() - 1 && gamestateJSON.currentRegionEncounterCount >= currentRegion.totalEncounters:
 		return
