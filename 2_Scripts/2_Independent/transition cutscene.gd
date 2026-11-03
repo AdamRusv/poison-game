@@ -11,6 +11,7 @@ class_name TransitionCutscene
 @export var playerIcon : TextureRect
 @export var playerShadow : TextureRect
 @export var visualMapHolder : HBoxContainer
+@export var nextVisualMapHolder : HBoxContainer
 @export var lineHolder : SubViewportContainer
 @export var line : Line2D
 @export_group("Additional Info")
@@ -18,7 +19,7 @@ class_name TransitionCutscene
 @export var additionalInfoDescriptionLabel : RichTextLabel
 @export var additionalInfoData : TransitionAdditionalInfoData
 
-const PLAYER_ICON_Y_OFFSET : int = -18
+const PLAYER_ICON_Y_OFFSET : int = -13
 const FADE_IN_Y_OFFSET : int = 10
 
 var gamestateJSON : GamestateJSON = GamestateJSON.new()
@@ -182,10 +183,10 @@ func _get_timeline_index_of_current_region_start() -> int:
 signal finishedAnimating
 
 const MAP_NODE_DELAY : float = 0.25
-const LINE_TRAVEL_TIME : float = 0.35
+const LINE_TRAVEL_TIME : float = 0.4
 const PLAYER_INTRO_DURATION : float = 1.0
 const LABEL_FADE_IN_DURATION : float = 0.2
-const PLAYER_WALK_BETWEEN_MAP_NODES_DURATION : float = 0.35
+const PLAYER_WALK_BETWEEN_MAP_NODES_DURATION : float = 1.2
 
 func _trigger_show_animations():
 	await _show_visual()
@@ -213,18 +214,33 @@ func _animate_line():
 		currentEncounterNumber -= 1
 	for i in range(0, currentEncounterNumber - 1):
 		await _animate_line_point(i + 1)
-func _animate_line_point(i : int):
+func _animate_line_point(i : int, isWithPlayer : bool = false, goBackwards : bool = false):
 	if i > linePoints.size() - 1:
 		return
 	
-	line.add_point(linePoints[i - 1])
-	
 	var newTween : Tween = create_tween()
 	
-	newTween.tween_method(_set_point_position.bind(i), linePoints[i - 1], linePoints[i], LINE_TRAVEL_TIME)\
-	.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	var duration : float = LINE_TRAVEL_TIME
+	if isWithPlayer == true:
+		duration = PLAYER_WALK_BETWEEN_MAP_NODES_DURATION
 	
-	await newTween.finished
+	if goBackwards == true: #go backwards
+		var nextPoint : int = i - 1
+		if nextPoint < 0:
+			nextPoint = 0
+		
+		newTween.tween_method(_set_point_position.bind(i), linePoints[i], linePoints[nextPoint],  duration)\
+		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		
+		await newTween.finished
+		line.remove_point(i)
+	else: #go forwards
+		line.add_point(linePoints[i - 1])
+		
+		newTween.tween_method(_set_point_position.bind(i), linePoints[i - 1], linePoints[i], duration)\
+		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	
+		await newTween.finished
 func _set_point_position(newPosition : Vector2, index : int):
 	line.set_point_position(index, newPosition)
 func _intro_player():
@@ -288,19 +304,33 @@ func _hide_labels():
 #--
 func _move_player(endingMapNodePos : int):
 	var currentEncounterNumber : int = _get_current_encounter_number()
-	var totalNodes : int = endingMapNodePos - currentEncounterNumber
-	if totalNodes == 0:
-		return
+	if transitionEncounter.transitionState == TransitionManager.TransitionStates.mainMenuTraveling && currentEncounterNumber > 1:
+		currentEncounterNumber -= 1
 	
-	for i in range(currentEncounterNumber, endingMapNodePos):
-		if i == currentEncounterNumber:
-			continue
-		var newTween : Tween = create_tween()
+	var step : int = 1
+	if endingMapNodePos - currentEncounterNumber < 0:
+		step = -1
+		currentEncounterNumber -= 1
+	
+	for i in range(currentEncounterNumber, endingMapNodePos, step):
+		var targetPos : Vector2 = Vector2.ZERO
+		if step == 1:
+			targetPos = mapEncounterNodes[i]._get_global_icon_center()
+		else:
+			targetPos = mapEncounterNodes[i - 1]._get_global_icon_center()
+		targetPos -= playerIcon.size / 2
+		targetPos.y += PLAYER_ICON_Y_OFFSET
+		var newTween : Tween = create_tween().set_parallel()
 		
-		newTween.tween_property(playerIcon, "offset_transform_position", mapEncounterNodes[i]._get_global_icon_center(), PLAYER_WALK_BETWEEN_MAP_NODES_DURATION)\
+		newTween.tween_property(playerIcon, "global_position", targetPos, PLAYER_WALK_BETWEEN_MAP_NODES_DURATION)\
 		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-		newTween.tween_property(playerShadow, "offset_transform_position", mapEncounterNodes[i]._get_global_icon_center(), PLAYER_WALK_BETWEEN_MAP_NODES_DURATION)\
+		newTween.tween_property(playerShadow, "global_position", targetPos, PLAYER_WALK_BETWEEN_MAP_NODES_DURATION)\
 		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		
+		if step == 1:
+			_animate_line_point(i, true)
+		else:
+			_animate_line_point(i, true, true)
 		
 		await newTween.finished
 

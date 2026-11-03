@@ -42,13 +42,13 @@ offset_bottom = 40.0
 texture = SubResource("GradientTexture2D_504ay")
 
 [node name="Player Shadow" type="TextureRect" parent="CanvasLayer/transition background" unique_id=1956123780]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = -1
 offset_transform_enabled = true
 offset_transform_pivot = Vector2(0, 35.5)
 offset_transform_pivot_ratio = Vector2(0.5, 0)
 texture = ExtResource("2_6lbvw")
+stretch_mode = 3
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer/transition background" unique_id=922009781]
 layout_mode = 1
@@ -74,7 +74,7 @@ width = 3.5
 texture = ExtResource("4_plbhf")
 texture_mode = 1
 
-[node name="Cutscene Holder" type="MarginContainer" parent="CanvasLayer/transition background" unique_id=1098581351 node_paths=PackedStringArray("transitionEncounter", "travelingLabel", "playerIcon", "playerShadow", "visualMapHolder", "lineHolder", "line", "additionalInfoHeaderLabel", "additionalInfoDescriptionLabel")]
+[node name="Cutscene Holder" type="MarginContainer" parent="CanvasLayer/transition background" unique_id=1098581351 node_paths=PackedStringArray("transitionEncounter", "travelingLabel", "playerIcon", "playerShadow", "visualMapHolder", "nextVisualMapHolder", "lineHolder", "line", "additionalInfoHeaderLabel", "additionalInfoDescriptionLabel")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -87,7 +87,8 @@ gameTimeline = ExtResource("5_wgflf")
 travelingLabel = NodePath("VBoxContainer/traveling Holder/traveling")
 playerIcon = NodePath("../../Player")
 playerShadow = NodePath("../Player Shadow")
-visualMapHolder = NodePath("VBoxContainer/Visual Map Holder/Visual Map")
+visualMapHolder = NodePath("VBoxContainer/HBoxContainer/Current Visual Map Holder/Visual Map")
+nextVisualMapHolder = NodePath("VBoxContainer/HBoxContainer/Next Visual Map Holder/Next Visual Map")
 lineHolder = NodePath("../SubViewportContainer")
 line = NodePath("../SubViewportContainer/SubViewport/Line2D")
 additionalInfoHeaderLabel = NodePath("VBoxContainer/additional info/VBoxContainer/header")
@@ -126,12 +127,26 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/separator = SubResource("StyleBoxEmpty_504ay")
 
-[node name="Visual Map Holder" type="MarginContainer" parent="CanvasLayer/transition background/Cutscene Holder/VBoxContainer" unique_id=1708020188]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/transition background/Cutscene Holder/VBoxContainer" unique_id=1064434832]
+layout_mode = 2
+alignment = 1
+
+[node name="Current Visual Map Holder" type="MarginContainer" parent="CanvasLayer/transition background/Cutscene Holder/VBoxContainer/HBoxContainer" unique_id=1708020188]
 custom_minimum_size = Vector2(0, 144.68)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Visual Map" type="HBoxContainer" parent="CanvasLayer/transition background/Cutscene Holder/VBoxContainer/Visual Map Holder" unique_id=2109369928]
+[node name="Visual Map" type="HBoxContainer" parent="CanvasLayer/transition background/Cutscene Holder/VBoxContainer/HBoxContainer/Current Visual Map Holder" unique_id=2109369928]
+layout_mode = 2
+theme_override_constants/separation = 45
+alignment = 1
+
+[node name="Next Visual Map Holder" type="MarginContainer" parent="CanvasLayer/transition background/Cutscene Holder/VBoxContainer/HBoxContainer" unique_id=1153424764]
+custom_minimum_size = Vector2(0, 144.68)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Next Visual Map" type="HBoxContainer" parent="CanvasLayer/transition background/Cutscene Holder/VBoxContainer/HBoxContainer/Next Visual Map Holder" unique_id=1448779942]
 layout_mode = 2
 theme_override_constants/separation = 45
 alignment = 1
@@ -173,7 +188,8 @@ layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_504ay")
 
 [node name="Player" type="TextureRect" parent="CanvasLayer" unique_id=698229283]
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = -1
 pivot_offset_ratio = Vector2(0.5, 0.5)
+offset_transform_enabled = true
 texture = ExtResource("7_bfjil")
+stretch_mode = 3
