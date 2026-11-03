@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://de22md0e38xn2" path="res://2_Scripts/2_Independent/atlas book.gd" id="1_3lemr"]
 [ext_resource type="Texture2D" uid="uid://d0n6gp3gmvjne" path="res://0_Art/New_Art(Needs Sorting)/Atlas.png" id="2_3lemr"]
 [ext_resource type="Texture2D" uid="uid://cahruded1bb2q" path="res://0_Art/New_Art(Needs Sorting)/Atlas map right.png" id="2_28i0q"]
+[ext_resource type="PackedScene" uid="uid://yx27ebtr12xc" path="res://1_Scenes/1_Objects/flutter page.tscn" id="2_icpc4"]
 [ext_resource type="Texture2D" uid="uid://dy1gjsxd0sb6m" path="res://0_Art/New_Art(Needs Sorting)/Single Page Atlas.png" id="3_dn5do"]
 [ext_resource type="Texture2D" uid="uid://bt71wrtc3cuyi" path="res://0_Art/New_Art(Needs Sorting)/Atlas map left.png" id="3_t11ig"]
 [ext_resource type="Theme" uid="uid://bhvewryp1cmbt" path="res://6_Other/description font.tres" id="4_28i0q"]
@@ -10,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cgmy4jxo6fcca" path="res://0_Art/New_Art(Needs Sorting)/Atlas Bottom Page Trim.png" id="4_xmrx0"]
 [ext_resource type="Shader" uid="uid://bc1nbfmlr01a3" path="res://4_Shaders/0_Scripts/atlas page turn.gdshader" id="6_bendsh"]
 [ext_resource type="Texture2D" uid="uid://b3kr1bjwl7lil" path="res://0_Art/New_Art(Needs Sorting)/Map.png" id="6_u0ylq"]
-[ext_resource type="Script" uid="uid://c0kvam1s1i16v" path="res://1_Scenes/1_Objects/atlas map manager.gd" id="7_fs7e8"]
+[ext_resource type="Script" uid="uid://c0kvam1s1i16v" path="res://2_Scripts/2_Independent/atlas map manager.gd" id="7_fs7e8"]
 [ext_resource type="Texture2D" uid="uid://bxmmkihvvtvo5" path="res://0_Art/New_Art(Needs Sorting)/Holly Berry-Sheet.png" id="8_6j7dn"]
 [ext_resource type="BitMap" uid="uid://pjoi5wl6ckdf" path="res://0_Art/New_Art(Needs Sorting)/Holly Berry-Bitmap.png" id="13_fs7e8"]
 [ext_resource type="Texture2D" uid="uid://ciesw0mf7ssp0" path="res://0_Art/New_Art(Needs Sorting)/Map-Text.png" id="14_6j7dn"]
@@ -64,7 +65,7 @@ region = Rect2(0, 0, 236, 166)
 atlas = ExtResource("14_yxeby")
 region = Rect2(236, 0, 236, 166)
 
-[node name="Atlas" type="MarginContainer" unique_id=1389312574 node_paths=PackedStringArray("mapAtlas", "mainAtlas", "mapHolder", "leftDetectionZone", "rightDetectionZone", "mapPageSprite", "atlasFullPageSprite", "atlasSinglePageSprite", "coverSprite", "pageTitles", "pageInfos", "titleSeparator", "parentNode", "detectionArea")]
+[node name="Atlas" type="MarginContainer" unique_id=1389312574 node_paths=PackedStringArray("mapAtlas", "mainAtlas", "mapHolder", "leftDetectionZone", "rightDetectionZone", "mapPageSprite", "atlasFullPageSprite", "atlasSinglePageSprite", "coverSprite", "pageTitles", "pageInfos", "titleSeparator", "generalInfoHolder", "flutterHolder", "parentNode", "detectionArea")]
 offset_right = 236.0
 offset_bottom = 163.0
 script = ExtResource("1_3lemr")
@@ -80,6 +81,10 @@ coverSprite = NodePath("Map Atlas/Cover & Left Page")
 pageTitles = [NodePath("Main Atlas/First & Last Page Holder/General Info Holder/Title Container/Title Label"), NodePath("Main Atlas/Front Page/Region Info Container/Region Info Holder/Title Container/Title Label"), NodePath("Main Atlas/Back Page/Region Info Container/Region Info Holder/Title Container/Title Label"), NodePath("Main Atlas/First & Last Page Holder/Last Page Holder/Title Container/Title Label")]
 pageInfos = [NodePath("Main Atlas/First & Last Page Holder/General Info Holder/Info Container/Info Label"), NodePath("Main Atlas/Front Page/Region Info Container/Region Info Holder/Info Container/Info Label"), NodePath("Main Atlas/Back Page/Region Info Container/Region Info Holder/Info Container/Info Label"), NodePath("Main Atlas/First & Last Page Holder/Last Page Holder/Info Container/Info Label")]
 titleSeparator = NodePath("Main Atlas/First & Last Page Holder/General Info Holder/Title Seperation Container")
+generalInfoHolder = NodePath("Main Atlas/First & Last Page Holder/General Info Holder")
+flutterScene = ExtResource("2_icpc4")
+flutterHolder = NodePath("Flutter Holder")
+flutterCount = 20
 parentNode = NodePath(".")
 detectionArea = NodePath("Drag Button")
 
@@ -189,7 +194,7 @@ theme_override_constants/margin_bottom = 20
 layout_mode = 2
 theme = ExtResource("4_28i0q")
 bbcode_enabled = true
-text = "????"
+text = "????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????"
 fit_content = true
 scroll_active = false
 
@@ -411,6 +416,9 @@ bbcode_enabled = true
 text = "???"
 fit_content = true
 scroll_active = false
+
+[node name="Flutter Holder" type="Control" parent="." unique_id=2090280738]
+layout_mode = 2
 
 [node name="Drag Button" type="Button" parent="." unique_id=1229789884]
 layout_mode = 2

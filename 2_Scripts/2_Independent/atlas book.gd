@@ -20,6 +20,13 @@ class_name AtlasBook
 @export var pageInfos : Array[RichTextLabel]
 @export var titleSeparator : Control
 
+@export var generalInfoHolder : Control
+@export var flutterScene : PackedScene
+@export var flutterHolder : Control
+@export var flutterCount : int = 4
+
+var flutterPool : Array[FlutterPage]
+
 var isTurning : bool = false
 var currentPageIndex : int = 0
 var maxPages : int = 3
@@ -47,6 +54,12 @@ func _ready() -> void:
 	_set_bend_amount(0)
 	_set_page_progress(0.0) # start book closed
 	_update_page_state()
+
+	for i in range(flutterCount):
+		var sheet : FlutterPage = flutterScene.instantiate()
+		flutterHolder.add_child(sheet)
+		sheet.visible = false
+		flutterPool.append(sheet)
 
 func _set_connections():
 	super._set_connections()
@@ -104,7 +117,6 @@ func _go_to_next_right_page():
 
 	isTurning = true
 	currentPageIndex += 1
-	_update_drag_area()
 
 	GlobalReferences.cursor.imageNode.frame = 0
 	_prepare_turn(isOpeningCover, -2)
@@ -167,8 +179,6 @@ func _update_page_state():
 	# Hidden buttons don't fire mouse_exited, so reset the cursor manually
 	if (leftWasHovered && !leftDetectionZone.visible) || (rightWasHovered && !rightDetectionZone.visible):
 		_on_exit_next_page()
-	
-	_update_drag_area()
 
 func _initialize_pages():
 	_recalculate_max_pages()
@@ -248,38 +258,64 @@ func _set_page_progress(value : float):
 func _set_bend_amount(value : float):
 	activeMaterial.set_shader_parameter("bend", value)
 
-#-------Cover Drag Area------------
-
-# Closed means closed and not mid-animation, so the area doesn't shrink while the cover is still visibly open
-func _is_visually_closed() -> bool:
-	return _is_closed() && !isTurning
-
-func _get_solid_rect() -> Rect2:
-	if _is_visually_closed():
-		var halfWidth : float = parentNode.size.x / 2.0
-		return Rect2(Vector2(halfWidth, 0), Vector2(halfWidth, parentNode.size.y))
-	return super._get_solid_rect()
-
-func _update_drag_area():
-	if _is_visually_closed():
-		detectionArea.size_flags_horizontal = Control.SIZE_SHRINK_END
-		detectionArea.custom_minimum_size.x = parentNode.size.x / 2.0
-	else:
-		detectionArea.size_flags_horizontal = Control.SIZE_FILL
-		detectionArea.custom_minimum_size.x = 0
-
-#-------------------------ATLAS SECTIONS-------------------------
+#-------------------------FLUTTER-------------------------
 func _flip_to_main():
-	mapHolder.visible = false
-	mapAtlas.visible = false
-	mainAtlas.visible = true
-	currentPageIndex = 2
-	_update_page_state()
+	_flip_section(true)
 
 
 func _flip_to_map():
+	_flip_section(false)
+
+func _flip_section(toMain : bool):
+	isTurning = true
+	currentPageIndex = 2 if toMain else 1
+	GlobalReferences.cursor.imageNode.frame = 0
+	await _play_flutter(toMain)
+	_finish_turn()
+
+func _play_flutter(toMain : bool):
+	var middleIndex : int = flutterCount / 2
+	var lastIndex : int = flutterCount - 1
+	var funSheetIndex : int = lastIndex if toMain else 0
+	var funPage : Dictionary = countryInfo._get_page(0)
+
+	for i in range(flutterCount):
+		flutterHolder.move_child(flutterPool[i], flutterCount - 1 - i)
+
+		if i == funSheetIndex:
+			flutterPool[i]._set_back_text(funPage.title, bbcodeManager._highlight(funPage.info))
+		else:
+			flutterPool[i]._clear_back_text()
+	
+
+	if toMain:
+		mapHolder.visible = false
+		generalInfoHolder.modulate.a = 0.0
+
+	await _wait_for_viewports()
+
+	for i in range(flutterCount):
+		var sheet : FlutterPage = flutterPool[i]
+
+		sheet.crossed.connect(flutterHolder.move_child.bind(sheet, i), CONNECT_ONE_SHOT)
+
+		if i == middleIndex:
+			sheet.crossed.connect(_swap_section.bind(toMain), CONNECT_ONE_SHOT)
+		
+		if i == lastIndex && !toMain:
+			sheet.crossed.connect(_show_map_holder, CONNECT_ONE_SHOT)
+		
+		sheet._play(toMain, 0.5, 0.8)
+
+		if i < lastIndex:
+			await get_tree().create_timer(0.07).timeout
+	
+	await flutterPool[lastIndex].finished
+	generalInfoHolder.modulate.a = 1.0
+
+func _swap_section(toMain : bool):
+	mapAtlas.visible = !toMain
+	mainAtlas.visible = toMain
+
+func _show_map_holder():
 	mapHolder.visible = true
-	mapAtlas.visible = true
-	mainAtlas.visible = false
-	currentPageIndex = 1
-	_update_page_state()

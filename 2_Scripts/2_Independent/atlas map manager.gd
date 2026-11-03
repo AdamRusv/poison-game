@@ -15,11 +15,13 @@ func _set_connections():
 
 #- - -
 func _turn_to_country(i : int):
-	if atlas._has_moved() == true:
+	if atlas._has_moved() == true || atlas.isTurning == true:
 		return
 	
-	if atlas.atlasHolder.countryInfos[i] != null:
-		atlas.countryInfo = atlas.atlasHolder.countryInfos[i]
+	if atlas.atlasHolder.countryInfos[i] == null:
+		return
+	
+	atlas.countryInfo = atlas.atlasHolder.countryInfos[i]
 	
 	atlas._initialize_pages()
 
