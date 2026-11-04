@@ -28,6 +28,7 @@ var upperMapEncounterNodeRef : PackedScene = preload("res://1_Scenes/1_Objects/u
 var lowerMapEncounterNodeRef : PackedScene = preload("res://1_Scenes/1_Objects/lower map encounter node.tscn")
 
 var mapEncounterNodes : Array[TransitionMapEncounterNode]
+var nextMapEncounterNodes : Array[TransitionMapEncounterNode]
 var linePoints : Array[Vector2]
 
 func _ready() -> void:
@@ -67,6 +68,8 @@ func _hide_and_setup_all():
 	travelingLabel.self_modulate.a = 0
 	
 	visualMapHolder.offset_transform_enabled = true
+	nextVisualMapHolder.offset_transform_enabled = true
+	nextVisualMapHolder.offset_transform_position.x = 640
 	lineHolder.offset_transform_enabled = true
 	
 	playerIcon.offset_transform_enabled = true
@@ -82,6 +85,7 @@ func _set_visuals():
 	var currentEncounterNumber : int = _get_current_encounter_number()
 	
 	_set_map_nodes(totalEncounters, regionNumber)
+	_set_next_region_map_nodes()
 	_set_player_pos(currentEncounterNumber)
 	_set_line(totalEncounters)
 	_set_additional_info()
@@ -97,6 +101,19 @@ func _set_map_nodes(totalEncounters : int, regionNumber : int):
 		
 		mapEncounterNodes.append(mapEncounterNode)
 		visualMapHolder.add_child(mapEncounterNode)
+func _set_next_region_map_nodes():
+	var totalEncounters : int = _get_total_encounters_for_next_region()
+	var regionNumber : int = _get_region_number() + 1
+	for i in range(0, totalEncounters):
+		var mapEncounterNode : TransitionMapEncounterNode = null
+		if i % 2 == 0: #even
+			mapEncounterNode = upperMapEncounterNodeRef.instantiate()
+		else: #odd
+			mapEncounterNode = lowerMapEncounterNodeRef.instantiate()
+		mapEncounterNode._set_region_encounter_label(regionNumber, i + 1)
+		
+		nextMapEncounterNodes.append(mapEncounterNode)
+		nextVisualMapHolder.add_child(mapEncounterNode)
 func _set_player_pos(currentEncounterNumber : int):
 	if transitionEncounter.transitionState == TransitionManager.TransitionStates.mainMenuTraveling && currentEncounterNumber > 1:
 		currentEncounterNumber -= 1
@@ -149,7 +166,7 @@ func _get_total_encounters_for_current_region() -> int:
 		if region.increaseRegion == true:
 			break
 		
-		totalEncounters += 1
+		totalEncounters += region.totalEncounters
 		
 	return totalEncounters
 
@@ -178,6 +195,26 @@ func _get_timeline_index_of_current_region_start() -> int:
 		
 	return -1
 
+func _get_total_encounters_for_next_region() -> int:
+	var totalEncounters : int = 1
+	
+	for i in range(_get_timeline_index_of_next_region_start() + 1, gameTimeline.timeline.size()):
+		var region : RegionInfo = gameTimeline.timeline[i]
+		if region.increaseRegion == true:
+			break
+		
+		totalEncounters += region.totalEncounters
+		
+	return totalEncounters
+
+func _get_timeline_index_of_next_region_start() -> int:
+	var currentIndex : int = gamestateJSON.timelineIndex + 1
+	for i in range(currentIndex, gameTimeline.timeline.size()):
+		var region : RegionInfo = gameTimeline.timeline[i]
+		if region.increaseRegion == true:
+			return i
+		
+	return -1
 
 #----------------------ANIMATIONS----------------------
 signal finishedAnimating
@@ -187,6 +224,7 @@ const LINE_TRAVEL_TIME : float = 0.4
 const PLAYER_INTRO_DURATION : float = 1.0
 const LABEL_FADE_IN_DURATION : float = 0.2
 const PLAYER_WALK_BETWEEN_MAP_NODES_DURATION : float = 1.2
+const VISUALS_SLIDE_DURATION : float = 1
 
 func _trigger_show_animations():
 	await _show_visual()
@@ -291,6 +329,8 @@ func _trigger_hide_animations():
 func _hide_visual():
 	for mapNodes in mapEncounterNodes:
 		mapNodes._animate_hide()
+	for mapNodes in nextMapEncounterNodes:
+		mapNodes._animate_hide()
 	_fade_out(lineHolder)
 	_fade_out(playerIcon)
 	_fade_out(playerShadow)
@@ -303,6 +343,11 @@ func _hide_labels():
 
 #--
 func _move_player(endingMapNodePos : int):
+	if transitionEncounter.transitionState == TransitionManager.TransitionStates.traveling:
+		if _is_next_timeline_index_new_region() == true:
+			await _move_player_to_next_region()
+			return
+	
 	var currentEncounterNumber : int = _get_current_encounter_number()
 	if transitionEncounter.transitionState == TransitionManager.TransitionStates.mainMenuTraveling && currentEncounterNumber > 1:
 		currentEncounterNumber -= 1
@@ -334,6 +379,48 @@ func _move_player(endingMapNodePos : int):
 		
 		await newTween.finished
 
+func _move_player_to_next_region():
+	var currentEncounterNumber : int = _get_current_encounter_number()
+	var firstNextMapNodePos : Vector2 = nextMapEncounterNodes[0]._get_global_icon_center()
+	firstNextMapNodePos.x += 640 #to account for the parent's offset transform
+	
+	var targetPos : Vector2 = Vector2.ZERO
+	targetPos = firstNextMapNodePos
+	targetPos -= playerIcon.size / 2
+	targetPos.y += PLAYER_ICON_Y_OFFSET
+	var newTween : Tween = create_tween().set_parallel()
+	
+	var duration : float = PLAYER_WALK_BETWEEN_MAP_NODES_DURATION * 2
+	
+	newTween.tween_property(playerIcon, "global_position", targetPos, duration)\
+	.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	newTween.tween_property(playerShadow, "global_position", targetPos, duration)\
+	.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	
+	line.add_point(linePoints[linePoints.size() - 1])
+	newTween.tween_method(_set_point_position.bind(line.get_point_count() - 1), linePoints[linePoints.size() - 1], firstNextMapNodePos, duration)\
+	.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	
+	await newTween.finished
+	await _slide_visual_to_next_region()
+func _slide_visual_to_next_region():
+	var newTween : Tween = create_tween().set_parallel()
+	
+	newTween.tween_property(visualMapHolder, "offset_transform_position:x", -640, VISUALS_SLIDE_DURATION)\
+	.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	newTween.tween_property(nextVisualMapHolder, "offset_transform_position:x", 0, VISUALS_SLIDE_DURATION)\
+	.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	newTween.tween_property(lineHolder, "offset_transform_position:x", -640, VISUALS_SLIDE_DURATION)\
+	.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	
+	var playerPosX : float = playerIcon.global_position.x - 640
+	newTween.tween_property(playerIcon, "global_position:x", playerPosX, VISUALS_SLIDE_DURATION)\
+	.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	newTween.tween_property(playerShadow, "global_position:x", playerPosX, VISUALS_SLIDE_DURATION)\
+	.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	
+	await newTween.finished
+
 #- - -
 func _fade_in(targetNode : Control):
 	var newTween : Tween = create_tween().set_parallel()
@@ -361,6 +448,7 @@ func _fade_out(targetNode : Control, up : bool = false):
 	
 	await newTween.finished
 
+#
 func _get_new_traveling_text(newText : String) -> String:
 	return "[wave amp=25.0 freq=3.0 connected=1]" + newText + "[/wave]"
 
@@ -377,3 +465,9 @@ func _set_player_ending_pos() -> int:
 			return currentEncounterNumber
 		
 	return -1
+
+func _is_next_timeline_index_new_region() -> bool:
+	var currentEncounterNumber : int = _get_current_encounter_number()
+	if currentEncounterNumber == _get_total_encounters_for_current_region():
+		return true
+	return false
