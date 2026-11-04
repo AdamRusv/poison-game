@@ -43,7 +43,8 @@ func _ready() -> void:
 	
 	match transitionEncounter.transitionState:
 		TransitionManager.TransitionStates.blank:
-			await get_tree().create_timer(0.3).timeout
+			await get_tree().create_timer(0.75).timeout
+			finishedAnimating.emit()
 			transitionEncounter._end_transition()
 			return
 		TransitionManager.TransitionStates.retry:

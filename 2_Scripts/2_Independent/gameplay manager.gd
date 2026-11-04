@@ -46,7 +46,6 @@ func _ready() -> void:
 func _set_connections():
 	newEncounter.connect(_set_next_encounter)
 	restartEncounter.connect(_restart_current_encounter)
-	#cupHasBeenPoisoned.connect(dialogueManager._trigger_dialogue_branch)
 	cupHasBeenPoisoned.connect(_check_if_cup_choice_is_correct)
 
 func _start_new_encounter():
