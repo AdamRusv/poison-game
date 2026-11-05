@@ -60,26 +60,22 @@ func _start_new_encounter():
 	await get_tree().create_timer(1).timeout
 	dialogueManager._start_dialogue()
 
-func _update_timeline_counter():
-	var counterText : String = ""
-	
-	var regionNumber : int = -1
-	var initalEncounterNumber : int = 0
-	for i in range(0, gameTimeline.timeline.size()):
-		var region : RegionInfo = gameTimeline.timeline[i]
-		if i > gamestateJSON.timelineIndex:
-			break
-		
-		if region.increaseRegion == true:
-			regionNumber += 1
-			initalEncounterNumber = 1
+func _get_encounter_number():
+	var initialEncounterNumber : int = 0
+	for i in range(0, gamestateJSON.timelineIndex + 1):
+		if gameTimeline.timeline[i].increaseRegion == true:
+			initialEncounterNumber = 1
 		else:
-			initalEncounterNumber += 1
+			initialEncounterNumber += 1
+	return initialEncounterNumber + gamestateJSON.currentRegionEncounterCount - 1
+
+func _update_timeline_counter():
+	var regionNumber : int = 0
+	for i in range(0, gamestateJSON.timelineIndex + 1):
+		if gameTimeline.timeline[i].increaseRegion == true:
+			regionNumber += 1
 		
-	var encounterNumber : int = initalEncounterNumber + gamestateJSON.currentRegionEncounterCount - 1
-	
-	counterText = str(regionNumber) + " - " + str(encounterNumber)
-	timelineCounterLabel.text = counterText
+	timelineCounterLabel.text = str(regionNumber) + " - " + str(_get_encounter_number())
 
 #- - -
 func _setup_encounter_papers():

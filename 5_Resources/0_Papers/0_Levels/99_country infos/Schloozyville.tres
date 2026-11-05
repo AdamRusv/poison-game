@@ -6,25 +6,19 @@
 [sub_resource type="Resource" id="Resource_1s26u"]
 script = ExtResource("1_1s26u")
 title = "Country Notes:"
-info = "Adam makes games (lie)
-
-Daniel has nice hair (lie)
-
-Alan is skinny (Truth)"
+info = "Empty"
 metadata/_custom_type_script = "uid://dn3cxe2u865qv"
 
 [sub_resource type="Resource" id="Resource_lnhvd"]
 script = ExtResource("1_1s26u")
 title = "Race:"
-info = "Adam is white
-
-Adam is not black (lie)"
+info = "Empty"
 metadata/_custom_type_script = "uid://dn3cxe2u865qv"
 
 [sub_resource type="Resource" id="Resource_eb6uv"]
 script = ExtResource("1_1s26u")
 title = "Status:"
-info = "Adam's parents are RIIIIIICH"
+info = "Empty"
 metadata/_custom_type_script = "uid://dn3cxe2u865qv"
 
 [resource]
