@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://o2u0bg7rmjeg"
-path="res://.godot/imported/Portrait_Background.png-6d8f9e33b271c6760296af5fb5c3ede0.ctex"
+uid="uid://bgs7wji7h15is"
+path="res://.godot/imported/Portrait_Midground.png-bf948078baceca66657f92833dc15699.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://0_Art/New_Art(Needs Sorting)/Portrait_Background.png"
-dest_files=["res://.godot/imported/Portrait_Background.png-6d8f9e33b271c6760296af5fb5c3ede0.ctex"]
+source_file="res://0_Art/New_Art(Needs Sorting)/Portraits/Unused/Portrait_Midground.png"
+dest_files=["res://.godot/imported/Portrait_Midground.png-bf948078baceca66657f92833dc15699.ctex"]
 
 [params]
 
