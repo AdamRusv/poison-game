@@ -23,7 +23,7 @@ func _init() -> void:
 
 func _process(delta: float) -> void:
 	super._process(delta)
-	if Input.is_action_just_pressed("escape"):
+	if Input.is_action_just_pressed("escape") || Input.is_action_just_pressed("right click"):
 		textEdit.release_focus()
 	
 	if textEdit.has_focus() == true:
