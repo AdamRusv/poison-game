@@ -6,9 +6,13 @@ class_name RegionInfo
 
 @export var traitSheet : PaperInfo
 @export var characterSheets : Array[EncounterInfo]
-@export var atlas : PaperInfo
+##starts at first country, ends at given number (example: 3 -> 3 countries, Hollyberry/Schloozyville/Sandshell)
+@export var maxCountryCount : int = 0
 
 @export var noteSheet : bool = true
+
+##regions that share the same RegionMusic resource keep the song playing instead of restarting it
+@export var music : RegionMusic
 
 @export_group("Timeline Counter")
 @export var increaseRegion : bool = false

@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="CountryInfo" format=3 uid="uid://d2b0dmg4m2ch8"]
+
+[ext_resource type="Script" uid="uid://dn3cxe2u865qv" path="res://2_Scripts/3_Dependent/single page.gd" id="1_1s26u"]
+[ext_resource type="Script" uid="uid://gp81tvupt8kv" path="res://2_Scripts/3_Dependent/country info.gd" id="2_lnhvd"]
+
+[sub_resource type="Resource" id="Resource_1s26u"]
+script = ExtResource("1_1s26u")
+title = "Country Notes:"
+info = "Adam makes games (lie)
+
+Daniel has nice hair (lie)
+
+Alan is skinny (Truth)"
+metadata/_custom_type_script = "uid://dn3cxe2u865qv"
+
+[sub_resource type="Resource" id="Resource_lnhvd"]
+script = ExtResource("1_1s26u")
+title = "Race:"
+info = "Adam is white
+
+Adam is not black (lie)"
+metadata/_custom_type_script = "uid://dn3cxe2u865qv"
+
+[sub_resource type="Resource" id="Resource_eb6uv"]
+script = ExtResource("1_1s26u")
+title = "Status:"
+info = "Adam's parents are RIIIIIICH"
+metadata/_custom_type_script = "uid://dn3cxe2u865qv"
+
+[resource]
+script = ExtResource("2_lnhvd")
+pages = Array[ExtResource("1_1s26u")]([SubResource("Resource_1s26u"), SubResource("Resource_lnhvd"), SubResource("Resource_eb6uv")])
+countryTitle = "Schloozyville"
+funInfo = "Population: 1.13M
+
+Tier: 5
+
+Schloozyville has widely been regarded as the geopolitical equivalent of a shrug. Perched between two economic superpowers, Schloozyville is regularly forgotten about even by people living in it.
+"
+metadata/_custom_type_script = "uid://gp81tvupt8kv"

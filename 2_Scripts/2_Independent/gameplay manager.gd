@@ -3,6 +3,7 @@ extends Control
 class_name GameplayManager
 
 @export var gameTimeline : GameTimeline
+@export var atlasHolder : AtlasHolder
 @export var timelineCounterLabel : RichTextLabel
 
 var playmatManager : PlaymatManager
@@ -40,6 +41,7 @@ var gamestateJSON : GamestateJSON = GamestateJSON.new()
 func _ready() -> void:
 	gamestateJSON._load_gamestate()
 	currentRegion = gameTimeline.timeline[gamestateJSON.timelineIndex]
+	SoundManager._set_region_music(currentRegion.music, _get_encounter_number())
 	_update_timeline_counter()
 	_set_connections()
 	_start_new_encounter()
@@ -85,7 +87,6 @@ func _setup_encounter_papers():
 	
 	playmatManager.mainTraitSheet = currentRegion.traitSheet
 	playmatManager.characterSheet = currentRegion.characterSheets[nextEncounterIndex].duplicate(true)
-	playmatManager.atlasRegionSheet = currentRegion.atlas
 	
 	gamestateJSON.currentCharacterIndex = nextEncounterIndex
 	gamestateJSON._save_gamestate()

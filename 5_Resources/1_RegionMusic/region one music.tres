@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="RegionMusic" format=3 uid="uid://dlt86vr4taqr1"]
+
+[ext_resource type="Script" uid="uid://c4pwengkups44" path="res://2_Scripts/3_Dependent/region music.gd" id="1_m1l1g"]
+[ext_resource type="AudioStream" uid="uid://c6mcf06smilnr" path="res://0_Art/1_Audio/0_Music/2_Region One/Atropa_RegionOne Snare 1 + Hit 1.wav" id="2_fxnbm"]
+[ext_resource type="AudioStream" uid="uid://b8qhrd68fvs3t" path="res://0_Art/1_Audio/0_Music/2_Region One/Atropa_RegionOne Snare 2 + Hit 2.wav" id="3_ctapp"]
+[ext_resource type="AudioStream" uid="uid://k5dv1ebi5a67" path="res://0_Art/1_Audio/0_Music/2_Region One/Atropa_RegionOne Bass.wav" id="4_dy48e"]
+[ext_resource type="AudioStream" uid="uid://c5si241l684yn" path="res://0_Art/1_Audio/0_Music/2_Region One/Atropa_RegionOne Cello 1 + Cello 2.wav" id="5_tchxy"]
+
+[resource]
+script = ExtResource("1_m1l1g")
+stems = Array[AudioStream]([ExtResource("2_fxnbm"), ExtResource("3_ctapp"), ExtResource("4_dy48e"), ExtResource("5_tchxy")])
+metadata/_custom_type_script = "uid://c4pwengkups44"

@@ -12,5 +12,5 @@ dest_files=["res://.godot/imported/Map-Mask.png-3fd3dc25b8fb3be9e0b74173c62433c9
 
 [params]
 
-create_from=0
+create_from=1
 threshold=0.5

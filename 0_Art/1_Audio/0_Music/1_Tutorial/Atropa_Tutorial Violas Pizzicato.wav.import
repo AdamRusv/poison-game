@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cm0bl37i18kuh"
+path="res://.godot/imported/Atropa_Tutorial Violas Pizzicato.wav-4b42819d1330b7246e0110e7c72c13e4.sample"
+
+[deps]
+
+source_file="res://0_Art/1_Audio/0_Music/1_Tutorial/Atropa_Tutorial Violas Pizzicato.wav"
+dest_files=["res://.godot/imported/Atropa_Tutorial Violas Pizzicato.wav-4b42819d1330b7246e0110e7c72c13e4.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
