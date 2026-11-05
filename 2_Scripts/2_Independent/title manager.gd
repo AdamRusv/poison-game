@@ -16,7 +16,7 @@ func _set_connections():
 	quitButton.onClicked.connect(_quit)
 
 #- - - - - -
-var gameplayScenePath : String = "res://1_Scenes/0_Screens/gameplay.tscn"
+var gameplaySceneRef : PackedScene = preload("res://1_Scenes/0_Screens/gameplay.tscn")
 
 var playTriggered : bool = false
 func _play():
@@ -25,13 +25,14 @@ func _play():
 	playTriggered = true
 	await get_tree().create_timer(0.3).timeout
 	
-	var gameplaySceneInstance : PackedScene = load(gameplayScenePath)
-	var gameplayScene : GameplayManager = gameplaySceneInstance.instantiate()
+	var gameplayScene : GameplayManager = gameplaySceneRef.instantiate()
 	
-	if gamestateJSON.timelineIndex == 0:
-		await TransitionManager._create_transition(TransitionManager.TransitionStates.blank)
-	else:
-		await TransitionManager._create_transition(TransitionManager.TransitionStates.mainMenuTraveling)
+	#NOTE: SWAP FOR REAL VERSION
+	#if gamestateJSON.timelineIndex == 0:
+		#await TransitionManager._create_transition(TransitionManager.TransitionStates.blank)
+	#else:
+		#await TransitionManager._create_transition(TransitionManager.TransitionStates.mainMenuTraveling)
+	await TransitionManager._create_transition(TransitionManager.TransitionStates.blank) #just while testing to save time
 	
 	await get_tree().create_timer(0.6).timeout
 	get_tree().change_scene_to_node(gameplayScene)

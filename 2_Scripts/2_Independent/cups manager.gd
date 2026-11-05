@@ -43,7 +43,7 @@ func _exit_poison_over_cup(cupIndex : int):
 		return
 	GlobalReferences.cursor.imageNode.frame = 1
 	
-	_set_indicator_to_neutral(visualIndicators[cupIndex])
+	_set_indicator_to_neutral(visualIndicators[cupIndex], cupIndex)
 	
 	gameplayManager.currentPoisonCup = GameplayManager.CurrentPoisonCup.none
 
@@ -85,5 +85,8 @@ func _reveal_indicators():
 
 func _set_indicator_to_poison(indicator : AnimatedSprite2D):
 	indicator.self_modulate = Color("b65c5f")
-func _set_indicator_to_neutral(indicator : AnimatedSprite2D):
-	indicator.self_modulate = Color("bda583")
+func _set_indicator_to_neutral(indicator : AnimatedSprite2D, cupIndex : int):
+	if cupIndex == 0:
+		indicator.self_modulate = Color("66845f")
+	else:
+		indicator.self_modulate = Color("6a78c4")
