@@ -974,27 +974,17 @@ size_flags_horizontal = 3
 theme_override_constants/separation = -9
 
 [node name="Accessibility" type="MarginContainer" parent="Layout/HBoxContainer/MarginContainer/VBoxContainer" unique_id=1348033393]
-custom_minimum_size = Vector2(0, 40)
+custom_minimum_size = Vector2(0, 42)
 layout_mode = 2
 theme_override_constants/margin_right = -2
 theme_override_constants/margin_bottom = 5
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Layout/HBoxContainer/MarginContainer/VBoxContainer/Accessibility" unique_id=1655563843]
-layout_mode = 2
-size_flags_vertical = 3
-texture = ExtResource("4_0hcow")
-region_rect = Rect2(0, 0, 14, 14)
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
-
 [node name="solid background" type="MarginContainer" parent="Layout/HBoxContainer/MarginContainer/VBoxContainer/Accessibility" unique_id=589792879]
 layout_mode = 2
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 4
-theme_override_constants/margin_bottom = 4
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
 
 [node name="ColorRect" type="ColorRect" parent="Layout/HBoxContainer/MarginContainer/VBoxContainer/Accessibility/solid background" unique_id=1698973065]
 layout_mode = 2
@@ -1015,6 +1005,16 @@ text = "0 - 0"
 fit_content = true
 autowrap_mode = 0
 horizontal_alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Layout/HBoxContainer/MarginContainer/VBoxContainer/Accessibility" unique_id=1655563843]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("4_0hcow")
+region_rect = Rect2(0, 0, 14, 14)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
 
 [node name="Character" type="MarginContainer" parent="Layout/HBoxContainer/MarginContainer/VBoxContainer" unique_id=1308443707]
 layout_mode = 2
@@ -1143,7 +1143,6 @@ offset_bottom = 151.0
 mouse_filter = 2
 
 [node name="Flat Mockup" type="TextureRect" parent="." unique_id=904773487]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
