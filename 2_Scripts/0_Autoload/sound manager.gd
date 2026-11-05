@@ -99,9 +99,9 @@ func _start_region_music(music : RegionMusic, layerCount : int):
 	for player in stemPlayers:
 		player.play()
 	
-	_set_unlocked_layers(layerCount, false, 0.0) # song start, no waiting for a section
+	_set_unlocked_layers(layerCount, false, 0.1) # song start
 
-func _set_unlocked_layers(layerCount : int, onNextSection : bool = true, fadeTime : float = 0.11):
+func _set_unlocked_layers(layerCount : int, onNextSection : bool = true, fadeTime : float = 0.0):
 	layerCount = clampi(layerCount, 0, stemPlayers.size())
 	var delay : float = 0.0
 	if onNextSection == true:

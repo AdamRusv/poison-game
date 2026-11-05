@@ -8,6 +8,7 @@ class_name AtlasBook
 @export var mapHolder : AtlasMapManager
 @export var leftDetectionZone : Button
 @export var rightDetectionZone : Button
+@export var dragArea : Button
 
 @export_group("Pages")
 @export var mapPageSprite : TextureRect
@@ -27,11 +28,14 @@ class_name AtlasBook
 
 var flutterPool : Array[FlutterPage]
 
+var openDragAmount : float =  0
+var closedDragAmount : float = 0
+
 var isTurning : bool = false
 var currentPageIndex : int = 0
 var maxPages : int = 3
-var loadedBaseSpread : int = -1  # slots 0, 1
-var loadedFlipSpread : int = -1  # slots 2, 3
+var loadedBaseSpread : int = -1
+var loadedFlipSpread : int = -1
 
 var atlasHolder : AtlasHolder = null
 var countryInfo : CountryInfo = null
@@ -46,6 +50,17 @@ func _init() -> void:
 
 func _ready() -> void:
 	super._ready()
+
+	leftPadding += 116
+	openDragAmount = dragArea.custom_minimum_size.x
+	closedDragAmount = dragArea.custom_minimum_size.x / 2
+
+	if _is_closed() == true:
+		dragArea.custom_minimum_size.x = closedDragAmount
+	else:
+		dragArea.custom_minimum_size.x = openDragAmount
+	
+
 	pageFlipMaterial = atlasSinglePageSprite.material
 	coverMaterial = coverSprite.material
 	activeMaterial = coverMaterial
@@ -106,6 +121,9 @@ func _go_to_next_left_page():
 	await _update_pages(false)
 	mapHolder.visible = _is_first_page()
 	await _animate_left_to_right_page_turn(0.4).finished
+
+	if _is_closed() == true:
+		dragArea.custom_minimum_size.x = closedDragAmount
 	
 	_finish_turn()
 
@@ -122,6 +140,9 @@ func _go_to_next_right_page():
 	_prepare_turn(isOpeningCover, -2)
 	await _update_pages(true)
 	await _animate_right_to_left_page_turn(0.4).finished
+
+	if _is_first_page() == true:
+		dragArea.custom_minimum_size.x = openDragAmount
 
 	_finish_turn()
 
@@ -281,6 +302,13 @@ func _play_flutter(toMain : bool):
 
 	for i in range(flutterCount):
 		flutterHolder.move_child(flutterPool[i], flutterCount - 1 - i)
+
+		if i == 0 && toMain == true:
+			flutterPool[i]._set_front_content()
+		elif i == lastIndex && toMain == false:
+			flutterPool[i]._set_front_content()
+		else:
+			flutterPool[i]._clear_front_content()
 
 		if i == funSheetIndex:
 			flutterPool[i]._set_back_text(funPage.title, bbcodeManager._highlight(funPage.info))

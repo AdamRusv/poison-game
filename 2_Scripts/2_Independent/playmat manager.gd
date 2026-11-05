@@ -11,7 +11,7 @@ var mainTraitSheet : PaperInfo
 var characterSheet : EncounterInfo
 
 #var testPaperRef : PackedScene = load("res://1_Scenes/1_Objects/paper.tscn") #TODO: Make actual papers, replace variable
-var testPaperRef : PackedScene = load("res://1_Scenes/1_Objects/paper.tscn")
+var testPaperRef : PackedScene = load("res://1_Scenes/1_Objects/test_paper.tscn")
 var testAtlasRef : PackedScene = load("res://1_Scenes/1_Objects/atlas.tscn")
 
 var papers : Array[Paper]

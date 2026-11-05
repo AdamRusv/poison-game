@@ -5,6 +5,9 @@ class_name FlutterPage
 signal crossed
 signal finished
 
+@export var frontViewport : SubViewport
+@export var frontContent : Control
+
 @export var backViewport : SubViewport
 @export var backContent : Control
 @export var backTitleLabel : RichTextLabel
@@ -14,6 +17,14 @@ var startsOnRight : bool = true
 var hasCrossed : bool = false
 var bend : float = 0.0
 var shaderMaterial : ShaderMaterial = null
+
+func _set_front_content():
+	frontContent.visible = true
+	frontViewport.render_target_update_mode = SubViewport.UPDATE_ONCE
+
+func _clear_front_content():
+	frontContent.visible = false
+	frontViewport.render_target_update_mode = SubViewport.UPDATE_WHEN_VISIBLE
 
 func _set_back_text(title : String, info : String):
 	backTitleLabel.text = title
@@ -41,6 +52,8 @@ func _play(toMain : bool, duration : float, bendMagnitude : float):
 	var tween : Tween = create_tween()
 	tween.tween_method(_step, from, to, duration)
 	await tween.finished
+
+	await get_tree().create_timer(0.05).timeout
 
 	visible = false
 	finished.emit()
