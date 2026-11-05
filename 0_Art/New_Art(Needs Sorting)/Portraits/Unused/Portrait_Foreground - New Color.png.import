@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://e8g7oerk8row"
-path="res://.godot/imported/poisonGame-PortraitAngled.png-fbbd62950710131a9302a256c0016ebd.ctex"
+uid="uid://cahv8fckkdhw3"
+path="res://.godot/imported/Portrait_Foreground - New Color.png-cc7f050860f4f735b7c6cbbd199f0bde.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://0_Art/New_Art(Needs Sorting)/poisonGame-PortraitAngled.png"
-dest_files=["res://.godot/imported/poisonGame-PortraitAngled.png-fbbd62950710131a9302a256c0016ebd.ctex"]
+source_file="res://0_Art/New_Art(Needs Sorting)/Portraits/Unused/Portrait_Foreground - New Color.png"
+dest_files=["res://.godot/imported/Portrait_Foreground - New Color.png-cc7f050860f4f735b7c6cbbd199f0bde.ctex"]
 
 [params]
 

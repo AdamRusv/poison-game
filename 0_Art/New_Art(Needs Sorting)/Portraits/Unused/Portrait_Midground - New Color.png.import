@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qo4g5pcelchb"
-path="res://.godot/imported/grassAnim-Sheet.png-2b7e1cd15c595eb947af8d844ab4ebb4.ctex"
+uid="uid://co0id6c1gnyia"
+path="res://.godot/imported/Portrait_Midground - New Color.png-0e72b8cb2fc5ad7eaf47f0985199f58c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://0_Art/New_Art(Needs Sorting)/grassAnim-Sheet.png"
-dest_files=["res://.godot/imported/grassAnim-Sheet.png-2b7e1cd15c595eb947af8d844ab4ebb4.ctex"]
+source_file="res://0_Art/New_Art(Needs Sorting)/Portraits/Unused/Portrait_Midground - New Color.png"
+dest_files=["res://.godot/imported/Portrait_Midground - New Color.png-0e72b8cb2fc5ad7eaf47f0985199f58c.ctex"]
 
 [params]
 
