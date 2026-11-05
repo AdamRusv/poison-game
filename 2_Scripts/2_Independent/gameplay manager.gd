@@ -46,14 +46,13 @@ func _ready() -> void:
 func _set_connections():
 	newEncounter.connect(_set_next_encounter)
 	restartEncounter.connect(_restart_current_encounter)
-	#cupHasBeenPoisoned.connect(dialogueManager._trigger_dialogue_branch)
 	cupHasBeenPoisoned.connect(_check_if_cup_choice_is_correct)
 
 func _start_new_encounter():
-	#TransitionManager._create_transition()
-	TransitionManager.transitionEncounter._end_transition()
-	
 	_setup_encounter_papers()
+	
+	await TransitionManager.transitionEncounter.transitionCutscene.finishedAnimating
+	
 	playmatManager._add_main_papers()
 	
 	await get_tree().create_timer(1).timeout
@@ -62,7 +61,7 @@ func _start_new_encounter():
 func _update_timeline_counter():
 	var counterText : String = ""
 	
-	var regionNumber : int = 0
+	var regionNumber : int = -1
 	var initalEncounterNumber : int = 0
 	for i in range(0, gameTimeline.timeline.size()):
 		var region : RegionInfo = gameTimeline.timeline[i]
@@ -76,6 +75,7 @@ func _update_timeline_counter():
 			initalEncounterNumber += 1
 		
 	var encounterNumber : int = initalEncounterNumber + gamestateJSON.currentRegionEncounterCount - 1
+	
 	counterText = str(regionNumber) + " - " + str(encounterNumber)
 	timelineCounterLabel.text = counterText
 
@@ -99,15 +99,13 @@ func _check_if_cup_choice_is_correct():
 		correctCupChosen = true
 
 func _restart_current_encounter():
-	TransitionManager._create_transition()
-	await TransitionManager.transitionEncounter._start_transition().finished
+	await TransitionManager._create_transition(TransitionManager.TransitionStates.restarting)
 	
 	await get_tree().create_timer(0.6).timeout
 	get_tree().reload_current_scene()
 
 func _set_next_encounter():
-	TransitionManager._create_transition()
-	await TransitionManager.transitionEncounter._start_transition().finished
+	await TransitionManager._create_transition(TransitionManager.TransitionStates.traveling)
 	
 	if gamestateJSON.timelineIndex >= gameTimeline.timeline.size() - 1 && gamestateJSON.currentRegionEncounterCount >= currentRegion.totalEncounters:
 		return

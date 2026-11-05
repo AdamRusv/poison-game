@@ -46,7 +46,6 @@ metadata/_custom_type_script = "uid://cwxljhi0yey0n"
 
 [sub_resource type="Resource" id="Resource_bp1mh"]
 script = ExtResource("2_tbb0o")
-speaker = 1
 dialogue = "Goodbye."
 metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
 

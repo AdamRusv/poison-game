@@ -23,16 +23,6 @@ script = ExtResource("2_g2q5l")
 dialogue = "The goal of this Game is to avoid drinking the Poison"
 metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
 
-[sub_resource type="Resource" id="Resource_0hcow"]
-script = ExtResource("2_g2q5l")
-dialogue = "To achieve this goal, you must figure out which cup I will choose"
-metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
-
-[sub_resource type="Resource" id="Resource_g7yw3"]
-script = ExtResource("2_g2q5l")
-dialogue = "From there, you'll know where to put the Poison"
-metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
-
 [sub_resource type="Resource" id="Resource_xsf05"]
 script = ExtResource("2_g2q5l")
 dialogue = "Go ahead and grab the Poison. Since you are still learning, just place it into my cup"
@@ -40,7 +30,7 @@ metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
 
 [sub_resource type="Resource" id="Resource_dv0cg"]
 script = ExtResource("3_na71q")
-dialogue = Array[ExtResource("2_g2q5l")]([SubResource("Resource_neqfg"), SubResource("Resource_6eb78"), SubResource("Resource_fb3j3"), SubResource("Resource_0hcow"), SubResource("Resource_g7yw3"), SubResource("Resource_xsf05")])
+dialogue = Array[ExtResource("2_g2q5l")]([SubResource("Resource_neqfg"), SubResource("Resource_6eb78"), SubResource("Resource_fb3j3"), SubResource("Resource_xsf05")])
 metadata/_custom_type_script = "uid://chre6fsqbhfrk"
 
 [sub_resource type="Resource" id="Resource_7q6wp"]
