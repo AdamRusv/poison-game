@@ -297,15 +297,14 @@ func _flip_section(toMain : bool):
 func _play_flutter(toMain : bool):
 	var middleIndex : int = flutterCount / 2
 	var lastIndex : int = flutterCount - 1
+	var mapSheetIndex : int = 0 if toMain else lastIndex
 	var funSheetIndex : int = lastIndex if toMain else 0
 	var funPage : Dictionary = countryInfo._get_page(0)
 
 	for i in range(flutterCount):
 		flutterHolder.move_child(flutterPool[i], flutterCount - 1 - i)
 
-		if i == 0 && toMain == true:
-			flutterPool[i]._set_front_content()
-		elif i == lastIndex && toMain == false:
+		if i == mapSheetIndex:
 			flutterPool[i]._set_front_content()
 		else:
 			flutterPool[i]._clear_front_content()

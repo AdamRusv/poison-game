@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dy1gjsxd0sb6m" path="res://0_Art/New_Art(Needs Sorting)/Single Page Atlas.png" id="2_taqqm"]
 [ext_resource type="Script" uid="uid://cs45kow2ujlf1" path="res://2_Scripts/2_Independent/flutter page.gd" id="2_y7j6s"]
 [ext_resource type="Theme" uid="uid://bhvewryp1cmbt" path="res://6_Other/description font.tres" id="4_y7j6s"]
+[ext_resource type="Texture2D" uid="uid://cdg7enp1y0lfu" path="res://0_Art/New_Art(Needs Sorting)/Single Map Page.png" id="5_1qyt7"]
 [ext_resource type="Texture2D" uid="uid://b3kr1bjwl7lil" path="res://0_Art/New_Art(Needs Sorting)/Map.png" id="5_5w2qf"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_1s26u"]
@@ -24,12 +25,14 @@ viewport_path = NodePath("Front Page")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5w2qf"]
 
-[node name="Flutter Page" type="TextureRect" unique_id=816160554 node_paths=PackedStringArray("frontViewport", "frontContent", "backViewport", "backContent", "backTitleLabel", "backInfoLabel")]
+[node name="Flutter Page" type="TextureRect" unique_id=816160554 node_paths=PackedStringArray("mainPage", "mapPage", "frontViewport", "frontContent", "backViewport", "backContent", "backTitleLabel", "backInfoLabel")]
 material = SubResource("ShaderMaterial_y7j6s")
 offset_right = 236.0
 offset_bottom = 166.0
 texture = SubResource("ViewportTexture_lnhvd")
 script = ExtResource("2_y7j6s")
+mainPage = NodePath("Front Page/Page Container/Normal Page Sprite")
+mapPage = NodePath("Front Page/Page Container/Map Page Sprite")
 frontViewport = NodePath("Front Page")
 frontContent = NodePath("Front Page/Page Container/Countries")
 backViewport = NodePath("Back Page")
@@ -142,6 +145,9 @@ stretch_mode = 2
 [node name="Map Page Sprite" type="TextureRect" parent="Front Page/Page Container" unique_id=153091387]
 layout_mode = 2
 size_flags_horizontal = 8
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, 5)
+texture = ExtResource("5_1qyt7")
 stretch_mode = 2
 
 [node name="Countries" type="TextureRect" parent="Front Page/Page Container" unique_id=1975061745]

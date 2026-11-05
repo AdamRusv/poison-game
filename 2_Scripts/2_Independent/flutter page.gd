@@ -5,6 +5,8 @@ class_name FlutterPage
 signal crossed
 signal finished
 
+@export var mainPage : Control
+@export var mapPage : Control
 @export var frontViewport : SubViewport
 @export var frontContent : Control
 
@@ -19,12 +21,16 @@ var bend : float = 0.0
 var shaderMaterial : ShaderMaterial = null
 
 func _set_front_content():
+	mainPage.visible = false
+	mapPage.visible = true
 	frontContent.visible = true
 	frontViewport.render_target_update_mode = SubViewport.UPDATE_ONCE
 
 func _clear_front_content():
+	mainPage.visible = true
+	mapPage.visible = false
 	frontContent.visible = false
-	frontViewport.render_target_update_mode = SubViewport.UPDATE_WHEN_VISIBLE
+	frontViewport.render_target_update_mode = SubViewport.UPDATE_ONCE
 
 func _set_back_text(title : String, info : String):
 	backTitleLabel.text = title
@@ -34,7 +40,7 @@ func _set_back_text(title : String, info : String):
 
 func _clear_back_text():
 	backContent.visible = false
-	backViewport.render_target_update_mode = SubViewport.UPDATE_WHEN_VISIBLE
+	backViewport.render_target_update_mode = SubViewport.UPDATE_ONCE
 
 func _play(toMain : bool, duration : float, bendMagnitude : float):
 	shaderMaterial = material
