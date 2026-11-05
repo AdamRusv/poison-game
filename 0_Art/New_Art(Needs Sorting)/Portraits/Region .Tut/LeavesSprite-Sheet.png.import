@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgs7wji7h15is"
-path="res://.godot/imported/Portrait_Midground.png-0dda2cccb1442fea13ff05ac1a18864f.ctex"
+uid="uid://dcrhdpltdmjog"
+path="res://.godot/imported/LeavesSprite-Sheet.png-8d5b5ed3bd879169302964da8e5d4251.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://0_Art/New_Art(Needs Sorting)/Portrait_Midground.png"
-dest_files=["res://.godot/imported/Portrait_Midground.png-0dda2cccb1442fea13ff05ac1a18864f.ctex"]
+source_file="res://0_Art/New_Art(Needs Sorting)/Portraits/Region .Tut/LeavesSprite-Sheet.png"
+dest_files=["res://.godot/imported/LeavesSprite-Sheet.png-8d5b5ed3bd879169302964da8e5d4251.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cahv8fckkdhw3"
-path="res://.godot/imported/Portrait_Foreground - New Color.png-8b8c062ba8c0f03169aea8b834039083.ctex"
+uid="uid://c27tlkj7s8ar8"
+path="res://.godot/imported/Outside-Sheet.png-6d799122bcdba9b8a8b1649b92a32a8b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://0_Art/New_Art(Needs Sorting)/Portrait_Foreground - New Color.png"
-dest_files=["res://.godot/imported/Portrait_Foreground - New Color.png-8b8c062ba8c0f03169aea8b834039083.ctex"]
+source_file="res://0_Art/New_Art(Needs Sorting)/Portraits/Region .Tut/Outside-Sheet.png"
+dest_files=["res://.godot/imported/Outside-Sheet.png-6d799122bcdba9b8a8b1649b92a32a8b.ctex"]
 
 [params]
 
