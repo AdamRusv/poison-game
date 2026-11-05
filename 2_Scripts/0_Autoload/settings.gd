@@ -4,6 +4,8 @@ var settingsJSON : SettingsJSON = SettingsJSON.new()
 
 signal togglefullscreen
 
+var canToggleFullscreen : bool = true
+
 func _ready() -> void:
 	randomize()
 	settingsJSON._load_settings()
@@ -47,5 +49,6 @@ func _update_fullscreen():
 	settingsJSON._save_settings()
 
 func _toggle_fullscreen():
-	settingsJSON.fullscreen = !settingsJSON.fullscreen
-	_update_fullscreen()
+	if canToggleFullscreen == true:
+		settingsJSON.fullscreen = !settingsJSON.fullscreen
+		_update_fullscreen()

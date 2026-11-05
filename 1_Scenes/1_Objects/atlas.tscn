@@ -24,9 +24,9 @@ viewport_path = NodePath("Map Atlas/Left Page Viewport")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t11ig"]
 resource_local_to_scene = true
 shader = ExtResource("6_bendsh")
-shader_parameter/progress = 1.0
+shader_parameter/progress = 0.0
 shader_parameter/spine_x = 0.50000002375
-shader_parameter/bend = -4.4704000057294024e-08
+shader_parameter/bend = 0.0
 shader_parameter/back_texture = SubResource("ViewportTexture_68y56")
 shader_parameter/perspective = 0.050000002375
 shader_parameter/shadow_strength = 0.0
@@ -544,6 +544,7 @@ layout_mode = 2
 mouse_filter = 2
 
 [node name="Turn Page Zone Left" type="Button" parent="Detection Zone Holder" unique_id=32389062]
+visible = false
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0

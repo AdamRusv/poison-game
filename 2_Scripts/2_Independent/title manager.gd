@@ -28,10 +28,12 @@ func _play():
 	var gameplaySceneInstance : PackedScene = load(gameplayScenePath)
 	var gameplayScene : GameplayManager = gameplaySceneInstance.instantiate()
 	
-	if gamestateJSON.timelineIndex == 0:
-		await TransitionManager._create_transition(TransitionManager.TransitionStates.blank)
-	else:
-		await TransitionManager._create_transition(TransitionManager.TransitionStates.mainMenuTraveling)
+	#NOTE: SWAP FOR REAL VERSION
+	#if gamestateJSON.timelineIndex == 0:
+		#await TransitionManager._create_transition(TransitionManager.TransitionStates.blank)
+	#else:
+		#await TransitionManager._create_transition(TransitionManager.TransitionStates.mainMenuTraveling)
+	await TransitionManager._create_transition(TransitionManager.TransitionStates.blank) #just while testing to save time
 	
 	await get_tree().create_timer(0.6).timeout
 	get_tree().change_scene_to_node(gameplayScene)

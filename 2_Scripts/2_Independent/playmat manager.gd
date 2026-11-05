@@ -13,6 +13,7 @@ var characterSheet : EncounterInfo
 #var testPaperRef : PackedScene = load("res://1_Scenes/1_Objects/paper.tscn") #TODO: Make actual papers, replace variable
 var testPaperRef : PackedScene = load("res://1_Scenes/1_Objects/test_paper.tscn")
 var testAtlasRef : PackedScene = load("res://1_Scenes/1_Objects/atlas.tscn")
+var notebookRef : PackedScene = load("res://1_Scenes/1_Objects/notebook.tscn")
 
 var papers : Array[Paper]
 
@@ -26,9 +27,11 @@ func _add_main_papers():
 	if characterSheet != null:
 		_create_paper(testPaperRef, characterSheet)
 	
-	if gameplayManager.atlasHolder != null:
+	if gameplayManager.atlasHolder != null && gameplayManager.currentRegion.maxCountryCount > 0:
 		_create_atlas(testAtlasRef, gameplayManager.atlasHolder, gameplayManager.currentRegion)
-
+	
+	if gameplayManager.currentRegion.noteSheet == true:
+		_create_notebook()
 
 #-----------------------
 
@@ -50,6 +53,13 @@ func _create_atlas(atlasRef : PackedScene, atlasHolder : AtlasHolder, regionInfo
 
 
 	paperHolder.add_child(atlasInstance)
+
+func _create_notebook():
+	var notebookInstance : Notebook = notebookRef.instantiate()
+
+	notebookInstance.playmat = self
+	
+	paperHolder.add_child(notebookInstance)
 
 #----------------------
 func _get_random_paper_spawn_location() -> Vector2:
