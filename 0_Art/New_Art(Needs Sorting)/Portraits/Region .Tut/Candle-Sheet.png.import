@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dv48e6hk560kb"
-path="res://.godot/imported/nightAnim-Sheet.png-19293aa4de423c7985b40ba426a033c4.ctex"
+uid="uid://f14w2irb7f3h"
+path="res://.godot/imported/Candle-Sheet.png-e4b86aa5936045bfc36e05992e0855c8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://0_Art/New_Art(Needs Sorting)/nightAnim-Sheet.png"
-dest_files=["res://.godot/imported/nightAnim-Sheet.png-19293aa4de423c7985b40ba426a033c4.ctex"]
+source_file="res://0_Art/New_Art(Needs Sorting)/Portraits/Region .Tut/Candle-Sheet.png"
+dest_files=["res://.godot/imported/Candle-Sheet.png-e4b86aa5936045bfc36e05992e0855c8.ctex"]
 
 [params]
 
