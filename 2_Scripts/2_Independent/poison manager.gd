@@ -5,22 +5,19 @@ class_name PoisonManager
 @export_category("References")
 @export var gameplayManager : GameplayManager
 @export var poisonTexture : TextureRect
+@export var leftSword : TextureRect
+@export var rightSword : TextureRect
 @export var poisonButton : Button
 
-#NOTE: OLD POSISTIONS
 const NEUTRAL_POISON : Rect2 = Rect2(0, 0, 209, 64)
 const HOVERED_POISON : Rect2 = Rect2(209, 0, 209, 64)
 const GRABBED_POISON : Rect2 = Rect2(418, 0, 209, 64)
-
-#const NEUTRAL_POISON : Rect2 = Rect2(0, 0, 206, 58)
-#const HOVERED_POISON : Rect2 = Rect2(206, 0, 206, 58)
-#const GRABBED_POISON : Rect2 = Rect2(412, 0, 206, 58)
-
 
 
 func _ready() -> void:
 	gameplayManager.poisonManager = self
 	poisonTexture.texture = poisonTexture.texture.duplicate(true)
+	_oscillate_swords()
 	_set_connections()
 func _set_connections():
 	poisonButton.mouse_entered.connect(_on_enter)
@@ -28,6 +25,22 @@ func _set_connections():
 	poisonButton.button_down.connect(_on_down)
 	poisonButton.button_up.connect(_on_up)
 	gameplayManager.playerDied.connect(_hide)
+func _oscillate_swords():
+	leftSword.offset_transform_enabled = true
+	rightSword.offset_transform_enabled = true
+	
+	var newTween : Tween = create_tween().set_loops()
+	var duration : float = 1.5
+	
+	newTween.tween_property(leftSword, "offset_transform_position:x", -3, duration)\
+	.set_trans(Tween.TRANS_QUAD)#.set_ease(Tween.EASE_OUT)
+	newTween.parallel().tween_property(rightSword, "offset_transform_position:x", 3, duration)\
+	.set_trans(Tween.TRANS_QUAD)#.set_ease(Tween.EASE_OUT)
+	
+	newTween.tween_property(leftSword, "offset_transform_position:x", 0, duration)\
+	.set_trans(Tween.TRANS_QUAD)#.set_ease(Tween.EASE_OUT)
+	newTween.parallel().tween_property(rightSword, "offset_transform_position:x", 0, duration)\
+	.set_trans(Tween.TRANS_QUAD)#.set_ease(Tween.EASE_OUT)
 
 #- - -
 func _on_enter():
@@ -49,6 +62,9 @@ func _on_down():
 	_set_poison_texture_to(GRABBED_POISON)
 	GlobalReferences.cursor._swap_cursor_to(GlobalReferences.cursor.poisonVileCursor)
 	
+	leftSword.visible = false
+	rightSword.visible = false
+
 func _on_up():
 	if gameplayManager.cupIsPoisoned == true:
 		return
@@ -65,6 +81,9 @@ func _on_up():
 	GlobalReferences.cursor._swap_cursor_to(GlobalReferences.cursor.defaultCursor)
 	gameplayManager.holdingPoison = false
 	gameplayManager.poisonReleased.emit()
+	
+	leftSword.visible = true
+	rightSword.visible = true
 
 func _trigger_place_poison():
 	gameplayManager.dialogueManager.queueDialogue = true

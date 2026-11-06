@@ -7,6 +7,7 @@ class_name PlayersManager
 @export var playersParent : Control
 ##0 is opponent, 1 is player
 @export var players : Array[AnimatedSprite2D]
+@export var playerUsername : AnimatedSprite2D
 
 #vector 2 is range of start and end
 const SAFE_CLOSE_CUP : Vector2i = Vector2i(0, 12)
@@ -32,6 +33,7 @@ func _trigger_drink_animations():
 	players[0].frame = opponentRange.x
 	players[1].frame = playerRange.x
 	
+	gameplayManager.dialogueManager.newBranchStartedManually = true
 	gameplayManager.dialogueManager._trigger_dialogue_branch()
 	var currentBranch : DialogueBranch = await gameplayManager.dialogueManager.branchFinished
 	if currentBranch is DialogueBranchIntro:

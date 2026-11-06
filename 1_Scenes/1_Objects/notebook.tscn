@@ -12,19 +12,23 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lnhvd"]
 
-[node name="Notebook" type="MarginContainer" unique_id=1389312574 node_paths=PackedStringArray("textEdit", "parentNode", "detectionArea")]
-custom_minimum_size = Vector2(164, 105)
+[node name="Notebook" type="Control" unique_id=987495316 node_paths=PackedStringArray("textEdit", "parentNode", "detectionArea")]
+custom_minimum_size = Vector2(164, 106)
 custom_maximum_size = Vector2(164, -1)
+layout_mode = 3
+anchors_preset = 0
 offset_right = 164.0
-offset_bottom = 105.0
+offset_bottom = 16.0
 script = ExtResource("1_2xyuo")
 textEdit = NodePath("MarginContainer/VBoxContainer/Info Container/TextEdit")
 parentNode = NodePath(".")
 detectionArea = NodePath("MarginContainer/Drag Button")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1192578399]
-layout_mode = 2
-size_flags_vertical = 4
+layout_mode = 0
+offset_right = 164.0
+offset_bottom = 98.0
+size_flags_vertical = 0
 
 [node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer" unique_id=1961360989]
 layout_mode = 2
@@ -106,7 +110,9 @@ theme_override_colors/font_placeholder_color = Color(0.9019608, 0.80784315, 0.67
 theme_override_styles/normal = SubResource("StyleBoxEmpty_1s26u")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_eb6uv")
 theme_override_styles/read_only = SubResource("StyleBoxEmpty_lnhvd")
-placeholder_text = "Write Notes Here..."
+placeholder_text = "Write Notes Here...
+
+('esc' or right-click to deselect)"
 context_menu_enabled = false
 emoji_menu_enabled = false
 drag_and_drop_selection_enabled = false

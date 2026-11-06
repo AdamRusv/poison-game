@@ -2,6 +2,7 @@ extends Paper
 
 class_name Notebook
 
+#NOTE: parent is a Control so that the size of the Notebook does not effect Playmat size/positioning
 @export_category("References")
 @export var textEdit : TextEdit
 

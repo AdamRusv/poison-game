@@ -24,7 +24,8 @@ func _start_dialogue():
 var currentBranch : DialogueBranch = null
 var newBranchSeparatorRef : PackedScene = preload("res://1_Scenes/1_Objects/new branch separator.tscn")
 var queueDialogue : bool = false
-func _trigger_dialogue_branch():
+var newBranchStartedManually : bool = false
+func _trigger_dialogue_branch(): #TODO: rework to not be recursive
 	queueDialogue = true
 	var encounterDialogue : DialogueTree = gameplayManager.playmatManager.characterSheet.dialogueTree
 	
@@ -39,6 +40,8 @@ func _trigger_dialogue_branch():
 		return
 	
 	if currentBranch != null && currentBranch != newCurrentBranch:
+		if currentAnimatingDialogueBubble.finishedTween != true && currentDialogueBubbleTween != null:
+			await currentDialogueBubbleTween.finished
 		await _create_new_dialogue_branch_separator()
 	currentBranch = newCurrentBranch
 	
@@ -46,8 +49,9 @@ func _trigger_dialogue_branch():
 	await _create_dialogue_bubble(newCurrentBranch, currentBranch.newestDialogueIndex)
 	await get_tree().create_timer(0.6).timeout
 	
-	if queueDialogue == true:
+	if queueDialogue == true || newBranchStartedManually == true:
 		return
+	newBranchStartedManually = false
 	_trigger_dialogue_branch()
 
 func _set_dialogue_view_to_bottom():
@@ -111,11 +115,6 @@ func _create_new_dialogue_branch_separator():
 	await get_tree().create_timer(0.4).timeout
 
 func _animate_new_dialogue_bubble(dialogueBubble : DialogueBubble):
-	if currentAnimatingDialogueBubble != null && currentDialogueBubbleTween != null:
-		if currentAnimatingDialogueBubble.finishedTween == false:
-			currentDialogueBubbleTween.pause()
-			currentAnimatingDialogueBubble._add_cutoff()
-	
 	currentAnimatingDialogueBubble = dialogueBubble
 	
 	var dialogueBubbleExpandTween : Tween = create_tween()
