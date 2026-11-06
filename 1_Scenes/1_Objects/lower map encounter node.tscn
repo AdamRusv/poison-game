@@ -1,10 +1,15 @@
 [gd_scene format=3 uid="uid://b3gd4fts8wm41"]
 
 [ext_resource type="Texture2D" uid="uid://cbfefc02yp3hn" path="res://0_Art/2_PNGs/Transition/encounter.png" id="1_hgget"]
+[ext_resource type="Script" uid="uid://bxt0e6q13274x" path="res://2_Scripts/3_Dependent/transition map encounter node.gd" id="1_wavkl"]
 [ext_resource type="Theme" uid="uid://doykia4nvd4tf" path="res://6_Other/reverse medium font.tres" id="2_wavkl"]
 
-[node name="Lower Map Encounter Node" type="MarginContainer" unique_id=1860752224]
+[node name="Lower Map Encounter Node" type="MarginContainer" unique_id=1860752224 node_paths=PackedStringArray("holder", "iconVisual", "regionEncounterLabel")]
 size_flags_vertical = 8
+script = ExtResource("1_wavkl")
+holder = NodePath(".")
+iconVisual = NodePath("VBoxContainer/encounter 1")
+regionEncounterLabel = NodePath("VBoxContainer/traveling to Holder/traveling to")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1206907331]
 layout_mode = 2

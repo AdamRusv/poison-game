@@ -12,6 +12,7 @@ var hotspot : Vector2 = Vector2.ZERO
 var followWhenHidden : bool = true		# if false, will auto-hide this when OS cursor is shown (e.g., alt-tab)
 
 var wasHiddenByUs : bool = false
+var holdingDown : bool = false
 
 func _ready() -> void:
 	GlobalReferences.cursor = self
@@ -40,9 +41,11 @@ func _process(_delta : float) -> void:
 	
 	if Input.is_action_just_pressed("left click"):
 		imageNode.frame = 1
+		holdingDown = true
 	
 	if Input.is_action_just_released("left click"):
 		imageNode.frame = 0
+		holdingDown = false
 
 func _update_cursor_position() -> void:
 	var mousePos : Vector2 = get_viewport().get_mouse_position()

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c4nn34g1qkv75"
+path="res://.godot/imported/Atropa_Tutorial Harp.wav-d98929e0b8dcb0a781cdd17fc1d32bdc.sample"
+
+[deps]
+
+source_file="res://0_Art/1_Audio/0_Music/1_Tutorial/Atropa_Tutorial Harp.wav"
+dest_files=["res://.godot/imported/Atropa_Tutorial Harp.wav-d98929e0b8dcb0a781cdd17fc1d32bdc.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

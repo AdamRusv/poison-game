@@ -1,0 +1,168 @@
+[gd_scene format=3 uid="uid://yx27ebtr12xc"]
+
+[ext_resource type="Shader" uid="uid://bc1nbfmlr01a3" path="res://4_Shaders/0_Scripts/atlas page turn.gdshader" id="1_axgot"]
+[ext_resource type="Texture2D" uid="uid://dy1gjsxd0sb6m" path="res://0_Art/New_Art(Needs Sorting)/Single Page Atlas.png" id="2_taqqm"]
+[ext_resource type="Script" uid="uid://cs45kow2ujlf1" path="res://2_Scripts/2_Independent/flutter page.gd" id="2_y7j6s"]
+[ext_resource type="Theme" uid="uid://bhvewryp1cmbt" path="res://6_Other/description font.tres" id="4_y7j6s"]
+[ext_resource type="Texture2D" uid="uid://cdg7enp1y0lfu" path="res://0_Art/New_Art(Needs Sorting)/Single Map Page.png" id="5_1qyt7"]
+[ext_resource type="Texture2D" uid="uid://b3kr1bjwl7lil" path="res://0_Art/New_Art(Needs Sorting)/Map.png" id="5_5w2qf"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_1s26u"]
+viewport_path = NodePath("Back Page")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y7j6s"]
+resource_local_to_scene = true
+shader = ExtResource("1_axgot")
+shader_parameter/progress = 0.0
+shader_parameter/spine_x = 0.5
+shader_parameter/bend = -0.8000000268224001
+shader_parameter/back_texture = SubResource("ViewportTexture_1s26u")
+shader_parameter/perspective = 0.050000002375
+shader_parameter/shadow_strength = 0.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_lnhvd"]
+viewport_path = NodePath("Front Page")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5w2qf"]
+
+[node name="Flutter Page" type="TextureRect" unique_id=816160554 node_paths=PackedStringArray("mainPage", "mapPage", "frontViewport", "frontContent", "backViewport", "backContent", "backTitleLabel", "backInfoLabel")]
+material = SubResource("ShaderMaterial_y7j6s")
+offset_right = 236.0
+offset_bottom = 166.0
+texture = SubResource("ViewportTexture_lnhvd")
+script = ExtResource("2_y7j6s")
+mainPage = NodePath("Front Page/Page Container/Normal Page Sprite")
+mapPage = NodePath("Front Page/Page Container/Map Page Sprite")
+frontViewport = NodePath("Front Page")
+frontContent = NodePath("Front Page/Page Container/Countries")
+backViewport = NodePath("Back Page")
+backContent = NodePath("Back Page/Region Info Container")
+backTitleLabel = NodePath("Back Page/Region Info Container/Region Info Holder/Title Container/Title Label")
+backInfoLabel = NodePath("Back Page/Region Info Container/Region Info Holder/Info Container/Info Label")
+
+[node name="Back Page" type="SubViewport" parent="." unique_id=1963584876]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+gui_snap_controls_to_pixels = false
+size = Vector2i(236, 166)
+
+[node name="Page Container" type="MarginContainer" parent="Back Page" unique_id=1318237649]
+offset_right = 237.0
+offset_bottom = 163.0
+theme_override_constants/margin_right = 1
+
+[node name="Page Sprite" type="TextureRect" parent="Back Page/Page Container" unique_id=1915591709]
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("2_taqqm")
+stretch_mode = 2
+
+[node name="Region Info Container" type="MarginContainer" parent="Back Page" unique_id=1894157364]
+offset_right = 640.0
+offset_bottom = 360.0
+scale = Vector2(-1, 1)
+theme_override_constants/margin_left = -233
+
+[node name="Region Info Holder" type="VBoxContainer" parent="Back Page/Region Info Container" unique_id=1818478206]
+custom_maximum_size = Vector2(115, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Top Separator" type="HSeparator" parent="Back Page/Region Info Container/Region Info Holder" unique_id=773893959]
+layout_mode = 2
+theme_override_constants/separation = 15
+theme_override_styles/separator = SubResource("StyleBoxEmpty_5w2qf")
+
+[node name="Title Container" type="MarginContainer" parent="Back Page/Region Info Container/Region Info Holder" unique_id=1305059586]
+layout_mode = 2
+theme_override_constants/margin_left = 11
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 0
+
+[node name="Title Label" type="RichTextLabel" parent="Back Page/Region Info Container/Region Info Holder/Title Container" unique_id=1960617350]
+layout_mode = 2
+theme = ExtResource("4_y7j6s")
+bbcode_enabled = true
+text = "?????"
+fit_content = true
+scroll_active = false
+
+[node name="Title Seperation Container" type="MarginContainer" parent="Back Page/Region Info Container/Region Info Holder" unique_id=778606885]
+layout_mode = 2
+theme_override_constants/margin_left = 11
+theme_override_constants/margin_right = 10
+
+[node name="Title Seperation Label" type="RichTextLabel" parent="Back Page/Region Info Container/Region Info Holder/Title Seperation Container" unique_id=1018712494]
+layout_mode = 2
+theme = ExtResource("4_y7j6s")
+text = "-----------------------"
+fit_content = true
+scroll_active = false
+
+[node name="Mid Separator" type="HSeparator" parent="Back Page/Region Info Container/Region Info Holder" unique_id=1728310930]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxEmpty_5w2qf")
+
+[node name="Info Container" type="MarginContainer" parent="Back Page/Region Info Container/Region Info Holder" unique_id=589127386]
+layout_mode = 2
+theme_override_constants/margin_left = 11
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 20
+
+[node name="Info Label" type="RichTextLabel" parent="Back Page/Region Info Container/Region Info Holder/Info Container" unique_id=2036701758]
+layout_mode = 2
+theme = ExtResource("4_y7j6s")
+bbcode_enabled = true
+text = "??????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????"
+fit_content = true
+scroll_active = false
+
+[node name="Front Page" type="SubViewport" parent="." unique_id=1096514876]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+gui_snap_controls_to_pixels = false
+size = Vector2i(236, 166)
+
+[node name="Page Container" type="MarginContainer" parent="Front Page" unique_id=1664293312]
+offset_right = 236.0
+offset_bottom = 166.0
+theme_override_constants/margin_right = 1
+
+[node name="Normal Page Sprite" type="TextureRect" parent="Front Page/Page Container" unique_id=1199929323]
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("2_taqqm")
+stretch_mode = 2
+
+[node name="Map Page Sprite" type="TextureRect" parent="Front Page/Page Container" unique_id=153091387]
+layout_mode = 2
+size_flags_horizontal = 8
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, 5)
+texture = ExtResource("5_1qyt7")
+stretch_mode = 2
+
+[node name="Countries" type="TextureRect" parent="Front Page/Page Container" unique_id=1975061745]
+layout_mode = 2
+texture = ExtResource("5_5w2qf")
+flip_h = true
+
+[node name="Title Label" type="RichTextLabel" parent="Front Page/Page Container/Countries" unique_id=2001301961]
+layout_mode = 0
+offset_right = 236.0
+offset_bottom = 166.0
+offset_transform_enabled = true
+offset_transform_position = Vector2(180, 51)
+theme = ExtResource("4_y7j6s")
+bbcode_enabled = true
+text = "???"
+fit_content = true
+scroll_active = false

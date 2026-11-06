@@ -1,0 +1,123 @@
+[gd_scene format=3 uid="uid://k287ighe2n1t"]
+
+[ext_resource type="Script" uid="uid://dviyj11hl4fbc" path="res://2_Scripts/2_Independent/notebook.gd" id="1_2xyuo"]
+[ext_resource type="Texture2D" uid="uid://c515g2bcyx028" path="res://0_Art/New_Art(Needs Sorting)/PaperNineSlice.png" id="3_8umhh"]
+[ext_resource type="Theme" uid="uid://bhvewryp1cmbt" path="res://6_Other/description font.tres" id="4_k0tgh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2y7yb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1s26u"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eb6uv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lnhvd"]
+
+[node name="Notebook" type="MarginContainer" unique_id=1389312574 node_paths=PackedStringArray("textEdit", "parentNode", "detectionArea")]
+custom_minimum_size = Vector2(164, 105)
+custom_maximum_size = Vector2(164, -1)
+offset_right = 164.0
+offset_bottom = 105.0
+script = ExtResource("1_2xyuo")
+textEdit = NodePath("MarginContainer/VBoxContainer/Info Container/TextEdit")
+parentNode = NodePath(".")
+detectionArea = NodePath("MarginContainer/Drag Button")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1192578399]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer" unique_id=1961360989]
+layout_mode = 2
+texture = ExtResource("3_8umhh")
+region_rect = Rect2(0, 0, 174, 135)
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 25
+patch_margin_bottom = 25
+axis_stretch_vertical = 1
+
+[node name="Drag Button" type="Button" parent="MarginContainer" unique_id=1229789884]
+layout_mode = 2
+focus_mode = 0
+flat = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=2074008777]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="Top Separator" type="HSeparator" parent="MarginContainer/VBoxContainer" unique_id=503676989]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 17
+theme_override_styles/separator = SubResource("StyleBoxEmpty_2y7yb")
+
+[node name="Title Container" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=1006494222]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 10
+
+[node name="Title Label" type="RichTextLabel" parent="MarginContainer/VBoxContainer/Title Container" unique_id=1411813506]
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("4_k0tgh")
+bbcode_enabled = true
+text = "Notebook:"
+fit_content = true
+scroll_active = false
+
+[node name="Title Seperation Container" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=246599068]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="Title Seperation Label" type="RichTextLabel" parent="MarginContainer/VBoxContainer/Title Seperation Container" unique_id=2027789018]
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("4_k0tgh")
+text = "------------------------------------"
+fit_content = true
+scroll_active = false
+
+[node name="Mid Separator" type="HSeparator" parent="MarginContainer/VBoxContainer" unique_id=2059847499]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_2y7yb")
+
+[node name="Info Container" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=643291806]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 13
+theme_override_constants/margin_right = 13
+
+[node name="TextEdit" type="TextEdit" parent="MarginContainer/VBoxContainer/Info Container" unique_id=1627343936]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme = ExtResource("4_k0tgh")
+theme_override_colors/caret_color = Color(0.9019608, 0.80784315, 0.6745098, 1)
+theme_override_colors/font_selected_color = Color(0.16078432, 0.14117648, 0.09411765, 1)
+theme_override_colors/selection_color = Color(0.9019608, 0.80784315, 0.6745098, 1)
+theme_override_colors/font_color = Color(0.9019608, 0.80784315, 0.6745098, 1)
+theme_override_colors/font_placeholder_color = Color(0.9019608, 0.80784315, 0.6745098, 0.3529412)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1s26u")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_eb6uv")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_lnhvd")
+placeholder_text = "Write Notes Here..."
+context_menu_enabled = false
+emoji_menu_enabled = false
+drag_and_drop_selection_enabled = false
+wrap_mode = 1
+virtual_keyboard_enabled = false
+scroll_fit_content_height = true
+caret_blink = true
+caret_multiple = false
+
+[node name="Bottom Separator" type="HSeparator" parent="MarginContainer/VBoxContainer" unique_id=1761670264]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 14
+theme_override_styles/separator = SubResource("StyleBoxEmpty_2y7yb")

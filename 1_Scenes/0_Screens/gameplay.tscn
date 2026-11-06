@@ -6,15 +6,21 @@
 [ext_resource type="Script" uid="uid://4xhbwaoygr14" path="res://2_Scripts/2_Independent/playmat manager.gd" id="2_lv7np"]
 [ext_resource type="Texture2D" uid="uid://b0kklffb4n85e" path="res://0_Art/2_PNGs/pattern playmat background.png" id="3_1cjw6"]
 [ext_resource type="Texture2D" uid="uid://cvg0nvvipe48r" path="res://0_Art/2_PNGs/placeholder mockup.png" id="3_82xv0"]
+[ext_resource type="Resource" uid="uid://cfcnquyvlosks" path="res://5_Resources/atlas holder.tres" id="3_j1jqe"]
 [ext_resource type="Texture2D" uid="uid://0kb1u8s0qjx5" path="res://0_Art/2_PNGs/trim.png" id="4_0hcow"]
 [ext_resource type="Texture2D" uid="uid://dy254ypb8l7vp" path="res://0_Art/2_PNGs/poison button-Sheet.png" id="4_gngdi"]
 [ext_resource type="Theme" uid="uid://3jsfntrv31jg" path="res://6_Other/large font.tres" id="6_0hcow"]
 [ext_resource type="Script" uid="uid://dsk6k5x0e30hn" path="res://2_Scripts/2_Independent/poison manager.gd" id="6_pq3d1"]
 [ext_resource type="Script" uid="uid://v10r8rve43tc" path="res://2_Scripts/2_Independent/cups manager.gd" id="7_3udmd"]
+[ext_resource type="Texture2D" uid="uid://dy0lvnxw1odi5" path="res://0_Art/New_Art(Needs Sorting)/Portraits/Region .Tut/indoorTavernBackground.png" id="8_68y56"]
+[ext_resource type="Texture2D" uid="uid://da8eyda0lmr3t" path="res://0_Art/New_Art(Needs Sorting)/Portraits/Region .Tut/Frame.png" id="9_vrhoy"]
 [ext_resource type="Texture2D" uid="uid://flm20d8isxx2" path="res://0_Art/2_PNGs/travel button-Sheet.png" id="10_fn5ot"]
+[ext_resource type="Texture2D" uid="uid://c27tlkj7s8ar8" path="res://0_Art/New_Art(Needs Sorting)/Portraits/Region .Tut/Outside-Sheet.png" id="10_kbhv0"]
 [ext_resource type="Script" uid="uid://biwcv78fcimw7" path="res://2_Scripts/2_Independent/travel manager.gd" id="11_1cjw6"]
+[ext_resource type="Texture2D" uid="uid://brnephgq0sbs0" path="res://0_Art/New_Art(Needs Sorting)/Portraits/Region .Tut/Grass-Sheet.png" id="11_6wd5l"]
 [ext_resource type="Script" uid="uid://dwp2cvaysi6vj" path="res://2_Scripts/2_Independent/dialogue manager.gd" id="11_ahkic"]
 [ext_resource type="Texture2D" uid="uid://cc7m60xat02gv" path="res://0_Art/2_PNGs/cups indicator-Sheet.png" id="11_rkkk6"]
+[ext_resource type="Texture2D" uid="uid://f14w2irb7f3h" path="res://0_Art/New_Art(Needs Sorting)/Portraits/Region .Tut/Candle-Sheet.png" id="12_kqvvj"]
 [ext_resource type="Texture2D" uid="uid://bmf0h3auqyyc8" path="res://0_Art/2_PNGs/players cup event-Sheet.png" id="12_rkkk6"]
 [ext_resource type="Script" uid="uid://coy0g8tjc8t7i" path="res://2_Scripts/2_Independent/players manager.gd" id="12_ywih6"]
 [ext_resource type="Texture2D" uid="uid://brkvp2w453xgk" path="res://0_Art/2_PNGs/payer username-Sheet.png" id="14_c4l6l"]
@@ -22,10 +28,23 @@
 [ext_resource type="Texture2D" uid="uid://cwydpac31fwmh" path="res://0_Art/2_PNGs/placeholder paper 9slice.png" id="20_6eb78"]
 [ext_resource type="Theme" uid="uid://bhvewryp1cmbt" path="res://6_Other/description font.tres" id="21_neqfg"]
 [ext_resource type="Theme" uid="uid://d3w6t6oupqff1" path="res://6_Other/reverse description font.tres" id="22_neqfg"]
+[ext_resource type="Texture2D" uid="uid://dxm7dxp3y8bfu" path="res://0_Art/New_Art(Needs Sorting)/floorTavernBackground.png" id="24_vrhoy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fb3j3"]
 shader = ExtResource("2_1cjw6")
 shader_parameter/speed = Vector2(-0.4, 0.4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2y7yb"]
+atlas = ExtResource("10_kbhv0")
+region = Rect2(0, 0, 213, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6cxtl"]
+atlas = ExtResource("11_6wd5l")
+region = Rect2(0, 0, 213, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3u72"]
+atlas = ExtResource("12_kqvvj")
+region = Rect2(0, 0, 213, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_504ay"]
 atlas = ExtResource("4_gngdi")
@@ -910,6 +929,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0sltt")
 gameTimeline = ExtResource("2_g7yw3")
+atlasHolder = ExtResource("3_j1jqe")
 timelineCounterLabel = NodePath("Layout/HBoxContainer/MarginContainer/VBoxContainer/Accessibility/solid background/Region Holder/Region Label")
 
 [node name="background" type="ColorRect" parent="." unique_id=1846741751]
@@ -947,33 +967,24 @@ theme_override_constants/separation = -6
 [node name="MarginContainer" type="MarginContainer" parent="Layout/HBoxContainer" unique_id=838328195]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/margin_right = -2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Layout/HBoxContainer/MarginContainer" unique_id=1137307275]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = -6
+theme_override_constants/separation = -9
 
 [node name="Accessibility" type="MarginContainer" parent="Layout/HBoxContainer/MarginContainer/VBoxContainer" unique_id=1348033393]
-custom_minimum_size = Vector2(0, 40)
+custom_minimum_size = Vector2(0, 42)
 layout_mode = 2
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Layout/HBoxContainer/MarginContainer/VBoxContainer/Accessibility" unique_id=1655563843]
-layout_mode = 2
-size_flags_vertical = 3
-texture = ExtResource("4_0hcow")
-region_rect = Rect2(0, 0, 12, 12)
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
+theme_override_constants/margin_right = -2
+theme_override_constants/margin_bottom = 5
 
 [node name="solid background" type="MarginContainer" parent="Layout/HBoxContainer/MarginContainer/VBoxContainer/Accessibility" unique_id=589792879]
 layout_mode = 2
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 4
-theme_override_constants/margin_bottom = 4
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
 
 [node name="ColorRect" type="ColorRect" parent="Layout/HBoxContainer/MarginContainer/VBoxContainer/Accessibility/solid background" unique_id=1698973065]
 layout_mode = 2
@@ -983,30 +994,77 @@ color = Color(0.16078432, 0.14117648, 0.09411765, 1)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
-theme_override_constants/margin_right = 9
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 3
 
 [node name="Region Label" type="RichTextLabel" parent="Layout/HBoxContainer/MarginContainer/VBoxContainer/Accessibility/solid background/Region Holder" unique_id=2028892843]
+custom_minimum_size = Vector2(47.645, 0)
 layout_mode = 2
 theme = ExtResource("6_0hcow")
 text = "0 - 0"
 fit_content = true
 autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Layout/HBoxContainer/MarginContainer/VBoxContainer/Accessibility" unique_id=1655563843]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("4_0hcow")
+region_rect = Rect2(0, 0, 14, 14)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
 
 [node name="Character" type="MarginContainer" parent="Layout/HBoxContainer/MarginContainer/VBoxContainer" unique_id=1308443707]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/margin_right = -2
+
+[node name="New Background" type="MarginContainer" parent="Layout/HBoxContainer/MarginContainer/VBoxContainer/Character" unique_id=410841854]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+
+[node name="BG" type="TextureRect" parent="Layout/HBoxContainer/MarginContainer/VBoxContainer/Character/New Background" unique_id=1887763917]
+layout_mode = 2
+offset_transform_position = Vector2(2, 2)
+texture = ExtResource("8_68y56")
+stretch_mode = 2
+
+[node name="Window Frame" type="TextureRect" parent="Layout/HBoxContainer/MarginContainer/VBoxContainer/Character/New Background" unique_id=1064177767]
+layout_mode = 2
+offset_transform_position = Vector2(2, 2)
+texture = ExtResource("9_vrhoy")
+stretch_mode = 2
+
+[node name="Outside" type="TextureRect" parent="Layout/HBoxContainer/MarginContainer/VBoxContainer/Character/New Background" unique_id=222066294]
+layout_mode = 2
+texture = SubResource("AtlasTexture_2y7yb")
+stretch_mode = 2
+
+[node name="Grass" type="TextureRect" parent="Layout/HBoxContainer/MarginContainer/VBoxContainer/Character/New Background" unique_id=1010988850]
+layout_mode = 2
+texture = SubResource("AtlasTexture_6cxtl")
+stretch_mode = 2
+
+[node name="Candle" type="TextureRect" parent="Layout/HBoxContainer/MarginContainer/VBoxContainer/Character/New Background" unique_id=2114489000]
+layout_mode = 2
+texture = SubResource("AtlasTexture_m3u72")
+stretch_mode = 2
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Layout/HBoxContainer/MarginContainer/VBoxContainer/Character" unique_id=556527173]
 layout_mode = 2
 size_flags_vertical = 3
 texture = ExtResource("4_0hcow")
-region_rect = Rect2(0, 0, 12, 12)
+region_rect = Rect2(0, 0, 14, 14)
 patch_margin_left = 5
 patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
 
 [node name="solid background" type="MarginContainer" parent="Layout/HBoxContainer/MarginContainer/VBoxContainer/Character" unique_id=1317375376]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
@@ -1020,34 +1078,36 @@ color = Color(0.16078432, 0.14117648, 0.09411765, 1)
 [node name="Cups" type="MarginContainer" parent="Layout/HBoxContainer/MarginContainer/VBoxContainer" unique_id=522748834]
 custom_minimum_size = Vector2(0, 72)
 layout_mode = 2
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = -2
+
+[node name="solid background" type="MarginContainer" parent="Layout/HBoxContainer/MarginContainer/VBoxContainer/Cups" unique_id=387805020]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="ColorRect" type="ColorRect" parent="Layout/HBoxContainer/MarginContainer/VBoxContainer/Cups/solid background" unique_id=48390841]
+layout_mode = 2
+color = Color(0.16078432, 0.14117648, 0.09411765, 1)
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Layout/HBoxContainer/MarginContainer/VBoxContainer/Cups" unique_id=1201418195]
 layout_mode = 2
 size_flags_vertical = 3
 texture = ExtResource("4_0hcow")
-region_rect = Rect2(0, 0, 12, 12)
+region_rect = Rect2(0, 0, 14, 14)
 patch_margin_left = 5
 patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
-
-[node name="solid background" type="MarginContainer" parent="Layout/HBoxContainer/MarginContainer/VBoxContainer/Cups" unique_id=387805020]
-layout_mode = 2
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 4
-theme_override_constants/margin_bottom = 4
-
-[node name="ColorRect" type="ColorRect" parent="Layout/HBoxContainer/MarginContainer/VBoxContainer/Cups/solid background" unique_id=48390841]
-layout_mode = 2
-color = Color(0.16078432, 0.14117648, 0.09411765, 1)
 
 [node name="Playmat" type="MarginContainer" parent="Layout/HBoxContainer" unique_id=1398525186 node_paths=PackedStringArray("gameplayManager", "paperHolder", "spawnLocations")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
-theme_override_constants/margin_left = 2
+theme_override_constants/margin_left = 4
 script = ExtResource("2_lv7np")
 gameplayManager = NodePath("../../..")
 paperHolder = NodePath("Parent/Paper Holder")
@@ -1057,11 +1117,11 @@ spawnLocations = NodePath("Parent/Paper Holder/Spawn Locations")
 layout_mode = 2
 size_flags_vertical = 3
 texture = ExtResource("4_0hcow")
-region_rect = Rect2(0, 0, 12, 12)
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
+region_rect = Rect2(0, 0, 14, 14)
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
 
 [node name="Parent" type="MarginContainer" parent="Layout/HBoxContainer/Playmat" unique_id=895104866]
 layout_mode = 2
@@ -1095,9 +1155,9 @@ texture = ExtResource("3_82xv0")
 [node name="Poison Texture" type="TextureRect" parent="." unique_id=1840736645 node_paths=PackedStringArray("gameplayManager", "poisonTexture", "poisonButton")]
 layout_mode = 0
 offset_left = 4.0
-offset_top = 292.0
+offset_top = 294.0
 offset_right = 213.0
-offset_bottom = 356.0
+offset_bottom = 358.0
 texture = SubResource("AtlasTexture_504ay")
 stretch_mode = 3
 script = ExtResource("6_pq3d1")
@@ -1117,9 +1177,9 @@ flat = true
 [node name="Travel Texture" type="TextureRect" parent="." unique_id=2140607965 node_paths=PackedStringArray("gameplayManager", "travelTexture", "nextMemberLabel", "restartLabel", "buttonSelf", "visual")]
 layout_mode = 0
 offset_left = 4.0
-offset_top = 292.0
+offset_top = 294.0
 offset_right = 213.0
-offset_bottom = 356.0
+offset_bottom = 358.0
 texture = SubResource("AtlasTexture_l1x0d")
 stretch_mode = 3
 script = ExtResource("11_1cjw6")
@@ -1184,12 +1244,12 @@ visualIndicators = [NodePath("opponent cup detection zone/opponent indicator"), 
 [node name="opponent cup detection zone" type="Control" parent="Cups" unique_id=1727036711]
 anchors_preset = 0
 offset_left = 83.0
-offset_top = 201.0
+offset_top = 211.0
 offset_right = 102.0
-offset_bottom = 227.0
+offset_bottom = 253.0
 
 [node name="opponent indicator" type="AnimatedSprite2D" parent="Cups/opponent cup detection zone" unique_id=906605216]
-self_modulate = Color(0.7411765, 0.64705884, 0.5137255, 1)
+self_modulate = Color(0.4, 0.5176471, 0.37254903, 1)
 position = Vector2(9.5, 26)
 sprite_frames = SubResource("SpriteFrames_504ay")
 frame = 1
@@ -1199,12 +1259,12 @@ offset = Vector2(0, -1)
 [node name="player cup detection zone" type="Control" parent="Cups" unique_id=376065848]
 anchors_preset = 0
 offset_left = 115.0
-offset_top = 201.0
+offset_top = 211.0
 offset_right = 134.0
-offset_bottom = 227.0
+offset_bottom = 253.0
 
 [node name="players indicator" type="AnimatedSprite2D" parent="Cups/player cup detection zone" unique_id=347739370]
-self_modulate = Color(0.7411765, 0.64705884, 0.5137255, 1)
+self_modulate = Color(0.41568628, 0.47058824, 0.76862746, 1)
 position = Vector2(9.5, 26)
 sprite_frames = SubResource("SpriteFrames_504ay")
 frame = 1
@@ -1222,17 +1282,33 @@ playersParent = NodePath(".")
 players = [NodePath("opponent"), NodePath("player")]
 
 [node name="opponent" type="AnimatedSprite2D" parent="Players" unique_id=1695828453]
-position = Vector2(81.5, 226.5)
+position = Vector2(81.5, 236.5)
 sprite_frames = SubResource("SpriteFrames_rkkk6")
 
 [node name="player" type="AnimatedSprite2D" parent="Players" unique_id=68263303]
-position = Vector2(135.5, 226.5)
+position = Vector2(135.5, 236.5)
 sprite_frames = SubResource("SpriteFrames_gnbqg")
 flip_h = true
 
 [node name="username player" type="AnimatedSprite2D" parent="Players" unique_id=1574559409]
-position = Vector2(169, 198)
+position = Vector2(169, 208)
 sprite_frames = SubResource("SpriteFrames_ywih6")
+
+[node name="background" type="MarginContainer" parent="Players" unique_id=1431765445]
+layout_mode = 0
+offset_top = 34.0
+offset_right = 217.0
+offset_bottom = 297.0
+mouse_filter = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+
+[node name="floor" type="TextureRect" parent="Players/background" unique_id=1790073770]
+layout_mode = 2
+offset_transform_position = Vector2(2, 2)
+mouse_filter = 2
+texture = ExtResource("24_vrhoy")
+stretch_mode = 2
 
 [node name="Dialogue" type="Control" parent="." unique_id=1304429550 node_paths=PackedStringArray("gameplayManager", "scrollContainer", "content")]
 anchors_preset = 0
@@ -1250,6 +1326,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -5.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -1275,13 +1352,6 @@ hintLabels = [NodePath("Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/1
 hintButtons = [NodePath("Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/1/hovered hint 1/hint button 1"), NodePath("Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/2/hovered hint 2/hint button 2"), NodePath("Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/3/hovered hint 3/hint button 3")]
 hoveredLabelBackgrounds = [NodePath("Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/1/hovered hint 1/background 1"), NodePath("Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/2/hovered hint 2/background 2"), NodePath("Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/3/hovered hint 3/background 3")]
 hoveredHintLabels = [NodePath("Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/1/hovered hint 1/MarginContainer2/hovered hint 1"), NodePath("Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/2/hovered hint 2/MarginContainer2/hovered hint 2"), NodePath("Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/3/hovered hint 3/MarginContainer2/hovered hint 3")]
-
-[node name="Opened Detection Area" type="Control" parent="Hint System" unique_id=1206578270]
-anchors_preset = 0
-offset_left = 151.0
-offset_top = 166.0
-offset_right = 249.0
-offset_bottom = 259.0
 
 [node name="Hint Box Holder" type="MarginContainer" parent="Hint System" unique_id=1858164333]
 layout_mode = 0
