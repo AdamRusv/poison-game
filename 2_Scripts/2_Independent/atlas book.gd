@@ -316,10 +316,9 @@ func _play_flutter(toMain : bool):
 	for i in range(flutterCount):
 		flutterHolder.move_child(flutterPool[i], flutterCount - 1 - i)
 
-		if i == mapSheetIndex:
-			flutterPool[i]._set_front_content()
-		else:
-			flutterPool[i]._clear_front_content()
+		var isMapPage : bool = i <= middleIndex if toMain else i >= middleIndex
+		flutterPool[i]._set_front_page(isMapPage)
+		flutterPool[i]._set_front_content(i == mapSheetIndex)
 
 		if i == funSheetIndex:
 			flutterPool[i]._set_back_text(funPage.title, bbcodeManager._highlight(funPage.info))
