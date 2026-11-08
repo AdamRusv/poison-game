@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dv48e6hk560kb"
-path="res://.godot/imported/nightAnim-Sheet.png-19293aa4de423c7985b40ba426a033c4.ctex"
+uid="uid://dy0lvnxw1odi5"
+path="res://.godot/imported/indoorTavernBackground.png-55b6e47ee9c8bf89412ea2194a0d352c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://0_Art/New_Art(Needs Sorting)/nightAnim-Sheet.png"
-dest_files=["res://.godot/imported/nightAnim-Sheet.png-19293aa4de423c7985b40ba426a033c4.ctex"]
+source_file="res://0_Art/New_Art(Needs Sorting)/Portraits/Region .Tut/indoorTavernBackground.png"
+dest_files=["res://.godot/imported/indoorTavernBackground.png-55b6e47ee9c8bf89412ea2194a0d352c.ctex"]
 
 [params]
 

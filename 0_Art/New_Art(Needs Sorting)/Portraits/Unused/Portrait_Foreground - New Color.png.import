@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddkp3n1j8tmpy"
-path="res://.godot/imported/candleAnim-Sheet.png-85299b5f126465c5238ac524d76ea1b6.ctex"
+uid="uid://cahv8fckkdhw3"
+path="res://.godot/imported/Portrait_Foreground - New Color.png-cc7f050860f4f735b7c6cbbd199f0bde.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://0_Art/New_Art(Needs Sorting)/candleAnim-Sheet.png"
-dest_files=["res://.godot/imported/candleAnim-Sheet.png-85299b5f126465c5238ac524d76ea1b6.ctex"]
+source_file="res://0_Art/New_Art(Needs Sorting)/Portraits/Unused/Portrait_Foreground - New Color.png"
+dest_files=["res://.godot/imported/Portrait_Foreground - New Color.png-cc7f050860f4f735b7c6cbbd199f0bde.ctex"]
 
 [params]
 

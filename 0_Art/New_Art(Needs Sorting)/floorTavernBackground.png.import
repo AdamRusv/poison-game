@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cahv8fckkdhw3"
-path="res://.godot/imported/Portrait_Foreground - New Color.png-8b8c062ba8c0f03169aea8b834039083.ctex"
+uid="uid://dxm7dxp3y8bfu"
+path="res://.godot/imported/floorTavernBackground.png-4941dc2a27ec5d3f136ea52402f89c50.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://0_Art/New_Art(Needs Sorting)/Portrait_Foreground - New Color.png"
-dest_files=["res://.godot/imported/Portrait_Foreground - New Color.png-8b8c062ba8c0f03169aea8b834039083.ctex"]
+source_file="res://0_Art/New_Art(Needs Sorting)/floorTavernBackground.png"
+dest_files=["res://.godot/imported/floorTavernBackground.png-4941dc2a27ec5d3f136ea52402f89c50.ctex"]
 
 [params]
 

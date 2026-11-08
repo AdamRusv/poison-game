@@ -49,7 +49,6 @@ totalEncounters = 1
 traitSheet = SubResource("Resource_te4kt")
 characterSheets = Array[ExtResource("7_rmm27")]([ExtResource("11_g5j7o")])
 maxCountryCount = 2
-noteSheet = false
 music = ExtResource("9_05g13")
 metadata/_custom_type_script = "uid://851asxmj8i78"
 
@@ -59,7 +58,6 @@ totalEncounters = 1
 traitSheet = SubResource("Resource_te4kt")
 characterSheets = Array[ExtResource("7_rmm27")]([ExtResource("12_1ul4d")])
 maxCountryCount = 2
-noteSheet = false
 music = ExtResource("9_05g13")
 metadata/_custom_type_script = "uid://851asxmj8i78"
 
@@ -69,7 +67,6 @@ totalEncounters = 1
 traitSheet = SubResource("Resource_te4kt")
 characterSheets = Array[ExtResource("7_rmm27")]([ExtResource("13_tmc60")])
 maxCountryCount = 2
-noteSheet = false
 music = ExtResource("9_05g13")
 metadata/_custom_type_script = "uid://851asxmj8i78"
 

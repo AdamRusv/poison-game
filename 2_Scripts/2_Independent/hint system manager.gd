@@ -45,7 +45,7 @@ func _process(delta: float) -> void:
 
 #- - -
 func _closed_detection_enter():
-	if gameplayManager.cupIsPoisoned == true:
+	if gameplayManager.cupIsPoisoned == true || GlobalReferences.cursor.holdingDown == true:
 		return
 	
 	openDetectionZone.visible = true

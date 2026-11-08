@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dy0lvnxw1odi5"
-path="res://.godot/imported/indoorTavernBackground.png-bb4eecd65edcb859dfff96cd5c87009d.ctex"
+uid="uid://djf7k24188yma"
+path="res://.godot/imported/Portrait_Foreground.png-aa40785ed05eadb566acf82f6d71f51d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://0_Art/New_Art(Needs Sorting)/indoorTavernBackground.png"
-dest_files=["res://.godot/imported/indoorTavernBackground.png-bb4eecd65edcb859dfff96cd5c87009d.ctex"]
+source_file="res://0_Art/New_Art(Needs Sorting)/Portraits/Unused/Portrait_Foreground.png"
+dest_files=["res://.godot/imported/Portrait_Foreground.png-aa40785ed05eadb566acf82f6d71f51d.ctex"]
 
 [params]
 
