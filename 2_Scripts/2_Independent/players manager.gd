@@ -33,11 +33,7 @@ func _trigger_drink_animations():
 	players[0].frame = opponentRange.x
 	players[1].frame = playerRange.x
 	
-	gameplayManager.dialogueManager.newBranchStartedManually = true
-	gameplayManager.dialogueManager._trigger_dialogue_branch()
-	var currentBranch : DialogueBranch = await gameplayManager.dialogueManager.branchFinished
-	if currentBranch is DialogueBranchIntro:
-		return
+	await gameplayManager.dialogueManager._switch_dialogue_branch()
 	players[0].play()
 	
 	isGrabbingDrink = true

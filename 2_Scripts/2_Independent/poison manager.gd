@@ -86,7 +86,6 @@ func _on_up():
 	rightSword.visible = true
 
 func _trigger_place_poison():
-	gameplayManager.dialogueManager.queueDialogue = true
 	gameplayManager.cupIsPoisoned = true
 	gameplayManager.cupHasBeenPoisoned.emit()
 	
