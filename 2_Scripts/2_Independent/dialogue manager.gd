@@ -7,7 +7,11 @@ class_name DialogueManager
 @export var scrollContainer : ScrollContainer
 @export var content : VBoxContainer
 
-signal branchFinished(branch : DialogueBranch)
+signal currentBranchHasEnded
+
+var newBranchSeparatorRef : PackedScene = preload("res://1_Scenes/1_Objects/new branch separator.tscn")
+
+var introFinished : bool = false
 
 func _ready() -> void:
 	gameplayManager.dialogueManager = self
@@ -21,35 +25,48 @@ func _start_dialogue():
 	
 	_trigger_dialogue_branch()
 
+#-
 var currentBranch : DialogueBranch = null
-var newBranchSeparatorRef : PackedScene = preload("res://1_Scenes/1_Objects/new branch separator.tscn")
-var queueDialogue : bool = false
-func _trigger_dialogue_branch():
-	queueDialogue = true
-	var encounterDialogue : DialogueTree = gameplayManager.playmatManager.characterSheet.dialogueTree
-	
-	var newCurrentBranch : DialogueBranch = encounterDialogue._get_current_branch()
-	if newCurrentBranch.newestDialogueIndex >= newCurrentBranch.dialogue.size() - 1:
-		newCurrentBranch.hasBeenShown = true
-		branchFinished.emit(newCurrentBranch)
-		return
-	
-	var newDialogue : Dialogue = encounterDialogue._get_new_dialogue()
-	if newDialogue == null:
-		return
-	
-	if currentBranch != null && currentBranch != newCurrentBranch:
-		await _create_new_dialogue_branch_separator()
-	currentBranch = newCurrentBranch
-	
-	queueDialogue = false
-	await _create_dialogue_bubble(newCurrentBranch, currentBranch.newestDialogueIndex)
-	await get_tree().create_timer(0.6).timeout
-	
-	if queueDialogue == true:
-		return
-	_trigger_dialogue_branch()
+var endedDialogue : bool = false
 
+func _trigger_dialogue_branch(customBranch : DialogueBranch = null):
+	var encounterDialogue : DialogueTree = gameplayManager.playmatManager.characterSheet.dialogueTree
+	if customBranch == null:
+		currentBranch = encounterDialogue._get_current_branch()
+	else:
+		currentBranch = customBranch
+	endedDialogue = false
+	
+	for i in range(0, currentBranch.dialogue.size() + 1):
+		if i == currentBranch.dialogue.size() || endedDialogue == true:
+			introFinished = true
+			currentBranch.hasBeenShown = true
+			currentBranchHasEnded.emit()
+			return
+		
+		var newDialogue : Dialogue = null
+		if customBranch == null:
+			newDialogue = encounterDialogue._get_new_dialogue()
+		else:
+			newDialogue = encounterDialogue._get_new_in_custom_dialogue(customBranch)
+		
+		await _create_dialogue_bubble(currentBranch, currentBranch.newestDialogueIndex)
+		await get_tree().create_timer(0.6).timeout
+
+func _switch_dialogue_branch(customBranch : DialogueBranch = null):
+	endedDialogue = true
+	
+	if currentBranch.hasBeenShown == false:
+		await currentBranchHasEnded
+	
+	if currentAnimatingDialogueBubble.finishedTween != true && (currentDialogueBubbleTween != null || dialogueBubbleExpandTween != null):
+		await dialogueBubbleExpandTween.finished
+		await currentDialogueBubbleTween.finished
+	await _create_new_dialogue_branch_separator()
+	
+	await _trigger_dialogue_branch(customBranch)
+
+#-
 func _set_dialogue_view_to_bottom():
 	if isScrolling == true:
 		return
@@ -100,6 +117,7 @@ func _create_dialogue_bubble(dialogueBranch : DialogueBranch, dialogueIndex : in
 
 #
 var currentAnimatingDialogueBubble : DialogueBubble = null
+var dialogueBubbleExpandTween : Tween = null
 var currentDialogueBubbleTween : Tween = null
 func _create_new_dialogue_branch_separator():
 	bubbles.clear()
@@ -111,14 +129,9 @@ func _create_new_dialogue_branch_separator():
 	await get_tree().create_timer(0.4).timeout
 
 func _animate_new_dialogue_bubble(dialogueBubble : DialogueBubble):
-	if currentAnimatingDialogueBubble != null && currentDialogueBubbleTween != null:
-		if currentAnimatingDialogueBubble.finishedTween == false:
-			currentDialogueBubbleTween.pause()
-			currentAnimatingDialogueBubble._add_cutoff()
-	
 	currentAnimatingDialogueBubble = dialogueBubble
 	
-	var dialogueBubbleExpandTween : Tween = create_tween()
+	dialogueBubbleExpandTween = create_tween()
 	dialogueBubbleExpandTween.tween_property(currentAnimatingDialogueBubble.texture, "custom_minimum_size:x", currentAnimatingDialogueBubble.dialogueSize.x, 0.5)\
 	.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 	dialogueBubbleExpandTween.tween_callback(currentAnimatingDialogueBubble._show_label)

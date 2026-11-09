@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://bmf0h3auqyyc8" path="res://0_Art/2_PNGs/players cup event-Sheet.png" id="12_rkkk6"]
 [ext_resource type="Script" uid="uid://coy0g8tjc8t7i" path="res://2_Scripts/2_Independent/players manager.gd" id="12_ywih6"]
 [ext_resource type="Texture2D" uid="uid://brkvp2w453xgk" path="res://0_Art/2_PNGs/payer username-Sheet.png" id="14_c4l6l"]
+[ext_resource type="Texture2D" uid="uid://8csco8snt68o" path="res://0_Art/2_PNGs/poison sword.png" id="17_kbhv0"]
 [ext_resource type="Script" uid="uid://b6leqhh7ijbgo" path="res://2_Scripts/2_Independent/hint system manager.gd" id="19_0hcow"]
 [ext_resource type="Texture2D" uid="uid://cwydpac31fwmh" path="res://0_Art/2_PNGs/placeholder paper 9slice.png" id="20_6eb78"]
 [ext_resource type="Theme" uid="uid://bhvewryp1cmbt" path="res://6_Other/description font.tres" id="21_neqfg"]
@@ -890,27 +891,9 @@ animations = [{
 "speed": 4.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dbngl"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnbqg"]
 atlas = ExtResource("14_c4l6l")
 region = Rect2(0, 0, 18, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_v4r4c"]
-atlas = ExtResource("14_c4l6l")
-region = Rect2(18, 0, 18, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ywih6"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dbngl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_v4r4c")
-}],
-"loop": 1,
-"name": &"default",
-"speed": 5.0
-}]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_504ay"]
 
@@ -1152,7 +1135,7 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("3_82xv0")
 
-[node name="Poison Texture" type="TextureRect" parent="." unique_id=1840736645 node_paths=PackedStringArray("gameplayManager", "poisonTexture", "poisonButton")]
+[node name="Poison Texture" type="TextureRect" parent="." unique_id=1840736645 node_paths=PackedStringArray("gameplayManager", "poisonTexture", "leftSword", "rightSword", "poisonButton")]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 294.0
@@ -1163,7 +1146,22 @@ stretch_mode = 3
 script = ExtResource("6_pq3d1")
 gameplayManager = NodePath("..")
 poisonTexture = NodePath(".")
+leftSword = NodePath("left sword")
+rightSword = NodePath("right sword")
 poisonButton = NodePath("poison button")
+
+[node name="left sword" type="TextureRect" parent="Poison Texture" unique_id=591807141]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("17_kbhv0")
+
+[node name="right sword" type="TextureRect" parent="Poison Texture" unique_id=47508274]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("17_kbhv0")
+flip_h = true
 
 [node name="poison button" type="Button" parent="Poison Texture" unique_id=2059727328]
 layout_mode = 0
@@ -1290,9 +1288,15 @@ position = Vector2(135.5, 236.5)
 sprite_frames = SubResource("SpriteFrames_gnbqg")
 flip_h = true
 
-[node name="username player" type="AnimatedSprite2D" parent="Players" unique_id=1574559409]
-position = Vector2(169, 208)
-sprite_frames = SubResource("SpriteFrames_ywih6")
+[node name="player username" type="TextureRect" parent="Players" unique_id=1651856758]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 195.0
+offset_right = 178.0
+offset_bottom = 211.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_gnbqg")
+stretch_mode = 3
 
 [node name="background" type="MarginContainer" parent="Players" unique_id=1431765445]
 layout_mode = 0
@@ -1315,7 +1319,7 @@ anchors_preset = 0
 offset_left = 14.0
 offset_top = 51.0
 offset_right = 203.0
-offset_bottom = 131.0
+offset_bottom = 132.0
 script = ExtResource("11_ahkic")
 gameplayManager = NodePath("..")
 scrollContainer = NodePath("ScrollContainer")
@@ -1339,7 +1343,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 
-[node name="Hint System" type="Control" parent="." unique_id=917421299 node_paths=PackedStringArray("gameplayManager", "closedDetectionZone", "openDetectionZone", "hintBox", "hintLabels", "hintButtons", "hoveredLabelBackgrounds", "hoveredHintLabels")]
+[node name="Hint System" type="Control" parent="." unique_id=917421299 node_paths=PackedStringArray("gameplayManager", "closedDetectionZone", "openDetectionZone", "username", "hintBox", "hintLabels", "hintButtons", "hoveredLabelBackgrounds", "hoveredHintLabels")]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -1347,6 +1351,7 @@ script = ExtResource("19_0hcow")
 gameplayManager = NodePath("..")
 closedDetectionZone = NodePath("Closed Detection Area")
 openDetectionZone = NodePath("Hint Box Holder")
+username = NodePath("../Players/player username")
 hintBox = NodePath("Hint Box Holder/Hint Box")
 hintLabels = [NodePath("Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/1/hint 1"), NodePath("Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/2/hint 2"), NodePath("Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/3/hint 3")]
 hintButtons = [NodePath("Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/1/hovered hint 1/hint button 1"), NodePath("Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/2/hovered hint 2/hint button 2"), NodePath("Hint Box Holder/Hint Box/MarginContainer/VBoxContainer/3/hovered hint 3/hint button 3")]
