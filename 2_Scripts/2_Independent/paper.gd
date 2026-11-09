@@ -13,6 +13,7 @@ class_name Paper
 @export_group("Optional Mirror Labels")
 
 var playmat : PlaymatManager = null
+var paperRole : String = ""
 var bbcodeManager : BBCodePaperManager = BBCodePaperManager.new()
 
 var paperInfo : PaperInfo = null
@@ -149,7 +150,7 @@ func _animate_into_frame():
 	
 	await get_tree().create_timer(randf_range(0, 1)).timeout
 	
-	var endPos : Vector2 = playmat._get_random_paper_spawn_location()
+	var endPos : Vector2 = playmat._get_paper_spawn_location(paperRole)
 	var moveSpeed : float = randi_range(650, 700)
 	var duration : float = endPos.distance_to(startPos) / moveSpeed
 	
