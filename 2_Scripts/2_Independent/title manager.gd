@@ -5,7 +5,10 @@ extends Control
 @export var settingsButton : DefaultButton
 @export var quitButton : DefaultButton
 
+var gamestateJSON : GamestateJSON = GamestateJSON.new()
+
 func _ready() -> void:
+	gamestateJSON._load_gamestate()
 	_set_connections()
 func _set_connections():
 	playButton.onClicked.connect(_play)
@@ -25,8 +28,10 @@ func _play():
 	var gameplaySceneInstance : PackedScene = load(gameplayScenePath)
 	var gameplayScene : GameplayManager = gameplaySceneInstance.instantiate()
 	
-	TransitionManager._create_transition()
-	await TransitionManager.transitionEncounter._start_transition().finished
+	if gamestateJSON.timelineIndex == 0:
+		await TransitionManager._create_transition(TransitionManager.TransitionStates.blank)
+	else:
+		await TransitionManager._create_transition(TransitionManager.TransitionStates.mainMenuTraveling)
 	
 	await get_tree().create_timer(0.6).timeout
 	get_tree().change_scene_to_node(gameplayScene)
