@@ -70,7 +70,7 @@ func _get_encounter_number():
 	return initialEncounterNumber + gamestateJSON.currentRegionEncounterCount - 1
 
 func _update_timeline_counter():
-	var regionNumber : int = 0
+	var regionNumber : int = -1
 	for i in range(0, gamestateJSON.timelineIndex + 1):
 		if gameTimeline.timeline[i].increaseRegion == true:
 			regionNumber += 1

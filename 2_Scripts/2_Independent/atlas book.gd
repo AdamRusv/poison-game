@@ -47,6 +47,19 @@ var activeMaterial : ShaderMaterial = null
 
 func _init() -> void:
 	canBePacket = false
+#func _validate_property(property: Dictionary) -> void:
+	#if property.name == "paperTitleLabel":
+		#property.usage = PROPERTY_USAGE_NO_EDITOR
+	#if property.name == "paperInfoLabel":
+		#property.usage = PROPERTY_USAGE_NO_EDITOR
+	#if property.name == "packetParent":
+		#property.usage = PROPERTY_USAGE_NO_EDITOR
+	#if property.name == "packetBehindPaperParent":
+		#property.usage = PROPERTY_USAGE_NO_EDITOR
+	#if property.name == "pageFlipButton":
+		#property.usage = PROPERTY_USAGE_NO_EDITOR
+	#if property.name == "pageFlipTexture":
+		#property.usage = PROPERTY_USAGE_NO_EDITOR
 
 func _ready() -> void:
 	super._ready()
@@ -171,7 +184,6 @@ func _setup_atlas(newAtlasHolder : AtlasHolder, regionInfo : RegionInfo):
 		mapHolder.countryButtons[i].visible = false
 
 	for i in range(0, mapHolder.countryButtons.size()):
-		print(maxCountries)
 		if i < maxCountries:
 			mapHolder.countryButtons[i].visible = true
 
