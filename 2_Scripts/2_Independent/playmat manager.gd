@@ -6,6 +6,9 @@ class_name PlaymatManager
 @export var gameplayManager : GameplayManager
 @export var paperHolder : Control
 @export var spawnLocations : Control
+@export_category("Atlas")
+@export var customAtlasHolder1 : AtlasHolder
+@export var customAtlasHolder2 : AtlasHolder
 
 var paperSavestateJSON : PapersavestateJSON = PapersavestateJSON.new()
 var papersByRole : Dictionary = {}
@@ -35,6 +38,11 @@ func _add_main_papers():
 	
 	if gameplayManager.atlasHolder != null && gameplayManager.currentRegion.maxCountryCount > 0:
 		_create_atlas(testAtlasRef, gameplayManager.atlasHolder, gameplayManager.currentRegion)
+	elif _is_tutorial() == true:
+		if _is_tutorial_three() == true:
+			_create_atlas(testAtlasRef, customAtlasHolder1, gameplayManager.currentRegion, true)
+		elif _is_tutorial_four() == true:
+			_create_atlas(testAtlasRef, customAtlasHolder2, gameplayManager.currentRegion, true)
 	
 	if gameplayManager.currentRegion.noteSheet == true:
 		_create_notebook()
@@ -44,20 +52,20 @@ func _add_main_papers():
 func _create_paper(paperRef : PackedScene, paperInfo : PaperInfo, paperRole : String):
 	var paperInstance : Paper = paperRef.instantiate()
 
-	paperInstance._setup_paper(paperInfo)
-
 	paperInstance.playmat = self
+	
+	paperInstance._setup_paper(paperInfo)
 
 	papersByRole[paperRole] = paperInstance
 	paperInstance.paperRole	= paperRole
 	paperHolder.add_child(paperInstance)
 
-func _create_atlas(atlasRef : PackedScene, atlasHolder : AtlasHolder, regionInfo : RegionInfo):
+func _create_atlas(atlasRef : PackedScene, atlasHolder : AtlasHolder, regionInfo : RegionInfo, isCustomAtlasHolder : bool = false):
 	var atlasInstance : AtlasBook = atlasRef.instantiate()
 
-	atlasInstance._setup_atlas(atlasHolder, regionInfo)
-
 	atlasInstance.playmat = self
+	
+	atlasInstance._setup_atlas(atlasHolder, regionInfo, gameplayManager, isCustomAtlasHolder)
 
 	papersByRole["atlas"] = atlasInstance
 	atlasInstance.paperRole = "atlas"
@@ -99,3 +107,16 @@ func _save_paper_positions():
 		paperPositions[paperRole] = paper.parentNode.position
 
 	paperSavestateJSON._save_paper_positions(paperPositions)
+
+func _is_tutorial() -> bool:
+	if gameplayManager.gamestateJSON.timelineIndex < 4:
+		return true
+	return false
+func _is_tutorial_three() -> bool:
+	if gameplayManager.gamestateJSON.timelineIndex == 2:
+		return true
+	return false
+func _is_tutorial_four() -> bool:
+	if gameplayManager.gamestateJSON.timelineIndex == 3:
+		return true
+	return false

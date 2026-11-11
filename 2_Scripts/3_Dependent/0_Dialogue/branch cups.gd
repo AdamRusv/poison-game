@@ -2,9 +2,9 @@ extends DialogueBranch
 
 class_name DialogueBranchCups
 
-@export var cupPlacement : GameplayManager.CurrentPoisonCup = GameplayManager.CurrentPoisonCup.opponent
+@export var isSolution : bool = false
 
 func _check_condition() -> bool:
-	if gameplayManager.currentPoisonCup == cupPlacement:
+	if gameplayManager.correctCupChosen == isSolution:
 		return true
 	return false

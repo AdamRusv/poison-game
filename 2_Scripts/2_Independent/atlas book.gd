@@ -26,6 +26,9 @@ class_name AtlasBook
 @export var flutterHolder : Control
 @export var flutterCount : int = 4
 
+var gameplayManager : GameplayManager
+var isCustomAtlasHolder : bool = false
+
 var flutterPool : Array[FlutterPage]
 
 var openDragAmount : float =  0
@@ -103,12 +106,17 @@ func _set_connections():
 
 #- - -
 func _on_enter_next_page(isLeftPage : bool):
+	if gameplayManager.holdingPoison == true:
+		return
+	
 	GlobalReferences.cursor._swap_cursor_to(GlobalReferences.cursor.atlasPageTurnCursor)
 	
 	if isLeftPage == true:
 		GlobalReferences.cursor.imageNode.flip_h = true
 
 func _on_exit_next_page():
+	if gameplayManager.holdingPoison == true:
+		return
 	GlobalReferences.cursor.imageNode.flip_h = false
 	GlobalReferences.cursor._swap_cursor_to(GlobalReferences.cursor.defaultCursor)
 
@@ -173,9 +181,11 @@ func _finish_turn():
 
 #- - - 
 
-func _setup_atlas(newAtlasHolder : AtlasHolder, regionInfo : RegionInfo):
+func _setup_atlas(newAtlasHolder : AtlasHolder, regionInfo : RegionInfo, newGameplayManager : GameplayManager, newIsCustomAtlasHolder : bool = false):
+	isCustomAtlasHolder = newIsCustomAtlasHolder
 	atlasHolder = newAtlasHolder
 	maxCountries = regionInfo.maxCountryCount
+	gameplayManager = newGameplayManager
 
 	mapAtlas.visible = true
 	mainAtlas.visible = false

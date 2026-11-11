@@ -20,7 +20,7 @@ func _process(delta: float) -> void:
 
 #---------------
 func _start_dialogue():
-	var encounterDialogue : DialogueTree = gameplayManager.playmatManager.characterSheet.dialogueTree
+	var encounterDialogue : DialogueTree = gameplayManager.gameTimeline._get_current_encounter_dialogue_tree()
 	encounterDialogue._setup_branches(gameplayManager)
 	
 	_trigger_dialogue_branch()
@@ -30,7 +30,7 @@ var currentBranch : DialogueBranch = null
 var endedDialogue : bool = false
 
 func _trigger_dialogue_branch(customBranch : DialogueBranch = null):
-	var encounterDialogue : DialogueTree = gameplayManager.playmatManager.characterSheet.dialogueTree
+	var encounterDialogue : DialogueTree = gameplayManager.gameTimeline._get_current_encounter_dialogue_tree()
 	if customBranch == null:
 		currentBranch = encounterDialogue._get_current_branch()
 	else:

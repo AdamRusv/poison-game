@@ -24,6 +24,9 @@
 [ext_resource type="Texture2D" uid="uid://bmf0h3auqyyc8" path="res://0_Art/2_PNGs/players cup event-Sheet.png" id="12_rkkk6"]
 [ext_resource type="Script" uid="uid://coy0g8tjc8t7i" path="res://2_Scripts/2_Independent/players manager.gd" id="12_ywih6"]
 [ext_resource type="Texture2D" uid="uid://brkvp2w453xgk" path="res://0_Art/2_PNGs/payer username-Sheet.png" id="14_c4l6l"]
+[ext_resource type="Script" uid="uid://gp81tvupt8kv" path="res://2_Scripts/3_Dependent/country info.gd" id="14_nsmby"]
+[ext_resource type="Script" uid="uid://dn3cxe2u865qv" path="res://2_Scripts/3_Dependent/single page.gd" id="15_gdeut"]
+[ext_resource type="Script" uid="uid://b27f4t7nco0r0" path="res://2_Scripts/3_Dependent/atlas holder.gd" id="16_jnf4t"]
 [ext_resource type="Texture2D" uid="uid://8csco8snt68o" path="res://0_Art/2_PNGs/poison sword.png" id="17_kbhv0"]
 [ext_resource type="Script" uid="uid://b6leqhh7ijbgo" path="res://2_Scripts/2_Independent/hint system manager.gd" id="19_0hcow"]
 [ext_resource type="Texture2D" uid="uid://cwydpac31fwmh" path="res://0_Art/2_PNGs/placeholder paper 9slice.png" id="20_6eb78"]
@@ -46,6 +49,56 @@ region = Rect2(0, 0, 213, 256)
 [sub_resource type="AtlasTexture" id="AtlasTexture_m3u72"]
 atlas = ExtResource("12_kqvvj")
 region = Rect2(0, 0, 213, 256)
+
+[sub_resource type="Resource" id="Resource_nsmby"]
+script = ExtResource("15_gdeut")
+title = "Race:"
+info = "- Satyrs are Fools"
+metadata/_custom_type_script = "uid://dn3cxe2u865qv"
+
+[sub_resource type="Resource" id="Resource_kqvvj"]
+script = ExtResource("14_nsmby")
+pages = Array[ExtResource("15_gdeut")]([SubResource("Resource_nsmby")])
+countryTitle = "Scrumpytown"
+funInfo = "Population: 1
+
+Tier: 6
+
+The population used to be two before Scrumpy Giggles Jr. left."
+metadata/_custom_type_script = "uid://gp81tvupt8kv"
+
+[sub_resource type="Resource" id="Resource_6wd5l"]
+script = ExtResource("16_jnf4t")
+countryInfos = Array[ExtResource("14_nsmby")]([SubResource("Resource_kqvvj")])
+metadata/_custom_type_script = "uid://b27f4t7nco0r0"
+
+[sub_resource type="Resource" id="Resource_iwb75"]
+script = ExtResource("15_gdeut")
+title = "Country Notes:"
+info = "- Citizens who Lie about their Occupation are Fools"
+metadata/_custom_type_script = "uid://dn3cxe2u865qv"
+
+[sub_resource type="Resource" id="Resource_balx4"]
+script = ExtResource("15_gdeut")
+title = "Race:"
+info = "- Satyrs Lie about their Occupation"
+metadata/_custom_type_script = "uid://dn3cxe2u865qv"
+
+[sub_resource type="Resource" id="Resource_el062"]
+script = ExtResource("14_nsmby")
+pages = Array[ExtResource("15_gdeut")]([SubResource("Resource_iwb75"), SubResource("Resource_balx4")])
+countryTitle = "Scrumpytown 2"
+funInfo = "Population: 8.3B
+
+Teir: 6
+
+Scrumpy Giggles Jr. thinks 8.3 billion people live here, but it's just her."
+metadata/_custom_type_script = "uid://gp81tvupt8kv"
+
+[sub_resource type="Resource" id="Resource_kbhv0"]
+script = ExtResource("16_jnf4t")
+countryInfos = Array[ExtResource("14_nsmby")]([SubResource("Resource_el062")])
+metadata/_custom_type_script = "uid://b27f4t7nco0r0"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_504ay"]
 atlas = ExtResource("4_gngdi")
@@ -1095,6 +1148,8 @@ script = ExtResource("2_lv7np")
 gameplayManager = NodePath("../../..")
 paperHolder = NodePath("Parent/Paper Holder")
 spawnLocations = NodePath("Parent/Paper Holder/Spawn Locations")
+customAtlasHolder1 = SubResource("Resource_6wd5l")
+customAtlasHolder2 = SubResource("Resource_kbhv0")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Layout/HBoxContainer/Playmat" unique_id=331557050]
 layout_mode = 2
