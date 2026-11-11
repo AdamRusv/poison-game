@@ -3,8 +3,80 @@
 [ext_resource type="Script" uid="uid://csy0x4mgdxs00" path="res://2_Scripts/3_Dependent/paperinfo.gd" id="1_pvm4x"]
 [ext_resource type="Script" uid="uid://cg4ujw8mauohh" path="res://2_Scripts/3_Dependent/encounter info.gd" id="2_j4j2p"]
 [ext_resource type="Resource" uid="uid://bsh6js0264vx8" path="res://5_Resources/0_Papers/0_Levels/0_Tutorial Region/encounters/two.tres" id="3_fnxjh"]
+[ext_resource type="Script" uid="uid://qr661epbiujn" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue tree.gd" id="3_fq6mp"]
 [ext_resource type="Resource" uid="uid://ct4ydjigik5kq" path="res://5_Resources/1_RegionMusic/tutorial music.tres" id="3_j4j2p"]
 [ext_resource type="Script" uid="uid://851asxmj8i78" path="res://2_Scripts/3_Dependent/region info.gd" id="4_2umk1"]
+[ext_resource type="Script" uid="uid://e0ujmn3oiqx0" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue branch.gd" id="4_3dyib"]
+[ext_resource type="Script" uid="uid://fn2tb2dtu6fj" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue.gd" id="5_4a17g"]
+[ext_resource type="Script" uid="uid://chre6fsqbhfrk" path="res://2_Scripts/3_Dependent/0_Dialogue/branch intro.gd" id="6_0kcuo"]
+[ext_resource type="Script" uid="uid://cwxljhi0yey0n" path="res://2_Scripts/3_Dependent/0_Dialogue/branch cups.gd" id="7_t0h5b"]
+
+[sub_resource type="Resource" id="Resource_pc0g8"]
+script = ExtResource("5_4a17g")
+speaker = 1
+dialogue = "Greetings!"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_l4ijl"]
+script = ExtResource("5_4a17g")
+dialogue = "Hello there!"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_312to"]
+script = ExtResource("5_4a17g")
+dialogue = "You now have an Atlas"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_xvvbx"]
+script = ExtResource("5_4a17g")
+dialogue = "The Atlas is the middleman between the Character Sheet and the Trait Sheet"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_433kl"]
+script = ExtResource("5_4a17g")
+dialogue = "Best of luck!"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_yqjtl"]
+script = ExtResource("6_0kcuo")
+dialogue = Array[ExtResource("5_4a17g")]([SubResource("Resource_pc0g8"), SubResource("Resource_l4ijl"), SubResource("Resource_312to"), SubResource("Resource_xvvbx"), SubResource("Resource_433kl")])
+metadata/_custom_type_script = "uid://chre6fsqbhfrk"
+
+[sub_resource type="Resource" id="Resource_fb3j3"]
+script = ExtResource("5_4a17g")
+dialogue = "Too bad..."
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_6eb78"]
+script = ExtResource("5_4a17g")
+dialogue = "Maybe i'll be able to pass my knowledge onto my next student"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_g7yw3"]
+script = ExtResource("7_t0h5b")
+cupPlacement = 2
+dialogue = Array[ExtResource("5_4a17g")]([SubResource("Resource_fb3j3"), SubResource("Resource_6eb78")])
+metadata/_custom_type_script = "uid://cwxljhi0yey0n"
+
+[sub_resource type="Resource" id="Resource_neqfg"]
+script = ExtResource("5_4a17g")
+dialogue = "Congratulations"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_j1jqe"]
+script = ExtResource("5_4a17g")
+dialogue = "You have bested I, Scrumpy Giggles!"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_0hcow"]
+script = ExtResource("7_t0h5b")
+dialogue = Array[ExtResource("5_4a17g")]([SubResource("Resource_neqfg"), SubResource("Resource_j1jqe")])
+metadata/_custom_type_script = "uid://cwxljhi0yey0n"
+
+[sub_resource type="Resource" id="Resource_uflgm"]
+script = ExtResource("3_fq6mp")
+branches = Array[ExtResource("4_3dyib")]([SubResource("Resource_yqjtl"), SubResource("Resource_g7yw3"), SubResource("Resource_0hcow")])
+metadata/_custom_type_script = "uid://qr661epbiujn"
 
 [sub_resource type="Resource" id="Resource_vhogm"]
 script = ExtResource("1_pvm4x")
@@ -19,7 +91,7 @@ metadata/_custom_type_script = "uid://csy0x4mgdxs00"
 
 [resource]
 script = ExtResource("4_2umk1")
-totalEncounters = 1
+encounterDialogues = Array[ExtResource("3_fq6mp")]([SubResource("Resource_uflgm")])
 traitSheet = SubResource("Resource_vhogm")
 characterSheets = Array[ExtResource("2_j4j2p")]([ExtResource("3_fnxjh")])
 noteSheet = false

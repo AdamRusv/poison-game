@@ -14,6 +14,12 @@ var hintSystemManager : HintSystemManager
 
 var cupCount : int = 2 #NOTE: change for other gamemodes
 
+#gameplay sequence
+var gameplayStarted : bool = false
+signal cutsceneFinished
+signal opponentSatDown
+signal papersGiven
+
 var holdingPoison : bool = false
 signal poisonGrabbed
 signal poisonReleased
