@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://cg4ujw8mauohh" path="res://2_Scripts/3_Dependent/encounter info.gd" id="1_hvbcb"]
 [ext_resource type="Resource" uid="uid://0wvhtmiro1wy" path="res://5_Resources/0_Papers/0_Levels/0_Tutorial Region/encounters/zero.tres" id="2_dc7e1"]
-[ext_resource type="Script" uid="uid://qr661epbiujn" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue tree.gd" id="3_jfmym"]
 [ext_resource type="Script" uid="uid://851asxmj8i78" path="res://2_Scripts/3_Dependent/region info.gd" id="3_o16es"]
 [ext_resource type="Resource" uid="uid://ct4ydjigik5kq" path="res://5_Resources/1_RegionMusic/tutorial music.tres" id="3_oduuj"]
+[ext_resource type="Script" uid="uid://b6q05ms7ugqb1" path="res://2_Scripts/3_Dependent/0_Dialogue/encounter dialogue tree.gd" id="3_ss7lq"]
 [ext_resource type="Script" uid="uid://e0ujmn3oiqx0" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue branch.gd" id="4_ss7lq"]
 [ext_resource type="Script" uid="uid://fn2tb2dtu6fj" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue.gd" id="5_2islm"]
 [ext_resource type="Script" uid="uid://chre6fsqbhfrk" path="res://2_Scripts/3_Dependent/0_Dialogue/branch intro.gd" id="6_dlc7q"]
@@ -48,6 +48,7 @@ metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
 
 [sub_resource type="Resource" id="Resource_ba5up"]
 script = ExtResource("7_pxa11")
+isSolution = true
 dialogue = Array[ExtResource("5_2islm")]([SubResource("Resource_7q6wp"), SubResource("Resource_jhwtg")])
 metadata/_custom_type_script = "uid://cwxljhi0yey0n"
 
@@ -63,18 +64,18 @@ metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
 
 [sub_resource type="Resource" id="Resource_bwi2o"]
 script = ExtResource("7_pxa11")
-cupPlacement = 2
 dialogue = Array[ExtResource("5_2islm")]([SubResource("Resource_a6xer"), SubResource("Resource_ehfn3")])
 metadata/_custom_type_script = "uid://cwxljhi0yey0n"
 
-[sub_resource type="Resource" id="Resource_se4xb"]
-script = ExtResource("3_jfmym")
+[sub_resource type="Resource" id="Resource_2islm"]
+script = ExtResource("3_ss7lq")
+characterName = "Lillia Bubbles"
 branches = Array[ExtResource("4_ss7lq")]([SubResource("Resource_dv0cg"), SubResource("Resource_ba5up"), SubResource("Resource_bwi2o")])
-metadata/_custom_type_script = "uid://qr661epbiujn"
+metadata/_custom_type_script = "uid://b6q05ms7ugqb1"
 
 [resource]
 script = ExtResource("3_o16es")
-encounterDialogues = Array[ExtResource("3_jfmym")]([SubResource("Resource_se4xb")])
+encounterDialogueTrees = Array[ExtResource("3_ss7lq")]([SubResource("Resource_2islm")])
 characterSheets = Array[ExtResource("1_hvbcb")]([ExtResource("2_dc7e1")])
 noteSheet = false
 music = ExtResource("3_oduuj")

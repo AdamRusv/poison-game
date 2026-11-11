@@ -2,7 +2,7 @@ extends Resource
 
 class_name RegionInfo
 
-@export var encounterDialogues : Array[DialogueTree]
+@export var encounterDialogueTrees : Array[EncounterDialogueTree]
 
 @export var traitSheet : PaperInfo
 @export var characterSheets : Array[EncounterInfo]

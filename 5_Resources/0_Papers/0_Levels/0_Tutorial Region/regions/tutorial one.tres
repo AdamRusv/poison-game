@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://c331fdtleotss" path="res://5_Resources/0_Papers/0_Levels/0_Tutorial Region/encounters/one.tres" id="2_765pw"]
 [ext_resource type="Script" uid="uid://851asxmj8i78" path="res://2_Scripts/3_Dependent/region info.gd" id="3_6aia5"]
 [ext_resource type="Resource" uid="uid://ct4ydjigik5kq" path="res://5_Resources/1_RegionMusic/tutorial music.tres" id="3_15kg0"]
-[ext_resource type="Script" uid="uid://qr661epbiujn" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue tree.gd" id="3_fb3ly"]
+[ext_resource type="Script" uid="uid://b6q05ms7ugqb1" path="res://2_Scripts/3_Dependent/0_Dialogue/encounter dialogue tree.gd" id="3_fb3ly"]
 [ext_resource type="Script" uid="uid://csy0x4mgdxs00" path="res://2_Scripts/3_Dependent/paperinfo.gd" id="4_ojog3"]
 [ext_resource type="Script" uid="uid://e0ujmn3oiqx0" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue branch.gd" id="4_yc6n5"]
 [ext_resource type="Script" uid="uid://fn2tb2dtu6fj" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue.gd" id="5_l1x6p"]
@@ -58,7 +58,7 @@ metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
 
 [sub_resource type="Resource" id="Resource_5j8ym"]
 script = ExtResource("7_wye07")
-cupPlacement = 2
+isSolution = true
 dialogue = Array[ExtResource("5_l1x6p")]([SubResource("Resource_r8cea"), SubResource("Resource_ua68t"), SubResource("Resource_5k22h")])
 metadata/_custom_type_script = "uid://cwxljhi0yey0n"
 
@@ -77,10 +77,11 @@ script = ExtResource("7_wye07")
 dialogue = Array[ExtResource("5_l1x6p")]([SubResource("Resource_woypx"), SubResource("Resource_ottgi")])
 metadata/_custom_type_script = "uid://cwxljhi0yey0n"
 
-[sub_resource type="Resource" id="Resource_ebxdl"]
+[sub_resource type="Resource" id="Resource_dlc7q"]
 script = ExtResource("3_fb3ly")
+characterName = "Poppy Power"
 branches = Array[ExtResource("4_yc6n5")]([SubResource("Resource_0hcow"), SubResource("Resource_5j8ym"), SubResource("Resource_muuq1")])
-metadata/_custom_type_script = "uid://qr661epbiujn"
+metadata/_custom_type_script = "uid://b6q05ms7ugqb1"
 
 [sub_resource type="Resource" id="Resource_kgvl5"]
 script = ExtResource("4_ojog3")
@@ -95,7 +96,7 @@ metadata/_custom_type_script = "uid://csy0x4mgdxs00"
 
 [resource]
 script = ExtResource("3_6aia5")
-encounterDialogues = Array[ExtResource("3_fb3ly")]([SubResource("Resource_ebxdl")])
+encounterDialogueTrees = Array[ExtResource("3_fb3ly")]([SubResource("Resource_dlc7q")])
 traitSheet = SubResource("Resource_kgvl5")
 characterSheets = Array[ExtResource("1_bps0n")]([ExtResource("2_765pw")])
 noteSheet = false

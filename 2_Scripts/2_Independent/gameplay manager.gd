@@ -116,7 +116,7 @@ func _set_next_encounter():
 	
 	if gamestateJSON.timelineIndex >= gameTimeline.timeline.size() - 1 && gamestateJSON.currentRegionEncounterCount >= currentRegion.totalEncounters:
 		return
-	if gamestateJSON.currentRegionEncounterCount >= currentRegion.totalEncounters:
+	if gamestateJSON.currentRegionEncounterCount >= currentRegion.encounterDialogueTrees.size():
 		gamestateJSON.timelineIndex += 1
 		gamestateJSON.currentRegionEncounterCount = 1
 		gamestateJSON.completedCharacters.clear()

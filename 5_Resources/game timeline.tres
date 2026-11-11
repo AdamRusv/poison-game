@@ -7,16 +7,17 @@
 [ext_resource type="Resource" uid="uid://hyjafvb7n1hg" path="res://5_Resources/0_Papers/0_Levels/0_Tutorial Region/regions/tutorial two.tres" id="5_vrwh6"]
 [ext_resource type="Resource" uid="uid://igfj8dv0ajyr" path="res://5_Resources/0_Papers/0_Levels/0_Tutorial Region/regions/tutorial three.tres" id="6_f3tm4"]
 [ext_resource type="Script" uid="uid://cg4ujw8mauohh" path="res://2_Scripts/3_Dependent/encounter info.gd" id="7_rmm27"]
+[ext_resource type="Resource" uid="uid://bwfdoc58rkwhn" path="res://5_Resources/0_Papers/0_Levels/1_First Region/encounters/1 (1).tres" id="8_g17ve"]
 [ext_resource type="Resource" uid="uid://dlt86vr4taqr1" path="res://5_Resources/1_RegionMusic/region one music.tres" id="9_05g13"]
-[ext_resource type="Resource" uid="uid://bwfdoc58rkwhn" path="res://5_Resources/0_Papers/0_Levels/1_First Region/encounters/Sunny Moon.tres" id="9_tmc60"]
-[ext_resource type="Script" uid="uid://qr661epbiujn" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue tree.gd" id="9_vsudc"]
+[ext_resource type="Script" uid="uid://b6q05ms7ugqb1" path="res://2_Scripts/3_Dependent/0_Dialogue/encounter dialogue tree.gd" id="9_vsudc"]
 [ext_resource type="Script" uid="uid://csy0x4mgdxs00" path="res://2_Scripts/3_Dependent/paperinfo.gd" id="10_05g13"]
 [ext_resource type="Script" uid="uid://e0ujmn3oiqx0" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue branch.gd" id="10_g17ve"]
 [ext_resource type="Script" uid="uid://fn2tb2dtu6fj" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue.gd" id="11_fw25b"]
-[ext_resource type="Resource" uid="uid://2ggvnaxi8ai6" path="res://5_Resources/0_Papers/0_Levels/1_First Region/encounters/Jimmy James.tres" id="11_g5j7o"]
 [ext_resource type="Script" uid="uid://chre6fsqbhfrk" path="res://2_Scripts/3_Dependent/0_Dialogue/branch intro.gd" id="12_6mvh7"]
 [ext_resource type="Script" uid="uid://cwxljhi0yey0n" path="res://2_Scripts/3_Dependent/0_Dialogue/branch cups.gd" id="13_n8dov"]
-[ext_resource type="Resource" uid="uid://dsdk74a6efros" path="res://5_Resources/0_Papers/0_Levels/1_First Region/encounters/Sol Shimmerman.tres" id="13_tmc60"]
+[ext_resource type="Resource" uid="uid://2ggvnaxi8ai6" path="res://5_Resources/0_Papers/0_Levels/1_First Region/encounters/2-3 (1).tres" id="16_fw25b"]
+[ext_resource type="Resource" uid="uid://b6refrdgn1tew" path="res://5_Resources/0_Papers/0_Levels/1_First Region/encounters/2-3 (2).tres" id="17_6mvh7"]
+[ext_resource type="Resource" uid="uid://dsdk74a6efros" path="res://5_Resources/0_Papers/0_Levels/1_First Region/encounters/4 (1).tres" id="18_n8dov"]
 
 [sub_resource type="Resource" id="Resource_ov0x0"]
 script = ExtResource("11_fw25b")
@@ -56,6 +57,7 @@ metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
 
 [sub_resource type="Resource" id="Resource_ba5up"]
 script = ExtResource("13_n8dov")
+isSolution = true
 dialogue = Array[ExtResource("11_fw25b")]([SubResource("Resource_7q6wp"), SubResource("Resource_jhwtg")])
 metadata/_custom_type_script = "uid://cwxljhi0yey0n"
 
@@ -66,14 +68,14 @@ metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
 
 [sub_resource type="Resource" id="Resource_bwi2o"]
 script = ExtResource("13_n8dov")
-cupPlacement = 2
 dialogue = Array[ExtResource("11_fw25b")]([SubResource("Resource_a6xer")])
 metadata/_custom_type_script = "uid://cwxljhi0yey0n"
 
-[sub_resource type="Resource" id="Resource_ey2qs"]
+[sub_resource type="Resource" id="Resource_jym8k"]
 script = ExtResource("9_vsudc")
+characterName = "Sunny Moon"
 branches = Array[ExtResource("10_g17ve")]([SubResource("Resource_x1tmx"), SubResource("Resource_ba5up"), SubResource("Resource_bwi2o")])
-metadata/_custom_type_script = "uid://qr661epbiujn"
+metadata/_custom_type_script = "uid://b6q05ms7ugqb1"
 
 [sub_resource type="Resource" id="Resource_te4kt"]
 script = ExtResource("10_05g13")
@@ -95,9 +97,9 @@ metadata/_custom_type_script = "uid://csy0x4mgdxs00"
 
 [sub_resource type="Resource" id="Resource_x3pfx"]
 script = ExtResource("2_fvdvp")
-encounterDialogues = Array[ExtResource("9_vsudc")]([SubResource("Resource_ey2qs")])
+encounterDialogueTrees = Array[ExtResource("9_vsudc")]([SubResource("Resource_jym8k")])
 traitSheet = SubResource("Resource_te4kt")
-characterSheets = Array[ExtResource("7_rmm27")]([ExtResource("9_tmc60")])
+characterSheets = Array[ExtResource("7_rmm27")]([ExtResource("8_g17ve")])
 maxCountryCount = 2
 noteSheet = false
 music = ExtResource("9_05g13")
@@ -137,7 +139,7 @@ metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
 
 [sub_resource type="Resource" id="Resource_k2od1"]
 script = ExtResource("13_n8dov")
-cupPlacement = 2
+isSolution = true
 dialogue = Array[ExtResource("11_fw25b")]([SubResource("Resource_p6775"), SubResource("Resource_2cybq")])
 metadata/_custom_type_script = "uid://cwxljhi0yey0n"
 
@@ -151,10 +153,11 @@ script = ExtResource("13_n8dov")
 dialogue = Array[ExtResource("11_fw25b")]([SubResource("Resource_bp1mh")])
 metadata/_custom_type_script = "uid://cwxljhi0yey0n"
 
-[sub_resource type="Resource" id="Resource_cgkhu"]
+[sub_resource type="Resource" id="Resource_wwu3x"]
 script = ExtResource("9_vsudc")
+characterName = "Jimmy James"
 branches = Array[ExtResource("10_g17ve")]([SubResource("Resource_hd02j"), SubResource("Resource_k2od1"), SubResource("Resource_67qe7")])
-metadata/_custom_type_script = "uid://qr661epbiujn"
+metadata/_custom_type_script = "uid://b6q05ms7ugqb1"
 
 [sub_resource type="Resource" id="Resource_fko71"]
 script = ExtResource("11_fw25b")
@@ -189,6 +192,7 @@ metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
 
 [sub_resource type="Resource" id="Resource_6j7dn"]
 script = ExtResource("13_n8dov")
+isSolution = true
 dialogue = Array[ExtResource("11_fw25b")]([SubResource("Resource_pefi2"), SubResource("Resource_5xns7")])
 metadata/_custom_type_script = "uid://cwxljhi0yey0n"
 
@@ -204,20 +208,20 @@ metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
 
 [sub_resource type="Resource" id="Resource_ly3rn"]
 script = ExtResource("13_n8dov")
-cupPlacement = 2
 dialogue = Array[ExtResource("11_fw25b")]([SubResource("Resource_ekay8"), SubResource("Resource_hlf45")])
 metadata/_custom_type_script = "uid://cwxljhi0yey0n"
 
-[sub_resource type="Resource" id="Resource_u0ylq"]
+[sub_resource type="Resource" id="Resource_3y73j"]
 script = ExtResource("9_vsudc")
+characterName = "Grik Ironfist"
 branches = Array[ExtResource("10_g17ve")]([SubResource("Resource_yxeby"), SubResource("Resource_6j7dn"), SubResource("Resource_ly3rn")])
-metadata/_custom_type_script = "uid://qr661epbiujn"
+metadata/_custom_type_script = "uid://b6q05ms7ugqb1"
 
 [sub_resource type="Resource" id="Resource_akr5k"]
 script = ExtResource("2_fvdvp")
-encounterDialogues = Array[ExtResource("9_vsudc")]([SubResource("Resource_cgkhu"), SubResource("Resource_u0ylq")])
+encounterDialogueTrees = Array[ExtResource("9_vsudc")]([SubResource("Resource_wwu3x"), SubResource("Resource_3y73j")])
 traitSheet = SubResource("Resource_te4kt")
-characterSheets = Array[ExtResource("7_rmm27")]([ExtResource("11_g5j7o")])
+characterSheets = Array[ExtResource("7_rmm27")]([ExtResource("16_fw25b"), ExtResource("17_6mvh7")])
 maxCountryCount = 2
 music = ExtResource("9_05g13")
 metadata/_custom_type_script = "uid://851asxmj8i78"
@@ -250,7 +254,7 @@ metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
 
 [sub_resource type="Resource" id="Resource_k18tf"]
 script = ExtResource("13_n8dov")
-cupPlacement = 2
+isSolution = true
 dialogue = Array[ExtResource("11_fw25b")]([SubResource("Resource_r33c3")])
 metadata/_custom_type_script = "uid://cwxljhi0yey0n"
 
@@ -269,16 +273,17 @@ script = ExtResource("13_n8dov")
 dialogue = Array[ExtResource("11_fw25b")]([SubResource("Resource_4o4op"), SubResource("Resource_7l40v")])
 metadata/_custom_type_script = "uid://cwxljhi0yey0n"
 
-[sub_resource type="Resource" id="Resource_4y6tu"]
+[sub_resource type="Resource" id="Resource_bqmu5"]
 script = ExtResource("9_vsudc")
+characterName = "Sol Shimmerman"
 branches = Array[ExtResource("10_g17ve")]([SubResource("Resource_kf355"), SubResource("Resource_k18tf"), SubResource("Resource_0m5x8")])
-metadata/_custom_type_script = "uid://qr661epbiujn"
+metadata/_custom_type_script = "uid://b6q05ms7ugqb1"
 
 [sub_resource type="Resource" id="Resource_tj3on"]
 script = ExtResource("2_fvdvp")
-encounterDialogues = Array[ExtResource("9_vsudc")]([SubResource("Resource_4y6tu")])
+encounterDialogueTrees = Array[ExtResource("9_vsudc")]([SubResource("Resource_bqmu5")])
 traitSheet = SubResource("Resource_te4kt")
-characterSheets = Array[ExtResource("7_rmm27")]([ExtResource("13_tmc60")])
+characterSheets = Array[ExtResource("7_rmm27")]([ExtResource("18_n8dov")])
 maxCountryCount = 2
 music = ExtResource("9_05g13")
 metadata/_custom_type_script = "uid://851asxmj8i78"
