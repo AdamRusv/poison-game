@@ -2,7 +2,7 @@ extends Control
 
 class_name GameplayManager
 
-@export var gameTimeline : GameTimeline
+@export var gameTimelineRef : GameTimeline
 @export var atlasHolder : AtlasHolder
 @export var timelineCounterLabel : RichTextLabel
 
@@ -11,6 +11,8 @@ var poisonManager : PoisonManager
 var cupsManager : CupsManager
 var dialogueManager : DialogueManager
 var hintSystemManager : HintSystemManager
+
+var gameTimeline : GameTimeline = GameTimeline.new()
 
 var cupCount : int = 2 #NOTE: change for other gamemodes
 
@@ -46,11 +48,15 @@ var gamestateJSON : GamestateJSON = GamestateJSON.new()
 
 func _ready() -> void:
 	gamestateJSON._load_gamestate()
+	_set_timeline()
 	currentRegion = gameTimeline.timeline[gamestateJSON.timelineIndex]
 	SoundManager._set_region_music(currentRegion.music, _get_encounter_number())
 	_update_timeline_counter()
 	_set_connections()
 	_start_new_encounter()
+func _set_timeline():
+	for regionInfo in gameTimelineRef.timeline:
+		gameTimeline.timeline.append(regionInfo.duplicate(true))
 func _set_connections():
 	newEncounter.connect(_set_next_encounter)
 	restartEncounter.connect(_restart_current_encounter)

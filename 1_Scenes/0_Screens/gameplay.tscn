@@ -964,7 +964,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0sltt")
-gameTimeline = ExtResource("2_g7yw3")
+gameTimelineRef = ExtResource("2_g7yw3")
 atlasHolder = ExtResource("3_j1jqe")
 timelineCounterLabel = NodePath("Layout/HBoxContainer/MarginContainer/VBoxContainer/Accessibility/solid background/Region Holder/Region Label")
 
