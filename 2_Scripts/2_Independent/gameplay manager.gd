@@ -14,6 +14,12 @@ var hintSystemManager : HintSystemManager
 
 var cupCount : int = 2 #NOTE: change for other gamemodes
 
+#gameplay sequence
+var gameplayStarted : bool = false
+signal cutsceneFinished
+signal opponentSatDown
+signal papersGiven
+
 var holdingPoison : bool = false
 signal poisonGrabbed
 signal poisonReleased
@@ -110,7 +116,7 @@ func _set_next_encounter():
 	
 	if gamestateJSON.timelineIndex >= gameTimeline.timeline.size() - 1 && gamestateJSON.currentRegionEncounterCount >= currentRegion.totalEncounters:
 		return
-	if gamestateJSON.currentRegionEncounterCount >= currentRegion.totalEncounters:
+	if gamestateJSON.currentRegionEncounterCount >= currentRegion.encounterDialogueTrees.size():
 		gamestateJSON.timelineIndex += 1
 		gamestateJSON.currentRegionEncounterCount = 1
 		gamestateJSON.completedCharacters.clear()

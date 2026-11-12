@@ -75,8 +75,7 @@ func _setup_paper(newPaperInfo : PaperInfo):
 	#paperTitleLabel.text = paperInfo.title #NOTE: Old text grabber, new one highlights as well
 	_set_label_text(paperTitleLabel, bbcodeManager._highlight(paperInfo.title))
 	if newPaperInfo is EncounterInfo:
-		var newEncounterInfo : EncounterInfo = newPaperInfo
-		_set_label_text(paperInfoLabel, bbcodeManager._highlight(newEncounterInfo.characterName + paperInfo.info[0]))
+		_set_label_text(paperInfoLabel, bbcodeManager._highlight(playmat.gameplayManager.gameTimeline._get_current_encounter_dialogue_tree().characterName + paperInfo.info[0]))
 	else:
 		_set_label_text(paperInfoLabel, bbcodeManager._highlight(paperInfo.info[0]))
 	

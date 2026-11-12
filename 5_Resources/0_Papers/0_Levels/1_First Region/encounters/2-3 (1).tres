@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="EncounterInfo" format=3 uid="uid://2ggvnaxi8ai6"]
+
+[ext_resource type="Script" uid="uid://e0ujmn3oiqx0" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue branch.gd" id="1_jj7hq"]
+[ext_resource type="Script" uid="uid://fn2tb2dtu6fj" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue.gd" id="2_lh4xh"]
+[ext_resource type="Script" uid="uid://qr661epbiujn" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue tree.gd" id="3_yof42"]
+[ext_resource type="Script" uid="uid://cg4ujw8mauohh" path="res://2_Scripts/3_Dependent/encounter info.gd" id="4_odyim"]
+
+[sub_resource type="Resource" id="Resource_xsf05"]
+script = ExtResource("2_lh4xh")
+speaker = 1
+dialogue = "How many Entries are you Lying about?"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_32h7f"]
+script = ExtResource("2_lh4xh")
+dialogue = "Two"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_j1jqe"]
+script = ExtResource("1_jj7hq")
+dialogue = Array[ExtResource("2_lh4xh")]([SubResource("Resource_xsf05"), SubResource("Resource_32h7f")])
+metadata/_custom_type_script = "uid://e0ujmn3oiqx0"
+
+[sub_resource type="Resource" id="Resource_neqfg"]
+script = ExtResource("3_yof42")
+branches = Array[ExtResource("1_jj7hq")]([SubResource("Resource_j1jqe")])
+metadata/_custom_type_script = "uid://qr661epbiujn"
+
+[resource]
+script = ExtResource("4_odyim")
+hints = SubResource("Resource_neqfg")
+cupAnswer = 2
+title = "Character Sheet"
+info = Array[String]([", Hollyberry
+
+
+1. Age: 61
+
+2. Occupation: Ranger
+
+3. Race: Human
+"])
+metadata/_custom_type_script = "uid://cg4ujw8mauohh"
