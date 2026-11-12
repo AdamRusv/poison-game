@@ -14,6 +14,12 @@ var hintSystemManager : HintSystemManager
 
 var cupCount : int = 2 #NOTE: change for other gamemodes
 
+#gameplay sequence
+var gameplayStarted : bool = false
+signal cutsceneFinished
+signal opponentSatDown
+signal papersGiven
+
 var holdingPoison : bool = false
 signal poisonGrabbed
 signal poisonReleased
@@ -96,17 +102,21 @@ func _check_if_cup_choice_is_correct():
 		correctCupChosen = true
 
 func _restart_current_encounter():
+	playmatManager._save_paper_positions()
+
 	await TransitionManager._create_transition(TransitionManager.TransitionStates.restarting)
 	
 	await get_tree().create_timer(0.6).timeout
 	get_tree().reload_current_scene()
 
 func _set_next_encounter():
+	playmatManager._save_paper_positions()
+
 	await TransitionManager._create_transition(TransitionManager.TransitionStates.traveling)
 	
 	if gamestateJSON.timelineIndex >= gameTimeline.timeline.size() - 1 && gamestateJSON.currentRegionEncounterCount >= currentRegion.totalEncounters:
 		return
-	if gamestateJSON.currentRegionEncounterCount >= currentRegion.totalEncounters:
+	if gamestateJSON.currentRegionEncounterCount >= currentRegion.encounterDialogueTrees.size():
 		gamestateJSON.timelineIndex += 1
 		gamestateJSON.currentRegionEncounterCount = 1
 		gamestateJSON.completedCharacters.clear()

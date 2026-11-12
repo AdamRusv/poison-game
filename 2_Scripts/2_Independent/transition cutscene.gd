@@ -167,7 +167,7 @@ func _get_total_encounters_for_current_region() -> int:
 		if region.increaseRegion == true:
 			break
 		
-		totalEncounters += region.totalEncounters
+		totalEncounters += region.encounterDialogueTrees.size()
 		
 	return totalEncounters
 
@@ -204,7 +204,7 @@ func _get_total_encounters_for_next_region() -> int:
 		if region.increaseRegion == true:
 			break
 		
-		totalEncounters += region.totalEncounters
+		totalEncounters += region.encounterDialogueTrees.size()
 		
 	return totalEncounters
 

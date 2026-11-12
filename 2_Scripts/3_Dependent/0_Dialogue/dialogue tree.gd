@@ -21,6 +21,11 @@ func _get_new_dialogue() -> Dialogue:
 	
 	return currentbranch.dialogue[currentbranch.newestDialogueIndex]
 
+func _get_new_in_custom_dialogue(customBranch : DialogueBranch) -> Dialogue:
+	customBranch.newestDialogueIndex += 1
+	
+	return customBranch.dialogue[customBranch.newestDialogueIndex]
+
 func _get_newest_dialogue() -> Dialogue:
 	var currentbranch : DialogueBranch = _get_current_branch()
 	

@@ -18,16 +18,16 @@
 [ext_resource type="Texture2D" uid="uid://xfwlhmfipmqm" path="res://0_Art/New_Art(Needs Sorting)/Schloozyville-Sheet.png" id="14_yxeby"]
 [ext_resource type="BitMap" uid="uid://dm4p3n6mlugj7" path="res://0_Art/New_Art(Needs Sorting)/Schloozyville-Bitmap.png" id="15_icpc4"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_68y56"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_fffai"]
 viewport_path = NodePath("Map Atlas/Left Page Viewport")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t11ig"]
 resource_local_to_scene = true
 shader = ExtResource("6_bendsh")
-shader_parameter/progress = 0.0
+shader_parameter/progress = 1.0
 shader_parameter/spine_x = 0.50000002375
 shader_parameter/bend = 0.0
-shader_parameter/back_texture = SubResource("ViewportTexture_68y56")
+shader_parameter/back_texture = SubResource("ViewportTexture_fffai")
 shader_parameter/perspective = 0.050000002375
 shader_parameter/shadow_strength = 0.0
 
@@ -46,7 +46,7 @@ shader_parameter/back_texture = SubResource("ViewportTexture_6ctbc")
 shader_parameter/perspective = 0.050000002375
 shader_parameter/shadow_strength = 0.0
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_tbv1v"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_pmolo"]
 viewport_path = NodePath("Main Atlas/Front Page")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2y7yb"]
@@ -321,7 +321,7 @@ scroll_active = false
 material = SubResource("ShaderMaterial_28i0q")
 layout_mode = 2
 mouse_filter = 2
-texture = SubResource("ViewportTexture_tbv1v")
+texture = SubResource("ViewportTexture_pmolo")
 
 [node name="Main Trim Container Right" type="MarginContainer" parent="Main Atlas" unique_id=384535913]
 layout_mode = 2

@@ -6,6 +6,7 @@ class_name HintSystemManager
 @export var gameplayManager : GameplayManager
 @export var closedDetectionZone : Control
 @export var openDetectionZone : Control
+@export var username : TextureRect
 
 @export_group("Hint Box")
 @export var hintBox : Control
@@ -15,6 +16,7 @@ class_name HintSystemManager
 @export var hoveredHintLabels : Array[RichTextLabel]
 
 var usedHints : Array[int] = []
+var hintsDisabled : bool = false
 
 func _ready() -> void:
 	gameplayManager.hintSystemManager = self
@@ -38,14 +40,19 @@ func _set_connections():
 		hintButtons[i].button_up.connect(_hint_enter.bind(i))
 		hintButtons[i].pressed.connect(_trigger_hint.bind(i))
 
+var usernameAnimating : bool = false
 func _process(delta: float) -> void:
 	if _is_inside_open_detection_zone() == false && openDetectionZone.visible == true:
 		openDetectionZone.visible = false
 		hintBox.visible = false
+	
+	if _is_dialogue_box_hoverable() == true && usernameAnimating == false:
+		_animate_username()
+		usernameAnimating = true
 
 #- - -
 func _closed_detection_enter():
-	if gameplayManager.cupIsPoisoned == true || GlobalReferences.cursor.holdingDown == true:
+	if _is_dialogue_box_hoverable() == false:
 		return
 	
 	openDetectionZone.visible = true
@@ -58,6 +65,7 @@ func _setup_hint_box():
 	if hints != null:
 		closedDetectionZone.visible = true
 	else:
+		hintsDisabled = true
 		return
 	hints._setup_branches(gameplayManager)
 	
@@ -88,10 +96,7 @@ func _trigger_hint(currentBranch : int):
 	_disable_used_hints()
 	
 	var dialogueManager : DialogueManager = gameplayManager.dialogueManager
-	dialogueManager._create_new_dialogue_branch_separator()
-	await dialogueManager._create_dialogue_bubble(hints.branches[currentBranch], 0)
-	for i in range(1, hints.branches[currentBranch].dialogue.size()): #ignore first index since its always player dialogue
-		await dialogueManager._create_dialogue_bubble(hints.branches[currentBranch], i)
+	dialogueManager._switch_dialogue_branch(hints.branches[currentBranch])
 
 #---------------------------
 func _hide_all_hovers():
@@ -106,7 +111,26 @@ func _disable_used_hints():
 				hintLabels[i].self_modulate.a = 0.4
 				break
 
+func _animate_username():
+	username.offset_transform_enabled = true
+	
+	var newTween : Tween = create_tween().set_loops()
+	
+	newTween.tween_property(username, "offset_transform_position:y", 2.4, 1)\
+	.set_trans(Tween.TRANS_QUAD)
+	newTween.tween_property(username, "offset_transform_position:y", 0, 1)\
+	.set_trans(Tween.TRANS_QUAD)
+
 #
+func _is_dialogue_box_hoverable() -> bool:
+	if gameplayManager.cupIsPoisoned == true \
+	|| GlobalReferences.cursor.holdingDown == true \
+	|| gameplayManager.dialogueManager.introFinished == false \
+	|| hintsDisabled == true:
+		return false
+	
+	return true
+
 func _is_inside_open_detection_zone() -> bool:
 	var mousePos : Vector2 = get_global_mouse_position()
 	return openDetectionZone.get_global_rect().has_point(mousePos)

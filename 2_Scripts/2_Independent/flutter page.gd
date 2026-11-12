@@ -20,16 +20,13 @@ var hasCrossed : bool = false
 var bend : float = 0.0
 var shaderMaterial : ShaderMaterial = null
 
-func _set_front_content():
-	mainPage.visible = false
-	mapPage.visible = true
-	frontContent.visible = true
+func _set_front_page(isMapPage : bool):
+	mainPage.visible = !isMapPage
+	mapPage.visible = isMapPage
 	frontViewport.render_target_update_mode = SubViewport.UPDATE_ONCE
 
-func _clear_front_content():
-	mainPage.visible = true
-	mapPage.visible = false
-	frontContent.visible = false
+func _set_front_content(isVisible : bool):
+	frontContent.visible = isVisible
 	frontViewport.render_target_update_mode = SubViewport.UPDATE_ONCE
 
 func _set_back_text(title : String, info : String):
