@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dy0lvnxw1odi5"
-path="res://.godot/imported/indoorTavernBackground.png-55b6e47ee9c8bf89412ea2194a0d352c.ctex"
+uid="uid://dijtbn6lhdbsl"
+path="res://.godot/imported/SHA letter (Typed).png-1b54c2264066697d8a1aff122e462d7c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://0_Art/New_Art(Needs Sorting)/Portraits/Region .Tut/indoorTavernBackground.png"
-dest_files=["res://.godot/imported/indoorTavernBackground.png-55b6e47ee9c8bf89412ea2194a0d352c.ctex"]
+source_file="res://0_Art/New_Art(Needs Sorting)/SHA letter (Typed).png"
+dest_files=["res://.godot/imported/SHA letter (Typed).png-1b54c2264066697d8a1aff122e462d7c.ctex"]
 
 [params]
 
