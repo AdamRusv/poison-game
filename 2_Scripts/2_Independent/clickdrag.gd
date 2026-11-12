@@ -9,8 +9,6 @@ class_name ClickDrag
 var mouseOffset : Vector2 = Vector2.ZERO
 var isHeld : bool = false
 
-var initalPos : Vector2 = Vector2.ZERO
-
 func _ready() -> void:
 	_set_connections()
 
@@ -39,10 +37,3 @@ func _on_up():
 func _on_down():
 	mouseOffset = parentNode.position - get_global_mouse_position()
 	isHeld = true
-	initalPos = parentNode.position
-
-#---------------------------------------
-func _has_moved() -> bool:
-	if initalPos != parentNode.position:
-		return true
-	return false

@@ -15,6 +15,7 @@ class_name AtlasBook
 @export var atlasFullPageSprite : TextureRect
 @export var atlasSinglePageSprite : TextureRect
 @export var coverSprite : TextureRect
+@export var countriesSprite : Array[TextureRect]
 ##SET TO 4
 @export var pageTitles : Array[RichTextLabel]
 ##SET TO 4
@@ -50,20 +51,6 @@ var activeMaterial : ShaderMaterial = null
 
 func _init() -> void:
 	canBePacket = false
-#func _validate_property(property: Dictionary) -> void:
-	#if property.name == "paperTitleLabel":
-		#property.usage = PROPERTY_USAGE_NO_EDITOR
-	#if property.name == "paperInfoLabel":
-		#property.usage = PROPERTY_USAGE_NO_EDITOR
-	#if property.name == "packetParent":
-		#property.usage = PROPERTY_USAGE_NO_EDITOR
-	#if property.name == "packetBehindPaperParent":
-		#property.usage = PROPERTY_USAGE_NO_EDITOR
-	#if property.name == "pageFlipButton":
-		#property.usage = PROPERTY_USAGE_NO_EDITOR
-	#if property.name == "pageFlipTexture":
-		#property.usage = PROPERTY_USAGE_NO_EDITOR
-
 func _ready() -> void:
 	super._ready()
 
@@ -76,6 +63,9 @@ func _ready() -> void:
 	else:
 		dragArea.custom_minimum_size.x = openDragAmount
 	
+	if isCustomAtlasHolder == true:
+		for country in countriesSprite:
+			country.visible = false
 
 	pageFlipMaterial = atlasSinglePageSprite.material
 	coverMaterial = coverSprite.material
@@ -166,6 +156,10 @@ func _go_to_next_right_page():
 		dragArea.custom_minimum_size.x = openDragAmount
 
 	_finish_turn()
+
+	if isCustomAtlasHolder == true && _is_first_page():
+		mapHolder._turn_to_country(0)
+		#print(countryInfo.countryTitle)
 
 func _prepare_turn(isCoverTurn : bool, pageBend : float):
 	if isCoverTurn:
@@ -316,6 +310,10 @@ func _flip_section(toMain : bool):
 	await _play_flutter(toMain)
 	_finish_turn()
 
+	if isCustomAtlasHolder == true && _is_first_page():
+		print("ayayayaya")
+		_go_to_next_left_page()
+
 func _play_flutter(toMain : bool):
 	var middleIndex : int = flutterCount / 2
 	var lastIndex : int = flutterCount - 1
@@ -327,8 +325,12 @@ func _play_flutter(toMain : bool):
 		flutterHolder.move_child(flutterPool[i], flutterCount - 1 - i)
 
 		var isMapPage : bool = i <= middleIndex if toMain else i >= middleIndex
+		
 		flutterPool[i]._set_front_page(isMapPage)
-		flutterPool[i]._set_front_content(i == mapSheetIndex)
+		if isCustomAtlasHolder == true:
+			flutterPool[i]._set_front_content(!isCustomAtlasHolder)
+		else:
+			flutterPool[i]._set_front_content(i == mapSheetIndex)
 
 		if i == funSheetIndex:
 			flutterPool[i]._set_back_text(funPage.title, bbcodeManager._highlight(funPage.info))
