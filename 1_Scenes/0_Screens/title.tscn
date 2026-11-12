@@ -19,7 +19,7 @@ shader_parameter/speed = Vector2(-0.4, 0.4)
 atlas = ExtResource("3_gglkp")
 region = Rect2(0, 0, 20, 20)
 
-[node name="Title" type="Control" unique_id=2145977770 node_paths=PackedStringArray("playButton", "settingsButton", "quitButton")]
+[node name="Title" type="Control" unique_id=2145977770 node_paths=PackedStringArray("playButton", "settingsButton", "quitButton", "creditsButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -30,6 +30,7 @@ script = ExtResource("1_occgk")
 playButton = NodePath("VBoxContainer/play")
 settingsButton = NodePath("VBoxContainer/settings")
 quitButton = NodePath("VBoxContainer/quit")
+creditsButton = NodePath("credits")
 
 [node name="background" type="ColorRect" parent="." unique_id=204868835]
 layout_mode = 1
@@ -219,3 +220,45 @@ flat = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/separator = SubResource("StyleBoxEmpty_504ay")
+
+[node name="credits" type="MarginContainer" parent="." unique_id=796452037 node_paths=PackedStringArray("buttonSelf", "visual")]
+layout_mode = 0
+offset_left = 529.0
+offset_top = 318.0
+offset_right = 630.0
+offset_bottom = 350.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("5_1ux1m")
+buttonSelf = NodePath("button holder/play button")
+visual = NodePath("NinePatchRect")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="credits" unique_id=1727575226]
+layout_mode = 2
+texture = SubResource("AtlasTexture_504ay")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="text parent" type="MarginContainer" parent="credits" unique_id=1999227266]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 13
+theme_override_constants/margin_right = 12
+
+[node name="label" type="RichTextLabel" parent="credits/text parent" unique_id=833714042]
+layout_mode = 2
+theme = ExtResource("4_q3nym")
+text = "Credits!"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="button holder" type="MarginContainer" parent="credits" unique_id=1344953087]
+layout_mode = 2
+
+[node name="play button" type="Button" parent="credits/button holder" unique_id=1384948770]
+layout_mode = 2
+focus_mode = 0
+flat = true
