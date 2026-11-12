@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://b2mqymylu1nsq"]
+
+[ext_resource type="Script" uid="uid://d3gqilareful2" path="res://2_Scripts/2_Independent/default button.gd" id="1_1blsk"]
+[ext_resource type="Texture2D" uid="uid://dnvjgmgoixkn1" path="res://0_Art/2_PNGs/default button-Sheet.png" id="1_387kh"]
+[ext_resource type="Script" uid="uid://dqsbu1y0y16ij" path="res://2_Scripts/2_Independent/0_Popup Menus/0 menu background.gd" id="1_l4adv"]
+[ext_resource type="Texture2D" uid="uid://dub3hhi6qani2" path="res://0_Art/2_PNGs/close X.png" id="2_6y03r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6y03r"]
+atlas = ExtResource("1_387kh")
+region = Rect2(0, 0, 20, 20)
+
+[node name="Popup Menu Background" type="ColorRect" unique_id=896041403 node_paths=PackedStringArray("backgroundColorRect", "closeButton")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.74509805)
+script = ExtResource("1_l4adv")
+backgroundColorRect = NodePath(".")
+closeButton = NodePath("close")
+
+[node name="close" type="MarginContainer" parent="." unique_id=2086407570 node_paths=PackedStringArray("buttonSelf", "visual")]
+layout_mode = 0
+offset_right = 41.0
+offset_bottom = 41.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+script = ExtResource("1_1blsk")
+buttonSelf = NodePath("button holder/play button")
+visual = NodePath("NinePatchRect")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="close" unique_id=1427396460]
+layout_mode = 2
+texture = SubResource("AtlasTexture_6y03r")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="text parent" type="MarginContainer" parent="close" unique_id=379269213]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="TextureRect" type="TextureRect" parent="close/text parent" unique_id=435138013]
+layout_mode = 2
+texture = ExtResource("2_6y03r")
+stretch_mode = 3
+
+[node name="button holder" type="MarginContainer" parent="close" unique_id=716398494]
+layout_mode = 2
+
+[node name="play button" type="Button" parent="close/button holder" unique_id=1617411864]
+layout_mode = 2
+focus_mode = 0
+flat = true

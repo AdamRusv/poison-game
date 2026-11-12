@@ -8,6 +8,7 @@
 [ext_resource type="Resource" uid="uid://b6refrdgn1tew" path="res://5_Resources/0_Papers/0_Levels/1_First Region/encounters/2-3 (2).tres" id="5_a6xer"]
 [ext_resource type="Resource" uid="uid://dsdk74a6efros" path="res://5_Resources/0_Papers/0_Levels/1_First Region/encounters/4 (1).tres" id="5_hfqk1"]
 [ext_resource type="Resource" uid="uid://dlt86vr4taqr1" path="res://5_Resources/1_RegionMusic/region one music.tres" id="6_a6xer"]
+[ext_resource type="Script" uid="uid://b6q05ms7ugqb1" path="res://2_Scripts/3_Dependent/0_Dialogue/encounter dialogue tree.gd" id="6_jhwtg"]
 
 [sub_resource type="Resource" id="Resource_te4kt"]
 script = ExtResource("1_7puhk")
