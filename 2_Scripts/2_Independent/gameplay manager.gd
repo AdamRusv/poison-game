@@ -117,7 +117,7 @@ func _restart_current_encounter():
 func _reset_gamestate_to_start_of_current_region():
 	gamestateJSON._load_gamestate()
 	
-	gamestateJSON.completedCharacters.clear()
+	gamestateJSON.completedCharacters.clear() #NOTE: Line should change for every OTHER death
 	gamestateJSON.currentCharacterIndex = 0
 	gamestateJSON.currentRegionEncounterCount = 1
 	gamestateJSON.timelineIndex = gameTimeline._get_timeline_index_of_current_region_start()
