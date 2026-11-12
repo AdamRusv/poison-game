@@ -18,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://xfwlhmfipmqm" path="res://0_Art/New_Art(Needs Sorting)/Schloozyville-Sheet.png" id="14_yxeby"]
 [ext_resource type="BitMap" uid="uid://dm4p3n6mlugj7" path="res://0_Art/New_Art(Needs Sorting)/Schloozyville-Bitmap.png" id="15_icpc4"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_fffai"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_1s26u"]
 viewport_path = NodePath("Map Atlas/Left Page Viewport")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t11ig"]
@@ -27,13 +27,13 @@ shader = ExtResource("6_bendsh")
 shader_parameter/progress = 1.0
 shader_parameter/spine_x = 0.50000002375
 shader_parameter/bend = 0.0
-shader_parameter/back_texture = SubResource("ViewportTexture_fffai")
+shader_parameter/back_texture = SubResource("ViewportTexture_1s26u")
 shader_parameter/perspective = 0.050000002375
 shader_parameter/shadow_strength = 0.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3lemr"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_6ctbc"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_fgy60"]
 viewport_path = NodePath("Main Atlas/Back Page")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_28i0q"]
@@ -42,11 +42,11 @@ shader = ExtResource("6_bendsh")
 shader_parameter/progress = 0.0
 shader_parameter/spine_x = 0.5
 shader_parameter/bend = -0.8000000268224001
-shader_parameter/back_texture = SubResource("ViewportTexture_6ctbc")
+shader_parameter/back_texture = SubResource("ViewportTexture_fgy60")
 shader_parameter/perspective = 0.050000002375
 shader_parameter/shadow_strength = 0.0
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_pmolo"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_vmeij"]
 viewport_path = NodePath("Main Atlas/Front Page")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2y7yb"]
@@ -180,7 +180,6 @@ fit_content = true
 scroll_active = false
 
 [node name="Main Atlas" type="MarginContainer" parent="." unique_id=1597565978]
-visible = false
 layout_mode = 2
 mouse_filter = 2
 
@@ -321,7 +320,7 @@ scroll_active = false
 material = SubResource("ShaderMaterial_28i0q")
 layout_mode = 2
 mouse_filter = 2
-texture = SubResource("ViewportTexture_pmolo")
+texture = SubResource("ViewportTexture_vmeij")
 
 [node name="Main Trim Container Right" type="MarginContainer" parent="Main Atlas" unique_id=384535913]
 layout_mode = 2
