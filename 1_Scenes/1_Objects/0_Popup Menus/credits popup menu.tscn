@@ -1,0 +1,198 @@
+[gd_scene format=3 uid="uid://bvo6w3ikc0p8v"]
+
+[ext_resource type="Script" uid="uid://buuqclm0bnw1p" path="res://2_Scripts/2_Independent/0_Popup Menus/credits popup menu.gd" id="1_33cnk"]
+[ext_resource type="Texture2D" uid="uid://dnvjgmgoixkn1" path="res://0_Art/2_PNGs/default button-Sheet.png" id="3_r644h"]
+[ext_resource type="Theme" uid="uid://c22mtrw4havjs" path="res://6_Other/medium font.tres" id="4_1xkry"]
+[ext_resource type="Theme" uid="uid://bhvewryp1cmbt" path="res://6_Other/description font.tres" id="4_qcok5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cjolp"]
+atlas = ExtResource("3_r644h")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_504ay"]
+
+[node name="Credits Popup Menu" type="Control" unique_id=1268477920]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_33cnk")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=528316837]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -16.5
+offset_bottom = 16.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="header" type="MarginContainer" parent="VBoxContainer" unique_id=570476964]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer/header" unique_id=562835907]
+layout_mode = 2
+texture = SubResource("AtlasTexture_cjolp")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="text parent" type="MarginContainer" parent="VBoxContainer/header" unique_id=356356045]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 13
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="label" type="RichTextLabel" parent="VBoxContainer/header/text parent" unique_id=2095763667]
+layout_mode = 2
+theme = ExtResource("4_1xkry")
+text = "Credits"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="button holder" type="MarginContainer" parent="VBoxContainer/header" unique_id=1814553497]
+layout_mode = 2
+
+[node name="play button" type="Button" parent="VBoxContainer/header/button holder" unique_id=1668220459]
+layout_mode = 2
+focus_mode = 0
+flat = true
+
+[node name="description" type="MarginContainer" parent="VBoxContainer" unique_id=663235104]
+custom_minimum_size = Vector2(300, -1)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer/description" unique_id=1066253801]
+layout_mode = 2
+texture = SubResource("AtlasTexture_cjolp")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/description" unique_id=1506713040]
+layout_mode = 2
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/description/HBoxContainer" unique_id=1552226379]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.6
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/description/HBoxContainer/VBoxContainer" unique_id=84014343]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_504ay")
+
+[node name="text parent" type="MarginContainer" parent="VBoxContainer/description/HBoxContainer/VBoxContainer" unique_id=2012007363]
+layout_mode = 2
+theme_override_constants/margin_top = 13
+theme_override_constants/margin_bottom = 12
+
+[node name="label" type="RichTextLabel" parent="VBoxContainer/description/HBoxContainer/VBoxContainer/text parent" unique_id=557884047]
+layout_mode = 2
+theme = ExtResource("4_qcok5")
+text = "Adam Robichaux"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 2
+
+[node name="text parent2" type="MarginContainer" parent="VBoxContainer/description/HBoxContainer/VBoxContainer" unique_id=1651124810]
+layout_mode = 2
+theme_override_constants/margin_top = 13
+theme_override_constants/margin_bottom = 12
+
+[node name="label" type="RichTextLabel" parent="VBoxContainer/description/HBoxContainer/VBoxContainer/text parent2" unique_id=120395423]
+layout_mode = 2
+theme = ExtResource("4_qcok5")
+text = "Alan Richardson"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 2
+
+[node name="text parent3" type="MarginContainer" parent="VBoxContainer/description/HBoxContainer/VBoxContainer" unique_id=526769356]
+layout_mode = 2
+theme_override_constants/margin_top = 13
+theme_override_constants/margin_bottom = 12
+
+[node name="label" type="RichTextLabel" parent="VBoxContainer/description/HBoxContainer/VBoxContainer/text parent3" unique_id=1515229336]
+layout_mode = 2
+theme = ExtResource("4_qcok5")
+text = "Daniel Vietta Escobar"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 2
+
+[node name="HSeparator4" type="HSeparator" parent="VBoxContainer/description/HBoxContainer/VBoxContainer" unique_id=985294017]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_504ay")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/description/HBoxContainer" unique_id=837699729]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer/description/HBoxContainer/VBoxContainer2" unique_id=790742440]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_504ay")
+
+[node name="text parent" type="MarginContainer" parent="VBoxContainer/description/HBoxContainer/VBoxContainer2" unique_id=168450063]
+layout_mode = 2
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="label" type="RichTextLabel" parent="VBoxContainer/description/HBoxContainer/VBoxContainer2/text parent" unique_id=364501669]
+layout_mode = 2
+theme = ExtResource("4_qcok5")
+text = "Programmer, UI, Artist, Level Designer, Writer"
+fit_content = true
+scroll_active = false
+
+[node name="text parent2" type="MarginContainer" parent="VBoxContainer/description/HBoxContainer/VBoxContainer2" unique_id=1868439523]
+layout_mode = 2
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_bottom = 12
+
+[node name="label" type="RichTextLabel" parent="VBoxContainer/description/HBoxContainer/VBoxContainer2/text parent2" unique_id=748253059]
+layout_mode = 2
+theme = ExtResource("4_qcok5")
+text = "Music, Programmer, Artist, Level Designer,  Writer"
+fit_content = true
+scroll_active = false
+
+[node name="text parent3" type="MarginContainer" parent="VBoxContainer/description/HBoxContainer/VBoxContainer2" unique_id=617010063]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 12
+
+[node name="label" type="RichTextLabel" parent="VBoxContainer/description/HBoxContainer/VBoxContainer2/text parent3" unique_id=1574768995]
+layout_mode = 2
+theme = ExtResource("4_qcok5")
+text = "Artist, Level Designer, Writer"
+fit_content = true
+scroll_active = false
+
+[node name="HSeparator3" type="HSeparator" parent="VBoxContainer/description/HBoxContainer/VBoxContainer2" unique_id=1337253848]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_504ay")
+
+[node name="button holder" type="MarginContainer" parent="VBoxContainer/description" unique_id=805048138]
+layout_mode = 2
+
+[node name="play button" type="Button" parent="VBoxContainer/description/button holder" unique_id=136877489]
+layout_mode = 2
+focus_mode = 0
+flat = true

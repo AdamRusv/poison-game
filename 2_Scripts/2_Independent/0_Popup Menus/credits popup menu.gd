@@ -1,0 +1,3 @@
+extends BasePopupMenu
+
+class_name CreditsMenuManager
