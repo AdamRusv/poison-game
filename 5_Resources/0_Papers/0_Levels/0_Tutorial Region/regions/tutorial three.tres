@@ -4,7 +4,70 @@
 [ext_resource type="Script" uid="uid://851asxmj8i78" path="res://2_Scripts/3_Dependent/region info.gd" id="2_qesvq"]
 [ext_resource type="Resource" uid="uid://c0r3iew4w8q46" path="res://5_Resources/0_Papers/0_Levels/0_Tutorial Region/encounters/three.tres" id="3_5ccs8"]
 [ext_resource type="Script" uid="uid://csy0x4mgdxs00" path="res://2_Scripts/3_Dependent/paperinfo.gd" id="3_qesvq"]
+[ext_resource type="Script" uid="uid://b6q05ms7ugqb1" path="res://2_Scripts/3_Dependent/0_Dialogue/encounter dialogue tree.gd" id="3_sr7gy"]
 [ext_resource type="Resource" uid="uid://ct4ydjigik5kq" path="res://5_Resources/1_RegionMusic/tutorial music.tres" id="3_yktx2"]
+[ext_resource type="Script" uid="uid://e0ujmn3oiqx0" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue branch.gd" id="4_tqyks"]
+[ext_resource type="Script" uid="uid://fn2tb2dtu6fj" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue.gd" id="5_w7lvq"]
+[ext_resource type="Script" uid="uid://chre6fsqbhfrk" path="res://2_Scripts/3_Dependent/0_Dialogue/branch intro.gd" id="6_46rf3"]
+[ext_resource type="Script" uid="uid://cwxljhi0yey0n" path="res://2_Scripts/3_Dependent/0_Dialogue/branch cups.gd" id="7_kgbhx"]
+
+[sub_resource type="Resource" id="Resource_dv0cg"]
+script = ExtResource("5_w7lvq")
+dialogue = "Now that you know the basics"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_kd850"]
+script = ExtResource("5_w7lvq")
+dialogue = "It's time for you to have your first challenge!"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_griqq"]
+script = ExtResource("5_w7lvq")
+dialogue = "You got this! I believe in you!"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_5ccs8"]
+script = ExtResource("5_w7lvq")
+speaker = 1
+dialogue = "Wow, thanks!"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_312to"]
+script = ExtResource("6_46rf3")
+dialogue = Array[ExtResource("5_w7lvq")]([SubResource("Resource_dv0cg"), SubResource("Resource_kd850"), SubResource("Resource_griqq"), SubResource("Resource_5ccs8")])
+metadata/_custom_type_script = "uid://chre6fsqbhfrk"
+
+[sub_resource type="Resource" id="Resource_xsf05"]
+script = ExtResource("5_w7lvq")
+dialogue = "Good luck in your future matches!"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_mqosg"]
+script = ExtResource("5_w7lvq")
+dialogue = "I believe in you!"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_neqfg"]
+script = ExtResource("7_kgbhx")
+isSolution = true
+dialogue = Array[ExtResource("5_w7lvq")]([SubResource("Resource_xsf05"), SubResource("Resource_mqosg")])
+metadata/_custom_type_script = "uid://cwxljhi0yey0n"
+
+[sub_resource type="Resource" id="Resource_32h7f"]
+script = ExtResource("5_w7lvq")
+dialogue = "Maybe next time..."
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_j1jqe"]
+script = ExtResource("7_kgbhx")
+dialogue = Array[ExtResource("5_w7lvq")]([SubResource("Resource_32h7f")])
+metadata/_custom_type_script = "uid://cwxljhi0yey0n"
+
+[sub_resource type="Resource" id="Resource_l5knd"]
+script = ExtResource("3_sr7gy")
+characterName = "Scrumpy Giggles Jr"
+branches = Array[ExtResource("4_tqyks")]([SubResource("Resource_312to"), SubResource("Resource_neqfg"), SubResource("Resource_j1jqe")])
+metadata/_custom_type_script = "uid://b6q05ms7ugqb1"
 
 [sub_resource type="Resource" id="Resource_vhogm"]
 script = ExtResource("3_qesvq")
@@ -19,7 +82,7 @@ metadata/_custom_type_script = "uid://csy0x4mgdxs00"
 
 [resource]
 script = ExtResource("2_qesvq")
-totalEncounters = 1
+encounterDialogueTrees = Array[ExtResource("3_sr7gy")]([SubResource("Resource_l5knd")])
 traitSheet = SubResource("Resource_vhogm")
 characterSheets = Array[ExtResource("1_ovmk1")]([ExtResource("3_5ccs8")])
 noteSheet = false

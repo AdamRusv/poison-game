@@ -1,12 +1,10 @@
-[gd_scene format=3 uid="uid://drqfsei5lg7y6"]
+[gd_scene format=3 uid="uid://bccq48qy5liwg"]
 
 [ext_resource type="Script" uid="uid://b1hcjlnogkytj" path="res://2_Scripts/2_Independent/paper.gd" id="1_6s36k"]
-[ext_resource type="Texture2D" uid="uid://btbkhfkp1pr81" path="res://0_Art/New_Art(Needs Sorting)/Atlas 2s-Sheet.png" id="2_84w75"]
 [ext_resource type="Theme" uid="uid://bhvewryp1cmbt" path="res://6_Other/description font.tres" id="3_rs6y8"]
 [ext_resource type="Texture2D" uid="uid://n82vq8gxieut" path="res://0_Art/New_Art(Needs Sorting)/PageCorner-Sheet.png" id="4_kyb5q"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xmrx0"]
-atlas = ExtResource("2_84w75")
 region = Rect2(0, 0, 242, 189)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3lemr"]

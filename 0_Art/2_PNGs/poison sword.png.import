@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://e8g7oerk8row"
-path="res://.godot/imported/poisonGame-PortraitAngled.png-d28120d519311dd95537e275dbd24db7.ctex"
+uid="uid://8csco8snt68o"
+path="res://.godot/imported/poison sword.png-c1b7b98d9d9fd7c319cc81b58ac7c744.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://0_Art/New_Art(Needs Sorting)/Portraits/Unused/poisonGame-PortraitAngled.png"
-dest_files=["res://.godot/imported/poisonGame-PortraitAngled.png-d28120d519311dd95537e275dbd24db7.ctex"]
+source_file="res://0_Art/2_PNGs/poison sword.png"
+dest_files=["res://.godot/imported/poison sword.png-c1b7b98d9d9fd7c319cc81b58ac7c744.ctex"]
 
 [params]
 
