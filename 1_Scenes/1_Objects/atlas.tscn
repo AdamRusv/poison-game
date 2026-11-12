@@ -18,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://xfwlhmfipmqm" path="res://0_Art/New_Art(Needs Sorting)/Schloozyville-Sheet.png" id="14_yxeby"]
 [ext_resource type="BitMap" uid="uid://dm4p3n6mlugj7" path="res://0_Art/New_Art(Needs Sorting)/Schloozyville-Bitmap.png" id="15_icpc4"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_1s26u"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ro1ja"]
 viewport_path = NodePath("Map Atlas/Left Page Viewport")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t11ig"]
@@ -27,13 +27,13 @@ shader = ExtResource("6_bendsh")
 shader_parameter/progress = 1.0
 shader_parameter/spine_x = 0.50000002375
 shader_parameter/bend = 0.0
-shader_parameter/back_texture = SubResource("ViewportTexture_1s26u")
+shader_parameter/back_texture = SubResource("ViewportTexture_ro1ja")
 shader_parameter/perspective = 0.050000002375
 shader_parameter/shadow_strength = 0.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3lemr"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_fgy60"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_r2d3n"]
 viewport_path = NodePath("Main Atlas/Back Page")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_28i0q"]
@@ -42,11 +42,11 @@ shader = ExtResource("6_bendsh")
 shader_parameter/progress = 0.0
 shader_parameter/spine_x = 0.5
 shader_parameter/bend = -0.8000000268224001
-shader_parameter/back_texture = SubResource("ViewportTexture_fgy60")
+shader_parameter/back_texture = SubResource("ViewportTexture_r2d3n")
 shader_parameter/perspective = 0.050000002375
 shader_parameter/shadow_strength = 0.0
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_vmeij"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_k8dcx"]
 viewport_path = NodePath("Main Atlas/Front Page")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2y7yb"]
@@ -65,7 +65,7 @@ region = Rect2(0, 0, 236, 166)
 atlas = ExtResource("14_yxeby")
 region = Rect2(236, 0, 236, 166)
 
-[node name="Atlas" type="MarginContainer" unique_id=1389312574 node_paths=PackedStringArray("mapAtlas", "mainAtlas", "mapHolder", "leftDetectionZone", "rightDetectionZone", "dragArea", "mapPageSprite", "atlasFullPageSprite", "atlasSinglePageSprite", "coverSprite", "pageTitles", "pageInfos", "titleSeparator", "generalInfoHolder", "flutterHolder", "parentNode", "detectionArea")]
+[node name="Atlas" type="MarginContainer" unique_id=1389312574 node_paths=PackedStringArray("mapAtlas", "mainAtlas", "mapHolder", "leftDetectionZone", "rightDetectionZone", "dragArea", "mapPageSprite", "atlasFullPageSprite", "atlasSinglePageSprite", "coverSprite", "countriesSprite", "pageTitles", "pageInfos", "titleSeparator", "generalInfoHolder", "flutterHolder", "parentNode", "detectionArea")]
 offset_right = 236.0
 offset_bottom = 166.0
 mouse_filter = 2
@@ -80,6 +80,7 @@ mapPageSprite = NodePath("Map Atlas/Right Page")
 atlasFullPageSprite = NodePath("Main Atlas/Atlas Page")
 atlasSinglePageSprite = NodePath("Main Atlas/Page Projector")
 coverSprite = NodePath("Map Atlas/Cover & Left Page")
+countriesSprite = [NodePath("Map Atlas/Left Page Viewport/Left Countries"), NodePath("Map Atlas/Right Page/Right Countries")]
 pageTitles = [NodePath("Main Atlas/First & Last Page Holder/General Info Holder/Title Container/Title Label"), NodePath("Main Atlas/Front Page/Region Info Container/Region Info Holder/Title Container/Title Label"), NodePath("Main Atlas/Back Page/Region Info Container/Region Info Holder/Title Container/Title Label"), NodePath("Main Atlas/First & Last Page Holder/Last Page Holder/Title Container/Title Label")]
 pageInfos = [NodePath("Main Atlas/First & Last Page Holder/General Info Holder/Info Container/Info Label"), NodePath("Main Atlas/Front Page/Region Info Container/Region Info Holder/Info Container/Info Label"), NodePath("Main Atlas/Back Page/Region Info Container/Region Info Holder/Info Container/Info Label"), NodePath("Main Atlas/First & Last Page Holder/Last Page Holder/Info Container/Info Label")]
 titleSeparator = NodePath("Main Atlas/First & Last Page Holder/General Info Holder/Title Seperation Container")
@@ -101,7 +102,7 @@ mouse_filter = 2
 texture = ExtResource("2_28i0q")
 stretch_mode = 2
 
-[node name="Countries" type="TextureRect" parent="Map Atlas/Right Page" unique_id=1153577931]
+[node name="Right Countries" type="TextureRect" parent="Map Atlas/Right Page" unique_id=1153577931]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -109,7 +110,7 @@ mouse_filter = 2
 texture = ExtResource("6_u0ylq")
 flip_h = true
 
-[node name="Title Label" type="RichTextLabel" parent="Map Atlas/Right Page/Countries" unique_id=1747235713]
+[node name="Title Label" type="RichTextLabel" parent="Map Atlas/Right Page/Right Countries" unique_id=1747235713]
 layout_mode = 0
 offset_left = 180.0
 offset_top = 51.0
@@ -146,14 +147,15 @@ mouse_filter = 2
 texture = ExtResource("3_t11ig")
 flip_h = true
 
-[node name="Countries" type="TextureRect" parent="Map Atlas/Left Page Viewport" unique_id=744329270]
+[node name="Left Countries" type="TextureRect" parent="Map Atlas/Left Page Viewport" unique_id=744329270]
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
 texture = ExtResource("6_u0ylq")
 flip_h = true
 
-[node name="Hollyberry Label" type="RichTextLabel" parent="Map Atlas/Left Page Viewport" unique_id=1214471018]
+[node name="Hollyberry Label" type="RichTextLabel" parent="Map Atlas/Left Page Viewport/Left Countries" unique_id=1214471018]
+layout_mode = 0
 offset_left = 217.0
 offset_top = 49.0
 offset_right = 264.99994
@@ -166,7 +168,8 @@ text = "Hollyberry"
 fit_content = true
 scroll_active = false
 
-[node name="Schloozyville Label" type="RichTextLabel" parent="Map Atlas/Left Page Viewport" unique_id=662445372]
+[node name="Schloozyville Label" type="RichTextLabel" parent="Map Atlas/Left Page Viewport/Left Countries" unique_id=662445372]
+layout_mode = 0
 offset_left = 195.0
 offset_top = 87.0
 offset_right = 245.0
@@ -180,6 +183,7 @@ fit_content = true
 scroll_active = false
 
 [node name="Main Atlas" type="MarginContainer" parent="." unique_id=1597565978]
+visible = false
 layout_mode = 2
 mouse_filter = 2
 
@@ -320,7 +324,7 @@ scroll_active = false
 material = SubResource("ShaderMaterial_28i0q")
 layout_mode = 2
 mouse_filter = 2
-texture = SubResource("ViewportTexture_vmeij")
+texture = SubResource("ViewportTexture_k8dcx")
 
 [node name="Main Trim Container Right" type="MarginContainer" parent="Main Atlas" unique_id=384535913]
 layout_mode = 2

@@ -15,7 +15,8 @@ func _set_connections():
 
 #- - -
 func _turn_to_country(i : int):
-	if atlas._has_moved() == true || atlas.isTurning == true:
+
+	if atlas.isTurning == true:
 		return
 	
 	if atlas.atlasHolder.countryInfos[i] == null:
