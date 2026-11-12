@@ -51,4 +51,12 @@ func _load_gamestate() -> void:
 	completedCharacters.clear()
 	for value in gamestateData.get("completedCharacters", completedCharacters):
 		completedCharacters.append(int(value))
+
+#--------
+func _reset_gamestate(): #NOTE: have an option to call this for reoccuring players in playtest 3
+	completedCharacters.clear()
+	currentCharacterIndex = 0
+	currentRegionEncounterCount = 1
+	timelineIndex = 0
 	
+	_save_gamestate()

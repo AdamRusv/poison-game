@@ -111,9 +111,18 @@ func _restart_current_encounter():
 	playmatManager._save_paper_positions()
 
 	await TransitionManager._create_transition(TransitionManager.TransitionStates.restarting)
-	
+	_reset_gamestate_to_start_of_current_region()
 	await get_tree().create_timer(0.6).timeout
 	get_tree().reload_current_scene()
+func _reset_gamestate_to_start_of_current_region():
+	gamestateJSON._load_gamestate()
+	
+	gamestateJSON.completedCharacters.clear()
+	gamestateJSON.currentCharacterIndex = 0
+	gamestateJSON.currentRegionEncounterCount = 1
+	gamestateJSON.timelineIndex = gameTimeline._get_timeline_index_of_current_region_start()
+	
+	gamestateJSON._save_gamestate()
 
 func _set_next_encounter():
 	playmatManager._save_paper_positions()
