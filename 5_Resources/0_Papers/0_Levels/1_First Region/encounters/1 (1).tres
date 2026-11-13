@@ -47,11 +47,11 @@ script = ExtResource("5_a8jsl")
 hints = SubResource("Resource_neqfg")
 cupAnswer = 1
 title = "Character Sheet"
-info = Array[String]([", Shloozyville
+info = Array[String]([", Hollyberry
 
 
-1. Sage
+1. Race: Elf
 
-2. Status: Wealthy
+2. Age: 89
 "])
 metadata/_custom_type_script = "uid://cg4ujw8mauohh"
