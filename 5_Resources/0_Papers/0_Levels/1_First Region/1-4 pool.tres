@@ -1,0 +1,92 @@
+[gd_resource type="Resource" script_class="RegionInfo" format=3 uid="uid://ccpnacvdqwsmu"]
+
+[ext_resource type="Script" uid="uid://cg4ujw8mauohh" path="res://2_Scripts/3_Dependent/encounter info.gd" id="1_jhynj"]
+[ext_resource type="Resource" uid="uid://dsdk74a6efros" path="res://5_Resources/0_Papers/0_Levels/1_First Region/encounters/4 (1).tres" id="2_jhynj"]
+[ext_resource type="Script" uid="uid://b6q05ms7ugqb1" path="res://2_Scripts/3_Dependent/0_Dialogue/encounter dialogue tree.gd" id="3_gp338"]
+[ext_resource type="Script" uid="uid://e0ujmn3oiqx0" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue branch.gd" id="4_jmxuo"]
+[ext_resource type="Script" uid="uid://fn2tb2dtu6fj" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue.gd" id="5_tt7lf"]
+[ext_resource type="Script" uid="uid://chre6fsqbhfrk" path="res://2_Scripts/3_Dependent/0_Dialogue/branch intro.gd" id="6_le3pc"]
+[ext_resource type="Script" uid="uid://cwxljhi0yey0n" path="res://2_Scripts/3_Dependent/0_Dialogue/branch cups.gd" id="7_v5mlj"]
+[ext_resource type="Resource" uid="uid://dlt86vr4taqr1" path="res://5_Resources/1_RegionMusic/region one music.tres" id="8_jmlpl"]
+[ext_resource type="Script" uid="uid://851asxmj8i78" path="res://2_Scripts/3_Dependent/region info.gd" id="9_x8llq"]
+[ext_resource type="Script" uid="uid://csy0x4mgdxs00" path="res://2_Scripts/3_Dependent/paperinfo.gd" id="10_mmu4h"]
+
+[sub_resource type="Resource" id="Resource_y0efq"]
+script = ExtResource("5_tt7lf")
+dialogue = "Alright. Let's make this quick"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_yb4ys"]
+script = ExtResource("5_tt7lf")
+dialogue = "I only get 30 minutes for my lunch break"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_fk0bc"]
+script = ExtResource("5_tt7lf")
+speaker = 1
+dialogue = "Don't worry, I won't waste your time"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_kf355"]
+script = ExtResource("6_le3pc")
+dialogue = Array[ExtResource("5_tt7lf")]([SubResource("Resource_y0efq"), SubResource("Resource_yb4ys"), SubResource("Resource_fk0bc")])
+metadata/_custom_type_script = "uid://chre6fsqbhfrk"
+
+[sub_resource type="Resource" id="Resource_r33c3"]
+script = ExtResource("5_tt7lf")
+dialogue = "Well, guess my breakfast was my last meal"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_k18tf"]
+script = ExtResource("7_v5mlj")
+isSolution = true
+dialogue = Array[ExtResource("5_tt7lf")]([SubResource("Resource_r33c3")])
+metadata/_custom_type_script = "uid://cwxljhi0yey0n"
+
+[sub_resource type="Resource" id="Resource_4o4op"]
+script = ExtResource("5_tt7lf")
+dialogue = "Thank goodness"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_7l40v"]
+script = ExtResource("5_tt7lf")
+dialogue = "I can eat my lunch now"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_0m5x8"]
+script = ExtResource("7_v5mlj")
+dialogue = Array[ExtResource("5_tt7lf")]([SubResource("Resource_4o4op"), SubResource("Resource_7l40v")])
+metadata/_custom_type_script = "uid://cwxljhi0yey0n"
+
+[sub_resource type="Resource" id="Resource_bqmu5"]
+script = ExtResource("3_gp338")
+characterName = "Sol Shimmerman"
+branches = Array[ExtResource("4_jmxuo")]([SubResource("Resource_kf355"), SubResource("Resource_k18tf"), SubResource("Resource_0m5x8")])
+metadata/_custom_type_script = "uid://b6q05ms7ugqb1"
+
+[sub_resource type="Resource" id="Resource_te4kt"]
+script = ExtResource("10_mmu4h")
+title = "TRAIT SHEET"
+info = Array[String](["Fool: 
+	Drinks from the cup that is in front of them
+
+Sage:
+	Drinks from the cup that is NOT in front of themselves
+
+
+Tricky:
+	Odd entries in Character Sheet are false
+
+Deceptive:
+	Even entries in Character Sheet are false
+"])
+metadata/_custom_type_script = "uid://csy0x4mgdxs00"
+
+[resource]
+script = ExtResource("9_x8llq")
+encounterDialogueTrees = Array[ExtResource("3_gp338")]([SubResource("Resource_bqmu5")])
+traitSheet = SubResource("Resource_te4kt")
+characterSheets = Array[ExtResource("1_jhynj")]([ExtResource("2_jhynj")])
+maxCountryCount = 2
+music = ExtResource("8_jmlpl")
+metadata/_custom_type_script = "uid://851asxmj8i78"

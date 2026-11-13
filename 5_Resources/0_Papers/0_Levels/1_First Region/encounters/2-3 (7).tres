@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="EncounterInfo" format=3 uid="uid://dycn6w0wijn6t"]
+
+[ext_resource type="Script" uid="uid://e0ujmn3oiqx0" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue branch.gd" id="1_mpc6e"]
+[ext_resource type="Script" uid="uid://fn2tb2dtu6fj" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue.gd" id="2_qi7kr"]
+[ext_resource type="Script" uid="uid://qr661epbiujn" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue tree.gd" id="3_p4m4x"]
+[ext_resource type="Script" uid="uid://cg4ujw8mauohh" path="res://2_Scripts/3_Dependent/encounter info.gd" id="4_cu37e"]
+
+[sub_resource type="Resource" id="Resource_xsf05"]
+script = ExtResource("2_qi7kr")
+speaker = 1
+dialogue = "Are you Tricky?"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_32h7f"]
+script = ExtResource("2_qi7kr")
+dialogue = "Yes!"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_j1jqe"]
+script = ExtResource("1_mpc6e")
+dialogue = Array[ExtResource("2_qi7kr")]([SubResource("Resource_xsf05"), SubResource("Resource_32h7f")])
+metadata/_custom_type_script = "uid://e0ujmn3oiqx0"
+
+[sub_resource type="Resource" id="Resource_neqfg"]
+script = ExtResource("3_p4m4x")
+branches = Array[ExtResource("1_mpc6e")]([SubResource("Resource_j1jqe")])
+metadata/_custom_type_script = "uid://qr661epbiujn"
+
+[resource]
+script = ExtResource("4_cu37e")
+hints = SubResource("Resource_neqfg")
+cupAnswer = 2
+title = "Character Sheet"
+info = Array[String]([", Hollyberry
+
+
+1. Occupation: Blacksmith
+
+2. Tricky
+
+3. Age: 48"])
+metadata/_custom_type_script = "uid://cg4ujw8mauohh"
