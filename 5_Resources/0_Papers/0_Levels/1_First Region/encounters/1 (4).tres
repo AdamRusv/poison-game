@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="EncounterInfo" format=3 uid="uid://d4bdte4glhu4j"]
+
+[ext_resource type="Script" uid="uid://e0ujmn3oiqx0" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue branch.gd" id="1_68k5v"]
+[ext_resource type="Script" uid="uid://fn2tb2dtu6fj" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue.gd" id="2_nbsog"]
+[ext_resource type="Script" uid="uid://qr661epbiujn" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue tree.gd" id="3_v84fb"]
+[ext_resource type="Script" uid="uid://cg4ujw8mauohh" path="res://2_Scripts/3_Dependent/encounter info.gd" id="4_qmrhm"]
+
+[sub_resource type="Resource" id="Resource_md82j"]
+script = ExtResource("2_nbsog")
+speaker = 1
+dialogue = "Are you a fisher?"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_li5gh"]
+script = ExtResource("2_nbsog")
+dialogue = "That question does not influence the outcome."
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_aufu2"]
+script = ExtResource("1_68k5v")
+dialogue = Array[ExtResource("2_nbsog")]([SubResource("Resource_md82j"), SubResource("Resource_li5gh")])
+metadata/_custom_type_script = "uid://e0ujmn3oiqx0"
+
+[sub_resource type="Resource" id="Resource_tgvig"]
+script = ExtResource("3_v84fb")
+branches = Array[ExtResource("1_68k5v")]([SubResource("Resource_aufu2")])
+metadata/_custom_type_script = "uid://qr661epbiujn"
+
+[resource]
+script = ExtResource("4_qmrhm")
+hints = SubResource("Resource_tgvig")
+cupAnswer = 2
+title = "Character Sheet"
+info = Array[String]([", Shloozyville
+
+
+1. Status: Poor
+
+2. Sage
+"])
+metadata/_custom_type_script = "uid://cg4ujw8mauohh"

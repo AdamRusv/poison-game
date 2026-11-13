@@ -1,0 +1,62 @@
+[gd_resource type="Resource" script_class="EncounterInfo" format=3 uid="uid://cnn0fcww7ncbv"]
+
+[ext_resource type="Script" uid="uid://e0ujmn3oiqx0" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue branch.gd" id="1_yxow8"]
+[ext_resource type="Script" uid="uid://fn2tb2dtu6fj" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue.gd" id="2_0rfcv"]
+[ext_resource type="Script" uid="uid://qr661epbiujn" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue tree.gd" id="3_18y6q"]
+[ext_resource type="Script" uid="uid://cg4ujw8mauohh" path="res://2_Scripts/3_Dependent/encounter info.gd" id="4_nc5f7"]
+
+[sub_resource type="Resource" id="Resource_tbv1v"]
+script = ExtResource("2_0rfcv")
+speaker = 1
+dialogue = "Are you really a Dark Elf?"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_6ctbc"]
+script = ExtResource("2_0rfcv")
+dialogue = "No, I'm a boring Human"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_b2elf"]
+script = ExtResource("1_yxow8")
+dialogue = Array[ExtResource("2_0rfcv")]([SubResource("Resource_tbv1v"), SubResource("Resource_6ctbc")])
+metadata/_custom_type_script = "uid://e0ujmn3oiqx0"
+
+[sub_resource type="Resource" id="Resource_xgo8u"]
+script = ExtResource("2_0rfcv")
+speaker = 1
+dialogue = "Is it True that you are Wealthy?"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_77b1x"]
+script = ExtResource("2_0rfcv")
+dialogue = "OF COURSE I am! Look at me!"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_iwanq"]
+script = ExtResource("1_yxow8")
+dialogue = Array[ExtResource("2_0rfcv")]([SubResource("Resource_xgo8u"), SubResource("Resource_77b1x")])
+metadata/_custom_type_script = "uid://e0ujmn3oiqx0"
+
+[sub_resource type="Resource" id="Resource_icpc4"]
+script = ExtResource("3_18y6q")
+branches = Array[ExtResource("1_yxow8")]([SubResource("Resource_b2elf"), SubResource("Resource_iwanq")])
+metadata/_custom_type_script = "uid://qr661epbiujn"
+
+[resource]
+script = ExtResource("4_nc5f7")
+hints = SubResource("Resource_icpc4")
+cupAnswer = 1
+title = "Character Sheet"
+info = Array[String]([", Shloozyville
+
+
+1. Fool
+
+2. Status: Wealthy
+
+3. Occupation: Cobbler
+
+4. Fool
+
+5. Race: Dark Elf"])
+metadata/_custom_type_script = "uid://cg4ujw8mauohh"
