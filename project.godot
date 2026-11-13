@@ -24,12 +24,12 @@ config/icon="res://0_Art/icon.svg"
 
 Settings="*uid://b7h40e7hj32af"
 Keybinds="*uid://c8fo37kjonfjo"
-PopupMenuManager="*uid://cauts7qs4ecv3"
 TweenManager="*uid://c6ojkbins2v4b"
 SoundManager="*uid://d3n8iwlhwslg6"
 TransitionManager="*uid://ctyunloqghaql"
 GlobalReferences="*uid://be1788pmjydet"
 Overlay="*uid://sp4m3qieichu"
+PopupMenuManager="*uid://cauts7qs4ecv3"
 
 [debug]
 
