@@ -1110,7 +1110,7 @@ theme_override_constants/margin_top = 3
 [node name="BG" type="TextureRect" parent="Layout/HBoxContainer/MarginContainer/VBoxContainer/Character/New Background" unique_id=1887763917]
 layout_mode = 2
 offset_transform_position = Vector2(2, 2)
-texture = ExtResource("8_nsmby")
+texture = ExtResource("8_68y56")
 stretch_mode = 2
 
 [node name="Window Frame" type="TextureRect" parent="Layout/HBoxContainer/MarginContainer/VBoxContainer/Character/New Background" unique_id=1064177767]
@@ -1669,3 +1669,4 @@ offset_left = 151.0
 offset_top = 206.0
 offset_right = 182.0
 offset_bottom = 259.0
+mouse_filter = 2
