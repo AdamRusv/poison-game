@@ -129,7 +129,8 @@ func _set_next_encounter():
 
 	await TransitionManager._create_transition(TransitionManager.TransitionStates.traveling)
 	
-	if gamestateJSON.timelineIndex >= gameTimeline.timeline.size() - 1 && gamestateJSON.currentRegionEncounterCount >= currentRegion.totalEncounters:
+	if gamestateJSON.timelineIndex >= gameTimeline.timeline.size() - 1 && gamestateJSON.currentRegionEncounterCount >= currentRegion.encounterDialogueTrees.size():
+		print("mjyutmyrf")
 		return
 	if gamestateJSON.currentRegionEncounterCount >= currentRegion.encounterDialogueTrees.size():
 		gamestateJSON.timelineIndex += 1

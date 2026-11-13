@@ -1,14 +1,20 @@
 [gd_resource type="Resource" script_class="RegionInfo" format=3 uid="uid://dbj5nk05oeehl"]
 
 [ext_resource type="Script" uid="uid://cg4ujw8mauohh" path="res://2_Scripts/3_Dependent/encounter info.gd" id="1_7xwl5"]
+[ext_resource type="Resource" uid="uid://cnn0fcww7ncbv" path="res://5_Resources/0_Papers/0_Levels/1_First Region/encounters/2-3 (1).tres" id="2_c2gmj"]
 [ext_resource type="Resource" uid="uid://2ggvnaxi8ai6" path="res://5_Resources/0_Papers/0_Levels/1_First Region/encounters/2-3 (6).tres" id="2_dwney"]
 [ext_resource type="Resource" uid="uid://b6refrdgn1tew" path="res://5_Resources/0_Papers/0_Levels/1_First Region/encounters/2-3 (2).tres" id="3_1fksf"]
 [ext_resource type="Script" uid="uid://b6q05ms7ugqb1" path="res://2_Scripts/3_Dependent/0_Dialogue/encounter dialogue tree.gd" id="3_rgh4k"]
 [ext_resource type="Script" uid="uid://e0ujmn3oiqx0" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue branch.gd" id="4_1fksf"]
+[ext_resource type="Resource" uid="uid://b4ipmuajms3cu" path="res://5_Resources/0_Papers/0_Levels/1_First Region/encounters/2-3 (3).tres" id="4_yj7ml"]
+[ext_resource type="Resource" uid="uid://bn1jjbrmt8jks" path="res://5_Resources/0_Papers/0_Levels/1_First Region/encounters/2-3 (4).tres" id="5_5xmgk"]
 [ext_resource type="Script" uid="uid://fn2tb2dtu6fj" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue.gd" id="5_opk51"]
+[ext_resource type="Resource" uid="uid://cm4dsip3vih6s" path="res://5_Resources/0_Papers/0_Levels/1_First Region/encounters/2-3 (5).tres" id="6_3pk7y"]
 [ext_resource type="Script" uid="uid://chre6fsqbhfrk" path="res://2_Scripts/3_Dependent/0_Dialogue/branch intro.gd" id="6_4f5f5"]
 [ext_resource type="Script" uid="uid://cwxljhi0yey0n" path="res://2_Scripts/3_Dependent/0_Dialogue/branch cups.gd" id="7_gdmfi"]
 [ext_resource type="Resource" uid="uid://dlt86vr4taqr1" path="res://5_Resources/1_RegionMusic/region one music.tres" id="8_c2gmj"]
+[ext_resource type="Resource" uid="uid://dycn6w0wijn6t" path="res://5_Resources/0_Papers/0_Levels/1_First Region/encounters/2-3 (7).tres" id="8_y441c"]
+[ext_resource type="Resource" uid="uid://comhf4ab6v028" path="res://5_Resources/0_Papers/0_Levels/1_First Region/encounters/2-3 (8).tres" id="9_ayyiw"]
 [ext_resource type="Script" uid="uid://851asxmj8i78" path="res://2_Scripts/3_Dependent/region info.gd" id="9_yj7ml"]
 [ext_resource type="Script" uid="uid://csy0x4mgdxs00" path="res://2_Scripts/3_Dependent/paperinfo.gd" id="10_5xmgk"]
 
@@ -145,7 +151,7 @@ metadata/_custom_type_script = "uid://csy0x4mgdxs00"
 script = ExtResource("9_yj7ml")
 encounterDialogueTrees = Array[ExtResource("3_rgh4k")]([SubResource("Resource_wwu3x"), SubResource("Resource_3y73j")])
 traitSheet = SubResource("Resource_te4kt")
-characterSheets = Array[ExtResource("1_7xwl5")]([ExtResource("3_1fksf"), ExtResource("2_dwney")])
+characterSheets = Array[ExtResource("1_7xwl5")]([ExtResource("2_c2gmj"), ExtResource("3_1fksf"), ExtResource("4_yj7ml"), ExtResource("5_5xmgk"), ExtResource("6_3pk7y"), ExtResource("2_dwney"), ExtResource("8_y441c"), ExtResource("9_ayyiw")])
 maxCountryCount = 2
 music = ExtResource("8_c2gmj")
 metadata/_custom_type_script = "uid://851asxmj8i78"

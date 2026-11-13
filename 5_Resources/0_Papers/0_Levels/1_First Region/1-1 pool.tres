@@ -2,9 +2,12 @@
 
 [ext_resource type="Script" uid="uid://cg4ujw8mauohh" path="res://2_Scripts/3_Dependent/encounter info.gd" id="1_oqxm6"]
 [ext_resource type="Resource" uid="uid://bwfdoc58rkwhn" path="res://5_Resources/0_Papers/0_Levels/1_First Region/encounters/1 (1).tres" id="2_2381y"]
+[ext_resource type="Resource" uid="uid://cra4kphyhfc75" path="res://5_Resources/0_Papers/0_Levels/1_First Region/encounters/1 (2).tres" id="3_7mm3k"]
 [ext_resource type="Script" uid="uid://b6q05ms7ugqb1" path="res://2_Scripts/3_Dependent/0_Dialogue/encounter dialogue tree.gd" id="3_qtugq"]
 [ext_resource type="Script" uid="uid://e0ujmn3oiqx0" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue branch.gd" id="4_7mm3k"]
+[ext_resource type="Resource" uid="uid://c3c605yc41clm" path="res://5_Resources/0_Papers/0_Levels/1_First Region/encounters/1 (3).tres" id="4_dydx3"]
 [ext_resource type="Script" uid="uid://fn2tb2dtu6fj" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue.gd" id="5_dydx3"]
+[ext_resource type="Resource" uid="uid://d4bdte4glhu4j" path="res://5_Resources/0_Papers/0_Levels/1_First Region/encounters/1 (4).tres" id="5_ej8tf"]
 [ext_resource type="Script" uid="uid://chre6fsqbhfrk" path="res://2_Scripts/3_Dependent/0_Dialogue/branch intro.gd" id="6_ej8tf"]
 [ext_resource type="Script" uid="uid://cwxljhi0yey0n" path="res://2_Scripts/3_Dependent/0_Dialogue/branch cups.gd" id="7_ih2lt"]
 [ext_resource type="Resource" uid="uid://dlt86vr4taqr1" path="res://5_Resources/1_RegionMusic/region one music.tres" id="8_4ptck"]
@@ -91,7 +94,7 @@ metadata/_custom_type_script = "uid://csy0x4mgdxs00"
 script = ExtResource("9_vpxla")
 encounterDialogueTrees = Array[ExtResource("3_qtugq")]([SubResource("Resource_jym8k")])
 traitSheet = SubResource("Resource_te4kt")
-characterSheets = Array[ExtResource("1_oqxm6")]([ExtResource("2_2381y")])
+characterSheets = Array[ExtResource("1_oqxm6")]([ExtResource("2_2381y"), ExtResource("3_7mm3k"), ExtResource("4_dydx3"), ExtResource("5_ej8tf")])
 maxCountryCount = 2
 noteSheet = false
 music = ExtResource("8_4ptck")

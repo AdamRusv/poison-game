@@ -12,15 +12,15 @@
 [ext_resource type="Theme" uid="uid://3jsfntrv31jg" path="res://6_Other/large font.tres" id="6_0hcow"]
 [ext_resource type="Script" uid="uid://dsk6k5x0e30hn" path="res://2_Scripts/2_Independent/poison manager.gd" id="6_pq3d1"]
 [ext_resource type="Script" uid="uid://v10r8rve43tc" path="res://2_Scripts/2_Independent/cups manager.gd" id="7_3udmd"]
-[ext_resource type="Texture2D" uid="uid://dy0lvnxw1odi5" path="res://0_Art/New_Art(Needs Sorting)/Portraits/Region .Tut/indoorTavernBackground.png" id="8_68y56"]
-[ext_resource type="Texture2D" uid="uid://da8eyda0lmr3t" path="res://0_Art/New_Art(Needs Sorting)/Portraits/Region .Tut/Frame.png" id="9_vrhoy"]
+[ext_resource type="Texture2D" uid="uid://b7py7frxrgru7" path="res://0_Art/New_Art(Needs Sorting)/Portraits/Region .Tut/indoorTavernBackground p2.png" id="8_nsmby"]
+[ext_resource type="Texture2D" uid="uid://bpyhd8ikxmu2i" path="res://0_Art/New_Art(Needs Sorting)/Portraits/Region .Tut/Frame.png" id="9_vrhoy"]
 [ext_resource type="Texture2D" uid="uid://flm20d8isxx2" path="res://0_Art/2_PNGs/travel button-Sheet.png" id="10_fn5ot"]
-[ext_resource type="Texture2D" uid="uid://c27tlkj7s8ar8" path="res://0_Art/New_Art(Needs Sorting)/Portraits/Region .Tut/Outside-Sheet.png" id="10_kbhv0"]
+[ext_resource type="Texture2D" uid="uid://bdshut3fcuu62" path="res://0_Art/New_Art(Needs Sorting)/Portraits/Region .Tut/Outside-Sheet.png" id="10_kbhv0"]
 [ext_resource type="Script" uid="uid://biwcv78fcimw7" path="res://2_Scripts/2_Independent/travel manager.gd" id="11_1cjw6"]
-[ext_resource type="Texture2D" uid="uid://brnephgq0sbs0" path="res://0_Art/New_Art(Needs Sorting)/Portraits/Region .Tut/Grass-Sheet.png" id="11_6wd5l"]
+[ext_resource type="Texture2D" uid="uid://nl5h1preu8cm" path="res://0_Art/New_Art(Needs Sorting)/Portraits/Region .Tut/Grass-Sheet.png" id="11_6wd5l"]
 [ext_resource type="Script" uid="uid://dwp2cvaysi6vj" path="res://2_Scripts/2_Independent/dialogue manager.gd" id="11_ahkic"]
 [ext_resource type="Texture2D" uid="uid://cc7m60xat02gv" path="res://0_Art/2_PNGs/cups indicator-Sheet.png" id="11_rkkk6"]
-[ext_resource type="Texture2D" uid="uid://f14w2irb7f3h" path="res://0_Art/New_Art(Needs Sorting)/Portraits/Region .Tut/Candle-Sheet.png" id="12_kqvvj"]
+[ext_resource type="Texture2D" uid="uid://bpcofg2na7qy7" path="res://0_Art/New_Art(Needs Sorting)/Portraits/Region .Tut/Candle-Sheet.png" id="12_kqvvj"]
 [ext_resource type="Texture2D" uid="uid://bmf0h3auqyyc8" path="res://0_Art/2_PNGs/players cup event-Sheet.png" id="12_rkkk6"]
 [ext_resource type="Script" uid="uid://coy0g8tjc8t7i" path="res://2_Scripts/2_Independent/players manager.gd" id="12_ywih6"]
 [ext_resource type="Texture2D" uid="uid://brkvp2w453xgk" path="res://0_Art/2_PNGs/payer username-Sheet.png" id="14_c4l6l"]
@@ -1065,7 +1065,7 @@ theme_override_constants/margin_top = 3
 [node name="BG" type="TextureRect" parent="Layout/HBoxContainer/MarginContainer/VBoxContainer/Character/New Background" unique_id=1887763917]
 layout_mode = 2
 offset_transform_position = Vector2(2, 2)
-texture = ExtResource("8_68y56")
+texture = ExtResource("8_nsmby")
 stretch_mode = 2
 
 [node name="Window Frame" type="TextureRect" parent="Layout/HBoxContainer/MarginContainer/VBoxContainer/Character/New Background" unique_id=1064177767]
@@ -1181,6 +1181,7 @@ offset_bottom = 151.0
 mouse_filter = 2
 
 [node name="Flat Mockup" type="TextureRect" parent="." unique_id=904773487]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
