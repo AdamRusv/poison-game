@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="EncounterInfo" format=3 uid="uid://comhf4ab6v028"]
+
+[ext_resource type="Script" uid="uid://e0ujmn3oiqx0" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue branch.gd" id="1_wbbde"]
+[ext_resource type="Script" uid="uid://fn2tb2dtu6fj" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue.gd" id="2_f66lm"]
+[ext_resource type="Script" uid="uid://qr661epbiujn" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue tree.gd" id="3_2au88"]
+[ext_resource type="Script" uid="uid://cg4ujw8mauohh" path="res://2_Scripts/3_Dependent/encounter info.gd" id="4_i6brf"]
+
+[sub_resource type="Resource" id="Resource_tbv1v"]
+script = ExtResource("2_f66lm")
+speaker = 1
+dialogue = "Are you Deceptive?"
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_6ctbc"]
+script = ExtResource("2_f66lm")
+dialogue = "Nah, I'm an open book."
+metadata/_custom_type_script = "uid://fn2tb2dtu6fj"
+
+[sub_resource type="Resource" id="Resource_b2elf"]
+script = ExtResource("1_wbbde")
+dialogue = Array[ExtResource("2_f66lm")]([SubResource("Resource_tbv1v"), SubResource("Resource_6ctbc")])
+metadata/_custom_type_script = "uid://e0ujmn3oiqx0"
+
+[sub_resource type="Resource" id="Resource_icpc4"]
+script = ExtResource("3_2au88")
+branches = Array[ExtResource("1_wbbde")]([SubResource("Resource_b2elf")])
+metadata/_custom_type_script = "uid://qr661epbiujn"
+
+[resource]
+script = ExtResource("4_i6brf")
+hints = SubResource("Resource_icpc4")
+cupAnswer = 2
+title = "Character Sheet"
+info = Array[String]([", Shloozyville
+
+
+1. Occupation: Fisher
+
+2. Race. Elf
+
+3. Age: 92
+
+4. Sage
+
+5. Status: Middle Class"])
+metadata/_custom_type_script = "uid://cg4ujw8mauohh"
