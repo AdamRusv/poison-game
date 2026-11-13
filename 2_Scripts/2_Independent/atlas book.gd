@@ -159,7 +159,6 @@ func _go_to_next_right_page():
 
 	if isCustomAtlasHolder == true && _is_first_page():
 		mapHolder._turn_to_country(0)
-		#print(countryInfo.countryTitle)
 
 func _prepare_turn(isCoverTurn : bool, pageBend : float):
 	if isCoverTurn:
@@ -311,7 +310,6 @@ func _flip_section(toMain : bool):
 	_finish_turn()
 
 	if isCustomAtlasHolder == true && _is_first_page():
-		print("ayayayaya")
 		_go_to_next_left_page()
 
 func _play_flutter(toMain : bool):

@@ -50,7 +50,7 @@ func _ready() -> void:
 	gamestateJSON._load_gamestate()
 	_set_timeline()
 	currentRegion = gameTimeline.timeline[gamestateJSON.timelineIndex]
-	SoundManager._set_region_music(currentRegion.music, _get_encounter_number())
+	SoundManager._set_region_music(currentRegion.music, gameTimeline._get_current_encounter_number())
 	_update_timeline_counter()
 	_set_connections()
 	_start_new_encounter()
@@ -72,22 +72,13 @@ func _start_new_encounter():
 	await get_tree().create_timer(1).timeout
 	dialogueManager._start_dialogue()
 
-func _get_encounter_number():
-	var initialEncounterNumber : int = 0
-	for i in range(0, gamestateJSON.timelineIndex + 1):
-		if gameTimeline.timeline[i].increaseRegion == true:
-			initialEncounterNumber = 1
-		else:
-			initialEncounterNumber += 1
-	return initialEncounterNumber + gamestateJSON.currentRegionEncounterCount - 1
-
 func _update_timeline_counter():
 	var regionNumber : int = -1
 	for i in range(0, gamestateJSON.timelineIndex + 1):
 		if gameTimeline.timeline[i].increaseRegion == true:
 			regionNumber += 1
 		
-	timelineCounterLabel.text = str(regionNumber) + " - " + str(_get_encounter_number())
+	timelineCounterLabel.text = str(regionNumber) + " - " + str(gameTimeline._get_current_encounter_number())
 
 #- - -
 func _setup_encounter_papers():

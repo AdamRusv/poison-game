@@ -31,15 +31,23 @@ var mapEncounterNodes : Array[TransitionMapEncounterNode]
 var nextMapEncounterNodes : Array[TransitionMapEncounterNode]
 var linePoints : Array[Vector2]
 
+var totalEncounters : int
+var regionNumber : int
+var currentEncounterNumber : int
+
 func _ready() -> void:
 	gamestateJSON._load_gamestate()
 	
 	_hide_and_setup_all()
+	totalEncounters = _get_total_encounters_for_current_region()
+	regionNumber = _get_region_number()
+	currentEncounterNumber = gameTimeline._get_current_encounter_number()
 	
 	await get_tree().process_frame #waits for transitionState to be set
 	_set_visuals()
 	
 	await transitionEncounter.fullyClosed
+	
 	
 	match transitionEncounter.transitionState:
 		TransitionManager.TransitionStates.blank:
@@ -81,16 +89,12 @@ func _hide_and_setup_all():
 	additionalInfoHeaderLabel.self_modulate.a = 0
 	additionalInfoDescriptionLabel.self_modulate.a = 0
 func _set_visuals():
-	var totalEncounters : int = _get_total_encounters_for_current_region()
-	var regionNumber : int = _get_region_number()
-	var currentEncounterNumber : int = _get_current_encounter_number()
-	
-	_set_map_nodes(totalEncounters, regionNumber)
+	_set_map_nodes()
 	_set_next_region_map_nodes()
-	_set_player_pos(currentEncounterNumber)
-	_set_line(totalEncounters)
+	_set_player_pos()
+	_set_line()
 	_set_additional_info()
-func _set_map_nodes(totalEncounters : int, regionNumber : int):
+func _set_map_nodes():
 	for i in range(0, totalEncounters):
 		var mapEncounterNode : TransitionMapEncounterNode = null
 		if i % 2 == 0: #even
@@ -103,19 +107,18 @@ func _set_map_nodes(totalEncounters : int, regionNumber : int):
 		mapEncounterNodes.append(mapEncounterNode)
 		visualMapHolder.add_child(mapEncounterNode)
 func _set_next_region_map_nodes():
-	var totalEncounters : int = _get_total_encounters_for_next_region()
-	var regionNumber : int = _get_region_number() + 1
+	var nextRegionNumber : int = regionNumber + 1
 	for i in range(0, totalEncounters):
 		var mapEncounterNode : TransitionMapEncounterNode = null
 		if i % 2 == 0: #even
 			mapEncounterNode = upperMapEncounterNodeRef.instantiate()
 		else: #odd
 			mapEncounterNode = lowerMapEncounterNodeRef.instantiate()
-		mapEncounterNode._set_region_encounter_label(regionNumber, i + 1)
+		mapEncounterNode._set_region_encounter_label(nextRegionNumber, i + 1)
 		
 		nextMapEncounterNodes.append(mapEncounterNode)
 		nextVisualMapHolder.add_child(mapEncounterNode)
-func _set_player_pos(currentEncounterNumber : int):
+func _set_player_pos():
 	if transitionEncounter.transitionState == TransitionManager.TransitionStates.mainMenuTraveling && currentEncounterNumber > 1:
 		currentEncounterNumber -= 1
 	await get_tree().process_frame
@@ -125,7 +128,7 @@ func _set_player_pos(currentEncounterNumber : int):
 	playerPos.y += PLAYER_ICON_Y_OFFSET
 	playerIcon.global_position = playerPos
 	playerShadow.global_position = playerPos
-func _set_line(totalEncounters : int):
+func _set_line():
 	await get_tree().process_frame
 	for i in range(0, totalEncounters):
 		var nextNodePosition : Vector2 = mapEncounterNodes[i]._get_global_icon_center()
@@ -149,43 +152,27 @@ func _set_additional_info():
 
 #- - -
 func _get_region_number() -> int:
-	var regionNumber : int = -1
+	var newRegionNumber : int = -1
 	for i in range(0, gameTimeline.timeline.size()):
 		var region : RegionInfo = gameTimeline.timeline[i]
 		if i > gamestateJSON.timelineIndex:
 			break
 		
 		if region.increaseRegion == true:
-			regionNumber += 1
-	return regionNumber
+			newRegionNumber += 1
+	return newRegionNumber
 
 func _get_total_encounters_for_current_region() -> int:
-	var totalEncounters : int = 1
+	var newTotalEncounters : int = 1
 	
 	for i in range(_get_timeline_index_of_current_region_start() + 1, gameTimeline.timeline.size()):
 		var region : RegionInfo = gameTimeline.timeline[i]
 		if region.increaseRegion == true:
 			break
 		
-		totalEncounters += region.encounterDialogueTrees.size()
+		newTotalEncounters += region.encounterDialogueTrees.size()
 		
-	return totalEncounters
-
-func _get_current_encounter_number() -> int:
-	var initalEncounterNumber : int = 0
-	for i in range(0, gameTimeline.timeline.size()):
-		var region : RegionInfo = gameTimeline.timeline[i]
-		if i > gamestateJSON.timelineIndex:
-			break
-		
-		if region.increaseRegion == true:
-			initalEncounterNumber = 1
-		else:
-			initalEncounterNumber += 1
-		
-	var encounterNumber : int = initalEncounterNumber + gamestateJSON.currentRegionEncounterCount - 1
-	
-	return encounterNumber
+	return newTotalEncounters
 
 func _get_timeline_index_of_current_region_start() -> int:
 	var currentIndex : int = gamestateJSON.timelineIndex
@@ -197,16 +184,16 @@ func _get_timeline_index_of_current_region_start() -> int:
 	return -1
 
 func _get_total_encounters_for_next_region() -> int:
-	var totalEncounters : int = 1
+	var newTotalEncounters : int = 1
 	
 	for i in range(_get_timeline_index_of_next_region_start() + 1, gameTimeline.timeline.size()):
 		var region : RegionInfo = gameTimeline.timeline[i]
 		if region.increaseRegion == true:
 			break
 		
-		totalEncounters += region.encounterDialogueTrees.size()
+		newTotalEncounters += region.encounterDialogueTrees.size()
 		
-	return totalEncounters
+	return newTotalEncounters
 
 func _get_timeline_index_of_next_region_start() -> int:
 	var currentIndex : int = gamestateJSON.timelineIndex + 1
@@ -248,7 +235,6 @@ func _show_visual():
 		mapEncounterNodes[i]._animate_show()
 		await get_tree().create_timer(MAP_NODE_DELAY).timeout
 func _animate_line():
-	var currentEncounterNumber : int = _get_current_encounter_number()
 	if transitionEncounter.transitionState == TransitionManager.TransitionStates.mainMenuTraveling && currentEncounterNumber > 1:
 		currentEncounterNumber -= 1
 	for i in range(0, currentEncounterNumber - 1):
@@ -349,7 +335,7 @@ func _move_player(endingMapNodePos : int):
 			await _move_player_to_next_region()
 			return
 	
-	var currentEncounterNumber : int = _get_current_encounter_number()
+	print(currentEncounterNumber)
 	if transitionEncounter.transitionState == TransitionManager.TransitionStates.mainMenuTraveling && currentEncounterNumber > 1:
 		currentEncounterNumber -= 1
 	
@@ -381,7 +367,6 @@ func _move_player(endingMapNodePos : int):
 		await newTween.finished
 
 func _move_player_to_next_region():
-	var currentEncounterNumber : int = _get_current_encounter_number()
 	var firstNextMapNodePos : Vector2 = nextMapEncounterNodes[0]._get_global_icon_center()
 	firstNextMapNodePos.x += 640 #to account for the parent's offset transform
 	
@@ -454,7 +439,6 @@ func _get_new_traveling_text(newText : String) -> String:
 	return "[wave amp=25.0 freq=3.0 connected=1]" + newText + "[/wave]"
 
 func _set_player_ending_pos() -> int:
-	var currentEncounterNumber : int = _get_current_encounter_number()
 	match transitionEncounter.transitionState:
 		TransitionManager.TransitionStates.retry:
 			return currentEncounterNumber
@@ -468,7 +452,6 @@ func _set_player_ending_pos() -> int:
 	return -1
 
 func _is_next_timeline_index_new_region() -> bool:
-	var currentEncounterNumber : int = _get_current_encounter_number()
 	if currentEncounterNumber == _get_total_encounters_for_current_region():
 		return true
 	return false
