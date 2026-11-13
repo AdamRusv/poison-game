@@ -962,6 +962,10 @@ region = Rect2(154, 0, 77, 113)
 atlas = ExtResource("27_gdeut")
 region = Rect2(231, 0, 77, 113)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_3kxkp"]
+atlas = ExtResource("27_gdeut")
+region = Rect2(308, 0, 77, 113)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_f22xe"]
 animations = [{
 "frames": [{
@@ -976,10 +980,13 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4l4sh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3kxkp")
 }],
 "loop": 1,
 "name": &"default",
-"speed": 7.0
+"speed": 8.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gnbqg"]
@@ -1374,6 +1381,7 @@ playersParent = NodePath(".")
 players = [NodePath("opponent"), NodePath("player")]
 
 [node name="opponent" type="AnimatedSprite2D" parent="Players" unique_id=1695828453]
+visible = false
 position = Vector2(81.5, 236.5)
 sprite_frames = SubResource("SpriteFrames_rkkk6")
 
@@ -1382,8 +1390,7 @@ position = Vector2(135.5, 236.5)
 sprite_frames = SubResource("SpriteFrames_gnbqg")
 flip_h = true
 
-[node name="player walking bounds" type="Control" parent="Players" unique_id=1949742948]
-visible = false
+[node name="player walking bounds" type="Control" parent="Players" unique_id=1949742948 node_paths=PackedStringArray("gameplayManager", "opponent")]
 clip_contents = true
 anchors_preset = 0
 offset_left = 5.0
@@ -1392,6 +1399,8 @@ offset_right = 212.0
 offset_bottom = 294.0
 mouse_filter = 2
 script = ExtResource("27_jnf4t")
+gameplayManager = NodePath("../..")
+opponent = NodePath("walking opponent")
 
 [node name="walking opponent" type="AnimatedSprite2D" parent="Players/player walking bounds" unique_id=2061956218]
 position = Vector2(58.5, 107.5)
