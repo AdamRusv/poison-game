@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EncounterInfo" format=3 uid="uid://2ggvnaxi8ai6"]
+[gd_resource type="Resource" script_class="EncounterInfo" format=3 uid="uid://drrfp2va6270w"]
 
 [ext_resource type="Script" uid="uid://e0ujmn3oiqx0" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue branch.gd" id="1_esebc"]
 [ext_resource type="Script" uid="uid://fn2tb2dtu6fj" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue.gd" id="2_ikxxa"]
