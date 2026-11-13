@@ -41,18 +41,14 @@ func _get_current_encounter_number() -> int:
 	gamestateJSON._load_gamestate()
 	
 	var initalEncounterNumber : int = 0
-	for i in range(0, timeline.size()):
+	for i in range(_get_timeline_index_of_current_region_start(), timeline.size()):
 		var region : RegionInfo = timeline[i]
-		if i > gamestateJSON.timelineIndex:
+		if i >= gamestateJSON.timelineIndex:
 			break
 		
-		if region.increaseRegion == true:
-			initalEncounterNumber = 1
-		else:
-			initalEncounterNumber += 1
+		initalEncounterNumber += region.encounterDialogueTrees.size()
 		
-	var encounterNumber : int = initalEncounterNumber + gamestateJSON.currentRegionEncounterCount - 1
-	
+	var encounterNumber : int = initalEncounterNumber + gamestateJSON.currentRegionEncounterCount
 	return encounterNumber
 
 func _get_timeline_index_of_current_region_start() -> int:

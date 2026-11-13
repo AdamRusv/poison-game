@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyx4yiddswhfy"
-path="res://.godot/imported/players cup event-Sheet.png-2a7228af2cb6e63330eb111cd9a7b3c6.ctex"
+uid="uid://dobqbiw2jxf47"
+path="res://.godot/imported/player walk and sit-Sheet.png-592ae6a7a235f9173cd9817076d512d6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://0_Art/0_Aseprite (.ase)/players cup event-Sheet.png"
-dest_files=["res://.godot/imported/players cup event-Sheet.png-2a7228af2cb6e63330eb111cd9a7b3c6.ctex"]
+source_file="res://0_Art/2_PNGs/player walk and sit-Sheet.png"
+dest_files=["res://.godot/imported/player walk and sit-Sheet.png-592ae6a7a235f9173cd9817076d512d6.ctex"]
 
 [params]
 
