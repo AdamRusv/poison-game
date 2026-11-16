@@ -20,7 +20,7 @@ var cupCount : int = 2 #NOTE: change for other gamemodes
 var gameplayStarted : bool = false
 signal cutsceneFinished
 signal opponentSatDown
-signal papersGiven
+signal opponentPapersGiven
 
 var holdingPoison : bool = false
 signal poisonGrabbed
@@ -66,10 +66,6 @@ func _start_new_encounter():
 	_setup_encounter_papers()
 	
 	await TransitionManager.transitionEncounter.transitionCutscene.finishedAnimating
-	
-	playmatManager._add_main_papers()
-	
-	await get_tree().create_timer(1).timeout
 	dialogueManager._start_dialogue()
 
 func _update_timeline_counter():
@@ -121,7 +117,6 @@ func _set_next_encounter():
 	await TransitionManager._create_transition(TransitionManager.TransitionStates.traveling)
 	
 	if gamestateJSON.timelineIndex >= gameTimeline.timeline.size() - 1 && gamestateJSON.currentRegionEncounterCount >= currentRegion.encounterDialogueTrees.size():
-		print("mjyutmyrf")
 		return
 	if gamestateJSON.currentRegionEncounterCount >= currentRegion.encounterDialogueTrees.size():
 		gamestateJSON.timelineIndex += 1

@@ -335,7 +335,6 @@ func _move_player(endingMapNodePos : int):
 			await _move_player_to_next_region()
 			return
 	
-	print(currentEncounterNumber)
 	if transitionEncounter.transitionState == TransitionManager.TransitionStates.mainMenuTraveling && currentEncounterNumber > 1:
 		currentEncounterNumber -= 1
 	

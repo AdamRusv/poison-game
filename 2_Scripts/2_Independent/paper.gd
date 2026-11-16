@@ -20,6 +20,14 @@ var paperInfo : PaperInfo = null
 var canBePacket : bool = true
 var isPacket : bool = false
 
+var spawnLocationPosition : Vector2 = Vector2(520, 640)
+var spawnLocation : SpawnLocations = SpawnLocations.fromPlayer
+enum SpawnLocations{
+	fromPlayer,
+	fromOpponent,
+	fromMessenger
+}
+
 #var paperPadding : float = 40
 var leftPadding : float = 40
 var rightPadding : float = 40
@@ -68,6 +76,7 @@ func _clamp_paper():
 
 func _setup_paper(newPaperInfo : PaperInfo):
 	paperInfo = newPaperInfo
+	_set_spawn_location()
 	
 	if canBePacket == true:
 		pageFlipTexture.texture = pageFlipTexture.texture.duplicate(true)
@@ -86,6 +95,15 @@ func _setup_paper(newPaperInfo : PaperInfo):
 		
 		if paperInfo.info.size() > 1:
 			_setup_packet()
+
+func _set_spawn_location():
+	match spawnLocation:
+		SpawnLocations.fromPlayer:
+			spawnLocationPosition = Vector2(520, 640)
+		SpawnLocations.fromOpponent:
+			spawnLocationPosition = Vector2(-20, -615)
+		SpawnLocations.fromMessenger:
+			spawnLocationPosition = Vector2(-750, 120)
 
 func _set_label_text(label : RichTextLabel, newText : String):
 	label.text = newText
@@ -142,16 +160,15 @@ func _set_pageflip_texture_to(newRect : Rect2):
 	atlasTexture.region = newRect
 
 #----------------
-var startPos : Vector2 = Vector2(520, 640)
 func _animate_into_frame():
 	paperIsMoving = true
-	parentNode.position = startPos
+	parentNode.position = spawnLocationPosition
 	
 	await get_tree().create_timer(randf_range(0, 1)).timeout
 	
 	var endPos : Vector2 = playmat._get_paper_spawn_location(paperRole)
 	var moveSpeed : float = randi_range(650, 700)
-	var duration : float = endPos.distance_to(startPos) / moveSpeed
+	var duration : float = endPos.distance_to(spawnLocationPosition) / moveSpeed
 	
 	var newTween : Tween = create_tween()
 	newTween.tween_property(parentNode, "position", endPos, duration)\

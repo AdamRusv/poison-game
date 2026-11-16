@@ -179,6 +179,7 @@ func _setup_atlas(newAtlasHolder : AtlasHolder, regionInfo : RegionInfo, newGame
 	atlasHolder = newAtlasHolder
 	maxCountries = regionInfo.maxCountryCount
 	gameplayManager = newGameplayManager
+	_set_spawn_location()
 
 	mapAtlas.visible = true
 	mainAtlas.visible = false
