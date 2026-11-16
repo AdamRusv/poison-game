@@ -24,7 +24,17 @@ var isDrinking : bool = false
 var isGrabbingDrink : bool = false
 
 func _ready() -> void:
+	_set_connections()
+	_prep()
+func _set_connections():
 	gameplayManager.cupHasBeenPoisoned.connect(_trigger_drink_animations)
+	gameplayManager.opponentSatDown.connect(_start)
+func _prep():
+	players[0].visible = false
+func _start():
+	players[0].visible = true
+
+
 func _trigger_drink_animations():
 	_set_players_layering()
 	opponentRange = _get_player_animation_range(0)

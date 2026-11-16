@@ -20,6 +20,8 @@ func _process(delta: float) -> void:
 
 #---------------
 func _start_dialogue():
+	await gameplayManager.opponentSatDown
+	await get_tree().create_timer(0.3).timeout
 	var encounterDialogue : DialogueTree = gameplayManager.gameTimeline._get_current_encounter_dialogue_tree()
 	encounterDialogue._setup_branches(gameplayManager)
 	

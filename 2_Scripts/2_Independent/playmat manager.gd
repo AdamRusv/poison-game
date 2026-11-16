@@ -26,15 +26,16 @@ var papers : Array[Paper]
 
 func _ready() -> void:
 	gameplayManager.playmatManager = self
+	_set_connections()
+func _set_connections():
+	gameplayManager.cutsceneFinished.connect(_add_main_papers)
+	gameplayManager.opponentSatDown.connect(_add_opponent_papers)
 
 func _add_main_papers():
 	savedPaperPositions = paperSavestateJSON._load_paper_positions()
 
 	if mainTraitSheet != null:
 		_create_paper(testPaperRef, mainTraitSheet, "traitSheet")
-	
-	if characterSheet != null:
-		_create_paper(testPaperRef, characterSheet, "characterSheet")
 	
 	if gameplayManager.atlasHolder != null && gameplayManager.currentRegion.maxCountryCount > 0:
 		_create_atlas(testAtlasRef, gameplayManager.atlasHolder, gameplayManager.currentRegion)
@@ -47,13 +48,24 @@ func _add_main_papers():
 	if gameplayManager.currentRegion.noteSheet == true:
 		_create_notebook()
 
+func _add_opponent_papers():
+	if characterSheet != null:
+		_create_paper(testPaperRef, characterSheet, "characterSheet", Paper.SpawnLocations.fromOpponent)
+	
+	await get_tree().create_timer(0.5).timeout
+	gameplayManager.opponentPapersGiven.emit()
+
+func _add_custom_papers(newPapers : Array[Paper]):
+	pass
+
 #-----------------------
 
-func _create_paper(paperRef : PackedScene, paperInfo : PaperInfo, paperRole : String):
+func _create_paper(paperRef : PackedScene, paperInfo : PaperInfo, paperRole : String, spawnLocation : Paper.SpawnLocations = Paper.SpawnLocations.fromPlayer):
 	var paperInstance : Paper = paperRef.instantiate()
 
 	paperInstance.playmat = self
 	
+	paperInstance.spawnLocation = spawnLocation
 	paperInstance._setup_paper(paperInfo)
 
 	papersByRole[paperRole] = paperInstance
@@ -75,6 +87,8 @@ func _create_notebook():
 	var notebookInstance : Notebook = notebookRef.instantiate()
 
 	notebookInstance.playmat = self
+	
+	notebookInstance._set_spawn_location()
 
 	papersByRole["notebook"] = notebookInstance
 	notebookInstance.paperRole = "notebook"
