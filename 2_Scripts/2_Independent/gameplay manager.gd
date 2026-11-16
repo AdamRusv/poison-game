@@ -104,11 +104,15 @@ func _restart_current_encounter():
 func _reset_gamestate_to_start_of_current_region():
 	gamestateJSON._load_gamestate()
 	
-	gamestateJSON.completedCharacters.clear() #NOTE: Line should change for every OTHER death
-	gamestateJSON.currentCharacterIndex = 0
+	gamestateJSON._add_completed_character(gamestateJSON.timelineIndex, gamestateJSON.currentCharacterIndex)
+	gamestateJSON.regionDeathCount += 1
+	if gamestateJSON.regionDeathCount >= 2:
+		gamestateJSON._clear_all_completed()
+	
 	gamestateJSON.currentRegionEncounterCount = 1
 	gamestateJSON.timelineIndex = gameTimeline._get_timeline_index_of_current_region_start()
-	
+	gamestateJSON.currentCharacterIndex = _get_next_encounter_index()
+
 	gamestateJSON._save_gamestate()
 
 func _set_next_encounter():
@@ -118,14 +122,17 @@ func _set_next_encounter():
 	
 	if gamestateJSON.timelineIndex >= gameTimeline.timeline.size() - 1 && gamestateJSON.currentRegionEncounterCount >= currentRegion.encounterDialogueTrees.size():
 		return
+
+	gamestateJSON._add_completed_character(gamestateJSON.timelineIndex, gamestateJSON.currentCharacterIndex)
+
 	if gamestateJSON.currentRegionEncounterCount >= currentRegion.encounterDialogueTrees.size():
 		gamestateJSON.timelineIndex += 1
 		gamestateJSON.currentRegionEncounterCount = 1
-		gamestateJSON.completedCharacters.clear()
+		if gameTimeline.timeline[gamestateJSON.timelineIndex].increaseRegion == true:
+			gamestateJSON._clear_all_completed()
 	else:
 		gamestateJSON.currentRegionEncounterCount += 1
-		gamestateJSON.completedCharacters.append(gamestateJSON.currentCharacterIndex)
-	
+
 	gamestateJSON.currentCharacterIndex = _get_next_encounter_index()
 	
 	gamestateJSON._save_gamestate()
@@ -136,17 +143,18 @@ func _set_next_encounter():
 #- - -
 func _get_next_encounter_index() -> int:
 	var nextRegion : RegionInfo = gameTimeline.timeline[gamestateJSON.timelineIndex]
-	
-	var completedCharacters : Array = gamestateJSON.completedCharacters
+
+	var completedCharacters : Array = gamestateJSON._get_completed_for_pool(gamestateJSON.timelineIndex)
 	var allCharacters : Array = nextRegion.characterSheets
 	var uncompletedCharacters : Array = []
+
 	for i in range(0, allCharacters.size()):
-		var isCompleted : bool = false
-		for completedCharacter in completedCharacters:
-			if i == completedCharacter:
-				isCompleted = true
-				break
-		if isCompleted == false:
+		if !completedCharacters.has(i):
+			uncompletedCharacters.append(i)
+
+	#fixed pools like tutorial just add their 1 character and move on
+	if uncompletedCharacters.is_empty():
+		for i in range(0, allCharacters.size()):
 			uncompletedCharacters.append(i)
 	
 	var randomIndex : int = randi_range(0, uncompletedCharacters.size() - 1)
