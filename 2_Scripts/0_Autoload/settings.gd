@@ -11,7 +11,6 @@ func _ready() -> void:
 	settingsJSON._load_settings()
 	togglefullscreen.connect(_toggle_fullscreen)
 	_update_fullscreen()
-	#_toggle_fullscreen()
 	_update_audio()
 
 func _update_audio():

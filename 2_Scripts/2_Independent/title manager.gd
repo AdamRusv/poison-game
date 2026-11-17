@@ -5,6 +5,7 @@ extends Control
 @export var settingsButton : DefaultButton
 @export var quitButton : DefaultButton
 @export var creditsButton : DefaultButton
+@export var resetSaveButton : DefaultButton
 
 var gamestateJSON : GamestateJSON = GamestateJSON.new()
 
@@ -17,6 +18,7 @@ func _set_connections():
 	quitButton.onClicked.connect(_quit)
 	
 	creditsButton.onClicked.connect(_open_credits)
+	resetSaveButton.onClicked.connect(gamestateJSON._reset_gamestate)
 
 #- - - - - -
 var gameplaySceneRef : PackedScene = preload("res://1_Scenes/0_Screens/gameplay.tscn")
@@ -30,12 +32,11 @@ func _play():
 	
 	var gameplayScene : GameplayManager = gameplaySceneRef.instantiate()
 	
-	#NOTE: SWAP FOR REAL VERSION
-	#if gamestateJSON.timelineIndex == 0:
-		#await TransitionManager._create_transition(TransitionManager.TransitionStates.blank)
-	#else:
-		#await TransitionManager._create_transition(TransitionManager.TransitionStates.mainMenuTraveling)
-	await TransitionManager._create_transition(TransitionManager.TransitionStates.blank) #just while testing to save time
+	if gamestateJSON.timelineIndex == 0:
+		await TransitionManager._create_transition(TransitionManager.TransitionStates.blank)
+	else:
+		await TransitionManager._create_transition(TransitionManager.TransitionStates.mainMenuTraveling)
+	#await TransitionManager._create_transition(TransitionManager.TransitionStates.blank) #just while testing to save time
 	
 	await get_tree().create_timer(0.6).timeout
 	get_tree().change_scene_to_node(gameplayScene)

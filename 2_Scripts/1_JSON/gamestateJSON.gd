@@ -80,7 +80,7 @@ func _clear_all_completed() -> void:
 	completedCharacters.clear()
 	regionDeathCount = 0
 
-func _reset_gamestate(): #NOTE: have an option to call this for reoccuring players in playtest 3
+func _reset_gamestate():
 	_clear_all_completed()
 	currentCharacterIndex = 0
 	currentRegionEncounterCount = 1
