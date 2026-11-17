@@ -65,7 +65,7 @@ region = Rect2(0, 0, 236, 166)
 atlas = ExtResource("14_yxeby")
 region = Rect2(236, 0, 236, 166)
 
-[node name="Atlas" type="MarginContainer" unique_id=1389312574 node_paths=PackedStringArray("mapAtlas", "mainAtlas", "mapHolder", "leftDetectionZone", "rightDetectionZone", "dragArea", "mapPageSprite", "atlasFullPageSprite", "atlasSinglePageSprite", "coverSprite", "countriesSprite", "pageTitles", "pageInfos", "titleSeparator", "generalInfoHolder", "flutterHolder", "parentNode", "detectionArea")]
+[node name="Atlas" type="MarginContainer" unique_id=1389312574 node_paths=PackedStringArray("mapAtlas", "mainAtlas", "mapHolder", "leftDetectionZone", "rightDetectionZone", "dragArea", "mapPageSprite", "countryNode", "atlasFullPageSprite", "atlasSinglePageSprite", "coverSprite", "countriesSprite", "pageTitles", "pageInfos", "titleSeparator", "generalInfoHolder", "flutterHolder", "parentNode", "detectionArea")]
 offset_right = 236.0
 offset_bottom = 166.0
 mouse_filter = 2
@@ -77,6 +77,7 @@ leftDetectionZone = NodePath("Detection Zone Holder/Turn Page Zone Left")
 rightDetectionZone = NodePath("Detection Zone Holder/Turn Page Zone Right")
 dragArea = NodePath("Drag Button")
 mapPageSprite = NodePath("Map Atlas/Right Page")
+countryNode = NodePath("Map Atlas/Right Page/Right Countries")
 atlasFullPageSprite = NodePath("Main Atlas/Atlas Page")
 atlasSinglePageSprite = NodePath("Main Atlas/Page Projector")
 coverSprite = NodePath("Map Atlas/Cover & Left Page")
