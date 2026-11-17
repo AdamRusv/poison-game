@@ -12,6 +12,7 @@ class_name AtlasBook
 
 @export_group("Pages")
 @export var mapPageSprite : TextureRect
+@export var countryNode : Control
 @export var atlasFullPageSprite : TextureRect
 @export var atlasSinglePageSprite : TextureRect
 @export var coverSprite : TextureRect
@@ -330,6 +331,10 @@ func _play_flutter(toMain : bool):
 			flutterPool[i]._set_front_content(!isCustomAtlasHolder)
 		else:
 			flutterPool[i]._set_front_content(i == mapSheetIndex)
+			
+			if countryNode.visible == false:
+				flutterPool[i]._set_front_content(false)
+
 
 		if i == funSheetIndex:
 			flutterPool[i]._set_back_text(funPage.title, bbcodeManager._highlight(funPage.info))
