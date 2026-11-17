@@ -31,7 +31,7 @@ script = ExtResource("4_odyim")
 hints = SubResource("Resource_neqfg")
 cupAnswer = 2
 title = "Character Sheet"
-info = Array[String]([", Hollyberry
+info = Array[String]([", HOLLYBERRY
 
 
 1. Age: 61

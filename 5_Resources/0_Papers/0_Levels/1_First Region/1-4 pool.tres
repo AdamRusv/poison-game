@@ -3,7 +3,9 @@
 [ext_resource type="Script" uid="uid://cg4ujw8mauohh" path="res://2_Scripts/3_Dependent/encounter info.gd" id="1_jhynj"]
 [ext_resource type="Resource" uid="uid://dsdk74a6efros" path="res://5_Resources/0_Papers/0_Levels/1_First Region/encounters/4 (1).tres" id="2_jhynj"]
 [ext_resource type="Script" uid="uid://b6q05ms7ugqb1" path="res://2_Scripts/3_Dependent/0_Dialogue/encounter dialogue tree.gd" id="3_gp338"]
+[ext_resource type="Resource" uid="uid://cdyrmgxhjcsoi" path="res://5_Resources/0_Papers/0_Levels/1_First Region/encounters/4 (2).tres" id="3_jmxuo"]
 [ext_resource type="Script" uid="uid://e0ujmn3oiqx0" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue branch.gd" id="4_jmxuo"]
+[ext_resource type="Resource" uid="uid://drnqu5nb08yvh" path="res://5_Resources/0_Papers/0_Levels/1_First Region/encounters/4 (3).tres" id="4_tt7lf"]
 [ext_resource type="Script" uid="uid://fn2tb2dtu6fj" path="res://2_Scripts/3_Dependent/0_Dialogue/dialogue.gd" id="5_tt7lf"]
 [ext_resource type="Script" uid="uid://chre6fsqbhfrk" path="res://2_Scripts/3_Dependent/0_Dialogue/branch intro.gd" id="6_le3pc"]
 [ext_resource type="Script" uid="uid://cwxljhi0yey0n" path="res://2_Scripts/3_Dependent/0_Dialogue/branch cups.gd" id="7_v5mlj"]
@@ -86,7 +88,7 @@ metadata/_custom_type_script = "uid://csy0x4mgdxs00"
 script = ExtResource("9_x8llq")
 encounterDialogueTrees = Array[ExtResource("3_gp338")]([SubResource("Resource_bqmu5")])
 traitSheet = SubResource("Resource_te4kt")
-characterSheets = Array[ExtResource("1_jhynj")]([ExtResource("2_jhynj")])
+characterSheets = Array[ExtResource("1_jhynj")]([ExtResource("2_jhynj"), ExtResource("3_jmxuo"), ExtResource("4_tt7lf")])
 maxCountryCount = 2
 music = ExtResource("8_jmlpl")
 metadata/_custom_type_script = "uid://851asxmj8i78"

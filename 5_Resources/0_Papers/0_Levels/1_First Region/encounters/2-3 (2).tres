@@ -47,7 +47,7 @@ script = ExtResource("4_esmcn")
 hints = SubResource("Resource_icpc4")
 cupAnswer = 1
 title = "Character Sheet"
-info = Array[String]([", Hollyberry
+info = Array[String]([", HOLLYBERRY
 
 
 1. Race: Goblin

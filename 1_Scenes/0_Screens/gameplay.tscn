@@ -1418,6 +1418,8 @@ opponent = NodePath("walking opponent")
 opponentItems = NodePath("opponent items")
 
 [node name="walking opponent" type="AnimatedSprite2D" parent="Players/player walking bounds" unique_id=2061956218]
+self_modulate = Color(0.60933006, 0.6093302, 0.60932994, 1)
+z_index = 1
 position = Vector2(58.5, 107.5)
 sprite_frames = SubResource("SpriteFrames_f22xe")
 animation = &"walk"
@@ -1693,4 +1695,3 @@ offset_left = 151.0
 offset_top = 206.0
 offset_right = 182.0
 offset_bottom = 259.0
-mouse_filter = 2

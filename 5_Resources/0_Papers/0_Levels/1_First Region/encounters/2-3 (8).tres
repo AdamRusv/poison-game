@@ -31,7 +31,7 @@ script = ExtResource("4_i6brf")
 hints = SubResource("Resource_icpc4")
 cupAnswer = 2
 title = "Character Sheet"
-info = Array[String]([", Shloozyville
+info = Array[String]([", SHLOOZYVILLE
 
 
 1. Occupation: Fisher
