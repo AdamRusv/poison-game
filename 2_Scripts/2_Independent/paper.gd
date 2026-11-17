@@ -10,7 +10,6 @@ class_name Paper
 @export var packetBehindPaperParent : Control
 @export var pageFlipButton : Button
 @export var pageFlipTexture : TextureRect
-@export_group("Optional Mirror Labels")
 
 var playmat : PlaymatManager = null
 var paperRole : String = ""
@@ -95,6 +94,9 @@ func _setup_paper(newPaperInfo : PaperInfo):
 		
 		if paperInfo.info.size() > 1:
 			_setup_packet()
+func _setup_dummy_paper():
+	canBePacket = false
+	_set_spawn_location()
 
 func _set_spawn_location():
 	match spawnLocation:

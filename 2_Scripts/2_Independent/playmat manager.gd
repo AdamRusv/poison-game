@@ -28,7 +28,7 @@ func _ready() -> void:
 	gameplayManager.playmatManager = self
 	_set_connections()
 func _set_connections():
-	gameplayManager.cutsceneFinished.connect(_add_main_papers)
+	#gameplayManager.cutsceneFinished.connect(_add_main_papers)
 	gameplayManager.opponentSatDown.connect(_add_opponent_papers)
 
 func _add_main_papers():
@@ -56,7 +56,11 @@ func _add_opponent_papers():
 	gameplayManager.opponentPapersGiven.emit()
 
 func _add_custom_papers(newPapers : Array[Paper]):
-	pass
+	for paper in newPapers:
+		paper.playmat = self
+		paper.spawnLocation = paper.SpawnLocations.fromMessenger
+		paper._setup_dummy_paper()
+		paperHolder.add_child(paper)
 
 #-----------------------
 

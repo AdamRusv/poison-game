@@ -66,6 +66,8 @@ func _start_new_encounter():
 	_setup_encounter_papers()
 	
 	await TransitionManager.transitionEncounter.transitionCutscene.finishedAnimating
+	playmatManager._add_main_papers()
+	
 	dialogueManager._start_dialogue()
 
 func _update_timeline_counter():

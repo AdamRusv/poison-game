@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://c1bvqa78l1lg5"]
+
+[ext_resource type="Script" uid="uid://b1hcjlnogkytj" path="res://2_Scripts/2_Independent/paper.gd" id="1_dvg7r"]
+[ext_resource type="Texture2D" uid="uid://c515g2bcyx028" path="res://0_Art/New_Art(Needs Sorting)/PaperNineSlice.png" id="3_iu8qm"]
+[ext_resource type="Texture2D" uid="uid://bk4mqsew66pgc" path="res://0_Art/New_Art(Needs Sorting)/SHA letter (Drawn).png" id="3_x1npm"]
+
+[node name="Get the Job Done" type="MarginContainer" unique_id=1389312574 node_paths=PackedStringArray("parentNode", "detectionArea")]
+custom_minimum_size = Vector2(164, 105)
+custom_maximum_size = Vector2(164, 228)
+offset_right = 164.0
+offset_bottom = 105.0
+script = ExtResource("1_dvg7r")
+parentNode = NodePath(".")
+detectionArea = NodePath("Drag Button")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1961360989]
+layout_mode = 2
+texture = ExtResource("3_iu8qm")
+region_rect = Rect2(0, 0, 174, 135)
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 25
+patch_margin_bottom = 25
+axis_stretch_vertical = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2074008777]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="word texture" type="TextureRect" parent="VBoxContainer" unique_id=999013592]
+layout_mode = 2
+texture = ExtResource("3_x1npm")
+
+[node name="Drag Button" type="Button" parent="." unique_id=1229789884]
+layout_mode = 2
+focus_mode = 0
+flat = true

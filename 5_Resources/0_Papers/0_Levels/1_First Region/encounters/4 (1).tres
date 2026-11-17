@@ -31,7 +31,7 @@ script = ExtResource("1_h7fey")
 hints = SubResource("Resource_bgqxo")
 cupAnswer = 2
 title = "Character Sheet"
-info = Array[String]([", Hollyberry
+info = Array[String]([", HOLLYBERRY
 
 
 1. Race: Human

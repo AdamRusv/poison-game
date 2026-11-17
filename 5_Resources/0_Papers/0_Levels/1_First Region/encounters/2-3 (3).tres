@@ -47,7 +47,7 @@ script = ExtResource("4_tjohr")
 hints = SubResource("Resource_icpc4")
 cupAnswer = 1
 title = "Character Sheet"
-info = Array[String]([", Shloozyville
+info = Array[String]([", SHLOOZYVILLE
 
 
 1. Occupation: Stonemason
