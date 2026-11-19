@@ -5,7 +5,6 @@ extends Control
 @export var settingsButton : DefaultButton
 @export var quitButton : DefaultButton
 @export var creditsButton : DefaultButton
-@export var resetSaveButton : DefaultButton
 
 var gamestateJSON : GamestateJSON = GamestateJSON.new()
 
@@ -14,11 +13,10 @@ func _ready() -> void:
 	_set_connections()
 func _set_connections():
 	playButton.onClicked.connect(_play)
-	settingsButton.onClicked.connect(_settings)
+	settingsButton.onClicked.connect(_open_settings)
 	quitButton.onClicked.connect(_quit)
 	
 	creditsButton.onClicked.connect(_open_credits)
-	resetSaveButton.onClicked.connect(gamestateJSON._reset_gamestate)
 
 #- - - - - -
 var gameplaySceneRef : PackedScene = preload("res://1_Scenes/0_Screens/gameplay.tscn")
@@ -41,8 +39,8 @@ func _play():
 	await get_tree().create_timer(0.6).timeout
 	get_tree().change_scene_to_node(gameplayScene)
 
-func _settings():
-	pass
+func _open_settings():
+	PopupMenuManager._create_settings_menu()
 
 func _quit():
 	get_tree().quit()

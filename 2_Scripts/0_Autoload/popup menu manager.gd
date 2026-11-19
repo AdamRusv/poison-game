@@ -4,10 +4,10 @@ var backgroundRef : PackedScene = preload("res://1_Scenes/1_Objects/0_Popup Menu
 
 #MENUS:
 var creditsMenuRef : PackedScene = preload("res://1_Scenes/1_Objects/0_Popup Menus/credits popup menu.tscn")
-#var settingsMenuRef : PackedScene = preload()
+var settingsMenuRef : PackedScene = preload("res://1_Scenes/1_Objects/0_Popup Menus/settings popup menu.tscn")
 
 var creditsMenu : CreditsMenuManager
-#var settingdMenu : SettingsMenuManager
+var settingdMenu : SettingsMenuManager
 
 var currentMenu : BasePopupMenu
 var allMenus : Array[BasePopupMenu]
@@ -54,6 +54,9 @@ func _create_credits_menu() -> CreditsMenuManager:
 	creditsMenu = _create_menu(creditsMenuRef)
 	return creditsMenu
 
+func _create_settings_menu() -> SettingsMenuManager:
+	settingdMenu = _create_menu(settingsMenuRef)
+	return settingdMenu
 
 #--------------
 func _can_remove_background() -> bool:

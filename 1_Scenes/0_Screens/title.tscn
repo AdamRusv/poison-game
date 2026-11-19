@@ -19,7 +19,7 @@ shader_parameter/speed = Vector2(-0.4, 0.4)
 atlas = ExtResource("3_gglkp")
 region = Rect2(0, 0, 20, 20)
 
-[node name="Title" type="Control" unique_id=2145977770 node_paths=PackedStringArray("playButton", "settingsButton", "quitButton", "creditsButton", "resetSaveButton")]
+[node name="Title" type="Control" unique_id=2145977770 node_paths=PackedStringArray("playButton", "settingsButton", "quitButton", "creditsButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -31,7 +31,6 @@ playButton = NodePath("VBoxContainer/play")
 settingsButton = NodePath("VBoxContainer/settings")
 quitButton = NodePath("VBoxContainer/quit")
 creditsButton = NodePath("credits")
-resetSaveButton = NodePath("reset save")
 
 [node name="background" type="ColorRect" parent="." unique_id=204868835]
 layout_mode = 1
@@ -260,51 +259,6 @@ horizontal_alignment = 1
 layout_mode = 2
 
 [node name="play button" type="Button" parent="credits/button holder" unique_id=1384948770]
-layout_mode = 2
-focus_mode = 0
-flat = true
-
-[node name="reset save" type="MarginContainer" parent="." unique_id=357379044 node_paths=PackedStringArray("buttonSelf", "visual")]
-layout_mode = 0
-offset_left = 85.0
-offset_top = 225.0
-offset_right = 186.0
-offset_bottom = 274.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-script = ExtResource("5_1ux1m")
-buttonSelf = NodePath("button holder/play button")
-visual = NodePath("NinePatchRect")
-
-[node name="NinePatchRect" type="NinePatchRect" parent="reset save" unique_id=1502952300]
-layout_mode = 2
-texture = SubResource("AtlasTexture_504ay")
-patch_margin_left = 8
-patch_margin_top = 8
-patch_margin_right = 8
-patch_margin_bottom = 8
-
-[node name="text parent" type="MarginContainer" parent="reset save" unique_id=90835351]
-layout_mode = 2
-theme_override_constants/margin_left = 12
-theme_override_constants/margin_top = 13
-theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 12
-
-[node name="label" type="RichTextLabel" parent="reset save/text parent" unique_id=1893630087]
-layout_mode = 2
-theme = ExtResource("4_q3nym")
-text = "! ALERT ALERT !
-
-Press me if you participated in Playtest 1!!"
-fit_content = true
-scroll_active = false
-horizontal_alignment = 1
-
-[node name="button holder" type="MarginContainer" parent="reset save" unique_id=939672064]
-layout_mode = 2
-
-[node name="play button" type="Button" parent="reset save/button holder" unique_id=1533005470]
 layout_mode = 2
 focus_mode = 0
 flat = true

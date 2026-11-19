@@ -1,0 +1,359 @@
+[gd_scene format=3 uid="uid://d0v55ulmd7let"]
+
+[ext_resource type="Script" uid="uid://bm2q4610stci8" path="res://2_Scripts/2_Independent/0_Popup Menus/settings popup menu.gd" id="1_qx6b1"]
+[ext_resource type="Texture2D" uid="uid://dnvjgmgoixkn1" path="res://0_Art/2_PNGs/default button-Sheet.png" id="2_ek26b"]
+[ext_resource type="Theme" uid="uid://c22mtrw4havjs" path="res://6_Other/medium font.tres" id="3_qx6b1"]
+[ext_resource type="Theme" uid="uid://bhvewryp1cmbt" path="res://6_Other/description font.tres" id="4_ce14j"]
+[ext_resource type="Script" uid="uid://d3gqilareful2" path="res://2_Scripts/2_Independent/default button.gd" id="4_ek26b"]
+[ext_resource type="Script" uid="uid://bork2tj1y1ddr" path="res://2_Scripts/2_Independent/two sided button.gd" id="6_ce14j"]
+[ext_resource type="Texture2D" uid="uid://bttfjsdkbfw8" path="res://0_Art/2_PNGs/two sided button.png" id="6_qx6b1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cjolp"]
+atlas = ExtResource("2_ek26b")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gnbqg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qx6b1"]
+atlas = ExtResource("2_ek26b")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ce14j"]
+atlas = ExtResource("2_ek26b")
+region = Rect2(0, 0, 20, 20)
+
+[node name="Settings Popup Menu" type="Control" unique_id=1268477920 node_paths=PackedStringArray("fullscreen", "master", "music", "sfx", "reset")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_qx6b1")
+fullscreen = NodePath("VBoxContainer/description/VBoxContainer/fullscreen")
+master = NodePath("VBoxContainer/description/VBoxContainer/master")
+music = NodePath("VBoxContainer/description/VBoxContainer/Music")
+sfx = NodePath("VBoxContainer/description/VBoxContainer/SFX")
+reset = NodePath("reset save")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=528316837]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -16.5
+offset_bottom = 16.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="header" type="MarginContainer" parent="VBoxContainer" unique_id=570476964]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer/header" unique_id=562835907]
+layout_mode = 2
+texture = SubResource("AtlasTexture_cjolp")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="text parent" type="MarginContainer" parent="VBoxContainer/header" unique_id=356356045]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 13
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="label" type="RichTextLabel" parent="VBoxContainer/header/text parent" unique_id=2095763667]
+layout_mode = 2
+theme = ExtResource("3_qx6b1")
+text = "Settings"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="button holder" type="MarginContainer" parent="VBoxContainer/header" unique_id=1814553497]
+layout_mode = 2
+
+[node name="play button" type="Button" parent="VBoxContainer/header/button holder" unique_id=1668220459]
+layout_mode = 2
+focus_mode = 0
+flat = true
+
+[node name="description" type="MarginContainer" parent="VBoxContainer" unique_id=663235104]
+custom_minimum_size = Vector2(250, -1)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer/description" unique_id=1066253801]
+layout_mode = 2
+texture = SubResource("AtlasTexture_cjolp")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/description" unique_id=1623453642]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/description/VBoxContainer" unique_id=1099456143]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxEmpty_gnbqg")
+
+[node name="fullscreen" type="MarginContainer" parent="VBoxContainer/description/VBoxContainer" unique_id=785251734 node_paths=PackedStringArray("buttonSelf", "visual", "label")]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("4_ek26b")
+buttonSelf = NodePath("button holder/play button")
+visual = NodePath("NinePatchRect")
+label = NodePath("text parent/label")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer/description/VBoxContainer/fullscreen" unique_id=461832603]
+layout_mode = 2
+texture = SubResource("AtlasTexture_qx6b1")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="text parent" type="MarginContainer" parent="VBoxContainer/description/VBoxContainer/fullscreen" unique_id=329571869]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 13
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="label" type="RichTextLabel" parent="VBoxContainer/description/VBoxContainer/fullscreen/text parent" unique_id=1498486031]
+layout_mode = 2
+theme = ExtResource("4_ce14j")
+text = "Fullscreen: ?"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="button holder" type="MarginContainer" parent="VBoxContainer/description/VBoxContainer/fullscreen" unique_id=307156187]
+layout_mode = 2
+
+[node name="play button" type="Button" parent="VBoxContainer/description/VBoxContainer/fullscreen/button holder" unique_id=74157438]
+layout_mode = 2
+focus_mode = 0
+flat = true
+
+[node name="master" type="MarginContainer" parent="VBoxContainer/description/VBoxContainer" unique_id=642627203 node_paths=PackedStringArray("leftButton", "rightButton", "visual", "label")]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("6_ce14j")
+leftButton = NodePath("button holder/HBoxContainer/left button")
+rightButton = NodePath("button holder/HBoxContainer/right button")
+visual = NodePath("NinePatchRect")
+label = NodePath("text parent/label")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer/description/VBoxContainer/master" unique_id=1026266631]
+layout_mode = 2
+texture = ExtResource("6_qx6b1")
+patch_margin_left = 19
+patch_margin_top = 16
+patch_margin_right = 19
+patch_margin_bottom = 16
+
+[node name="text parent" type="MarginContainer" parent="VBoxContainer/description/VBoxContainer/master" unique_id=1709838118]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="label" type="RichTextLabel" parent="VBoxContainer/description/VBoxContainer/master/text parent" unique_id=421587824]
+layout_mode = 2
+theme = ExtResource("4_ce14j")
+text = "Master Volume: ?"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="button holder" type="MarginContainer" parent="VBoxContainer/description/VBoxContainer/master" unique_id=1049910705]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/description/VBoxContainer/master/button holder" unique_id=1576417644]
+layout_mode = 2
+theme_override_constants/separation = 75
+
+[node name="left button" type="Button" parent="VBoxContainer/description/VBoxContainer/master/button holder/HBoxContainer" unique_id=1646946452]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+flat = true
+
+[node name="right button" type="Button" parent="VBoxContainer/description/VBoxContainer/master/button holder/HBoxContainer" unique_id=48392109]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+flat = true
+
+[node name="Music" type="MarginContainer" parent="VBoxContainer/description/VBoxContainer" unique_id=1694814486 node_paths=PackedStringArray("leftButton", "rightButton", "visual", "label")]
+custom_minimum_size = Vector2(85, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("6_ce14j")
+leftButton = NodePath("button holder/HBoxContainer/left button")
+rightButton = NodePath("button holder/HBoxContainer/right button")
+visual = NodePath("NinePatchRect")
+label = NodePath("text parent/label")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer/description/VBoxContainer/Music" unique_id=1568328577]
+layout_mode = 2
+texture = ExtResource("6_qx6b1")
+patch_margin_left = 19
+patch_margin_top = 16
+patch_margin_right = 19
+patch_margin_bottom = 16
+
+[node name="text parent" type="MarginContainer" parent="VBoxContainer/description/VBoxContainer/Music" unique_id=443959487]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="label" type="RichTextLabel" parent="VBoxContainer/description/VBoxContainer/Music/text parent" unique_id=1143137186]
+layout_mode = 2
+theme = ExtResource("4_ce14j")
+text = "Music: ?"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="button holder" type="MarginContainer" parent="VBoxContainer/description/VBoxContainer/Music" unique_id=1864062398]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/description/VBoxContainer/Music/button holder" unique_id=146245688]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="left button" type="Button" parent="VBoxContainer/description/VBoxContainer/Music/button holder/HBoxContainer" unique_id=1049110049]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+flat = true
+
+[node name="right button" type="Button" parent="VBoxContainer/description/VBoxContainer/Music/button holder/HBoxContainer" unique_id=96323817]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+flat = true
+
+[node name="SFX" type="MarginContainer" parent="VBoxContainer/description/VBoxContainer" unique_id=1161258389 node_paths=PackedStringArray("leftButton", "rightButton", "visual", "label")]
+custom_minimum_size = Vector2(85, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("6_ce14j")
+leftButton = NodePath("button holder/HBoxContainer/left button")
+rightButton = NodePath("button holder/HBoxContainer/right button")
+visual = NodePath("NinePatchRect")
+label = NodePath("text parent/label")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer/description/VBoxContainer/SFX" unique_id=150471808]
+layout_mode = 2
+texture = ExtResource("6_qx6b1")
+patch_margin_left = 19
+patch_margin_top = 16
+patch_margin_right = 19
+patch_margin_bottom = 16
+
+[node name="text parent" type="MarginContainer" parent="VBoxContainer/description/VBoxContainer/SFX" unique_id=1895613015]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="label" type="RichTextLabel" parent="VBoxContainer/description/VBoxContainer/SFX/text parent" unique_id=1351178481]
+layout_mode = 2
+theme = ExtResource("4_ce14j")
+text = "SFX: ?"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="button holder" type="MarginContainer" parent="VBoxContainer/description/VBoxContainer/SFX" unique_id=1612885706]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/description/VBoxContainer/SFX/button holder" unique_id=1147232903]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="left button" type="Button" parent="VBoxContainer/description/VBoxContainer/SFX/button holder/HBoxContainer" unique_id=1393325917]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+flat = true
+
+[node name="right button" type="Button" parent="VBoxContainer/description/VBoxContainer/SFX/button holder/HBoxContainer" unique_id=297376841]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+flat = true
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer/description/VBoxContainer" unique_id=1513255999]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxEmpty_gnbqg")
+
+[node name="reset save" type="MarginContainer" parent="." unique_id=1929210008 node_paths=PackedStringArray("buttonSelf", "visual", "label")]
+custom_minimum_size = Vector2(140, 33)
+layout_mode = 0
+offset_left = 496.0
+offset_top = 323.0
+offset_right = 636.0
+offset_bottom = 356.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("4_ek26b")
+buttonSelf = NodePath("button holder/play button")
+visual = NodePath("NinePatchRect")
+label = NodePath("text parent/label")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="reset save" unique_id=2107489106]
+layout_mode = 2
+texture = SubResource("AtlasTexture_ce14j")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="text parent" type="MarginContainer" parent="reset save" unique_id=1185885337]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 13
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="label" type="RichTextLabel" parent="reset save/text parent" unique_id=1954147334]
+layout_mode = 2
+theme = ExtResource("4_ce14j")
+text = "Reset Save"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="button holder" type="MarginContainer" parent="reset save" unique_id=60157515]
+layout_mode = 2
+
+[node name="play button" type="Button" parent="reset save/button holder" unique_id=2033938213]
+layout_mode = 2
+focus_mode = 0
+flat = true
