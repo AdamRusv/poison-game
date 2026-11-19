@@ -6,6 +6,8 @@ class_name DefaultButton
 @export var buttonSelf : Button
 ##must be a nineslice or texturerect!!
 @export var visual : Control
+##optional
+@export var label : RichTextLabel
 @export_group("Base NineSlice Region")
 @export var NEUTRAL_STATE : Rect2i = Rect2i(0, 0, 20, 20)
 @export var HOVERED_STATE : Rect2i = Rect2i(20, 0, 20, 20)
@@ -41,7 +43,7 @@ func _on_down():
 	onDown.emit()
 
 func _on_up():
-	if _is_mouse_over_poison_button() == true:
+	if _is_mouse_over_button() == true:
 		_change_atlasTexture(HOVERED_STATE)
 	else:
 		_change_atlasTexture(NEUTRAL_STATE)
@@ -49,13 +51,13 @@ func _on_up():
 
 func _clicked():
 	onClicked.emit()
-	
+
 #- - -
 func _change_atlasTexture(state : Rect2i):
 	visual.texture.region = state
 
 #----------------------------
-func _is_mouse_over_poison_button() -> bool:
+func _is_mouse_over_button() -> bool:
 	if get_viewport() == null:
 		return false
 	

@@ -11,7 +11,6 @@ func _ready() -> void:
 	settingsJSON._load_settings()
 	togglefullscreen.connect(_toggle_fullscreen)
 	_update_fullscreen()
-	#_toggle_fullscreen()
 	_update_audio()
 
 func _update_audio():
@@ -19,25 +18,31 @@ func _update_audio():
 	SoundManager._set_bus_volume("Music", settingsJSON.musicVolume)
 	SoundManager._set_bus_volume("SFX", settingsJSON.sfxVolume)
 
-func _increase_master():
-	if settingsJSON.masterVolume == 5:
-		settingsJSON.masterVolume = 0
-	else:
-		settingsJSON.masterVolume += 1
+func _manage_master(change : int = 0):
+	if settingsJSON.masterVolume == 5 && change > 0:
+		return
+	elif settingsJSON.masterVolume == 0 && change < 0:
+		return
+	
+	settingsJSON.masterVolume += change
 	SoundManager._set_bus_volume("Master", settingsJSON.masterVolume)
 
-func _increase_music():
-	if settingsJSON.musicVolume == 5:
-		settingsJSON.musicVolume = 0
-	else:
-		settingsJSON.musicVolume += 1
+func _manage_music(change : int = 0):
+	if settingsJSON.musicVolume == 5 && change > 0:
+		return
+	elif settingsJSON.musicVolume == 0 && change < 0:
+		return
+	
+	settingsJSON.musicVolume += change
 	SoundManager._set_bus_volume("Music", settingsJSON.musicVolume)
 
-func _increase_sfx():
-	if settingsJSON.sfxVolume == 5:
-		settingsJSON.sfxVolume = 0
-	else:
-		settingsJSON.sfxVolume += 1
+func _manage_sfx(change : int = 0):
+	if settingsJSON.sfxVolume == 5 && change > 0:
+		return
+	elif settingsJSON.sfxVolume == 0 && change < 0:
+		return
+	
+	settingsJSON.sfxVolume += change
 	SoundManager._set_bus_volume("SFX", settingsJSON.sfxVolume)
 
 #---------------------------------------------------------
